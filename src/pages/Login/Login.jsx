@@ -1,23 +1,18 @@
-import { Form, FormGroup, Label} from "reactstrap";
+import { Form, FormGroup, Label } from "reactstrap";
 import "./login.css";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
 
-
 export const Login = () => {
-
   return (
-
-
-
-    <div className="container">
+    <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>
       
       <img src={Background} alt="" />
-
+      
       <div className="containerLogin">
-      <img src={LoginIlustration} alt="" />
+        <img src={LoginIlustration} alt="" />
 
-        <Form onSubmit={""} className="rowLogin">        
+        <Form onSubmit={""} className="rowLogin">
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
@@ -57,8 +52,8 @@ export const Login = () => {
             </FormGroup>
           </div>
 
-          <div className="col-md-12">
-            <button>              
+          <div className="col">
+            <button className="col_button">
               <div class="svg-wrapper-1">
                 <div class="svg-wrapper">
                   <svg
@@ -76,11 +71,9 @@ export const Login = () => {
                 </div>
               </div>
               <span>Ingresar</span>
-            </button>          
+            </button>
           </div>
-
-        </Form> 
-
+        </Form>
       </div>
     </div>
   );

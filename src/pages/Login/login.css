@@ -3,26 +3,27 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-.container {
+.Generalcontainer {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; 
 }
-
-.container img {
-  width: 100vw;
+.Generalcontainer img {
+  position: absolute;
+  width: 160vw;
+  height: 100%;
+  opacity: 0.3;
 }
-
 .containerLogin img {
   width: 25vw;
+  position: relative;
+  opacity: 1;
 }
 .containerLogin {
-  *background: linear-gradient(180deg, rgba(96,65,47,1) 0%, rgba(96,65,47,1) 38%, rgba(255,255,255,1) 100%);
-  *background-color: #60412F;
+  margin-top: 15%;
   width: 100vw;
-  padding: 3vh 0;  
+  padding: 3vh 0;
   text-align: center;
 }
 .rowLogin {
@@ -31,21 +32,25 @@
   width: 60vw;
   border-radius: 15px;
   opacity: 0.9;
-  padding: 5vw;  
+  padding: 5vw;
 }
-
 label {
   color: #fff;
+  font-size: 4vw;
 }
-
-
-.colLogin h1{
-  color:#fff
+.mb-3 {
+  text-align: left;
 }
-button {  
-  margin: auto;  
-  
-  background-color: rgb(202,135,37);  
+.colLogin h1 {
+  color: #fff;
+  font-size: 5vw;
+}
+.input {
+  font-size: 3vw;
+}
+.col_button {
+  margin: auto;
+  background-color: rgb(202, 135, 37);
   color: white;
   padding: 8px 15px;
   display: flex;
@@ -59,6 +64,7 @@ button span {
   display: block;
   margin-left: 0.3em;
   transition: all 0.3s ease-in-out;
+  font-size: 4vw;
 }
 button svg {
   display: block;
@@ -82,23 +88,64 @@ button:active {
   from {
     transform: translateY(0.1em);
   }
-
   to {
     transform: translateY(-0.1em);
   }
 }
-
-.input { 
+.input {
   width: 50vw;
   height: 35px;
-  padding: 10px; 
-  border: none;   
-  border-radius: 5px;  
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
 }
-
 .input:focus {
   outline-color: rgba(30, 124, 60);
   box-shadow: -3px -3px 15px rgb(191, 255, 0);
   transition: 0.1s;
   transition-property: box-shadow;
+}
+
+@media screen and (min-width: 678px) {
+  .Generalcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  .Generalcontainer img {
+    position: relative;
+    width: 60vw;    
+    opacity: 1;    
+  }
+  .containerLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    padding: 0;
+    margin: 0;
+  }
+  .containerLogin img {
+    width: 9vw;
+  }
+  .rowLogin {
+    width: 22vw;
+    padding: 2vw;
+    margin: 0;
+    align-self: center;
+  }
+  label {
+    font-size: 1.5vw;
+  }
+  .colLogin h1 {
+    font-size: 2vw;
+  }
+  button span {
+    font-size: 1.5vw;
+  }
+  .input {
+    width: 100%;
+    font-size: 1.5vw;
+  }
 }

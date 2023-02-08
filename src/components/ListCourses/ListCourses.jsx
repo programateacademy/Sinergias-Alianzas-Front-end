@@ -15,6 +15,7 @@ export const ListCourses = () => {
       </div>
 
       <div className="containerDashboard">
+        
         <div className="container_buttons">
           <button>Añadir Componente</button>
           <button>Buscar componente</button>

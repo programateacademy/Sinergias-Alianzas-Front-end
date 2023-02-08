@@ -1,7 +1,7 @@
 .containerTitle {
   position: absolute;
   width: 100vw;
-  top: 105px;
+  top: 105px;  
   display: flex;
   justify-content: center;
 }

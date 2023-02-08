@@ -1,0 +1,80 @@
+.partForm {
+    
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+    flex-direction: column;
+    height: 600px;
+    border: solid;
+    border-color: green;
+    border-radius: 20px;
+    margin: 5px;
+    margin-top: 30px;
+    
+}
+.texttitlee{
+    position: absolute;
+    top: 5%;
+    background-color: white;
+    width: 150px;
+    text-align: center;
+    height: 50px;
+}
+
+.pict {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+.pict img{
+    width: 100px;
+    height: 100px;
+}
+.pict h1{
+    font-size: 15px;
+}
+.info{
+    justify-content: center;
+    align-items: center;
+}
+.texth2 {
+    background-color: #cacacade;
+    width: 80vw;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 12px; 
+}
+
+.add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.butadd{
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: rgb(138, 209, 138);
+    color: rgb(0, 0, 0);
+    border: solid;  
+    border-color:rgb(7, 131, 7);
+    margin-top: 20px;
+    
+}
+.butadd:hover{
+    background-color:rgb(7, 131, 7) ;
+    color: white;
+    border-color:rgb(138, 209, 138);
+    
+}
+
+
+@media screen and (max-width){
+    
+
+}

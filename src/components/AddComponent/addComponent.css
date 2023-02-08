@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.principalComponente{
+    font-size: 10px;
+    justify-content: center;
+    text-align: center;
+    margin: 44px auto;
+   
+}
+
+.form1{
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.form2{
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.Objetivos{
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.lineasTrabajo{
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.Recursos{
+    width: 60vw;
+    margin: 0 auto;
+}
+
+label{
+    font-size: 12px;
+}
+
+input.form-control{
+    font-size: 10px;
+}
+
+small.form-text.text-muted{
+    font-size: 10px;
+}

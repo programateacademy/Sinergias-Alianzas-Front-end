@@ -6,13 +6,12 @@ import LoginIlustration from "./Assets/LoginIlustration.png";
 export const Login = () => {
   return (
     <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>
-      
       <img src={Background} alt="" />
-      
+
       <div className="containerLogin">
         <img src={LoginIlustration} alt="" />
 
-        <Form onSubmit={""} className="rowLogin">
+        <Form className="rowLogin">
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
@@ -54,8 +53,8 @@ export const Login = () => {
 
           <div className="col">
             <button className="col_button">
-              <div class="svg-wrapper-1">
-                <div class="svg-wrapper">
+              <div className="svg-wrapper-1">
+                <div className="svg-wrapper">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -78,3 +77,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

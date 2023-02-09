@@ -7,7 +7,7 @@ import App from "./App";
 
 // Estilos
 import "bootstrap/dist/css/bootstrap.css";
-import "remixicon/fonts/remixicon.css";
+// import "remixicon/fonts/remixicon.css";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

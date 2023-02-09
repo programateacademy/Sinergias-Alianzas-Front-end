@@ -5,21 +5,23 @@
     margin: 0 auto;
 
     flex-direction: column;
-    height: 600px;
+    height: 100%;
     border: solid;
     border-color: green;
     border-radius: 20px;
     margin: 5px;
     margin-top: 30px;
+    padding: 3vw;    
     
 }
 .texttitlee{
     position: absolute;
-    top: 5%;
+    top: 2%;
     background-color: white;
     width: 150px;
     text-align: center;
     height: 50px;
+    display:block;
 }
 
 .pict {
@@ -72,7 +74,41 @@
     border-color:rgb(138, 209, 138);
     
 }
+.textProfile{
+    text-align: center;
+    
+    
+}
+.textProfile h1{
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 20px;
+    
+}
+.profiles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
+    margin-top: 20px;
+}       
+.profiles button{
+    width: 40px;
+    height: 40px;
+
+    background-color: rgb(138, 209, 138);
+    color: rgb(0, 0, 0);
+    border: solid;  
+    border-color:rgb(7, 131, 7);
+    border-radius: 50px;
+    
+}
+.profiles button:hover{
+    background-color:rgb(7, 131, 7) ;
+    color: white;
+    border-color:rgb(138, 209, 138);
+}
 
 @media screen and (max-width){
     

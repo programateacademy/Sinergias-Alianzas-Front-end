@@ -1,50 +1,107 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
 }
 
-.principalComponente{
-    font-size: 10px;
-    justify-content: center;
+.containerAdd {
+  margin-top: 0px;
+}
+
+.containerDashboard {
+  border: 5px solid green;
+  margin: 60px 5vw 0 5vw;
+  padding: 5vw;
+  border-radius: 15px;
+}
+
+.containerTitle {
+  position: absolute;
+  width: 100vw;
+  top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.containerTitle h1 {
+  background-color: white;
+  width: 50vw;
+  font-size: 4.4vw;
+  text-align: center;
+}
+
+
+.Titulo2 {
+    width: 50vw;
+    font-size: 16px;
     text-align: center;
-    margin: 44px auto;
-   
+    margin: 30px auto;
 }
 
-.form1{
+.form1 {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.form1 input{
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 45px;
+}
+
+.form2 {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.form2 input{
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 45px;
+}
+
+.Objetivos {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.Objetivos input {
     width: 60vw;
     margin: 0 auto;
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 45px;
+  }
+
+
+
+.lineasTrabajo {
+  width: 60vw;
+  margin: 0 auto;
 }
 
-.form2{
-    width: 60vw;
-    margin: 0 auto;
+.Recursos {
+  display: grid;
+  width: 60vw;
+  margin: 0 auto;
 }
 
-.Objetivos{
-    width: 60vw;
-    margin: 0 auto;
+label {
+  font-size: 14px;
 }
 
-.lineasTrabajo{
-    width: 60vw;
-    margin: 0 auto;
+input.form-control {
+  font-size: 12px;
 }
 
-.Recursos{
-    width: 60vw;
-    margin: 0 auto;
+small.form-text.text-muted {
+  font-size: 10px;
 }
 
-label{
-    font-size: 12px;
+.Logos{
+    display:inine-block;
+    display: grid;
 }
 
-input.form-control{
-    font-size: 10px;
-}
-
-small.form-text.text-muted{
-    font-size: 10px;
-}
+.layout {
+    display: grid;
+    grid-template-columns: 2;
+    gap: 88px;
+  }

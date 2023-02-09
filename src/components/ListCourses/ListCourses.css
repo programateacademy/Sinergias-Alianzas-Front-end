@@ -21,19 +21,46 @@
 
 .container_buttons {
   display: flex;
-  justify-content: space-around;
+  align-items:center;
+  flex-direction: column;    
 }
-.container_buttons button {
-  width: 35vw;
+.container_buttons button {  
+  width: 38vw;
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;   
   font-size: 3vw;
+  border-radius: 50px;  
+  border: none;
+  background-color: green;
+  color: white;  
+  padding-right: 4vw;
 }
-.listCards {
-  margin: 3vh 0 3vh 0;
-  *border: 1px solid grey;
+button.box {  
+  margin: 1.5vw;
+}
+button.box input{
+  width:80%; 
+  border:none; 
   border-radius: 15px;
+  font-size: 2.5vw;
+  text-align: center; 
+  background-color: transparent;   
+  color: white;
+}
+button.box input::placeholder{
+  color: white;  
+}
+.container_buttons img {
+  width: 6vw;
+  margin-left: -1.5vw;  
+}
+
+.listCards {
+  margin: 3vh 0 3vh 0; 
   text-align: center;
 }
-.listCards img {
+.cardComponent img {
   width: 60vw;
   margin: auto;
 }
@@ -41,12 +68,14 @@
   padding: 5px;
   background-color: #849b1c;
   color: white;
+  font-size: 5vw;
 }
 .cardComponent {
   box-shadow: 3px 6px 29px 0px rgba(153, 153, 153, 1);
   border-radius: 15px;
   padding: 15px 0 15px 0;
 }
+
 .buttons_cards {
   display: flex;
   justify-content: center;
@@ -54,4 +83,56 @@
 .buttons_cards img {
   width: 17vw;
   margin: 0 8px;
+}
+
+@media screen and (min-width:570px) {
+  .containerTitle h1{
+    width: 40vw;
+    font-size: 2vw;
+  }
+  .container_buttons {
+    flex-direction: row;
+  }
+  .container_buttons button {
+    width: 20vw;
+    font-size: 1.5vw;
+    padding-right: 2vw;
+  }
+  button.box {
+    margin: 2vw;
+  }
+  button.box input{
+    font-size: 1.5vw;    
+  }
+  .container_buttons img {
+    width: 3vw;
+    margin-left: -0.5vw;
+  }
+  .cardComponent {
+    width: 22vw;
+  }
+  .cardComponent h2 {
+    font-size: 1.5vw;
+  }
+  .cardComponent img {
+    margin-top: 15px;
+    width: 15vw;
+    margin-bottom: 1vw;
+  }
+  .buttons_cards img{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    
+    width: 5vw;
+  }
+  .listCards {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;     
+  }
+
+
+
 }

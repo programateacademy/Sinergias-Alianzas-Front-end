@@ -1,7 +1,13 @@
+import { ListCourses } from "./components/ListCourses/ListCourses";
+import { Login } from "./pages/Login/Login";
+
+
+
 function App() {
   return (
     <div>
-      <h1>Proyecto Sinergias</h1>
+     <Login/>
+          
     </div>
   );
 }

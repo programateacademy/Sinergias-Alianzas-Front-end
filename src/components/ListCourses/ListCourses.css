@@ -1,0 +1,57 @@
+.containerTitle {
+  position: absolute;
+  width: 100vw;
+  top: 105px;  
+  display: flex;
+  justify-content: center;
+}
+.containerTitle h1 {
+  background-color: white;
+  width: 50vw;
+  font-size: 3vw;
+  text-align: center;
+}
+
+.containerDashboard {
+  border: 5px solid green;
+  margin: 110px 5vw 0 5vw;
+  padding: 5vw;
+  border-radius: 15px;
+}
+
+.container_buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.container_buttons button {
+  width: 35vw;
+  font-size: 3vw;
+}
+.listCards {
+  margin: 3vh 0 3vh 0;
+  *border: 1px solid grey;
+  border-radius: 15px;
+  text-align: center;
+}
+.listCards img {
+  width: 60vw;
+  margin: auto;
+}
+.cardComponent h2 {
+  padding: 5px;
+  background-color: #849b1c;
+  color: white;
+}
+.cardComponent {
+  box-shadow: 3px 6px 29px 0px rgba(153, 153, 153, 1);
+  border-radius: 15px;
+  padding: 15px 0 15px 0;
+}
+.buttons_cards {
+  display: flex;
+  justify-content: center;
+}
+.buttons_cards img {
+  width: 17vw;
+  margin: 0 8px;
+}

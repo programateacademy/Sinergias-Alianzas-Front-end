@@ -20,6 +20,7 @@ const AddComponent = () => {
         <h2 className="Titulo2">Información del Componente</h2>
         <Form className="containerAdd">
           <Form className="form1">
+            
             <FormGroup>
               <Label>Url</Label>
               <Input placeholder="url imagen" type="url" />
@@ -53,19 +54,19 @@ const AddComponent = () => {
 
           <Form className="form2">
             <FormGroup>
-              <Label>Imagen 1</Label>
+              <Label className="image1">Imagen 1</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Archivos soportados con formato jpg y png</FormText>
             </FormGroup>
 
             <FormGroup>
-              <Label>Imagen 2</Label>
+              <Label className="image1">Imagen 2</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Archivos soportados con formato jpg y png</FormText>
             </FormGroup>
 
             <FormGroup>
-              <Label>Imagen 3</Label>
+              <Label className="image1">Imagen 3</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Archivos soportados con formato jpg y png</FormText>
             </FormGroup>
@@ -73,30 +74,30 @@ const AddComponent = () => {
 
           <Form className="Objetivos">
             <FormGroup>
-              <Label>Objetivo 1</Label>
+              <Label className="image1">Objetivo 1</Label>
               <Input placeholder="Objetivo" type="text" />
             </FormGroup>
 
             <FormGroup>
-              <Label>Objetivo 2</Label>
+              <Label className="image1">Objetivo 2</Label>
               <Input placeholder="Objetivo" type="text" />
             </FormGroup>
 
             <FormGroup>
-              <Label>Objetivo 3</Label>
+              <Label className="image1">Objetivo 3</Label>
               <Input placeholder="Objetivo" type="text" />
             </FormGroup>
           </Form>
 
           <Form className="lineasTrabajo">
             <FormGroup>
-              <Label>Lineas de Trabajo 1</Label>
-              <Input id="exampleText" name="text" type="textarea" />
+              <Label className="image1">Lineas de Trabajo 1</Label>
+              <Input id="exampleText" name="text" type="textLine" />
             </FormGroup>
 
             <FormGroup>
-              <Label>Lineas de Trabajo 2</Label>
-              <Input id="exampleText" name="text" type="textarea" />
+              <Label className="image1">Lineas de Trabajo 2</Label>
+              <Input id="exampleText" name="text" type="textLine" />
             </FormGroup>
           </Form>
 
@@ -112,35 +113,35 @@ const AddComponent = () => {
           <Form className="Recursos">
             <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
-              <Label>Metodologia</Label>
+              <Label className="image1">Metodologia</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Diagnostico} alt="" />
-              <Label>Formatos e Instructivos</Label>
+              <Label className="image1">Formatos e Instructivos</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Formato} alt="" />
-              <Label>Diagnosticos de Salud</Label>
+              <Label className="image1">Diagnosticos de Salud</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Material} alt="" />
-              <Label>Herramientas y Manuales de Protocolo</Label>
+              <Label className="image1">Herramientas y Manuales de Protocolo</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Herramientas} alt="" />
-              <Label>Material Educativo</Label>
+              <Label className="image1">Material Educativo</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>

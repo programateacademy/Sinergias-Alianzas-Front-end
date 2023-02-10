@@ -8,84 +8,73 @@ import { RiDeleteBin2Line } from 'react-icons/ri';
 const Form = () => {
   return (
     <>
+      <div className='texttitle'><h1>Editar componente</h1></div>
       <section className='partForm'>
+          
 
-        <h1 className='texttitlee'> Formulario</h1>
-        <div>
+          <div className='pict'>
+                <div className='pict_cont1'>
 
-          <div className='containerform'>
-            <div className='pict'>
+                  <div className='book'>
+                    <img src={libro} alt="imagen libro" />
+                  </div>
 
-              <img src={libro} alt="imagen libro" />
 
-              <div className='info'>
-                <div className=''>
-                  <h1>
-                    Primer apellido
-                  </h1>
-                  <input
-                    type="text"
-                    className='texth2' />
+                  <div className='info'>
+
+                      <label htmlFor="" className='info_label'>
+                        <p>Primer apellido</p>
+                        <input
+                          type="text"
+                          />
+                      </label>
+                      <label htmlFor="" className='info_label'>
+                        <p>Segundo apellido</p>
+                        <input
+                          type="text"
+                          />
+                      </label>
+                      <label htmlFor="" className='info_label'>
+                        <p>Primer nombre</p>
+                        <input
+                          type="text"
+                          />
+                      </label>
+                      <label htmlFor="" className='info_label'>
+                        <p>Segundo nombre</p>
+                        <input
+                          type="text"
+                          />
+                      </label>
+                  </div>
                 </div>
-                <div className=''>
-                  <h1>
-                    Segundo apellido
-                  </h1>
-                  <input
-                    type="text"
-                    className='texth2' />
+                <div className='pict_cont2'>
+                    <label htmlFor="" className='info_label2'>
+                        <p>Correo</p>
+                        <input
+                            type="text"
+                            />
+                      </label>
+                      <label htmlFor="" className='info_label2'>
+                        <p>Contraseña</p>
+                        <input
+                            type="text"
+                            />
+                      </label>
+                      
+                      <button className='butadd'> Añadir</button>
+                      
                 </div>
-                <div className=''>
-                  <h1>
-                    Primer nombre
-                  </h1>
-                  <input
-                    type="text"
-                    className='texth2' />
-                </div>
-                <div className=''>
-                  <h1>
-                    Segundo nombre
-                  </h1>
-                  <input
-                    type="text"
-                    className='texth2' />
-                </div>
-                <div className=''>
-                  <h1>
-                    Correo
-                  </h1>
-                  <input
-                    type="text"
-                    className='texth2' />
-                </div>
-                <div className=''>
-                  <h1>
-                    Contraseña
-                  </h1>
-                  <input
-                    type="text"
-                    className='texth2' />
-                </div>
-                <div className='add'>
-                  <button className='butadd'> Añadir</button>
-                </div>
-              <div className='textProfile'> 
-                <h1>Perfiles agregados</h1> 
-              </div>
-                <div >
-                    <div className='profiles'>
-                      <h1>
-                        nombre y apellido
-                      </h1>
-                      <button>
-                        <BiEdit/>
-                      </button>
-                      <button>
-                        <RiDeleteBin2Line/>
-                      </button>
-                    </div>
-                    <div className='profiles'>
+
+              
+              <div className='container_last'>
+                  <h1>Perfiles agregados</h1> 
+                
+
+                <div className='container_last_table'>
+
+
+                    <div className='profile'>
                       <h1>
                         nombre y apellido
                       </h1>
@@ -99,11 +88,9 @@ const Form = () => {
                 </div>
               </div>
             </div>
-
-
-          </div>
+          
         
-        </div>
+        
       </section>
     </>
   )

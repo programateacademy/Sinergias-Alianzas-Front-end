@@ -1,116 +1,150 @@
-.partForm {
-    
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-
-    flex-direction: column;
-    height: 100%;
-    border: solid;
-    border-color: green;
-    border-radius: 20px;
-    margin: 5px;
-    margin-top: 30px;
-    padding: 3vw;    
-    
-}
-.texttitlee{
+.texttitle {
     position: absolute;
-    top: 2%;
+    width: 100vw;
+    top: 105px;  
+    display: flex;
+    justify-content: center;
+}
+.texttitle h1 {
     background-color: white;
-    width: 150px;
+    width: 50vw;
+    font-size: 5vw;
     text-align: center;
-    height: 50px;
-    display:block;
 }
 
-.pict {
+.partForm{
+    border: 5px solid green;
+    margin: 110px 5vw 0 5vw;
+    padding: 5vw;
+    border-radius: 15px;
     display: flex;
-    margin-top: 30px;
-    justify-content: space-around;
     flex-direction: column;
+}
+
+.book{
+    width: 78vw;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
-.pict img{
-    width: 100px;
-    height: 100px;
-}
-.pict h1{
-    font-size: 15px;
+.book img{
+    width: 50vw;
+    
 }
 .info{
-    justify-content: center;
-    align-items: center;
-}
-.texth2 {
-    background-color: #cacacade;
-    width: 80vw;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-    font-size: 12px; 
-}
-
-.add{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.info_label{
+
+}
+.info_label p{
+    padding: 0;
+    margin: 0;
+    color: #555555;
+}
+.info_label input{
+    border-radius: 20px;
+    background-color: #d6d6d6e0;
+    border: solid #54e9839c;
+    
+
+}
+.pict_cont2{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.butadd{
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    background-color: rgb(138, 209, 138);
-    color: rgb(0, 0, 0);
-    border: solid;  
-    border-color:rgb(7, 131, 7);
-    margin-top: 20px;
     
+}
+.pict_cont2 p{
+    padding: 0;
+    margin: 0;
+    color: #868686;
+}
+.info_label2 input{
+    border-radius: 20px;
+    background-color: #d6d6d6e0;
+    border: solid #54e9839c;
+
+}
+.butadd{
+    margin-top: 20px;
+    width: 120px;
+    border-radius: 20px;
+    border: none;
+    background-color: #1E7C3C;
+    color: white;
 }
 .butadd:hover{
-    background-color:rgb(7, 131, 7) ;
-    color: white;
-    border-color:rgb(138, 209, 138);
-    
+    background-color: rgb(148, 247, 148);
+    color: black;
 }
-.textProfile{
+.container_last{
     text-align: center;
-    
-    
+
 }
-.textProfile h1{
-    margin-top: 15px;
-    font-weight: 600;
+.container_last h1{
     font-size: 20px;
-    
+    margin: 20px 0;
+
 }
-.profiles{
+.profile{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
-    margin-top: 20px;
-}       
-.profiles button{
-    width: 40px;
-    height: 40px;
-
-    background-color: rgb(138, 209, 138);
-    color: rgb(0, 0, 0);
-    border: solid;  
-    border-color:rgb(7, 131, 7);
+}
+.profile h1{
+    font-size: 15px;
+}
+.profile button{
+    width: 35px ;
+    height: 35px;
     border-radius: 50px;
-    
-}
-.profiles button:hover{
-    background-color:rgb(7, 131, 7) ;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    border: none;
+    background-color: #1E7C3C;
     color: white;
-    border-color:rgb(138, 209, 138);
+}
+.profile button:hover{
+    background-color: rgb(148, 247, 148);
+    color: black;
+    
 }
 
-@media screen and (max-width){
+@media screen and (min-width:570px){
+    .texttitle{
+        top: 90px;
+    }
+    .texttitle h1{
+        font-size:4vw;
+    }
     
-
+    .pict_cont1{
+        display: flex;
+        
+    }
+    .book img{
+        width: 30vw;
+        
+    }
+    .book{
+        width: 40vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .info_label input{
+        width: 35vw;
+    }
+    .info_label2 input{
+        width: 70vw;
+    
+    }
 }

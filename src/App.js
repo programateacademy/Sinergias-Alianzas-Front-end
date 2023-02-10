@@ -1,16 +1,14 @@
-
-import { Login } from "./pages/Login/Login";
-
-/* import ListCourses from "./components/ListCourses/ListCourses"; */
-
-
+/* import { Login } from "./pages/Login/Login"; */
+import { Header } from "./components/Header/Header";
+import ListCourses from "./components/ListCourses/ListCourses";
 
 function App() {
   return (
     <div>
-     <Login/> 
-     {/* <ListCourses/> */}
-          
+      <Header />
+
+      {/* <Login/>  */}
+      <ListCourses />
     </div>
   );
 }

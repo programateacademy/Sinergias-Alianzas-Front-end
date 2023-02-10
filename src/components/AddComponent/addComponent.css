@@ -8,14 +8,14 @@
   margin-top: 0px;
 }
 
-.containerDashboard {
+.containerDashboard1 {
   border: 5px solid green;
   margin: 60px 5vw 0 5vw;
   padding: 5vw;
   border-radius: 15px;
 }
 
-.containerTitle {
+.containerTitle1 {
   position: absolute;
   width: 100vw;
   top: 50px;
@@ -23,7 +23,7 @@
   justify-content: center;
 }
 
-.containerTitle h1 {
+.containerTitle1 h1 {
   background-color: white;
   width: 50vw;
   font-size: 4.4vw;
@@ -70,38 +70,44 @@
     border-radius: 45px;
   }
 
-
-
 .lineasTrabajo {
   width: 60vw;
   margin: 0 auto;
 }
 
 .Recursos {
-  display: grid;
-  width: 60vw;
+  justify-content: center;
   margin: 0 auto;
 }
 
-label {
-  font-size: 14px;
+.form-label {
+  display: flex;
+  text-align: center;
+  font-size: 5vw;
+  margin:5px auto;
+  justify-content: center;
+}
+
+
+.form-control[type=file]:not(:disabled):not([readonly]) {
+    cursor: pointer;
+}
+.form-control[type=file] {
+    overflow: hidden;
 }
 
 input.form-control {
-  font-size: 12px;
+  font-size: 4vw;
 }
 
 small.form-text.text-muted {
-  font-size: 10px;
+  font-size: 3vw;
 }
 
 .Logos{
-    display:inine-block;
-    display: grid;
+   width: 12vw;
+   justify-content: center;
+   margin: auto;
+   display: flex;
 }
 
-.layout {
-    display: grid;
-    grid-template-columns: 2;
-    gap: 88px;
-  }

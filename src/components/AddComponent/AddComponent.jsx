@@ -11,11 +11,11 @@ import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 const AddComponent = () => {
   return (
     <>
-      <div className="containerTitle">
+      <div className="containerTitle1">
         <h1>AÑADIR COMPONENTE</h1>
       </div>
 
-      <div className="containerDashboard">
+      <div className="containerDashboard1">
         <h2 className="Titulo2">Información del Componente</h2>
         <Form className="containerAdd">
           <Form className="form1">
@@ -100,46 +100,50 @@ const AddComponent = () => {
           </Form>
 
           <h2 className="principalComponente1">Recursos</h2>
-          <section className="layout">
-          <div className="componentesLogos">
+
+          {/* <div className="componentesLogos">
             <img className="Logos" src={metodologia} alt="" />
             <img className="Logos"  src={Diagnostico} alt="" />
             <img className="Logos"  src={Formato} alt="" />
             <img className="Logos"  src={Material} alt="" />
             <img className="Logos"  src={Herramientas} alt="" />
-          </div>
+          </div> */}
           <Form className="Recursos">
             <FormGroup>
+              <img className="Logos" src={metodologia} alt="" />
               <Label>Metodologia</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup>
+              <img className="Logos" src={Diagnostico} alt="" />
               <Label>Formatos e Instructivos</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup>
+              <img className="Logos" src={Formato} alt="" />
               <Label>Diagnosticos de Salud</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup>
+              <img className="Logos" src={Material} alt="" />
               <Label>Herramientas y Manuales de Protocolo</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
             <FormGroup>
+              <img className="Logos" src={Herramientas} alt="" />
               <Label>Material Educativo</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
           </Form>
-          </section>
         </Form>
       </div>
     </>

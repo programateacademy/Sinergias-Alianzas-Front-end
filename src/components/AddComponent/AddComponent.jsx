@@ -11,6 +11,7 @@ import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 const AddComponent = () => {
   return (
     <>
+    <div className="fondo">
       <div className="containerTitle1">
         <h1>AÑADIR COMPONENTE</h1>
       </div>
@@ -72,17 +73,17 @@ const AddComponent = () => {
 
           <Form className="Objetivos">
             <FormGroup>
-              <Label>Objtivo 1</Label>
+              <Label>Objetivo 1</Label>
               <Input placeholder="Objetivo" type="text" />
             </FormGroup>
 
             <FormGroup>
-              <Label>Objtivo 2</Label>
+              <Label>Objetivo 2</Label>
               <Input placeholder="Objetivo" type="text" />
             </FormGroup>
 
             <FormGroup>
-              <Label>Objtivo 3</Label>
+              <Label>Objetivo 3</Label>
               <Input placeholder="Objetivo" type="text" />
             </FormGroup>
           </Form>
@@ -109,35 +110,35 @@ const AddComponent = () => {
             <img className="Logos"  src={Herramientas} alt="" />
           </div> */}
           <Form className="Recursos">
-            <FormGroup>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
               <Label>Metodologia</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
-            <FormGroup>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Diagnostico} alt="" />
               <Label>Formatos e Instructivos</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
-            <FormGroup>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Formato} alt="" />
               <Label>Diagnosticos de Salud</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
-            <FormGroup>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Material} alt="" />
               <Label>Herramientas y Manuales de Protocolo</Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>
 
-            <FormGroup>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Herramientas} alt="" />
               <Label>Material Educativo</Label>
               <Input id="exampleFile" name="file" type="file" />
@@ -145,6 +146,7 @@ const AddComponent = () => {
             </FormGroup>
           </Form>
         </Form>
+      </div>
       </div>
     </>
   );

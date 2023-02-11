@@ -1,37 +1,62 @@
-import "./Header.css";
-import Logosinergias from "./Assets/Logosinergias.png";
-import Addicon from "./Assets/AddIcon.png";
+// Dependencias
+import React from "react";
+import { Link } from "react-router-dom";
 
+// Motion
 import { motion } from "framer-motion";
 
-export function Header () { 
-  
+// Icons
+import { FaUsersCog } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
+
+// Estilos
+import Addicon from "./Assets/AddIcon.png";
+import Logosinergias from "./Assets/Logosinergias.png";
+import "./Header.css";
+
+const Header = () => {
   return (
     <div className="header_container">
-      <img src={Logosinergias} alt="" />
+      {/* Logo */}
+      <img src={Logosinergias} alt="Logo Sinergias" className="header_logo" />
 
-      <div className="container_btn_header">
-        <motion.button
-          className="buttons_header"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        >
-          <img src={Addicon} alt="" />
-          Añadir Componente
-        </motion.button>
+      {/* Navegación */}
+      <nav>
+        <ul className="container_btn_header">
+          <motion.li
+            className="buttons_header"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link to={"/"} className="buttons_header-users">
+              <div className="icon_container">
+                <FaUsersCog className="header_icon" />
+              </div>
 
-        <motion.button
-          className="buttons_header"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        >
-          <img src={Addicon} alt="" /> Salir
-        </motion.button>
-      </div>
+              <span>Usuarios</span>
+            </Link>
+          </motion.li>
+
+          <motion.li
+            className="buttons_header"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link to={"/"} className="buttons_header-logout">
+              <div className="icon_container">
+                <MdLogout className="header_icon" />
+              </div>
+
+              <span>Salir</span>
+            </Link>
+          </motion.li>
+        </ul>
+        <div></div>
+      </nav>
     </div>
   );
 };
 
-
+export default Header;

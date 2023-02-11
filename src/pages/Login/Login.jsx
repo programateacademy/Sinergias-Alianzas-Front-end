@@ -1,9 +1,57 @@
+import React, {useState, useEffect} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {toast} from 'react-toastify'
+
+// Redux
+import {login} from '../../store/actions/authSlice'
+
+// Estilos
 import { Form, FormGroup, Label } from "reactstrap";
-import "./login.css";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
+import "./login.css";
 
-export const Login = () => {
+// Estado inicial
+const initialState = {
+  email: "",
+  password: ""
+}
+
+const Login = () => {
+  // Estado del formulario
+  const [formData, setFormData] = useState(initialState)
+
+  const { loading, error } = useSelector((state) => ({ ...state.auth }));
+
+  const {email, password} = formData
+
+  // Dispatch
+  const dispatch = useDispatch()
+
+  // Navegación
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    error && toast.error(error)
+  }, [error])
+
+  // Función para enviar el formulario
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if(email && password) {
+      dispatch(login({formData, navigate, toast}))
+    }
+  }
+
+  // Función para capturar el valor del input
+  const onInputChange = (e) => {
+    let { name, value } = e.target
+
+    setFormData({...formData, [name]: value})
+  }
+
   return (
     <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>
       <img src={Background} alt="" />
@@ -11,7 +59,7 @@ export const Login = () => {
       <div className="containerLogin">
         <img src={LoginIlustration} alt="" />
 
-        <Form className="rowLogin">
+        <Form className="rowLogin" onSubmit={handleSubmit}>
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
@@ -25,8 +73,8 @@ export const Login = () => {
                 name="email"
                 placeholder="Correo"
                 type="email"
-                /* value={""}
-                onChange={""} */
+                value={email}
+                onChange={onInputChange}
                 required
               />
             </FormGroup>
@@ -44,8 +92,8 @@ export const Login = () => {
                 name="password"
                 placeholder="Contraseña"
                 type="password"
-                /* value={""}
-                onChange={""} */
+                value={password}
+                onChange={onInputChange}
                 required
               />
             </FormGroup>

@@ -53,7 +53,6 @@ const Header = () => {
             </Link>
           </motion.li>
         </ul>
-        <div></div>
       </nav>
     </div>
   );

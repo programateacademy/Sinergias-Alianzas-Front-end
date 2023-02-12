@@ -97,33 +97,33 @@ const AddUser = () => {
   // Renderizar el componente de acuerdo a las condiciones de la contraseña
   useEffect(() => {
     //? ¿Contiene letras mayúsculas y minúsculas?
-    if(password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
-      setUpperCase(true)
+    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+      setUpperCase(true);
     } else {
-      setUpperCase(false)
+      setUpperCase(false);
     }
 
     //? ¿Contiene números?
-    if(password.match(/([0-9])/)) {
-      setNumbers(true)
+    if (password.match(/([0-9])/)) {
+      setNumbers(true);
     } else {
-      setNumbers(false)
+      setNumbers(false);
     }
-    
+
     //? ¿Contiene caracteres especiales?
-    if(password.match(/([!,%,&,@,#,$,^,*,?,_,-])/)) {
-      setSpecialCharacter(true)
+    if (password.match(/([!,%,&,@,#,$,^,*,?,_,-])/)) {
+      setSpecialCharacter(true);
     } else {
-      setSpecialCharacter(false)
+      setSpecialCharacter(false);
     }
-    
+
     //? ¿Contiene mínimo 8 caracteres?
-    if(password.length > 7) {
-      setPassLength(true)
+    if (password.length > 7) {
+      setPassLength(true);
     } else {
-      setPassLength(false)
+      setPassLength(false);
     }
-  }, [password])
+  }, [password]);
 
   // Función para enviar el formulario
   const handleSubmit = () => {};
@@ -228,7 +228,7 @@ const AddUser = () => {
                   {switchIcon(specialCharacter)}
                   &nbsp; Un caracter especial (!%&@#$^*?_-)
                 </ListGroupItem>
-                
+
                 <ListGroupItem>
                   {switchIcon(passLength)}
                   &nbsp; Mínimo 8 caracteres

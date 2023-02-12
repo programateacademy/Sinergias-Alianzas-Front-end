@@ -1,6 +1,6 @@
 // Dependencias
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Motion
 import { motion } from "framer-motion";
@@ -10,15 +10,32 @@ import { FaUsersCog } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 
 // Estilos
-import Addicon from "./Assets/AddIcon.png";
 import Logosinergias from "./Assets/Logosinergias.png";
 import "./Header.css";
 
 const Header = () => {
+  /* 
+  - =================================
+  -    FUNCIONES DEL COMPONENTE
+  - =================================
+  */
+
+  // Función para regresar al dashboard desde el logo
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate("/home");
+  };
+
   return (
-    <div className="header_container">
+    <header className="header_container">
       {/* Logo */}
-      <img src={Logosinergias} alt="Logo Sinergias" className="header_logo" />
+      <img
+        src={Logosinergias}
+        alt="Logo Sinergias"
+        className="header_logo"
+        onClick={goHome}
+      />
 
       {/* Navegación */}
       <nav>
@@ -29,7 +46,7 @@ const Header = () => {
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            <Link to={"/"} className="buttons_header-users">
+            <Link to={"/users"} className="buttons_header-users">
               <div className="icon_container">
                 <FaUsersCog className="header_icon" />
               </div>
@@ -54,7 +71,7 @@ const Header = () => {
           </motion.li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 };
 

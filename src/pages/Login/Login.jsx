@@ -1,56 +1,37 @@
-import React, {useState, useEffect} from 'react'
-import {Link, useNavigate} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import {toast} from 'react-toastify'
+// Dependencias
+import React, { useState, useEffect } from "react";
 
-// Redux
-import {login} from '../../store/actions/authSlice'
+// Componentes
+import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
 
 // Estilos
-import { Form, FormGroup, Label } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
 import "./login.css";
 
-// Estado inicial
-const initialState = {
-  email: "",
-  password: ""
-}
-
 const Login = () => {
+  /* 
+  - =================================
+  -       ESTADOS DEL COMPONENTE
+  - =================================
+  */
+
   // Estado del formulario
-  const [formData, setFormData] = useState(initialState)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { loading, error } = useSelector((state) => ({ ...state.auth }));
-
-  const {email, password} = formData
-
-  // Dispatch
-  const dispatch = useDispatch()
-
-  // Navegación
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    error && toast.error(error)
-  }, [error])
-
-  // Función para enviar el formulario
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if(email && password) {
-      dispatch(login({formData, navigate, toast}))
-    }
-  }
+  /* 
+  - =================================
+  -    FUNCIONES DEL COMPONENTE
+  - =================================
+  */
 
   // Función para capturar el valor del input
-  const onInputChange = (e) => {
-    let { name, value } = e.target
+  const onChange = () => {};
 
-    setFormData({...formData, [name]: value})
-  }
+  // Función para enviar el formulario
+  const handleSubmit = () => {};
 
   return (
     <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>
@@ -67,7 +48,7 @@ const Login = () => {
                 Correo
               </Label>
 
-              <input
+              <Input
                 className="input"
                 id="email"
                 name="email"
@@ -86,21 +67,20 @@ const Login = () => {
                 Contraseña
               </Label>
 
-              <input
+              <PasswordInput
                 className="input"
                 id="password"
                 name="password"
                 placeholder="Contraseña"
                 type="password"
                 value={password}
-                onChange={onInputChange}
-                required
+                onChange={onChange}
               />
             </FormGroup>
           </div>
 
           <div className="col">
-            <button className="col_button">
+            <button type="submit" className="col_button">
               <div className="svg-wrapper-1">
                 <div className="svg-wrapper">
                   <svg

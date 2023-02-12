@@ -1,28 +1,32 @@
 // Dependencias
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify"; // Notificaciones en pantalla
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Manejo de rutas
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 
 // Reducer de usuario
-import {setUser} from './store/actions/authSlice'
+import { setUser } from "./store/actions/authSlice";
+
+// Componentes
+import Layout from "./components/Layout/Layout";
 
 // Páginas
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
+import Users from "./pages/Users/Users";
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const user = JSON.parse(localStorage.getItem("profile"))
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
-    dispatch(setUser(user))
-  }, [])
-  
+    dispatch(setUser(user));
+  }, []);
+
   return (
     <BrowserRouter>
       <ToastContainer />
@@ -30,7 +34,23 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
 
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/users"
+          element={
+            <Layout>
+              <Users />
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

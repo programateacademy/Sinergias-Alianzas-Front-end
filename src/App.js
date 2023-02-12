@@ -15,6 +15,7 @@ import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import LoginWithCode from './pages/Login/LoginWithCode'
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
@@ -54,6 +55,8 @@ function App() {
         />
 
         <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+
+        <Route path="/login-with-code/:email" element={<LoginWithCode />} />
       </Routes>
     </BrowserRouter>
   );

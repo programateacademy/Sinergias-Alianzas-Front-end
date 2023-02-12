@@ -83,6 +83,21 @@
   font-size: 18px;
 }
 
+.breadcrumb-profile {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-icon {
+  color: #126A2E;
+}
+
+.breadcrumb-link {
+  color: #126A2E;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
 @media (min-width: 768px) {
   .header_container {
     flex-direction: row;

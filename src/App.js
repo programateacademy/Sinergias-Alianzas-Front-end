@@ -9,7 +9,7 @@ import { setUser } from "./store/actions/authSlice";
 
 // Componentes
 import Layout from "./components/Layout/Layout";
-import Verify from './components/Verify/Verify'
+import Verify from './components/Verify/Verify';
 
 // Páginas
 import Login from "./pages/Login/Login";
@@ -33,25 +33,37 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/* Notificaciones */}
       <ToastContainer />
 
       <Routes>
+        {
+          /* 
+            - =================================
+            -       RUTAS MÓDULO USUARIOS
+            - =================================
+          */
+        }
         <Route path="/" element={<Login />} />
-
-        <Route path="/home" element={<Layout><Home/></Layout>}/>
 
         <Route path="/users" element={<Layout><Users/></Layout>}/>
 
+        <Route path="/profile" element={<Layout><Profile/></Layout>}/>
+        
         <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
 
         <Route path="/login-with-code/:email" element={<LoginWithCode />} />
-
-        <Route path="/users" element={<Layout><Users/></Layout>}/>
-
+        
         <Route path="/verify/:verificationToken" element={<Layout><Verify/></Layout>}/>
-
-        <Route path="/profile" element={<Layout><Profile/></Layout>}/>
-
+        
+        {
+          /* 
+            - =================================
+            -     RUTAS MÓDULO COMPONENTES
+            - =================================
+          */
+        }
+        <Route path="/home" element={<Layout><Home/></Layout>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -28,7 +28,7 @@ const Login = () => {
   */
 
   // Función para capturar el valor del input
-  const onChange = () => {};
+  const onInputChange = () => {};
 
   // Función para enviar el formulario
   const handleSubmit = () => {};
@@ -74,7 +74,7 @@ const Login = () => {
                 placeholder="Contraseña"
                 type="password"
                 value={password}
-                onChange={onChange}
+                onChange={onInputChange}
               />
             </FormGroup>
           </div>

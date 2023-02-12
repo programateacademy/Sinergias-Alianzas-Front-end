@@ -26,8 +26,7 @@ const ForgotPassword = () => {
   //* Estado de la ventana modal
   const [modal, setModal] = useState(false);
 
-  // Estado del formulario
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState()
 
   /* 
   - =================================

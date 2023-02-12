@@ -14,6 +14,7 @@ import Layout from "./components/Layout/Layout";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Users from "./pages/Users/Users";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
@@ -51,6 +52,8 @@ function App() {
             </Layout>
           }
         />
+
+        <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

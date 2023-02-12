@@ -15,7 +15,7 @@ const PasswordInput = ({ placeholder, value, onChange, name, onPaste }) => {
   - =================================
   */
 
-  // Estado de la contraseña: Visible u oculta
+  //* Estado de la contraseña: Visible u oculta
   const [showPassword, setShowPassword] = useState(false);
 
   /* 
@@ -23,7 +23,8 @@ const PasswordInput = ({ placeholder, value, onChange, name, onPaste }) => {
   -    FUNCIONES DEL COMPONENTE
   - =================================
   */
-  // Función para mostrar u ocultar la contraseña en el input
+
+  //* Función para mostrar u ocultar la contraseña en el input
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };

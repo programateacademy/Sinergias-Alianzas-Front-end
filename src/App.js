@@ -9,7 +9,7 @@ import { setUser } from "./store/actions/authSlice";
 
 // Componentes
 import Layout from "./components/Layout/Layout";
-import Verify from './pages/Login/Verify'
+import Verify from './components/Verify/Verify'
 
 // Páginas
 import Login from "./pages/Login/Login";

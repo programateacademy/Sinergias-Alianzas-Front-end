@@ -1,3 +1,4 @@
+// Dependencias
 import React, { useState } from "react";
 
 // Estilos
@@ -10,7 +11,7 @@ const LoginWithCode = () => {
   - =================================
   */
 
-  // Estado del formulario
+  //* Estado del formulario
   const [loginCode, setLoginCode] = useState("");
 
   /* 
@@ -19,13 +20,14 @@ const LoginWithCode = () => {
   - =================================
   */
 
-  // Función para capturar el valor del input
+  //* Función para capturar el valor del input
   const onInputChange = (e) => {
     setLoginCode(e.target.value);
   };
 
-  // Función para enviar el formulario
+  //* Función para enviar el formulario
   const handleSubmit = () => {};
+
   return (
     <>
       <Card style={{ width: "40%" }}>

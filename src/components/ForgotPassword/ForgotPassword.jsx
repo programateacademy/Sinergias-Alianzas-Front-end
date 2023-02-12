@@ -23,6 +23,7 @@ const ForgotPassword = () => {
   -       ESTADOS DEL COMPONENTE
   - =================================
   */
+ 
   //* Estado de la ventana modal
   const [modal, setModal] = useState(false);
 
@@ -33,15 +34,18 @@ const ForgotPassword = () => {
   -    FUNCIONES DEL COMPONENTE
   - =================================
   */
-  // Función para mostrar u ocultar el modal
+
+  //* Función para mostrar u ocultar el modal
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  // Función para capturar el valor del input
-  const onInputChange = () => {};
+  //* Función para capturar el valor del input
+  const onInputChange = (e) => {
+    setEmail(e.target.value)
+  };
 
-  // Función para enviar el formulario
+  //* Función para enviar el formulario
   const handleSubmit = () => {};
 
   return (

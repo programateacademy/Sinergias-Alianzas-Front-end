@@ -17,7 +17,7 @@ const Login = () => {
   - =================================
   */
 
-  // Estado del formulario
+  //* Estado del formulario
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,10 +27,10 @@ const Login = () => {
   - =================================
   */
 
-  // Función para capturar el valor del input
+  //* Función para capturar el valor del input
   const onInputChange = () => {};
 
-  // Función para enviar el formulario
+  //* Función para enviar el formulario
   const handleSubmit = () => {};
 
   return (

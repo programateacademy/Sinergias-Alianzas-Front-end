@@ -73,12 +73,12 @@ const AddUser = () => {
   - =================================
   */
 
-  // Función para mostrar u ocultar el modal
+  //* Función para mostrar u ocultar el modal
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  // Función para cambiar el icono en las condiciones de la contraseña
+  //* Función para cambiar el icono en las condiciones de la contraseña
   const switchIcon = (condition) => {
     if (condition) {
       return checkIcon;
@@ -87,14 +87,14 @@ const AddUser = () => {
     return timesIcon;
   };
 
-  // Función para capturar el valor del input
+  //* Función para capturar el valor del input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
   };
 
-  // Renderizar el componente de acuerdo a las condiciones de la contraseña
+  //* Renderizar el componente de acuerdo a las condiciones de la contraseña
   useEffect(() => {
     //? ¿Contiene letras mayúsculas y minúsculas?
     if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
@@ -125,7 +125,7 @@ const AddUser = () => {
     }
   }, [password]);
 
-  // Función para enviar el formulario
+  //* Función para enviar el formulario
   const handleSubmit = () => {};
 
   return (

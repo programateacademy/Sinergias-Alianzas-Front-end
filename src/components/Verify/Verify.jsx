@@ -1,6 +1,8 @@
+// Dependencias
 import React from "react";
 
-import {Button} from 'reactstrap'
+// Estilos
+import { Button } from "reactstrap";
 
 const Verify = () => {
   return (

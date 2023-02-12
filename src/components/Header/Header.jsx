@@ -21,7 +21,7 @@ const Header = () => {
   - =================================
   */
 
-  // Función para regresar al dashboard desde el logo
+  //* Función para regresar al dashboard desde el logo
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -75,6 +75,7 @@ const Header = () => {
         </nav>
       </header>
 
+      {/* Navegación para ir al perfil del usuario */}
       <Container>
         <Breadcrumb listTag="div">
           <BreadcrumbItem active tag="span">
@@ -83,7 +84,7 @@ const Header = () => {
 
           <BreadcrumbItem tag="span" className="breadcrumb-profile">
             <FaUserAlt className="breadcrumb-icon" />
-            <Link to={'/profile'} className="breadcrumb-link" >
+            <Link to={"/profile"} className="breadcrumb-link">
               Perfil
             </Link>
           </BreadcrumbItem>

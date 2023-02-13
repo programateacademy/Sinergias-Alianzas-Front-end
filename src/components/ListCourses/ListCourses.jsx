@@ -1,12 +1,9 @@
 import "./ListCourses.css";
-import React, { useState } from "react";
-
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; //Animation library
 
 import icon from "./Assets/icon.png";
 import iconAbout from "./Assets/about.png";
 import iconEdit from "./Assets/icono editar.png";
-
 import searchButton from "./Assets/searchButton.png";
 import uploadButton from "./Assets/uploadButton.png";
 

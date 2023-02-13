@@ -45,6 +45,7 @@ const Login = () => {
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
+              
               <Label className="user-label" for="email">
                 Correo
               </Label>

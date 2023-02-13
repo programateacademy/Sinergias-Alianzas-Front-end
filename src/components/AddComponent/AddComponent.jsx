@@ -19,7 +19,6 @@ const AddComponent = () => {
         <h2 className="Titulo2">Información del Componente</h2>
         <Form className="containerAdd">
           <Form className="form1">
-            
             <FormGroup>
               <Label>Url</Label>
               <Input placeholder="url imagen" type="url" />
@@ -101,14 +100,6 @@ const AddComponent = () => {
           </Form>
 
           <h2 className="principalComponente1">Recursos</h2>
-
-          {/* <div className="componentesLogos">
-            <img className="Logos" src={metodologia} alt="" />
-            <img className="Logos"  src={Diagnostico} alt="" />
-            <img className="Logos"  src={Formato} alt="" />
-            <img className="Logos"  src={Material} alt="" />
-            <img className="Logos"  src={Herramientas} alt="" />
-          </div> */}
           <Form className="Recursos">
             <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
@@ -133,7 +124,9 @@ const AddComponent = () => {
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Material} alt="" />
-              <Label className="image1">Herramientas y Manuales de Protocolo</Label>
+              <Label className="image1">
+                Herramientas y Manuales de Protocolo
+              </Label>
               <Input id="exampleFile" name="file" type="file" />
               <FormText>Cargue los documentos</FormText>
             </FormGroup>

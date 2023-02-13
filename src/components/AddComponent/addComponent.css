@@ -3,74 +3,62 @@
   padding: 0;
   box-sizing: 0;
 }
-
 .containerAdd {
   margin-top: 0px;
 }
-
-.containerDashboard1 {
-  border: 5px solid green;
-  margin: 60px 5vw 0 5vw;
-  padding: 5vw;
-  border-radius: 15px;
-}
-
 .containerTitle1 {
   position: absolute;
   width: 100vw;
-  top: 50px;
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
-
+.containerDashboard1 {
+  border: 5px solid green;
+  margin: 15px 5vw 0 5vw;
+  padding: 5vw;
+  border-radius: 15px;
+}
 .containerTitle1 h1 {
   background-color: white;
   width: 50vw;
   font-size: 4.4vw;
   text-align: center;
 }
-
 .containerRecursos {
   border: 2px solid green;
   background: rgba(105, 211, 138, 0.5);
   border-radius: 15px;
   padding: 5vw;
 }
-
 .Titulo2 {
   width: 50vw;
   font-size: 4.5vw;
   text-align: center;
   margin: 30px auto;
 }
-
 .form1 {
   width: 60vw;
   margin: 0 auto;
 }
-
 .form1 input {
   background: rgba(105, 211, 138, 0.5);
   border: 1px solid green;
   border-radius: 25px;
 }
-
 .form2 {
   width: 60vw;
   margin: 0 auto;
 }
-
 .form2 input {
   background: rgba(105, 211, 138, 0.5);
   border-radius: 25px;
   border: 1px solid green;
 }
-
 .Objetivos {
   width: 60vw;
   margin: 0 auto;
 }
-
 .Objetivos input {
   width: 60vw;
   margin: 0 auto;
@@ -78,12 +66,10 @@
   border-radius: 25px;
   border: 1px solid green;
 }
-
 .lineasTrabajo {
   width: 60vw;
   margin: 0 auto;
 }
-
 .principalComponente1 {
   width: 50vw;
   font-size: 4.5vw;
@@ -91,13 +77,16 @@
   margin: 20px auto;
 }
 
-.form-label {
+
+/*! Same fix  ⏬*/
+/* .form-label {
   display: flex;
   text-align: center;
   font-size: 5vw;
   margin: 5px auto;
   justify-content: center;
-}
+} */
+
 
 .form-control[type="file"]:not(:disabled):not([readonly]) {
   cursor: pointer;
@@ -105,24 +94,20 @@
 .form-control[type="file"] {
   overflow: hidden;
 }
-
 input.form-control {
   font-size: 4vw;
   border-radius: 25px;
   border: 1px solid green;
 }
-
 small.form-text.text-muted {
   font-size: 4w;
 }
-
 .Logos {
   width: 12vw;
   justify-content: center;
   margin: auto;
   display: flex;
 }
-
 textarea.form-control {
   background: rgba(105, 211, 138, 0.5);
   min-height: 20px;
@@ -137,7 +122,6 @@ textarea.form-control {
     width: 40vw;
     font-size: 2vw;
   }
-
   .Titulo2 {
     width: 80vw;
     font-size: 2vw;
@@ -145,14 +129,14 @@ textarea.form-control {
     margin: 0 auto;
   }
 
-  .form-label {
+  /* ! Cambiar clase .form-label (específica de bootstrap o reactstrap) a una clase propia ya que si altera la clase default de librería, causa cambios en todos los componentes de la app */
+ /* .form-label {
     display: flex;
     text-align: center;
     font-size: 1.3vw;
     margin: 30px auto;
     margin-left: 39vw;
-  }
-
+  } */
   .form1 input {
     background: rgba(105, 211, 138, 0.5);
     border: 1px solid green;
@@ -162,17 +146,14 @@ textarea.form-control {
     font-size: 1.2vw;
     margin-left: 35vw;
   }
-
   textarea.form-control {
     width: 65vw;
     font-size: 1vw;
   }
-
   .form2 {
     display: flex;
     margin: auto;
   }
-
   .form2 input {
     background: rgba(105, 211, 138, 0.5);
     border-radius: 25px;
@@ -182,23 +163,19 @@ textarea.form-control {
     font-size: 16px;
     margin: 10px;
   }
-
   small.form-text.text-muted {
     font-size: 1vw;
-    margin:auto;
+    margin: auto;
     justify-content: center;
   }
-
   .image1 {
     display: flex;
     margin: 10px auto;
   }
-
   .Objetivos {
     display: flex;
     margin: auto;
   }
-
   .Objetivos input {
     width: 20vw;
     height: 80px;
@@ -208,12 +185,10 @@ textarea.form-control {
     border-radius: 25px;
     border: 1px solid green;
   }
-
   .lineasTrabajo {
     display: flex;
     margin: auto;
   }
-
   .lineasTrabajo input {
     width: 25vw;
     font-size: 16px;
@@ -222,41 +197,34 @@ textarea.form-control {
     border-radius: 25px;
     border: 1px solid green;
     margin: 10px 30px;
-}
-
-
-.principalComponente1 {
-  width: 50vw;
-  font-size: 2.5vw;
-  text-align: center;
-  margin: 20px auto;
-}
-
-.Recursos{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 40px;
-  grid-row-gap: 40px;
-}
-.containerRecursos {
-  border: 2px solid green;
-  background: rgba(105, 211, 138, 0.5);
-  border-radius: 15px;
-  padding: 3vw;
-  width: 18vw;
-  margin: 0 auto;
-}
-
-.containerRecursos input{
-  font-size: 16px;
-}
-
-.Logos {
-  width: 8vw;
-  justify-content: center;
-  margin: 10px auto;
-  display: flex;
-}
-
-
+  }
+  .principalComponente1 {
+    width: 50vw;
+    font-size: 2.5vw;
+    text-align: center;
+    margin: 20px auto;
+  }
+  .Recursos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+  }
+  .containerRecursos {
+    border: 2px solid green;
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 15px;
+    padding: 3vw;
+    width: 18vw;
+    margin: 0 auto;
+  }
+  .containerRecursos input {
+    font-size: 16px;
+  }
+  .Logos {
+    width: 8vw;
+    justify-content: center;
+    margin: 10px auto;
+    display: flex;
+  }
 }

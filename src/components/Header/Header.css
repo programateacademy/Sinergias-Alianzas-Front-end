@@ -7,31 +7,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2vw 5vw;
+  padding: 2vw 5vw;  
 }
 .header_container img {
   width: 25vw;
 }
-
 .container_btn_header {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
 }
-
 .container_btn_header .buttons_header {
-  width: 37vw;
+  width: 26vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 15px;
-  gap: 1vw;
-  font-size: 2.5vw;
+  padding: 5px 0;  
+  font-size: 2.5vw;  
   border-radius: 50px;
   border: none;
   background-color: green;
   color: white;
 }
 .container_btn_header .buttons_header:nth-child(2) {
-  width: 18vw;
+  width: 15vw;
   background-color: red;
 }
 .buttons_header {
@@ -40,18 +40,22 @@
 .container_btn_header img {
   width: 6vw;
 }
-
 @media screen and (min-width: 570px) {
+  .header_container {    
+    padding: 1vw 2.5vw;
+  }
   .header_container img {
-    width: 15vw;
+    width: 10vw;
+  }
+  .container_btn_header {    
+    flex-direction: row;
   }
   .container_btn_header .buttons_header {
-    width: 20vw;
-    font-size: 1.5vw;
-    padding: 5px;
+    width: 12vw;
+    font-size: 1vw;    
   }
   .container_btn_header .buttons_header:nth-child(2) {
-    width: 10vw;
+    width: 6vw;
     background-color: red;
   }
   .container_btn_header img {

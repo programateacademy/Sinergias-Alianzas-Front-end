@@ -1,12 +1,9 @@
 import "./ListCourses.css";
-import React, { useState } from "react";
-
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; //Animation library
 
 import icon from "./Assets/icon.png";
 import iconAbout from "./Assets/about.png";
 import iconEdit from "./Assets/icono editar.png";
-
 import searchButton from "./Assets/searchButton.png";
 import uploadButton from "./Assets/uploadButton.png";
 
@@ -119,6 +116,43 @@ export default function ListCourses() {
             </div>
           </div>
 
+          <div className="cardComponent">
+            <h2>Salud de la mujer</h2>
+            <img src={icon} alt="" />
+            <div className="buttons_cards">
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconAbout} alt="" />
+              </motion.a>
+
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconEdit} alt="" />
+              </motion.a>
+
+              <motion.button
+                style={{
+                  border: "none",
+                  margin: "0",
+                  padding: "0",
+                  backgroundColor: "transparent",
+                }}
+                className="box"
+                whileHover={{ scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Example />
+              </motion.button>
+            </div>
+          </div>
 
           <div className="cardComponent">
             <h2>Salud de la mujer</h2>
@@ -158,83 +192,6 @@ export default function ListCourses() {
             </div>
           </div>
 
-
-          <div className="cardComponent">
-            <h2>Salud de la mujer</h2>
-            <img src={icon} alt="" />
-            <div className="buttons_cards">
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconAbout} alt="" />
-              </motion.a>
-
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconEdit} alt="" />
-              </motion.a>
-
-              <motion.button
-                style={{
-                  border: "none",
-                  margin: "0",
-                  padding: "0",
-                  backgroundColor: "transparent",
-                }}
-                className="box"
-                whileHover={{ scale: 1.2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <Example />
-              </motion.button>
-            </div>
-          </div>
-
-
-          <div className="cardComponent">
-            <h2>Salud de la mujer</h2>
-            <img src={icon} alt="" />
-            <div className="buttons_cards">
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconAbout} alt="" />
-              </motion.a>
-
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconEdit} alt="" />
-              </motion.a>
-
-              <motion.button
-                style={{
-                  border: "none",
-                  margin: "0",
-                  padding: "0",
-                  backgroundColor: "transparent",
-                }}
-                className="box"
-                whileHover={{ scale: 1.2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <Example />
-              </motion.button>
-            </div>
-          </div>
           <div className="cardComponent">
             <h2>Salud de la mujer</h2>
             <img src={icon} alt="" />
@@ -309,11 +266,43 @@ export default function ListCourses() {
               </motion.button>
             </div>
           </div>
+          <div className="cardComponent">
+            <h2>Salud de la mujer</h2>
+            <img src={icon} alt="" />
+            <div className="buttons_cards">
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconAbout} alt="" />
+              </motion.a>
 
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconEdit} alt="" />
+              </motion.a>
 
-
-
-
+              <motion.button
+                style={{
+                  border: "none",
+                  margin: "0",
+                  padding: "0",
+                  backgroundColor: "transparent",
+                }}
+                className="box"
+                whileHover={{ scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Example />
+              </motion.button>
+            </div>
+          </div>
         </div>
       </div>
     </>

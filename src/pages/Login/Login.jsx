@@ -1,5 +1,6 @@
 // Dependencias
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Componentes
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
@@ -40,7 +41,7 @@ const Login = () => {
       <div className="containerLogin">
         <img src={LoginIlustration} alt="" />
 
-        <Form className="rowLogin" onSubmit={handleSubmit}>
+        <Form className="rowLogin">
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
@@ -54,8 +55,6 @@ const Login = () => {
                 name="email"
                 placeholder="Correo"
                 type="email"
-                value={email}
-                onChange={onInputChange}
                 required
               />
             </FormGroup>
@@ -73,8 +72,6 @@ const Login = () => {
                 name="password"
                 placeholder="Contraseña"
                 type="password"
-                value={password}
-                onChange={onInputChange}
               />
             </FormGroup>
           </div>
@@ -97,7 +94,7 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              <span>Ingresar</span>
+              <Link to={"/home"}>Ingresar</Link>
             </button>
           </div>
         </Form>

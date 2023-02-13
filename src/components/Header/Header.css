@@ -15,14 +15,14 @@
 }
 
 .header_logo {
-  width: 60%;
+  width: 50%;
 }
 .container_btn_header {
-  display: flex;
-  width: 100%;
+  display: flex;  
+  *width: 90%;
   gap: 10px;
-  padding: 0 10px;
-  margin: 10px 0;
+  *padding: 0 10px;
+  *margin: 10px 0;
 }
 
 .buttons_header {
@@ -101,7 +101,6 @@
   .header_container {
     flex-direction: row;
   }
-
   .header_logo {
     width: 30%;
   }
@@ -111,7 +110,6 @@
   .header_logo {
     width: 15%;
   }
-
   .container_btn_header {
     gap: 50px;
   }

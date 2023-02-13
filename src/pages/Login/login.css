@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   align-items: center; 
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 .Generalcontainer img {
   position: absolute;
@@ -133,8 +135,8 @@ button:active {
     margin: 0;
     align-self: center;
   }
-  label {
-    font-size: 1.5vw;
+  label.user-label {
+    font-size: 1.5vw;  
   }
   .colLogin h1 {
     font-size: 2vw;

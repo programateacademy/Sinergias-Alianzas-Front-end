@@ -1,13 +1,18 @@
-/* import { Login } from "./pages/Login/Login"; */
+import { Login } from "./pages/Login/Login";
+
+//! Pendiente cambios 
 import AddComponent from "./components/AddComponent/AddComponent";
+import { Header } from "./components/Header/Header";
 import ListCourses from "./components/ListCourses/ListCourses";
 
 function App() {
   return (
     <div>
-     {/* <Login/> */} 
-     {/* <ListCourses/> */}
-     <AddComponent/>
+     {/* <Header/> */} 
+
+     <Login/> 
+     {/* <ListCourses/> */}     
+     {/* <AddComponent/>  */}
     </div>
   );
 }

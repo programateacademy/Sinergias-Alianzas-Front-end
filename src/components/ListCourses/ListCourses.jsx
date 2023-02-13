@@ -9,7 +9,7 @@ import uploadButton from "./Assets/uploadButton.png";
 
 import Example from "./modal";
 
-export default function ListCourses() {
+const ListCourses = () => {
   return (
     <>
       <div className="containerTitle">
@@ -307,4 +307,6 @@ export default function ListCourses() {
       </div>
     </>
   );
-}
+};
+
+export default ListCourses;

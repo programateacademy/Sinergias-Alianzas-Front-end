@@ -1,18 +1,47 @@
-import { Form, FormGroup, Label } from "reactstrap";
-import "./login.css";
+// Dependencias
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+// Componentes
+import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
+
+// Estilos
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
+import "./login.css";
 
-export const Login = () => {
+const Login = () => {
+  /* 
+  - =================================
+  -       ESTADOS DEL COMPONENTE
+  - =================================
+  */
+
+  //* Estado del formulario
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  /* 
+  - =================================
+  -    FUNCIONES DEL COMPONENTE
+  - =================================
+  */
+
+  //* Función para capturar el valor del input
+  const onInputChange = () => {};
+
+  //* Función para enviar el formulario
+  const handleSubmit = () => {};
+
   return (
     <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>
-      
       <img src={Background} alt="" />
-      
+
       <div className="containerLogin">
         <img src={LoginIlustration} alt="" />
 
-        <Form onSubmit={""} className="rowLogin">
+        <Form className="rowLogin">
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
@@ -21,14 +50,12 @@ export const Login = () => {
                 Correo
               </Label>
 
-              <input
+              <Input
                 className="input"
                 id="email"
                 name="email"
                 placeholder="Correo"
                 type="email"
-                /* value={""}
-                onChange={""} */
                 required
               />
             </FormGroup>
@@ -40,23 +67,20 @@ export const Login = () => {
                 Contraseña
               </Label>
 
-              <input
+              <PasswordInput
                 className="input"
                 id="password"
                 name="password"
                 placeholder="Contraseña"
                 type="password"
-                /* value={""}
-                onChange={""} */
-                required
               />
             </FormGroup>
           </div>
 
           <div className="col">
-            <button className="col_button">
-              <div class="svg-wrapper-1">
-                <div class="svg-wrapper">
+            <button type="submit" className="col_button">
+              <div className="svg-wrapper-1">
+                <div className="svg-wrapper">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -71,7 +95,7 @@ export const Login = () => {
                   </svg>
                 </div>
               </div>
-              <span>Ingresar</span>
+              <Link to={"/home"}>Ingresar</Link>
             </button>
           </div>
         </Form>
@@ -79,3 +103,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

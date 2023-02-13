@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+
+import ListCourses from '../../components/ListCourses/ListCourses'
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <h1>Dashboard Administrador</h1>
 
-export default Home
+      <ListCourses/>
+    </>
+  );
+};
+
+export default Home;

@@ -11,7 +11,6 @@ import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 const AddComponent = () => {
   return (
     <>
-    <div className="fondo">
       <div className="containerTitle1">
         <h1>AÑADIR COMPONENTE</h1>
       </div>
@@ -147,7 +146,6 @@ const AddComponent = () => {
             </FormGroup>
           </Form>
         </Form>
-      </div>
       </div>
     </>
   );

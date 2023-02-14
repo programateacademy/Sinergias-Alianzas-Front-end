@@ -130,10 +130,18 @@ label.image1.form-label {
 
 .botones{
   display: flex;
+  margin: auto;
+  justify-content: center;
 }
 
-button.iconos{
-  width: 30vw;
+.botones button{
+  text-decoration: none;
+  background: none;
+  border: none;
+}
+.iconos{
+  margin: 10px;
+  width: 10vw;
   text-decoration: none;
   list-style: none;
 }

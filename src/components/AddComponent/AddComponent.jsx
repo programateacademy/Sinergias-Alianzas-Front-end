@@ -139,8 +139,8 @@ const AddComponent = () => {
           </Form>
         </Form>
         <div className="botones">
-        <button className="iconos"><img  src={Guardar} alt="" /></button>
-        <button className="iconos"><img  src={Cancelar} alt="" /></button>
+        <button ><img className="iconos" src={Guardar} alt="" /></button>
+        <button ><img className="iconos" src={Cancelar} alt="" /></button>
         </div>
       </div>
     </>

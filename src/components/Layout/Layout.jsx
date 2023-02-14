@@ -12,11 +12,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-
-      <Container style={{ minHeight: "80vh", position: "relative" }}>
+      <Container style={{ margin:"auto" }}>
         {children}
       </Container>
-
       <Footer />
     </>
   );

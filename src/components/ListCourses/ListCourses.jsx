@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 
 
 const ListCourses = () => {
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
+    
   function addComp () {
     navigate("/addComponent")
   };

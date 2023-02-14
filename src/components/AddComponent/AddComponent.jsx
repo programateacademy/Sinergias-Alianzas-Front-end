@@ -30,7 +30,7 @@ const initialState ={
           compObjetivo2:"", 
           compObjetivo3:"", 
           compLineaTrabajo1:"",
-          compLlineaTrabajo2:"",
+          compLineaTrabajo2:"",
           recursosMetodologia:"", 
           recursosFormatos:"", 
           recursosDiagnosticos:"", 
@@ -43,7 +43,7 @@ const AddComponent = () => {
   const [componentData, setComponentData] = useState(initialState);
 
   // Constante para mostrar si hay errores al enviar la información
-  const { error } = useSelector((state) => ({ ...state.componente }));
+  const { error } = useSelector((state) => ({ ...state.componentes }));
 
   //   Se destructura la información del usuario que ingresó al sistema
   const { user } = useSelector((state) => ({ ...state.auth }));
@@ -73,7 +73,7 @@ const AddComponent = () => {
           compObjetivo2, 
           compObjetivo3, 
           compLineaTrabajo1,
-          compLlineaTrabajo2,
+          compLineaTrabajo2,
           recursosMetodologia, 
           recursosFormatos, 
           recursosDiagnosticos, 
@@ -97,7 +97,7 @@ const AddComponent = () => {
           compObjetivo2 && 
           compObjetivo3 && 
           compLineaTrabajo1 &&
-          compLlineaTrabajo2 &&
+          compLineaTrabajo2 &&
           recursosMetodologia && 
           recursosFormatos && 
           recursosDiagnosticos && 
@@ -106,7 +106,7 @@ const AddComponent = () => {
   ) {
     const updateComponentData = { ...componentData, name: user?.result?.name };
 
-    dispatch(createComponentes({ updateComponentData, navigate, toast }));
+    dispatch(addComponent({ updateComponentData, navigate, toast }));
     handleClear();
   }
 };
@@ -132,7 +132,7 @@ const AddComponent = () => {
       compObjetivo2:"", 
       compObjetivo3:"", 
       compLineaTrabajo1:"",
-      compLlineaTrabajo2:"",
+      compLineaTrabajo2:"",
       recursosMetodologia:"", 
       recursosFormatos:"", 
       recursosDiagnosticos:"", 
@@ -150,7 +150,7 @@ const AddComponent = () => {
 
       <div className="containerDashboard1">
         <h2 className="Titulo2">Información del Componente</h2>
-        <Form className="containerAdd">
+        <Form onSubmit={handleSubmit} className="containerAdd">
           <Form className="form1">
             <FormGroup>
               <Label className="labels">Imagen del componente</Label>
@@ -158,6 +158,7 @@ const AddComponent = () => {
               className="urlImagen" 
               placeholder="Imagen del Componente" 
               type="url" 
+              name="compImgPpal"
               value={compImgPpal} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -168,6 +169,7 @@ const AddComponent = () => {
               className="urlImagen" 
               placeholder="Titulo componente" 
               type="text" 
+              name="compTitulo"
               value={compTitulo} 
               onChange={onInputChange} />
             </FormGroup>
@@ -178,6 +180,7 @@ const AddComponent = () => {
               className="urlImagen" 
               placeholder="Definición" 
               type="text" 
+              name="compDefinicion"
               value={compDefinicion} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -186,9 +189,9 @@ const AddComponent = () => {
               <Label className="labels" for="exampleUrl">Url Video</Label>
               <Input className="urlImagen"
                 id="exampleUrl"
-                name="url"
+                name="compVideo"
                 placeholder="url Video"
-                type="url"
+                type="text"
                 value={compVideo}
                 onChange={onInputChange}
               />
@@ -198,7 +201,7 @@ const AddComponent = () => {
               <Label className="labels">Descripción Componente</Label>
               <Input 
               className="urlImagen"  
-              name="text" 
+              name="compDescripcion" 
               type="textarea" 
               value={compDescripcion} 
               onChange={onInputChange}/>
@@ -212,6 +215,7 @@ const AddComponent = () => {
               className="form2Images" 
               placeholder="Agregue el link de la imagen"  
               type="text" 
+              name="compImg1"
               value={compImg1} 
               onChange={onInputChange} />
             </FormGroup>
@@ -222,6 +226,7 @@ const AddComponent = () => {
               className="form2Images" 
               placeholder="Agregue el link de la imagen"  
               type="text" 
+              name="compImg2"
               value={compImg2} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -232,6 +237,7 @@ const AddComponent = () => {
               className="form2Images" 
               placeholder="Agregue el link de la imagen"  
               type="text" 
+              name="compImg3"
               value={compImg3} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -244,6 +250,7 @@ const AddComponent = () => {
               className="formObj" 
               placeholder="Objetivo" 
               type="text" 
+              name="compObjetivo1"
               value={compObjetivo1} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -254,6 +261,7 @@ const AddComponent = () => {
               className="formObj" 
               placeholder="Objetivo" 
               type="text" 
+              name="compObjetivo2"
               value={compObjetivo2} 
               onChange={onInputChange} />
             </FormGroup>
@@ -264,6 +272,7 @@ const AddComponent = () => {
               className="formObj" 
               placeholder="Objetivo" 
               type="text" 
+              name="compObjetivo3"
               value={compObjetivo3} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -275,8 +284,8 @@ const AddComponent = () => {
               <Input 
               className="urlImagen" 
               id="exampleText" 
-              name="text" 
-              type="textLine" 
+              name="compLineaTrabajo1" 
+              type="text" 
               value={compLineaTrabajo1} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -286,8 +295,8 @@ const AddComponent = () => {
               <Input 
               className="urlImagen" 
               id="exampleText" 
-              name="text" 
-              type="textLine" 
+              name="compLineaTrabajo2"  
+              type="text" 
               value={compLineaTrabajo2} 
               onChange={onInputChange}/>
             </FormGroup>
@@ -301,6 +310,7 @@ const AddComponent = () => {
               <Input 
               className="recursosForm" 
               type="text" 
+              name="recursosMetodologia"
               value={recursosMetodologia} 
               onChange={onInputChange} />
               <FormText>Enlace de los recursos</FormText>
@@ -312,6 +322,7 @@ const AddComponent = () => {
               <Input 
               className="recursosForm" 
               type="text" 
+              name="recursosFormatos"
               value={recursosFormatos} 
               onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
@@ -323,6 +334,7 @@ const AddComponent = () => {
               <Input 
               className="recursosForm" 
               type="text" 
+              name="recursosDiagnosticos"
               value={recursosDiagnosticos} 
               onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
@@ -336,6 +348,7 @@ const AddComponent = () => {
               <Input 
               className="recursosForm" 
               type="text" 
+              name="recursosHerramientas"
               value={recursosHerramientas} 
               onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
@@ -347,14 +360,18 @@ const AddComponent = () => {
               <Input 
               className="recursosForm" 
               type="text" 
+              name="recursosMaterial"
               value={recursosMaterial} 
               onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
           </Form>
         </Form>
-        <button>Guardar</button>
+        <button onClick={handleSubmit}>Guardar</button>
+
+        <NavLink to="/home" className="col-12">
         <button>Cancelar</button>
+        </NavLink>
       </div>
     </>
   );

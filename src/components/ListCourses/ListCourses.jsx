@@ -8,7 +8,7 @@ import searchButton from "./Assets/searchButton.png";
 import uploadButton from "./Assets/uploadButton.png";
 import DeleteButton from "./modal";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -17,6 +17,11 @@ const ListCourses = () => {
   function addComp () {
     navigate("/addComponent")
   };
+
+  function seeComp () {
+    navigate("/seeComponent")
+  };
+
 
   return (
     <>    
@@ -55,6 +60,7 @@ const ListCourses = () => {
             <div className="buttons_cards">
               <motion.a
                 href="#"
+                onClick={seeComp}
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
                 onHoverEnd={(e) => {}}

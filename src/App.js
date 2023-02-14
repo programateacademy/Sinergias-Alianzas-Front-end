@@ -23,6 +23,7 @@ import Profile from "./pages/Profile/Profile";
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent"; 
+import SeeComponent from "./components/seeComponent/seeComponent";
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
@@ -102,7 +103,16 @@ function App() {
             </Layout>
           }
         />
+        <Route
+          path="/seeComponent"
+          element={
+            <Layout>
+              <SeeComponent/>
+            </Layout>
+          }
+        />
       </Routes>
+      
     </BrowserRouter>
   );
 }

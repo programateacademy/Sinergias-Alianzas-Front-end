@@ -2,6 +2,13 @@ import React from "react";
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import "./seeComponent.css";
 
+// Importacion imagenes recursos
+import Metodologia from "../../components/AddComponent/assest/Rectangle25.png";
+import Formato from "../../components/AddComponent/assest/Rectangle26.png";
+import Diagnostico from "../../components/AddComponent/assest/Rectangle27.png";
+import Herramientas from "../../components/AddComponent/assest/Rectangle28.png";
+import Material from "../../components/AddComponent/assest/Rectangle29.png";
+
 const SeeComponent = () => {
   return (
     <>
@@ -100,7 +107,7 @@ const SeeComponent = () => {
 
       {/* 7.OBJETIVOS COMPONENTE MODEL: compObjetivos */}
       <div
-        style={{ backgroundColor: "#849B1C", widht: "100vw", padding: "30px" }}
+        style={{ backgroundColor: "#849B1C", widht: "100vw", padding: "30px" , margin:"30px 0"}}
       >
         <h3>Objetivos</h3>
         <div
@@ -161,41 +168,45 @@ const SeeComponent = () => {
 
       {/* 9 RECURSOS COMPONENTE MODEL: compRecursos */}
       <h3>Recursos</h3>
-      <div style={{display: "flex"}}>
-        <Card className="bside" style={{ width: "40vw" }}>
-            {/* 2.IMAGEN COMPONENTE MODEL: compImgPpal */}
+      <div style={{display: "flex", gap:"50px"}}>
+        <Card className="bside" style={{ width: "40vw", border:"none" }}>
+            {/* 9.1 RECURSOS COMPONENTE MODEL: recursosMetodologia */}
             <img
               alt="Sample"
-              src="https://drive.google.com/uc?export=view&id=14Tz9-ZxgSU2uqwmYnSM6CuV3MFuj9QhA"
+              src={Metodologia}
+              />
+            
+        </Card>
+        <Card className="bside" style={{ width: "40vw" , border:"none"}}>
+              {/* 9.2 RECURSOS COMPONENTE MODEL: recursosFormatos */}
+            <img
+              alt="Sample"
+              src={Formato}
             />
         </Card>
-        <Card className="bside" style={{ width: "40vw" }}>
-            {/* 2.IMAGEN COMPONENTE MODEL: compImgPpal */}
+        <Card className="bside" style={{ width: "40vw" , border:"none"}}>
+              {/* 9.3 RECURSOS COMPONENTE MODEL: recursosDiagnosticos */}
             <img
               alt="Sample"
-              src="https://drive.google.com/uc?export=view&id=14Tz9-ZxgSU2uqwmYnSM6CuV3MFuj9QhA"
+              src={Diagnostico}
             />
+            
         </Card>
-        <Card className="bside" style={{ width: "40vw" }}>
-            {/* 2.IMAGEN COMPONENTE MODEL: compImgPpal */}
+        <Card className="bside" style={{ width: "40vw", border:"none" }}>
+              {/* 9.4 RECURSOS COMPONENTE MODEL: recursosHerramientas */}
             <img
               alt="Sample"
-              src="https://drive.google.com/uc?export=view&id=14Tz9-ZxgSU2uqwmYnSM6CuV3MFuj9QhA"
+              src={Herramientas}
             />
+            
         </Card>
-        <Card className="bside" style={{ width: "40vw" }}>
-            {/* 2.IMAGEN COMPONENTE MODEL: compImgPpal */}
+        <Card className="bside" style={{ width: "40vw", border:"none"}}>
+              {/* 9.5 RECURSOS COMPONENTE MODEL: recursosMaterial */}
             <img
               alt="Sample"
-              src="https://drive.google.com/uc?export=view&id=14Tz9-ZxgSU2uqwmYnSM6CuV3MFuj9QhA"
+              src={Material}
             />
-        </Card>
-        <Card className="bside" style={{ width: "40vw" }}>
-            {/* 2.IMAGEN COMPONENTE MODEL: compImgPpal */}
-            <img
-              alt="Sample"
-              src="https://drive.google.com/uc?export=view&id=14Tz9-ZxgSU2uqwmYnSM6CuV3MFuj9QhA"
-            />
+            
         </Card>
       </div>
 

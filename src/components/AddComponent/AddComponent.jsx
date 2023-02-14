@@ -1,4 +1,3 @@
-import React from "react";
 import "./addComponent.css";
 import metodologia from "./assest/Rectangle25.png";
 import Formato from "./assest/Rectangle26.png";
@@ -155,17 +154,32 @@ const AddComponent = () => {
           <Form className="form1">
             <FormGroup>
               <Label className="labels">Imagen del componente</Label>
-              <Input className="urlImagen" placeholder="Imagen del Componente" type="url" value={compImgPpal} />
+              <Input 
+              className="urlImagen" 
+              placeholder="Imagen del Componente" 
+              type="url" 
+              value={compImgPpal} 
+              onChange={onInputChange}/>
             </FormGroup>
 
             <FormGroup>
               <Label className="labels">Titulo Componente</Label>
-              <Input className="urlImagen" placeholder="Titulo componente" type="text" value={compTitulo} />
+              <Input 
+              className="urlImagen" 
+              placeholder="Titulo componente" 
+              type="text" 
+              value={compTitulo} 
+              onChange={onInputChange} />
             </FormGroup>
 
             <FormGroup>
               <Label className="labels">Definición</Label>
-              <Input className="urlImagen" placeholder="Definición" type="text" value={compDefinicion}/>
+              <Input 
+              className="urlImagen" 
+              placeholder="Definición" 
+              type="text" 
+              value={compDefinicion} 
+              onChange={onInputChange}/>
             </FormGroup>
 
             <FormGroup>
@@ -176,58 +190,106 @@ const AddComponent = () => {
                 placeholder="url Video"
                 type="url"
                 value={compVideo}
+                onChange={onInputChange}
               />
             </FormGroup>
 
             <FormGroup>
               <Label className="labels">Descripción Componente</Label>
-              <Input className="urlImagen"  name="text" type="textarea" value={compDescripcion}/>
+              <Input 
+              className="urlImagen"  
+              name="text" 
+              type="textarea" 
+              value={compDescripcion} 
+              onChange={onInputChange}/>
             </FormGroup>
           </Form>
 
           <Form className="form2">
             <FormGroup>
               <Label className="image1">Imagen 1</Label>
-              <Input className="form2Images" placeholder="Agregue el link de la imagen"  type="text" value={compImg1} />
+              <Input 
+              className="form2Images" 
+              placeholder="Agregue el link de la imagen"  
+              type="text" 
+              value={compImg1} 
+              onChange={onInputChange} />
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Imagen 2</Label>
-              <Input className="form2Images" placeholder="Agregue el link de la imagen"  type="text" value={compImg2}/>
+              <Input 
+              className="form2Images" 
+              placeholder="Agregue el link de la imagen"  
+              type="text" 
+              value={compImg2} 
+              onChange={onInputChange}/>
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Imagen 3</Label>
-              <Input className="form2Images" placeholder="Agregue el link de la imagen"  type="text" value={compImg3} />
+              <Input 
+              className="form2Images" 
+              placeholder="Agregue el link de la imagen"  
+              type="text" 
+              value={compImg3} 
+              onChange={onInputChange}/>
             </FormGroup>
           </Form>
 
           <Form className="Objetivos">
             <FormGroup>
               <Label className="image1">Objetivo 1</Label>
-              <Input className="formObj" placeholder="Objetivo" type="text" value={compObjetivo1} />
+              <Input 
+              className="formObj" 
+              placeholder="Objetivo" 
+              type="text" 
+              value={compObjetivo1} 
+              onChange={onInputChange}/>
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Objetivo 2</Label>
-              <Input className="formObj" placeholder="Objetivo" type="text" value={compObjetivo2} />
+              <Input 
+              className="formObj" 
+              placeholder="Objetivo" 
+              type="text" 
+              value={compObjetivo2} 
+              onChange={onInputChange} />
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Objetivo 3</Label>
-              <Input className="formObj" placeholder="Objetivo" type="text" value={compObjetivo3} />
+              <Input 
+              className="formObj" 
+              placeholder="Objetivo" 
+              type="text" 
+              value={compObjetivo3} 
+              onChange={onInputChange}/>
             </FormGroup>
           </Form>
 
           <Form className="lineasTrabajo">
             <FormGroup>
               <Label className="lineas">Lineas de Trabajo 1</Label>
-              <Input className="urlImagen" id="exampleText" name="text" type="textLine" value={compLineaTrabajo1} />
+              <Input 
+              className="urlImagen" 
+              id="exampleText" 
+              name="text" 
+              type="textLine" 
+              value={compLineaTrabajo1} 
+              onChange={onInputChange}/>
             </FormGroup>
 
             <FormGroup>
               <Label className="lineas">Lineas de Trabajo 2</Label>
-              <Input className="urlImagen" id="exampleText" name="text" type="textLine" value={compLineaTrabajo2}/>
+              <Input 
+              className="urlImagen" 
+              id="exampleText" 
+              name="text" 
+              type="textLine" 
+              value={compLineaTrabajo2} 
+              onChange={onInputChange}/>
             </FormGroup>
           </Form>
 
@@ -236,21 +298,33 @@ const AddComponent = () => {
             <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
               <Label className="image1">Metodologia</Label>
-              <Input className="recursosForm" type="text" value={recursosMetodologia} />
+              <Input 
+              className="recursosForm" 
+              type="text" 
+              value={recursosMetodologia} 
+              onChange={onInputChange} />
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
-              <Input className="recursosForm" type="text" value={recursosFormatos}/>
+              <Input 
+              className="recursosForm" 
+              type="text" 
+              value={recursosFormatos} 
+              onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
-              <Input className="recursosForm" type="text" value={recursosDiagnosticos}/>
+              <Input 
+              className="recursosForm" 
+              type="text" 
+              value={recursosDiagnosticos} 
+              onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
@@ -259,14 +333,22 @@ const AddComponent = () => {
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
               </Label>
-              <Input className="recursosForm" type="text" value={recursosHerramientas}/>
+              <Input 
+              className="recursosForm" 
+              type="text" 
+              value={recursosHerramientas} 
+              onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
             <FormGroup className="containerRecursos">
               <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">Material Educativo</Label>
-              <Input className="recursosForm" type="text" value={recursosMaterial} />
+              <Input 
+              className="recursosForm" 
+              type="text" 
+              value={recursosMaterial} 
+              onChange={onInputChange}/>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
           </Form>

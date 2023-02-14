@@ -8,4 +8,4 @@ const API = axios.create({baseURL: "http://localhost:5000"}) // local
 export const signIn = (formData) => API.post("/users/signin", formData);
 
 // Petición para ingresar toda la información del componente
-export const addComponent = (fileComponent) => API.post('/component/new', fileComponent);
+export const addComponent = (componentData) => API.post('/component/new', componentData);

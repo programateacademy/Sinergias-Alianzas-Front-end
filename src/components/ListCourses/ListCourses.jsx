@@ -8,9 +8,17 @@ import searchButton from "./Assets/searchButton.png";
 import uploadButton from "./Assets/uploadButton.png";
 import DeleteButton from "./modal";
 
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 const ListCourses = () => {
+  const navigate = useNavigate();
+  
+  function addComp () {
+    navigate("/addComponent")
+  };
+
   return (
     <>    
       <div className="containerTitle">
@@ -21,6 +29,7 @@ const ListCourses = () => {
         <div className="container_buttons">
           <motion.button
             className="box"
+            onClick={addComp}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}

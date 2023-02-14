@@ -293,4 +293,11 @@ label.image1.form-label {
     margin: 10px auto;
     display: flex;
   }
+
+  .iconos{
+    margin: 10px;
+    width: 6vw;
+    text-decoration: none;
+    list-style: none;
+  }
 }

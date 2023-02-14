@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const ListCourses = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
   function addComp () {
     navigate("/addComponent")
   };
@@ -42,14 +42,14 @@ const ListCourses = () => {
           </motion.button>
 
           <motion.button
-            className="box"
+            className="box1"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <img src={searchButton} alt="" />
 
-            <input type="text" placeholder=" Buscar componente" />
+            <input type="text" placeholder=" Buscar" />
           </motion.button>
         </div>
 
@@ -61,6 +61,89 @@ const ListCourses = () => {
               <motion.a
                 href="#"
                 onClick={seeComp}
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconAbout} alt="" />
+              </motion.a>
+
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconEdit} alt="" />
+              </motion.a>
+
+              <motion.button
+                style={{
+                  border: "none",
+                  margin: "0",
+                  padding: "0",
+                  backgroundColor: "transparent",
+                }}
+                className="box"
+                whileHover={{ scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <DeleteButton/>
+              </motion.button>
+            </div>
+          </div>
+
+
+
+
+          <div className="cardComponent">
+            <h2>Salud de la mujer</h2>
+            <img src={icon} alt="" />
+            <div className="buttons_cards">
+              <motion.a
+                href="#"
+                onClick={seeComp}
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconAbout} alt="" />
+              </motion.a>
+
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconEdit} alt="" />
+              </motion.a>
+
+              <motion.button
+                style={{
+                  border: "none",
+                  margin: "0",
+                  padding: "0",
+                  backgroundColor: "transparent",
+                }}
+                className="box"
+                whileHover={{ scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <DeleteButton/>
+              </motion.button>
+            </div>
+          </div>
+
+
+
+
+          <div className="cardComponent">
+            <h2>Salud de la mujer</h2>
+            <img src={icon} alt="" />
+            <div className="buttons_cards">
+              <motion.a
+                href="#"
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
                 onHoverEnd={(e) => {}}

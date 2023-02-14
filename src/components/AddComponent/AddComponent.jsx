@@ -5,6 +5,8 @@ import Formato from "./assest/Rectangle26.png";
 import Diagnostico from "./assest/Rectangle27.png";
 import Herramientas from "./assest/Rectangle28.png";
 import Material from "./assest/Rectangle29.png";
+import Guardar from "./assest/guardar.png"
+import Cancelar from "./assest/cancelar.png"
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
@@ -20,7 +22,7 @@ const AddComponent = () => {
         <Form className="containerAdd">
           <Form className="form1">
             <FormGroup>
-              <Label className="labels">Url</Label>
+              <Label className="labels">Imagen del Componente</Label>
               <Input className="urlImagen" placeholder="Imagen del Componente" type="url" />
             </FormGroup>
 
@@ -136,8 +138,10 @@ const AddComponent = () => {
             </FormGroup>
           </Form>
         </Form>
-        <button>Guardar</button>
-        <button>Cancelar</button>
+        <div className="botones">
+        <button className="iconos"><img  src={Guardar} alt="" /></button>
+        <button className="iconos"><img  src={Cancelar} alt="" /></button>
+        </div>
       </div>
     </>
   );

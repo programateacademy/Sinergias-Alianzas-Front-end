@@ -128,18 +128,26 @@ label.image1.form-label {
   margin: 0 auto;
 }
 
+.botones{
+  display: flex;
+}
+
+button.iconos{
+  width: 30vw;
+  text-decoration: none;
+  list-style: none;
+}
+
 @media screen and (min-width: 800px) {
   .containerDashboard1 {
-    border: 5px solid green;
-    margin: 3vw 0;
+    margin: 3vw 8vw;
     padding: 1.5vw 5vw;
-    border-radius: 15px;
   }
 
   .containerTitle1 h1 {
-    width: 40vw;
+    width: 30vw;
     font-size: 2vw;
-    margin: 0 auto;
+    padding: 5px;
   }
 
   .Titulo2 {

@@ -7,6 +7,7 @@ import Herramientas from "./assest/Rectangle28.png";
 import Material from "./assest/Rectangle29.png";
 import Guardar from "./assest/guardar.png"
 import Cancelar from "./assest/cancelar.png"
+import ImgComponent from "./assest/libro.png"
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
@@ -19,6 +20,7 @@ const AddComponent = () => {
 
       <div className="containerDashboard1">
         <h2 className="Titulo2">Información del Componente</h2>
+        <img className="imgComponent" src={ImgComponent} alt="" />
         <Form className="containerAdd">
           <Form className="form1">
             <FormGroup>

@@ -39,6 +39,12 @@
   text-align: center;
   margin: 30px auto;
 }
+
+.imgComponent{
+  display: flex;
+  width: 40vw;
+  margin: 40px auto;
+}
 .form1 {
   width: 58vw;
   margin: 0 auto;
@@ -165,7 +171,12 @@ label.image1.form-label {
     margin: 40px auto;
   }
 
-  /* ! Cambiar clase .form-label (específica de bootstrap o reactstrap) a una clase propia ya que si altera la clase default de librería, causa cambios en todos los componentes de la app */
+  .imgComponent{
+    width: 20vw;
+    position: absolute;
+    margin: 40px 80px;
+  }
+
   .labels {
     display: flex;
     text-align: center;

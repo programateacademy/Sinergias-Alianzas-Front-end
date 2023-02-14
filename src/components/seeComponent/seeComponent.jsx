@@ -15,25 +15,24 @@ const SeeComponent = () => {
 
 
       {/* 1.TÍTULO MODEL: compTitulo */}
-      <h1>SALUD DE LA MUJER - compTitulo </h1>
+      <h1 style={{ marginBottom: "3vw"}}>SALUD DE LA MUJER</h1>
       <div
         className="aybside"
-        style={{ display: "flex", gap: "50px", margin: "40px" }}
+        style={{ display: "flex", gap: "10px", marginBottom: "3vw"}}
       >
 
-        <Card className="bside" style={{ width: "40vw" }}>
-          {/* 2.IMAGEN COMPONENTE MODEL: compImgPpal */}
+        {/* 2.IMAGEN COMPONENTE MODEL: compImgPpal */}
           <img
             alt="Sample"
+            style={{ width:"18vw", height: "18vw", margin:"0 2vw 0 8vw"}}
             src="https://drive.google.com/uc?export=view&id=14Tz9-ZxgSU2uqwmYnSM6CuV3MFuj9QhA"
           />
-        </Card>
-        <div className="aside">
 
 
-          {/* 3.DEFINICION COMPONENTE MODEL: compDefinicion */}
-          <h3>Definición</h3>
-          <p>
+        {/* 3.DEFINICION COMPONENTE MODEL: compDefinicion */}
+        <div className="aside" style={{ textAlign: "right" ,padding: "1vw 8vw 0 0"}}>
+          <h3 style={{ textAlign: "right" }}>Definición</h3>
+          <p style={{ textAlign: "right"}}>
             compDefinicion Lorem ipsum, dolor sit amet consectetur adipisicing
             elit. Laboriosam, aut ipsam adipisci dignissimos ducimus explicabo
             error, quas sed fuga illo doloremque iusto nesciunt quis maiores
@@ -44,6 +43,7 @@ const SeeComponent = () => {
             nam.
           </p>
         </div>
+
       </div>
 
 
@@ -60,20 +60,22 @@ const SeeComponent = () => {
 
 
       {/* 5.DESCRIPCION COMPONENTE MODEL: compDescripcion */}
-      <h3>Descripción del componente</h3>
-      <p>
-        compDescripcion Lorem ipsum, dolor sit amet consectetur adipisicing
-        elit. Laboriosam, aut ipsam adipisci dignissimos ducimus explicabo
-        error, quas sed fuga illo doloremque iusto nesciunt quis maiores
-        excepturi quia quibusdam amet nam.compDescripcion Lorem ipsum, dolor sit
-        amet consectetur adipisicing elit. Laboriosam, aut ipsam adipisci
-        dignissimos ducimus explicabo error, quas sed fuga illo doloremque iusto
-        nesciunt quis maiores excepturi quia quibusdam amet nam.compDescripcion
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam,
-        aut ipsam adipisci dignissimos ducimus explicabo error, quas sed fuga
-        illo doloremque iusto nesciunt quis maiores excepturi quia quibusdam
-        amet nam.
-      </p>
+      <div className="5"  style={{ margin: "2vw 0"}}>
+        <h3>Descripción del componente</h3>
+        <p  style={{ padding: "1vw 15vw"}}>
+          compDescripcion Lorem ipsum, dolor sit amet consectetur adipisicing
+          elit. Laboriosam, aut ipsam adipisci dignissimos ducimus explicabo
+          error, quas sed fuga illo doloremque iusto nesciunt quis maiores
+          excepturi quia quibusdam amet nam.compDescripcion Lorem ipsum, dolor sit
+          amet consectetur adipisicing elit. Laboriosam, aut ipsam adipisci
+          dignissimos ducimus explicabo error, quas sed fuga illo doloremque iusto
+          nesciunt quis maiores excepturi quia quibusdam amet nam.compDescripcion
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam,
+          aut ipsam adipisci dignissimos ducimus explicabo error, quas sed fuga
+          illo doloremque iusto nesciunt quis maiores excepturi quia quibusdam
+          amet nam.
+        </p>
+      </div>
 
 
       {/* 6.IMAGENES COMPONENTE MODEL: compImagenes */}
@@ -157,6 +159,7 @@ const SeeComponent = () => {
         compLineaTrabajo1 ipsum, dolor sit amet consectetur adipisicing
         elit.
         </div>
+        <br />
         {/* 8.2 LINEA DE TRABAJO 2 COMPONENTE MODEL: compLineasTrabajo2 */}
         <div style={{padding: "30px", backgroundColor:"#849B1C", clipPath: "polygon(0% 20%, 60% 20%, 60% 0%, 70% 50%, 60% 100%, 60% 80%, 0% 80%)"}}>
         compLineaTrabajo2 ipsum, dolor sit amet consectetur adipisicing

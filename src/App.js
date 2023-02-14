@@ -24,6 +24,7 @@ import Profile from "./pages/Profile/Profile";
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent"; 
 
+
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
 

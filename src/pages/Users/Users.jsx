@@ -39,7 +39,7 @@ const Users = () => {
           <Search />
 
           <Table hover responsive size="sm" striped className="table-users">
-            <thead>
+            <thead className="tableinfo">
               <tr>
                 <th>#</th>
                 <th>Nombre</th>

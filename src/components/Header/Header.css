@@ -88,7 +88,7 @@ div.breadcrumb {
   color: #126A2E;  
   margin-left: 10px;
 }
-@media (min-width: 768px) {
+@media (min-width: 570px) {
   .header_container {
     flex-direction: row;   
     justify-content: space-between; 

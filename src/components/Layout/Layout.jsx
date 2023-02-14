@@ -6,15 +6,15 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 // Estilos
-import { Container } from "reactstrap";
+/* import { Container } from "reactstrap"; */
 
 const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <Container style={{ margin:"auto" }}>
+      {/* <Container style={{ margin:"auto" }}> */}
         {children}
-      </Container>
+      {/* </Container> */}
       <Footer />
     </>
   );

@@ -1,5 +1,7 @@
 import "./ListCourses.css";
 import { motion } from "framer-motion"; //Animation library
+import AddComponent from "../AddComponent/AddComponent";
+
 
 import icon from "./Assets/icon.png";
 import iconAbout from "./Assets/about.png";
@@ -18,7 +20,7 @@ const ListCourses = () => {
 
       <div className="containerDashboard">
         <div className="container_buttons">
-          <motion.button
+         <motion.button
             className="box"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
@@ -44,13 +46,13 @@ const ListCourses = () => {
             <h2>Salud de la mujer</h2>
             <img src={icon} alt="" />
             <div className="buttons_cards">
-              <motion.a
+           <motion.a 
                 href="#"
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
                 onHoverEnd={(e) => {}}
               >
-                <img src={iconAbout} alt="" />
+              <img src={iconAbout} alt="" />
               </motion.a>
 
               <motion.a
@@ -62,7 +64,7 @@ const ListCourses = () => {
                 <img src={iconEdit} alt="" />
               </motion.a>
 
-              <motion.button
+              <motion.button 
                 style={{
                   border: "none",
                   margin: "0",

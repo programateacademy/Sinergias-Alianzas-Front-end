@@ -24,7 +24,7 @@ import {
 } from "reactstrap";
 
 import Buttonedit from"../Buttonedit/buttonedit";
-
+import Buttondelete from "../../components/buttondelete/buttondelete"
 
 
 const RowTableUsers = () => {
@@ -46,7 +46,9 @@ const RowTableUsers = () => {
         </Button>
 
         <Button>
+        <Buttondelete>
         <FaTrash color="red" size={15} />
+        </Buttondelete>
         </Button>
       </td>
     </tr>

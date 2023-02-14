@@ -15,7 +15,7 @@ import {
     ListGroupItem,
 } from 'reactstrap';
 
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 class ModalExample extends React.Component {
     constructor(props) {
         super(props);
@@ -49,7 +49,7 @@ class ModalExample extends React.Component {
                                     id="name"
                                     name="name"
                                     type="text"
-                                    value={""}
+                                    
                                     
                                 />
                             </FormGroup>
@@ -62,7 +62,7 @@ class ModalExample extends React.Component {
                                     id="email"
                                     name="email"
                                     type="text"
-                                    value={""}
+                                    
                                     
                                 />
                             </FormGroup>
@@ -76,7 +76,7 @@ class ModalExample extends React.Component {
                                     id="Rol"
                                     name="rol"
                                     type="text"
-                                    value={""}
+                                    
                                     
                                 />
                             </FormGroup>

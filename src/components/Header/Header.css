@@ -15,14 +15,15 @@
 }
 
 .header_logo {
-  width: 60%;
+  width: 50%;
 }
 .container_btn_header {
-  display: flex;
-  width: 100%;
+  display: flex; 
+  justify-content: space-around; 
+  *width: 90%;
   gap: 10px;
-  padding: 0 10px;
-  margin: 10px 0;
+  padding: 0;
+  margin: 0;
 }
 
 .buttons_header {
@@ -30,7 +31,7 @@
   display: flex;
   align-items: center;
   margin-top: 1rem;
-  max-width: 90%;
+  max-width: 50%;
 }
 
 .buttons_header-users,
@@ -45,7 +46,7 @@
   font-family: inherit;
   border-radius: 23px;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-  width: 10rem;
+  *width: 10rem;
   text-decoration: none;
 }
 
@@ -101,7 +102,6 @@
   .header_container {
     flex-direction: row;
   }
-
   .header_logo {
     width: 30%;
   }
@@ -111,7 +111,6 @@
   .header_logo {
     width: 15%;
   }
-
   .container_btn_header {
     gap: 50px;
   }

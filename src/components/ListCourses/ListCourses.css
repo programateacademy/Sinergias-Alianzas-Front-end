@@ -1,10 +1,10 @@
 /* !Importar letras y colores */
 .containerTitle {
   position: absolute;
-  width: 100vw;  
+  width: 97%;  
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: -5px;
 }
 .containerTitle h1 {
   background-color: white;
@@ -14,9 +14,9 @@
 }
 .containerDashboard {
   border: 5px solid green;
-  margin: 15px 5vw 0 5vw;
+  margin: 40px 5vw 0 5vw;
   padding: 5vw;
-  border-radius: 15px;
+  border-radius: 15px;  
 }
 .container_buttons {
   display: flex;
@@ -83,15 +83,13 @@ button.box input::placeholder{
   margin: 0 8px;
 }
 @media screen and (min-width:570px) {
-  .containerTitle {
-    margin-top: 10px;
-  }
   .containerTitle h1{
     width: 30vw;
     font-size: 1.5vw;
   }
   .containerDashboard {
     padding: 1.5vw 5vw;
+    margin:  3vw 0 ;
   }
   .container_buttons {
     flex-direction: row;

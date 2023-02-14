@@ -1,10 +1,14 @@
+div.container {
+  margin: auto;
+  padding: 0;
+}
 .users-title {
   position: absolute;
-  width: 68vw;
+  width: 95%;
   display: flex;
   justify-content: center;
+  margin-top: -5px;
 }
-
 .users-title h1 {
   background-color: white;
   width: 50vw;
@@ -14,18 +18,18 @@
 
 .border-container {
   border: 5px solid green;
-  margin: 15px 5vw 0 5vw;
+  *margin: 15px 5vw 0 5vw;
+  *width: 100vw;
   padding: 5vw;
   border-radius: 15px;
 }
 
 .buttons-container {
   display: flex;
-  width: 100%;
-  gap: 10px;
+  flex-direction: column; 
   padding: 0 10px;
   margin: 10px 0;
-  justify-content: center;
+  
 }
 
 .buttons-users {

@@ -45,7 +45,6 @@ const Login = () => {
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
-              
               <Label className="user-label" for="email">
                 Correo
               </Label>
@@ -95,7 +94,12 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              <Link to={"/home"}>Ingresar</Link>
+              <Link
+                to={"/home"}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <span>Ingresar</span>
+              </Link>
             </button>
           </div>
         </Form>

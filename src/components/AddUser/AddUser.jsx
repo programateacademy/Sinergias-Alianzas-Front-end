@@ -9,6 +9,9 @@ import { RiUserAddFill } from "react-icons/ri";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
 // Estilos
+import "./AddUser.css";
+
+//Elementos de reacstrap 
 import {
   Button,
   Modal,
@@ -23,7 +26,8 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
-import "./AddUser.css";
+
+
 
 // Estado inicial del formulario
 const initialState = {
@@ -134,8 +138,7 @@ const AddUser = () => {
         <div className="icon_container">
           <RiUserAddFill />
         </div>
-
-        <Button onClick={toggleModal}>Nuevo Usuario</Button>
+        <Button className="newUser" onClick={toggleModal}>Nuevo Usuario</Button>
       </div>
 
       {/* Ventana Modal */}

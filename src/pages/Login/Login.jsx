@@ -94,7 +94,12 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              <Link to={"/home"}>Ingresar</Link>
+              <Link
+                to={"/home"}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <span>Ingresar</span>
+              </Link>
             </button>
           </div>
         </Form>

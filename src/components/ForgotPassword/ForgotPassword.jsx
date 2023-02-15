@@ -54,8 +54,7 @@ const ForgotPassword = () => {
         <div className="icon_container">
           <RiLockPasswordFill />
         </div>
-
-        <Button onClick={toggleModal}>Recuperar Contraseña</Button>
+        <Button className="recoverPassword" onClick={toggleModal}>Recuperar Contraseña</Button>
       </div>
 
       {/* Ventana Modal */}

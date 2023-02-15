@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+.containerAdd {
+  margin-top: 0px;
+}
+.containerTitle1 {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+.containerDashboard1 {
+  border: 5px solid green;
+  margin: 40px 5vw 40px 5vw;
+  padding: 5vw 10vw;
+  border-radius: 15px;
+}
+.containerTitle1 h1 {
+  background-color: white;
+  width: 60vw;
+  font-size: 4vw;
+  text-align: center;
+}
+.containerRecursos {
+  border: 2px solid green;
+  background: rgba(105, 211, 138, 0.5);
+  border-radius: 15px;
+  padding: 5vw;
+  margin: 0 10px;
+}
+
+.Titulo2 {
+  width: 50vw;
+  font-size: 4.5vw;
+  text-align: center;
+  margin: 30px auto;
+}
+.form1 {
+  width: 58vw;
+  margin: 0 auto;
+}
+.form1 input {
+  background: rgba(105, 211, 138, 0.5);
+  border: 1px solid green;
+  border-radius: 25px;
+}
+.form2 {
+  width: 60vw;
+  margin: 0 auto;
+}
+.form2 .form2Images {
+  background: rgba(105, 211, 138, 0.5);
+  border-radius: 25px;
+  border: 1px solid green;
+}
+.Objetivos {
+  width: 60vw;
+  margin: 0 auto;
+}
+.Objetivos .formObj {
+  width: 60vw;
+  margin: 0 auto;
+  background: rgba(105, 211, 138, 0.5);
+  border-radius: 25px;
+  border: 1px solid green;
+}
+.lineasTrabajo {
+  width: 60vw;
+  margin: 0 auto;
+  color: #000;
+}
+
+.lineasTrabajo .urlImagen {
+  background: rgba(105, 211, 138, 0.5);
+  border-radius: 25px;
+  border: 1px solid green;
+}
+.lineas {
+  color: #000;
+}
+
+.principalComponente1 {
+  width: 50vw;
+  font-size: 4.5vw;
+  text-align: center;
+  margin: 20px auto;
+}
+
+/*! Same fix  ⏬*/
+.labels {
+  display: flex;
+  text-align: center;
+  font-size: 5vw;
+  margin: 5px auto;
+  justify-content: center;
+  color: #000;
+}
+
+label.image1.form-label {
+  margin: 10px auto;
+  font-size: 5vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.Logos {
+  width: 12vw;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+}
+
+.image1 {
+  color: #000;
+}
+
+.containerRecursos .recursosForm {
+  border: 2px solid green;
+  background: rgba(105, 211, 138, 0.5);
+  border-radius: 15px;
+  padding: 2vw;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 800px) {
+  .containerDashboard1 {
+    border: 5px solid green;
+    margin: 3vw 0;
+    padding: 1.5vw 5vw;
+    border-radius: 15px;
+  }
+
+  .containerTitle1 h1 {
+    width: 40vw;
+    font-size: 2vw;
+    margin: 0 auto;
+  }
+
+  .Titulo2 {
+    width: 80vw;
+    font-size: 2vw;
+    text-align: center;
+    margin: 40px auto;
+  }
+
+  /* ! Cambiar clase .form-label (específica de bootstrap o reactstrap) a una clase propia ya que si altera la clase default de librería, causa cambios en todos los componentes de la app */
+  .labels {
+    display: flex;
+    text-align: center;
+    font-size: 1.3vw;
+    margin: 10px auto;
+    margin-left: 32vw;
+  }
+
+  label.image1.form-label {
+    margin: 10px auto;
+    font-size: 1.3vw;
+    text-align: center;
+    justify-content: center;
+  }
+
+  label.lineas.form-label {
+    margin: 8px 10vw;
+    font-size: 1.3vw;
+    text-align: center;
+    justify-content: center;
+  }
+
+
+  .form1 .urlImagen {
+    background: rgba(105, 211, 138, 0.5);
+    border: 1px solid green;
+    border-radius: 25px;
+    height: 40px;
+    width: 30vw;
+    font-size: 1.2vw;
+    margin-left: 30vw;
+  }
+  textarea.form-control {
+    width: 60vw;
+    font-size: 1vw;
+  }
+
+  .form2 .form2Images {
+    width: 19vw;
+    font-size: 1vw;
+    margin: 5px;
+  }
+  .form2 {
+    display: flex;
+    margin: auto;
+  }
+  .form2 input {
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 25px;
+    border: 1px solid green;
+    width: vw;
+    height: 40px;
+    font-size: 16px;
+    margin: 10px;
+  }
+  small.form-text.text-muted {
+    font-size: 1vw;
+    margin: auto;
+    justify-content: center;
+  }
+  .image1 {
+    display: flex;
+    margin: auto;
+  }
+  .Objetivos {
+    display: flex;
+    margin: auto;
+  }
+  .Objetivos .formObj {
+    width: 18vw;
+    height: 60px;
+    font-size: 16px;
+    margin: 10px;
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 25px;
+    border: 1px solid green;
+  }
+  .lineasTrabajo {
+    display: flex;
+    margin: auto;
+  }
+  .lineasTrabajo input {
+    font-size: 16px;
+    width: 28vw;
+    height: 60px;
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 25px;
+    border: 1px solid green;
+    margin: 10px;
+  }
+  .principalComponente1 {
+    width: 50vw;
+    font-size: 2.5vw;
+    text-align: center;
+    margin: 20px auto;
+  }
+  .Recursos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+  }
+  .containerRecursos {
+    border: 2px solid green;
+    background: rgba(105, 211, 138, 0.5);
+    border-radius: 15px;
+    padding: 3vw;
+    width: 18vw;
+    margin: 0 auto;
+  }
+  .containerRecursos .recursosForm {
+    font-size: 16px;
+  }
+
+  .containerRecursos .recursosForm {
+    width: 12vw;
+    height: 4vh;
+    font-size: 1vw;
+    margin: 5px auto;
+  }
+
+  .Logos {
+    width: 8vw;
+    justify-content: center;
+    margin: 10px auto;
+    display: flex;
+  }
+}

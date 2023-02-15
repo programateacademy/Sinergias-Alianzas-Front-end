@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import iconDelete from "./Assets/icono borrar.png";
 
-function Example(args) {
+export default function DeleteButton(args) {
   const [modal, setModal] = useState(false);
 
 
@@ -17,7 +17,7 @@ function Example(args) {
       <Modal isOpen={modal} toggle={toggle} {...args}>
         <ModalHeader toggle={toggle}>¿Está seguro de eliminar este componente?</ModalHeader>        
         
-        <ModalFooter>
+        <ModalFooter>          
           <Button style={{backgroundColor:"red", border:"none"}} onClick={toggle}>
             Borrar
           </Button>{" "}
@@ -30,4 +30,3 @@ function Example(args) {
   );
 }
 
-export default Example;

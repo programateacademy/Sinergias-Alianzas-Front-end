@@ -17,10 +17,9 @@
 
 .adduser-button button {
   position: absolute;
-  right: 10px;
+  right: 10px; 
 }
-
-.btn-secondary {
-  background: transparent !important;
-  border: none !important;
+button.newUser {
+  background: transparent;
+  border: none;
 }

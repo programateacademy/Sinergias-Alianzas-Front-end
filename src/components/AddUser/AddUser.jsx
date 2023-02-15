@@ -27,8 +27,6 @@ import {
   ListGroupItem,
 } from "reactstrap";
 
-
-
 // Estado inicial del formulario
 const initialState = {
   lastName: "",

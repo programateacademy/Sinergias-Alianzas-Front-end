@@ -32,14 +32,12 @@
   padding: 5vw;
   margin: 0 10px;
 }
-
 .Titulo2 {
   width: 50vw;
   font-size: 4.5vw;
   text-align: center;
   margin: 30px auto;
 }
-
 .imgComponent{
   display: flex;
   width: 40vw;
@@ -79,7 +77,6 @@
   margin: 0 auto;
   color: #000;
 }
-
 .lineasTrabajo .urlImagen {
   background: rgba(105, 211, 138, 0.5);
   border-radius: 25px;
@@ -88,15 +85,12 @@
 .lineas {
   color: #000;
 }
-
 .principalComponente1 {
   width: 50vw;
   font-size: 4.5vw;
   text-align: center;
   margin: 20px auto;
 }
-
-/*! Same fix  ⏬*/
 .labels {
   display: flex;
   text-align: center;
@@ -105,7 +99,6 @@
   justify-content: center;
   color: #000;
 }
-
 label.image1.form-label {
   margin: 10px auto;
   font-size: 5vw;
@@ -113,18 +106,15 @@ label.image1.form-label {
   justify-content: center;
   display: flex;
 }
-
 .Logos {
   width: 12vw;
   justify-content: center;
   margin: auto;
   display: flex;
 }
-
 .image1 {
   color: #000;
 }
-
 .containerRecursos .recursosForm {
   border: 2px solid green;
   background: rgba(105, 211, 138, 0.5);
@@ -133,13 +123,11 @@ label.image1.form-label {
   width: 50vw;
   margin: 0 auto;
 }
-
 .botones{
   display: flex;
   margin: auto;
   justify-content: center;
 }
-
 .botones button{
   text-decoration: none;
   background: none;
@@ -151,32 +139,27 @@ label.image1.form-label {
   text-decoration: none;
   list-style: none;
 }
-
 @media screen and (min-width: 800px) {
   .containerDashboard1 {
     margin: 3vw 8vw;
     padding: 1.5vw 5vw;
   }
-
   .containerTitle1 h1 {
     width: 30vw;
     font-size: 2vw;
     padding: 5px;
   }
-
   .Titulo2 {
     width: 80vw;
     font-size: 2vw;
     text-align: center;
     margin: 40px auto;
   }
-
   .imgComponent{
     width: 20vw;
     position: absolute;
     margin: 40px 80px;
   }
-
   .labels {
     display: flex;
     text-align: center;
@@ -184,22 +167,18 @@ label.image1.form-label {
     margin: 10px auto;
     margin-left: 32vw;
   }
-
   label.image1.form-label {
     margin: 10px auto;
     font-size: 1.3vw;
     text-align: center;
     justify-content: center;
   }
-
   label.lineas.form-label {
     margin: 8px 10vw;
     font-size: 1.3vw;
     text-align: center;
     justify-content: center;
   }
-
-
   .form1 .urlImagen {
     background: rgba(105, 211, 138, 0.5);
     border: 1px solid green;
@@ -213,7 +192,6 @@ label.image1.form-label {
     width: 60vw;
     font-size: 1vw;
   }
-
   .form2 .form2Images {
     width: 19vw;
     font-size: 1vw;
@@ -290,21 +268,18 @@ label.image1.form-label {
   .containerRecursos .recursosForm {
     font-size: 16px;
   }
-
   .containerRecursos .recursosForm {
     width: 12vw;
     height: 4vh;
     font-size: 1vw;
     margin: 5px auto;
   }
-
   .Logos {
     width: 8vw;
     justify-content: center;
     margin: 10px auto;
     display: flex;
   }
-
   .iconos{
     margin: 10px;
     width: 6vw;

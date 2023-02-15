@@ -6,14 +6,16 @@
 .header_container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  *justify-content: space-between;
+  align-items: center;  
   padding: 10px 5vw;
   box-shadow: rgba(18, 106, 46, 0.2) 0px 10px 10px -10px;
   margin-bottom: 30px;
 }
 .header_logo {
   width: 50%;
+}
+.header_logo:hover{
+  transform: scale(1.1);
 }
 .container_btn_header {
   display: flex;  
@@ -30,10 +32,8 @@
   margin-top: 1rem;
   *width: 40vw;
 }
-
 .buttons_header-users,
-.buttons_header-logout {
-  *border: 0;
+.buttons_header-logout {  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,19 +42,15 @@
   font-size: 17px;
   font-family: inherit;
   border-radius: 23px;
-  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-  *width: 10rem;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;  
   text-decoration: none;
 }
-
 .buttons_header-users {
   background: #d8b436;
 }
-
 .buttons_header-logout {
   background: #c54149;
 }
-
 .icon_container {
   background: #d9d9d9;  
   width: 35px;

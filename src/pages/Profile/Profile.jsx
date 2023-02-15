@@ -13,7 +13,6 @@ import {
   CardBody,
   Form,
   FormGroup,
-  Label,
   Input,
   Button,
   Modal,
@@ -139,15 +138,13 @@ const Profile = () => {
       <Card
         style={{
           width: "18rem",
+          margin: "auto",
         }}
       >
         <CardBody>
           <Form>
             <FormGroup>
-              <Label for="rol" style={{ color: "#161616" }}>
-                Rol
-              </Label>
-
+              <p style={{ color: "#126a2e", fontWeight: "700" }}>Rol</p>
               <Input
                 id="rol"
                 name="rol"
@@ -157,10 +154,7 @@ const Profile = () => {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="name" style={{ color: "#161616" }}>
-                Nombre
-              </Label>
-
+              <p style={{ color: "#126a2e", fontWeight: "700" }}>Nombre</p>
               <Input
                 id="name"
                 name="name"
@@ -171,9 +165,7 @@ const Profile = () => {
             </FormGroup>
 
             <FormGroup>
-              <Label for="email" style={{ color: "#161616" }}>
-                Correo
-              </Label>
+              <p style={{ color: "#126a2e", fontWeight: "700" }}> Correo</p>
 
               <Input
                 id="email"

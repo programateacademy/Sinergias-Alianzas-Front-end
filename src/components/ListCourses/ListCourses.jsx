@@ -1,7 +1,5 @@
 import "./ListCourses.css";
 import { motion } from "framer-motion"; //Animation library
-import AddComponent from "../AddComponent/AddComponent";
-
 
 import icon from "./Assets/icon.png";
 import iconAbout from "./Assets/about.png";

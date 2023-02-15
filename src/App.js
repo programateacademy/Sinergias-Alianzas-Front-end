@@ -22,11 +22,11 @@ import LoginWithCode from "./pages/Login/LoginWithCode";
 import Profile from "./pages/Profile/Profile";
 
 //Page components
-import AddComponent from "./components/AddComponent/AddComponent"; 
+import AddComponent from "./components/AddComponent/AddComponent";
+import EditComponent from "./components/EditComponent/EditComponent";
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
-
 
 function App() {
   const dispatch = useDispatch();
@@ -98,7 +98,16 @@ function App() {
           path="/addComponent"
           element={
             <Layout>
-              <AddComponent/>
+              <AddComponent />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/editComponent"
+          element={
+            <Layout>
+              <EditComponent />
             </Layout>
           }
         />

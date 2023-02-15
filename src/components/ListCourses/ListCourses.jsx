@@ -8,11 +8,14 @@ import searchButton from "./Assets/searchButton.png";
 import uploadButton from "./Assets/uploadButton.png";
 import DeleteButton from "./modal";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
-
-const ListCourses = () => {
+export default function ListCourses({
+  compTitulo,
+  compImgPpal,
+  _id,
+}){
   const navigate = useNavigate();
     
   function addComp () {
@@ -56,6 +59,50 @@ const ListCourses = () => {
 
         <div className="listCards">
           <div className="cardComponent">
+            <h2>{compTitulo}</h2>
+            <img src={compImgPpal} alt="" />
+            <div className="buttons_cards">
+            {/* <Link to={`/movie/${_id}`}> */}
+              <motion.a
+                href="#"
+                onClick={seeComp}
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconAbout} alt="" />
+              </motion.a>
+            {/* </Link> */}
+
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={(e) => {}}
+                onHoverEnd={(e) => {}}
+              >
+                <img src={iconEdit} alt="" />
+              </motion.a>
+
+              <motion.button
+                style={{
+                  border: "none",
+                  margin: "0",
+                  padding: "0",
+                  backgroundColor: "transparent",
+                }}
+                className="box"
+                whileHover={{ scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <DeleteButton/>
+              </motion.button>
+            </div>
+          </div>
+
+
+
+
+          {/* <div className="cardComponent">
             <h2>Salud de la mujer</h2>
             <img src={icon} alt="" />
             <div className="buttons_cards">
@@ -103,7 +150,6 @@ const ListCourses = () => {
             <div className="buttons_cards">
               <motion.a
                 href="#"
-                onClick={seeComp}
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
                 onHoverEnd={(e) => {}}
@@ -134,48 +180,7 @@ const ListCourses = () => {
                 <DeleteButton/>
               </motion.button>
             </div>
-          </div>
-
-
-
-
-          <div className="cardComponent">
-            <h2>Salud de la mujer</h2>
-            <img src={icon} alt="" />
-            <div className="buttons_cards">
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconAbout} alt="" />
-              </motion.a>
-
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconEdit} alt="" />
-              </motion.a>
-
-              <motion.button
-                style={{
-                  border: "none",
-                  margin: "0",
-                  padding: "0",
-                  backgroundColor: "transparent",
-                }}
-                className="box"
-                whileHover={{ scale: 1.2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <DeleteButton/>
-              </motion.button>
-            </div>
-          </div>
+          </div> */}
 
           
         </div>
@@ -184,4 +189,4 @@ const ListCourses = () => {
   );
 };
 
-export default ListCourses;
+

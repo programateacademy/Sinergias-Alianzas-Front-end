@@ -9,7 +9,7 @@ import Material from "../AddComponent/assest/Rectangle29.png";
 import Guardar from "../AddComponent/assest/guardar.png"
 import Cancelar from "../AddComponent/assest/cancelar.png"
 import ImgComponent from "../AddComponent/assest/libro.png"
-import pencil from "./assest/editar.png"
+import pencil from "./assest/lapiz.png"
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
@@ -28,9 +28,10 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
-              <Input className="urlImagen"   value="" type="text" /> 
-             <button className="btnEdit"><img className="edit" src={pencil} alt="" /></button> 
+              <Input className="urlImagen" value="" type="text"/>  <button className="btnEdit"><img className="edit" src={pencil} alt="" /></button>  
              </div>
+             {/* <Input type="text" class="buscar" />
+        <Input type="image" src={pencil} class="image_buscar"></Input> */}
             </FormGroup>
 
             <FormGroup>

@@ -9,7 +9,7 @@ import { Spinner } from "reactstrap";
 
 const Home = () => {
   const { componentes, loading } = useSelector((state) => ({
-    ...state.componente,
+    ...state.componentes
   }));
 
   const dispatch = useDispatch();
@@ -23,9 +23,9 @@ const Home = () => {
   }
   return (
     <>
-      <div style={{ backgroundColor: "green" }}>Hola x2
-        <div style={{backgroundColor: "red"}}>
-          Hola{componentes &&
+      <div>
+        <div>
+          {componentes &&
             componentes.map((item, index) => 
               <>
                 <ListCourses key={index} {...item} />

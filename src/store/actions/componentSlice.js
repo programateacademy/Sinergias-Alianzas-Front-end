@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api";
 
+//Add new component
 export const addComponent = createAsyncThunk(
   "component/addComponent",
   async ({ updateComponentData, navigate, toast }, { rejectWithValue }) => {
@@ -15,6 +16,7 @@ export const addComponent = createAsyncThunk(
   }
 );
 
+//
 export const getComponents = createAsyncThunk(
   "component/getComponents",
   async (_, { rejectWithValue }) => {
@@ -53,7 +55,7 @@ const componentSlice = createSlice({
     },
     [getComponents.fulfilled]: (state, action) => {
       state.loading = false;
-      state.movies = action.payload;
+      state.componentes = action.payload;
     },
     [getComponents.rejected]: (state, action) => {
       state.loading = false;

@@ -4,9 +4,9 @@ import Formato from "./assest/Rectangle26.png";
 import Diagnostico from "./assest/Rectangle27.png";
 import Herramientas from "./assest/Rectangle28.png";
 import Material from "./assest/Rectangle29.png";
-import Guardar from "./assest/guardar.png"
-import Cancelar from "./assest/cancelar.png"
-import ImgComponent from "./assest/libro.png"
+import Guardar from "./assest/guardar.png";
+import Cancelar from "./assest/cancelar.png";
+import ImgComponent from "./assest/libro.png";
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 

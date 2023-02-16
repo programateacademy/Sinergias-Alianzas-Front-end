@@ -13,13 +13,10 @@ export default function ListCourses({
   const navigate = useNavigate();
 
 
-  function seeComp() {
-    navigate("/seeComponent");
+  function addComp() {
+    navigate("/addComponent");
   }
 
-  function editComp() {
-    navigate("/editComponent");
-  }
 
   return (
     <>
@@ -50,46 +47,6 @@ export default function ListCourses({
             <input type="text" placeholder=" Buscar" />
           </motion.button>
         </div>
-
-        {/* <div className="listCards">
-          <div className="cardComponent">
-            <h2>{compTitulo}</h2>
-            <img src={compImgPpal} alt="" style={{"height":"15vw"}}/>
-            <div className="buttons_cards">
-              <motion.a
-                onClick={seeComp}
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconAbout} alt="" />
-              </motion.a>
-              <motion.a
-                onClick={editComp}
-                whileHover={{ scale: 1.2 }}
-                onHoverStart={(e) => {}}
-                onHoverEnd={(e) => {}}
-              >
-                <img src={iconEdit} alt="" />
-              </motion.a>
-
-              <motion.button
-                style={{
-                  border: "none",
-                  margin: "0",
-                  padding: "0",
-                  backgroundColor: "transparent",
-                }}
-                className="box"
-                whileHover={{ scale: 1.2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <DeleteButton />
-              </motion.button>
-            </div>
-          </div>
-        </div> */}
-        
       </div>
     </>
   );

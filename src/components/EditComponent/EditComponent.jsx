@@ -9,7 +9,7 @@ import Material from "../AddComponent/assest/Rectangle29.png";
 import Guardar from "../AddComponent/assest/guardar.png"
 import Cancelar from "../AddComponent/assest/cancelar.png"
 import ImgComponent from "../AddComponent/assest/libro.png"
-import pencil from "./assest/lapiz.png"
+import pencil from "./assest/editar.png"
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 

@@ -24,6 +24,10 @@ const ListCourses = () => {
   };
 
 
+  function editComp (){
+    navigate("/editComponent")
+  };
+
   return (
     <>    
       <div className="containerTitle">
@@ -192,6 +196,7 @@ const ListCourses = () => {
 
               <motion.a
                 href="#"
+                onClick={editComp}
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
                 onHoverEnd={(e) => {}}
@@ -231,6 +236,7 @@ const ListCourses = () => {
 
               <motion.a
                 href="#"
+                onClick={editComp}
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
                 onHoverEnd={(e) => {}}

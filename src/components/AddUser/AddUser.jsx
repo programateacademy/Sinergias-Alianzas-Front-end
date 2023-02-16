@@ -1,7 +1,7 @@
 // Dependencias
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 // Funciones Redux
@@ -10,7 +10,7 @@ import { RESET, register } from "../../store/actions/auth/authSlice";
 
 // Componentes
 import PasswordInput from "../Layout/PasswordInput/PasswordInput";
-import Loader from '../Loader/Loader'
+import Loader from "../Loader/Loader";
 
 // Iconos
 import { RiUserAddFill } from "react-icons/ri";
@@ -62,10 +62,12 @@ const AddUser = () => {
     formData;
 
   //* Hooks Redux
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const {isLoading, isLoggedIn, isSuccess, message} = useSelector((state) => state.auth)
+  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
   //* Estado para validar la estructura de la contraseña
   /*
@@ -143,48 +145,52 @@ const AddUser = () => {
 
   //* Función para enviar el formulario
   const registerUser = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    //* Validación de los inputs 
+    //* Validación de los inputs
     if (!lastName || !firstName || !email || !password) {
-      return toast.error('Todos los campos son obligatorios')
+      return toast.error("Todos los campos son obligatorios");
     }
 
     if (password.length < 8) {
-      return toast.error('La contraseña debe ser de 8 caracteres.')
+      return toast.error("La contraseña debe ser de 8 caracteres.");
     }
-    
+
     if (!validateEmail(email)) {
-      return toast.error('Ingresa un correo válido')
+      return toast.error("Ingresa un correo válido");
     }
-    
+
     if (password !== confirmPassword) {
-      return toast.error('La contraseña no coincide')
+      return toast.error("La contraseña no coincide");
     }
 
     const userData = {
-      firstName, secondName, lastName, email, password
-    }
+      firstName,
+      secondName,
+      lastName,
+      email,
+      password,
+    };
 
     // console.log(userData)
 
-    await dispatch(register(userData))
+    await dispatch(register(userData));
   };
 
   useEffect(() => {
-    if(isSuccess && isLoggedIn) {
-      navigate('/profile')
+    if (isSuccess && isLoggedIn) {
+      navigate("/profile");
     }
 
-    dispatch(RESET())
+    dispatch(RESET());
 
-    toggleModal()
-  }, [isLoggedIn, isSuccess, dispatch, navigate])
+    toggleModal();
+  }, [isLoggedIn, isSuccess, dispatch, navigate]);
 
   return (
     <>
       <div className="adduser-button">
-        {isLoading && <Loader/>}
+        {isLoading && <Loader />}
         <div className="icon_container">
           <RiUserAddFill />
         </div>
@@ -260,7 +266,7 @@ const AddUser = () => {
                 onChange={onInputChange}
                 onPaste={(e) => {
                   e.preventDefault();
-                  toast.error('Por favor, escribe la contraseña.')
+                  toast.error("Por favor, escribe la contraseña.");
                   return false;
                 }}
               />

@@ -26,7 +26,6 @@ import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/seeComponent";
 
-
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
 
@@ -117,12 +116,11 @@ function App() {
           path="/seeComponent"
           element={
             <Layout>
-              <SeeComponent/>
+              <SeeComponent />
             </Layout>
           }
-        />        
+        />
       </Routes>
-      
     </BrowserRouter>
   );
 }

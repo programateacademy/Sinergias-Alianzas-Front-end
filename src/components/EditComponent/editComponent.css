@@ -81,7 +81,7 @@
   margin: 0 auto;
   border: none;
 }
-.form2 .form2Images {
+.form2 .form2Images2 {
   background: rgba(105, 211, 138, 0.5);
   border: none;
 }
@@ -90,7 +90,7 @@
   width: 60vw;
   margin: 0 auto;
 }
-.Objetivos .formObj {
+.Objetivos .formObj2 {
   width: 60vw;
   margin: 0 auto;
   background: rgba(105, 211, 138, 0.5);
@@ -103,7 +103,7 @@
   color: #000;
 }
 
-.lineasTrabajo .urlImagen {
+.lineasTrabajo .urlImagen2 {
   background: rgba(105, 211, 138, 0.5);
   border-radius: 25px;
   border: none;
@@ -148,7 +148,7 @@ label.image1.form-label {
   color: #000;
 }
 
-.containerRecursos .recursosForm {
+.containerRecursos .recursosForm2 {
   border: none;
   background: rgba(105, 211, 138, 0.5);
   border-radius: 15px;
@@ -222,7 +222,7 @@ label.image1.form-label {
     justify-content: center;
   }
 
-  .form1 .urlImagen  {
+  .form1 .urlImagen2  {
     background: rgba(105, 211, 138, 0.5);
     border: none;
     border-radius: 25px;
@@ -236,7 +236,7 @@ label.image1.form-label {
     font-size: 1vw;
   }
 
-  .form2 .form2Images {
+  .form2 .form2Images2 {
     width: 19vw;
     font-size: 1vw;
     margin: 5px;
@@ -267,7 +267,7 @@ label.image1.form-label {
     display: flex;
     margin: auto;
   }
-  .Objetivos .formObj {
+  .Objetivos .formObj2 {
     width: 18vw;
     height: 60px;
     font-size: 16px;
@@ -309,11 +309,11 @@ label.image1.form-label {
     width: 18vw;
     margin: 0 auto;
   }
-  .containerRecursos .recursosForm {
+  .containerRecursos .recursosForm2 {
     font-size: 16px;
   }
 
-  .containerRecursos .recursosForm {
+  .containerRecursos .recursosForm2 {
     width: 12vw;
     height: 4vh;
     font-size: 1vw;

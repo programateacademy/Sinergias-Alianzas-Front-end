@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComponents } from "../../store/actions/componentSlice";
 
 import ListCourses from "../../components/ListCourses/ListCourses";
-
+import CardComponent from "../../components/CardComponent/CardComponent";
 import { Spinner } from "reactstrap";
 
 const Home = () => {
@@ -25,12 +25,14 @@ const Home = () => {
     <>
       <div>
         <div>
+          <ListCourses>
           {componentes &&
             componentes.map((item, index) => 
               <>
-                <ListCourses key={index} {...item} />
+                <CardComponent key={index} {...item} />
               </>
             )}
+          </ListCourses>
         </div>
       </div>
     </>

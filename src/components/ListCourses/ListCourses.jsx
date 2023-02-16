@@ -1,20 +1,14 @@
 import "./ListCourses.css";
 import { motion } from "framer-motion"; //Animation library
 
-import icon from "./Assets/icon.png";
-import iconAbout from "./Assets/about.png";
-import iconEdit from "./Assets/icono editar.png";
+
 import searchButton from "./Assets/searchButton.png";
 import uploadButton from "./Assets/uploadButton.png";
-import DeleteButton from "./modal";
 
 import { useNavigate, Link } from "react-router-dom";
 
 
 export default function ListCourses({
-  compTitulo,
-  compImgPpal,
-  _id,
 }){
   const navigate = useNavigate();
     
@@ -22,9 +16,6 @@ export default function ListCourses({
     navigate("/addComponent")
   };
 
-  function seeComp () {
-    navigate("/seeComponent")
-  };
 
 
   return (
@@ -57,7 +48,7 @@ export default function ListCourses({
           </motion.button>
         </div>
 
-        <div className="listCards">
+        {/* <div className="listCards">
           <div className="cardComponent">
             <h2>{compTitulo}</h2>
             <img src={compImgPpal} alt="" style={{"height":"15vw"}}/>
@@ -95,7 +86,8 @@ export default function ListCourses({
               </motion.button>
             </div>
           </div>
-        </div>
+        </div> */}
+        
       </div>
     </>
   );

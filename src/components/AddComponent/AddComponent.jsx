@@ -154,6 +154,7 @@ const AddComponent = () => {
 
       <div className="containerDashboard1">
         <h2 className="Titulo2">Información del Componente</h2>
+        <img className="imgComponent" src={ImgComponent} alt="" />
         <Form onSubmit={handleSubmit} className="containerAdd">
           <Form className="form1">
             <FormGroup>
@@ -409,11 +410,21 @@ const AddComponent = () => {
             </FormGroup>
           </Form>
         </Form>
-        <button onClick={handleSubmit}>Guardar</button>
-
-        <NavLink to="/home" className="col-12">
-          <button>Cancelar</button>
-        </NavLink>
+        <div className="botones">
+          <button>
+            <img
+              className="iconos"
+              onClick={handleSubmit}
+              src={Guardar}
+              alt=""
+            />
+          </button>
+          <button>
+            <NavLink to="/home" className="col-12">
+              <img className="iconos" src={Cancelar} alt="" />
+            </NavLink>
+          </button>
+        </div>
       </div>
     </>
   );

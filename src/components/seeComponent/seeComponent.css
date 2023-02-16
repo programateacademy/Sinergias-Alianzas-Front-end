@@ -1,3 +1,125 @@
-*{
-    text-align: center;
+.containerIcon {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.containerIcon img {
+  width: 100px;
+}
+.containerSeeComponent {
+  border: 5px solid green;
+  margin: 60px 5vw 40px 5vw;
+  padding: 10vw 10vw 5vw 10vw;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.containerSeeComponent h1 {
+  font-weight: 700;
+  font-size: 6vw;
+  text-align: center;
+}
+.containerSeeComponent p {
+  width: 90%;
+  text-align: justify;
+}
+.containerSeeComponent h3 {
+  font-size: 5vw;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 15px;
+}
+iframe.video {
+  width: 100%;
+  height: 200px;
+}
+.containerImages img {
+  margin: 5px;
+}
+.objetive {
+  width: 70vw;
+  height: 200px;
+  border: 2px dashed green;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerLinesWork {
+  width: 100%;
+}
+.lineWork {
+  background-color: green;
+  width: 100%;
+  height: 200px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.containerResources {
+  display: flex;
+  flex-direction: column;
+}
+.containerResources img {
+  width: 40vw;
+}
+@media screen and (min-width: 570px) {
+  .containerIcon {
+    justify-content: left;
+  }
+  .containerIcon img {
+    width: 120px;
+    margin-left: 10vw;
+  }
+  .containerSeeComponent {
+    padding: 10vw 10vw 5vw 10vw;
+  }
+  .containerSeeComponent h1 {
+    font-size: 2.5vw;
+  }
+  .containerSeeComponent h3 {
+    font-size: 2vw;
+  }
+  iframe.video {
+    height: 300px;
+  }
+  .containerImages {
+    display: flex;
+    margin-bottom: 5vh;
+  }
+  .containerImages img {
+    width: 25vw;
+  }
+  .containerObjetives {
+    display: flex;
+    margin-bottom: 5vh;
+  }
+  .objetive {
+    width: 20vw;
+  }
+  .containerLinesWork {
+    display: flex;
+    margin-bottom: 5vh;
+  }
+  .containerResources {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .containerResources img {
+    width: 10vw;
+  }
+}
+@media screen and (min-width: 770px) {
+  .containerSeeComponent {
+    padding-top: 50px;
+  }
+  iframe.video {
+    height: 500px;
+  }
 }

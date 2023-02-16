@@ -1,0 +1,13 @@
+.tableinfo2 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.tableinfo2 Button {
+  background-color: rgb(244, 248, 245);
+  border: none;
+}
+.buttonsModal{
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,10 +1,9 @@
-/* !Importar letras y colores */
 .containerTitle {
   position: absolute;
   width: 100vw;  
   display: flex;
-  justify-content: center;
-  margin-top: -5px;
+  justify-content: center;  
+  margin-top: 16px;
 }
 .containerTitle h1 {
   background-color: white;
@@ -15,7 +14,7 @@
 .containerDashboard {
   border: 5px solid green;
   margin: 40px 5vw 40px 5vw;
-  padding: 5vw 10vw;
+  padding: 5vw 12vw;
   border-radius: 15px;  
 }
 .container_buttons {
@@ -78,7 +77,7 @@ button.box1 input::placeholder{
   box-shadow: 3px 6px 29px 0px rgba(153, 153, 153, 1);
   border-radius: 15px;
   padding: 15px 0 15px 0;
-  margin-top: 15px;
+  margin-top: 40px;
 }
 .buttons_cards {
   display: flex;
@@ -89,36 +88,21 @@ button.box1 input::placeholder{
   margin: 0 8px;
 }
 @media screen and (min-width:570px) {
+  .containerTitle {  
+    margin-top: 1px;    
+  }
   .containerTitle h1{
     width: 30vw;
-    font-size: 1.5vw;
+    padding: 5px;
+    font-size: 2vw;
   }
   .containerDashboard {
     padding: 1.5vw 5vw;
-    margin:  3vw 0 ;
+    margin:  3vw 8vw;
   }
   .container_buttons {
     flex-direction: row;
-  }
-  .container_buttons button {
-    width: 14vw;
-    font-size: 1vw;
-    padding-right: 2vw;
-  }
-  button.box {
-    margin: 2vw;
-  }
-  button.box input{
-    font-size: 1vw;    
-  }
-  button.box input::placeholder{
-    color: white;
-    font-size: 1vw;  
-  }
-  .container_buttons img {
-    width: 2vw;
-    margin-left: -0.5vw;
-  }
+  }  
   .cardComponent {
     width: 22vw;
   }

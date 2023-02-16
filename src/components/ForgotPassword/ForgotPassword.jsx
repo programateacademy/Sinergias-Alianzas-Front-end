@@ -1,5 +1,5 @@
 // Dependencias
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 // Iconos
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -23,11 +23,11 @@ const ForgotPassword = () => {
   -       ESTADOS DEL COMPONENTE
   - =================================
   */
- 
+
   //* Estado de la ventana modal
   const [modal, setModal] = useState(false);
 
-  const [email, setEmail] = useState()
+  const [email, setEmail] = useState();
 
   /* 
   - =================================
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
 
   //* Función para capturar el valor del input
   const onInputChange = (e) => {
-    setEmail(e.target.value)
+    setEmail(e.target.value);
   };
 
   //* Función para enviar el formulario
@@ -54,7 +54,9 @@ const ForgotPassword = () => {
         <div className="icon_container">
           <RiLockPasswordFill />
         </div>
-        <Button className="recoverPassword" onClick={toggleModal}>Recuperar Contraseña</Button>
+        <Button className="recoverPassword" onClick={toggleModal}>
+          Recuperar Contraseña
+        </Button>
       </div>
 
       {/* Ventana Modal */}

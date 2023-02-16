@@ -1,0 +1,55 @@
+import React from "react";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  CardText,
+} from "reactstrap";
+
+import { FaTrash } from "react-icons/fa";
+class ModalExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Button onClick={this.toggle}>
+          {this.props.buttonLabel}
+          <FaTrash color="red" size={15} />
+        </Button>
+
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+        >
+          <ModalHeader toggle={this.toggle}>Eliminar perfil</ModalHeader>
+          <ModalBody>
+            <CardText> Esta seguro de Eliminar este perfil?</CardText>
+            <div className="buttonsModal">
+              <Button color="success">Confirmar</Button>
+              <Button color="danger">Eliminar</Button>
+            </div>
+          </ModalBody>
+          <ModalFooter></ModalFooter>
+        </Modal>
+      </div>
+    );
+  }
+}
+export default ModalExample;

@@ -11,15 +11,18 @@ import { useNavigate, Link } from "react-router-dom";
 export default function ListCourses({
 }){
   const navigate = useNavigate();
-    
-  function addComp () {
-    navigate("/addComponent")
-  };
 
 
+  function seeComp() {
+    navigate("/seeComponent");
+  }
+
+  function editComp() {
+    navigate("/editComponent");
+  }
 
   return (
-    <>    
+    <>
       <div className="containerTitle">
         <h1>DASHBOARD COMPONENTES</h1>
       </div>
@@ -54,7 +57,6 @@ export default function ListCourses({
             <img src={compImgPpal} alt="" style={{"height":"15vw"}}/>
             <div className="buttons_cards">
               <motion.a
-                href="#"
                 onClick={seeComp}
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
@@ -63,7 +65,7 @@ export default function ListCourses({
                 <img src={iconAbout} alt="" />
               </motion.a>
               <motion.a
-                href="#"
+                onClick={editComp}
                 whileHover={{ scale: 1.2 }}
                 onHoverStart={(e) => {}}
                 onHoverEnd={(e) => {}}
@@ -82,7 +84,7 @@ export default function ListCourses({
                 whileHover={{ scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <DeleteButton/>
+                <DeleteButton />
               </motion.button>
             </div>
           </div>

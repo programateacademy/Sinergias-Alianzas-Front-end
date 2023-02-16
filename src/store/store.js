@@ -2,12 +2,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // Importar archivo con el reducer
-import AuthReducer from "./actions/authSlice";
-import ComponentReducer from './actions/componentSlice'
+import authReducer from "./actions/auth/authSlice";
+import ComponentReducer from "./actions/componentSlice";
 
 export default configureStore({
   reducer: {
-    auth: AuthReducer,
-    componentes : ComponentReducer,
+    auth: authReducer,
+    componentes: ComponentReducer,
   },
 });

@@ -4,9 +4,6 @@ import { ToastContainer } from "react-toastify"; // Notificaciones en pantalla
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Manejo de rutas
 import { useDispatch } from "react-redux";
 
-// Reducer de usuario
-import { setUser } from "./store/actions/authSlice";
-
 // Componentes
 import Layout from "./components/Layout/Layout";
 import Verify from "./components/Verify/Verify";
@@ -28,16 +25,11 @@ import SeeComponent from "./components/seeComponent/seeComponent";
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
 
+// Credenciales
+import axios from "axios";
+axios.defaults.withCredentials = true
 
 function App() {
-  const dispatch = useDispatch();
-
-  const user = JSON.parse(localStorage.getItem("profile"));
-
-  useEffect(() => {
-    dispatch(setUser(user));
-  }, []);
-
   return (
     <BrowserRouter>
       {/* Notificaciones */}

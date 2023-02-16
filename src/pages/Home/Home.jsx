@@ -19,7 +19,6 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-
   function addComp() {
     navigate("/addComponent");
   }
@@ -62,10 +61,12 @@ const Home = () => {
             <input type="text" placeholder=" Buscar" />
           </motion.button>
         </div>
-        {componentes &&
-          componentes.map((item, index) => (
+        <div className="listCards">
+          {componentes &&
+            componentes.map((item, index) => (
               <CardComponent key={index} {...item} />
-          ))}
+            ))}
+        </div>
       </div>
     </>
   );

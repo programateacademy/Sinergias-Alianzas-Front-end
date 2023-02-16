@@ -18,46 +18,44 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
 
   return (
     <>
-      <div className="listCards">
-        <div className="cardComponent">
-          <h2>{compTitulo}</h2>
-          <img src={compImgPpal} alt="" style={{ height: "15vw" }} />
-          <div className="buttons_cards">
-            <motion.a
-              href="#"
-              onClick={seeComp}
-              whileHover={{ scale: 1.2 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
-              <img src={iconAbout} alt="" />
-            </motion.a>
-            <motion.a
-              href="#"
-              onClick={editComp}
-              whileHover={{ scale: 1.2 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
-              <img src={iconEdit} alt="" />
-            </motion.a>
+      <div className="cardComponent">
+        <h2>{compTitulo}</h2>
+        <img className="imageCard"  src={compImgPpal} alt="" /* style={{ height: "15vw" }} */ />
+        <div className="buttons_cards">
+          <motion.a
+            href="#"
+            onClick={seeComp}
+            whileHover={{ scale: 1.2 }}
+            onHoverStart={(e) => {}}
+            onHoverEnd={(e) => {}}
+          >
+            <img src={iconAbout} alt="" />
+          </motion.a>
+          <motion.a
+            href="#"
+            onClick={editComp}
+            whileHover={{ scale: 1.2 }}
+            onHoverStart={(e) => {}}
+            onHoverEnd={(e) => {}}
+          >
+            <img src={iconEdit} alt="" />
+          </motion.a>
 
-            <motion.button
-              style={{
-                border: "none",
-                margin: "0",
-                padding: "0",
-                backgroundColor: "transparent",
-              }}
-              className="box"
-              whileHover={{ scale: 1.2 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <DeleteButton />
-            </motion.button>
-          </div>
+          <motion.button
+            style={{
+              border: "none",
+              margin: "0",
+              padding: "0",
+              backgroundColor: "transparent",
+            }}
+            className="box"
+            whileHover={{ scale: 1.2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <DeleteButton />
+          </motion.button>
         </div>
       </div>
     </>
   );
-};
+}

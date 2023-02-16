@@ -63,9 +63,13 @@ button.box1 input::placeholder{
   margin: 3vh 0 3vh 0; 
   text-align: center;
 }
-.cardComponent img {
-  width: 60vw;
+.cardComponent img {   
   margin: auto;
+}
+.imageCard{
+  width: 50vw;
+  height: 250px;
+  margin-bottom: 20px;
 }
 .cardComponent h2 {
   padding: 5px;
@@ -80,6 +84,7 @@ button.box1 input::placeholder{
   margin-top: 40px;
 }
 .buttons_cards {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }

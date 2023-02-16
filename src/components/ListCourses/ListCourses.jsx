@@ -5,18 +5,16 @@ import { motion } from "framer-motion"; //Animation library
 import searchButton from "./Assets/searchButton.png";
 import uploadButton from "./Assets/uploadButton.png";
 
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ListCourses({
 }){
   const navigate = useNavigate();
-
-
+  
   function addComp() {
     navigate("/addComponent");
   }
-
 
   return (
     <>

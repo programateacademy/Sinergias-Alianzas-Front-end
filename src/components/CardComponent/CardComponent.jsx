@@ -20,7 +20,7 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
     <>
       <div className="cardComponent">
         <h2>{compTitulo}</h2>
-        <img className="imageCard"  src={compImgPpal} alt="" /* style={{ height: "15vw" }} */ />
+        <img className="imageCard"  src={compImgPpal} alt=""/>
         <div className="buttons_cards">
           <motion.a
             href="#"

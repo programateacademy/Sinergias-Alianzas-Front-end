@@ -68,9 +68,9 @@ const Home = () => {
         </div>
         <div className="listCards">
           {componentes &&
-            componentes.map((item, index) => 
+            componentes.map((item, index) => (
               <CardComponent key={index} {...item} />
-            )}
+            ))}
         </div>
       </div>
     </>

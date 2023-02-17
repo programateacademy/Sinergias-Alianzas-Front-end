@@ -8,6 +8,9 @@ import { motion } from "framer-motion"; //Animation library
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
 import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
 
+// Componentes
+import ListCourses from "../../components/ListCourses/ListCourses";
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import { useNavigate, Link } from "react-router-dom";
 import CardComponent from "../../components/CardComponent/CardComponent";
 import { Spinner } from "reactstrap";
@@ -32,6 +35,8 @@ const Home = () => {
   if (loading) {
     return <Spinner>Cargando</Spinner>;
   }
+  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  useRedirectLoggedOutUser("/");
   return (
     <>
       <div className="containerTitle">

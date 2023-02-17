@@ -16,7 +16,7 @@ export const addComponent = createAsyncThunk(
   }
 );
 
-//
+//components list
 export const getComponents = createAsyncThunk(
   "component/getComponents",
   async (_, { rejectWithValue }) => {
@@ -25,6 +25,20 @@ export const getComponents = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+//get component info
+export const getComponent = createAsyncThunk(
+  "component/getComponent",
+  async (id,{rejectWithValue}) => {
+    try{
+      const response = await api.getComponent(id);
+
+      return response.data;
+    }catch(error){
+      return rejectWithValue(error.message.data);
     }
   }
 );
@@ -58,6 +72,17 @@ const componentSlice = createSlice({
       state.componentes = action.payload;
     },
     [getComponents.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [getComponent.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getComponent.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.componentes = action.payload;
+    },
+    [getComponent.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

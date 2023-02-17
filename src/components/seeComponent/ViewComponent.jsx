@@ -1,39 +1,55 @@
-import React from "react";
+import React from 'react'
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import "./seeComponent.css";
+
 
 import Metodologia from "../../components/AddComponent/assest/Rectangle25.png";
 import Formato from "../../components/AddComponent/assest/Rectangle26.png";
 import Diagnostico from "../../components/AddComponent/assest/Rectangle27.png";
 import Herramientas from "../../components/AddComponent/assest/Rectangle28.png";
 import Material from "../../components/AddComponent/assest/Rectangle29.png";
+import { Link } from 'react-router-dom';
 
-const SeeComponent = () => {
+const ViewComponent = ({
+    compTitulo,
+    compImgPpal,
+    compDefinicion,
+    compVideo,
+    compDescripcion,
+    compImg1,
+    compImg2,
+    compImg3,
+    compObjetivo1,
+    compObjetivo2,
+    compObjetivo3,
+    compLineaTrabajo1,
+    compLineaTrabajo2,
+    recursosMetodologia,
+    recursosFormatos,
+    recursosDiagnosticos,
+    recursosHerramientas,
+    recursosMaterial,
+
+}) => {
   return (
     <>
       <div className="containerIcon">
         <img
           alt="Sample"
-          src="https://drive.google.com/uc?export=view&id=14Tz9-ZxgSU2uqwmYnSM6CuV3MFuj9QhA"
+          src={compImgPpal}
         />
       </div>
 
       <div className="containerSeeComponent">
-        <h1>SALUD DE LA MUJER</h1>
+        <h1>{compTitulo}</h1>
         <h3>Definición</h3>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam,
-          aut ipsam adipisci dignissimos ducimus explicabo error, quas sed fuga
-          illo doloremque iusto nesciunt quis maiores excepturi quia quibusdam
-          amet nam.compDescripcion Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Laboriosam, aut ipsam adipisci dignissimos ducimus
-          explicabo error, quas sed fuga illo doloremque iusto nesciunt quis
-          maiores excepturi quia quibusdam amet nam.
+          {compDefinicion}
         </p>
 
         <iframe
         className="video"          
-          src="https://www.youtube.com/embed/gt3qJ2adiyc"
+          src={compVideo}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -42,57 +58,47 @@ const SeeComponent = () => {
 
         <h3>Descripción del componente</h3>
         <p>
-          compDescripcion Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Laboriosam, aut ipsam adipisci dignissimos ducimus explicabo
-          error, quas sed fuga illo doloremque iusto nesciunt quis maiores
-          excepturi quia quibusdam amet nam.compDescripcion Lorem ipsum, dolor
-          sit amet consectetur adipisicing elit. Laboriosam, aut ipsam adipisci
-          dignissimos ducimus explicabo error, quas sed fuga illo doloremque
-          iusto nesciunt quis maiores excepturi quia quibusdam amet
-          nam.compDescripcion Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Laboriosam, aut ipsam adipisci dignissimos ducimus
-          explicabo error, quas sed fuga illo doloremque iusto nesciunt quis
-          maiores excepturi quia quibusdam amet nam.
+          {compDescripcion}
         </p>
 
         <div className="containerImages">
           <img
             width="100%"
             alt="Sample"
-            src="https://drive.google.com/uc?export=view&id=1zRjho9Crq8uAOXMH1iRxjQQBHz5HyQQo"
+            src={compImg1}
           />
           <img
             width="100%"
             alt="Sample"
-            src="https://drive.google.com/uc?export=view&id=1zRjho9Crq8uAOXMH1iRxjQQBHz5HyQQo"
+            src={compImg2}
           />
           <img
             width="100%"
             alt="Sample"
-            src="https://drive.google.com/uc?export=view&id=1zRjho9Crq8uAOXMH1iRxjQQBHz5HyQQo"
+            src={compImg3}
           />
         </div>
 
         <div className="containerObjetives">
           <div className="objetive">
-            <h5>Objetivo 1</h5>
+            <h5>{compObjetivo1}</h5>
           </div>
 
           <div className="objetive">
-            <h5>Objetivo 2</h5>
+            <h5>{compObjetivo2}</h5>
           </div>
 
           <div className="objetive">
-            <h5>Objetivo 3</h5>
+            <h5>{compObjetivo3}</h5>
           </div>
         </div>
 
         <div className="containerLinesWork">
           <div className="lineWork">
-            <h3>Linea de trabajo 1</h3>
+            <h3>{compLineaTrabajo1}</h3>
           </div>
           <div className="lineWork">
-            <h3>Linea de trabajo 2</h3>            
+            <h3>{compLineaTrabajo2}</h3>            
           </div>
         </div>
 
@@ -105,9 +111,14 @@ const SeeComponent = () => {
           <img alt="Sample" src={Herramientas} />
           <img alt="Sample" src={Material} />
         </div>
+        <Link to={'/home'}>
+        <button>
+          Volver
+        </button>
+        </Link>
       </div>
     </>
   );
 };
 
-export default SeeComponent;
+export default ViewComponent;

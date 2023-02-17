@@ -12,3 +12,6 @@ export const addComponent = (componentData) => API.post('/component/new', compon
 
 //Request to get the components
 export const getComponents = () => API.get('/component');
+
+//Request to get the component info
+export const getComponent = (id) => API.get(`/component/seeComponent/${id}`)

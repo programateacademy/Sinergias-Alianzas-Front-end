@@ -105,11 +105,11 @@ const ViewComponent = ({
         <h3>Recursos</h3>
 
         <div className="containerResources">
-          <img alt="Sample" src={Metodologia} />
-          <img alt="Sample" src={Formato} />
-          <img alt="Sample" src={Diagnostico} />
-          <img alt="Sample" src={Herramientas} />
-          <img alt="Sample" src={Material} />
+          <a target="_blank" href={recursosMetodologia}><img alt="Sample" src={Metodologia} /></a>
+          <a target="_blank" href={recursosFormatos}><img alt="Sample" src={Formato} /></a>
+          <a target="_blank" href={recursosDiagnosticos}><img alt="Sample" src={Diagnostico} /></a>
+          <a target="_blank" href={recursosHerramientas}><img alt="Sample" src={Herramientas} /></a>
+          <a target="_blank" href={recursosMaterial}><img alt="Sample" src={Material} /></a>
         </div>
         <Link to={'/home'}>
         <button>

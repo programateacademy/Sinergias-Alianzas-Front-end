@@ -184,7 +184,7 @@ const AddUser = () => {
 
     dispatch(RESET());
 
-    toggleModal();
+    // toggleModal();
   }, [isLoggedIn, isSuccess, dispatch, navigate]);
 
   return (

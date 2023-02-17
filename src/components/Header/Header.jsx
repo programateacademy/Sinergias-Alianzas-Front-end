@@ -1,6 +1,10 @@
 // Dependencias
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+// Funciones Redux
+import { RESET, logout } from "../../store/actions/auth/authSlice";
 
 // Motion
 import { motion } from "framer-motion";
@@ -20,12 +24,22 @@ const Header = () => {
   -    FUNCIONES DEL COMPONENTE
   - =================================
   */
+  //* Hooks Redux
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //* Función para regresar al dashboard desde el logo
-  const navigate = useNavigate();
-
   const goHome = () => {
     navigate("/home");
+  };
+
+  //* Función para cerrar sesión
+  const logoutUser = async () => {
+    dispatch(RESET());
+
+    await dispatch(logout());
+
+    navigate("/");
   };
 
   return (
@@ -63,13 +77,13 @@ const Header = () => {
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Link to={"/"} className="buttons_header-logout">
+              <button onClick={logoutUser} className="buttons_header-logout">
                 <div className="icon_container">
                   <MdLogout className="header_icon" />
                 </div>
 
                 <span>Salir</span>
-              </Link>
+              </button>
             </motion.li>
           </ul>
         </nav>

@@ -1,15 +1,28 @@
 // Dependencias
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+
+// Funciones Redux
+import { validateEmail } from "../../store/actions/auth/authService";
+import { RESET, login } from "../../store/actions/auth/authSlice";
 
 // Componentes
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
+import Loader from "../../components/Loader/Loader";
 
 // Estilos
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
 import "./login.css";
+
+// Estado inicial
+const initialState = {
+  email: "",
+  password: "",
+};
 
 const Login = () => {
   /* 
@@ -19,8 +32,16 @@ const Login = () => {
   */
 
   //* Estado del formulario
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState(initialState);
+  const { email, password } = formData;
+
+  //* Hooks Redux
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
   /* 
   - =================================
@@ -29,19 +50,52 @@ const Login = () => {
   */
 
   //* Función para capturar el valor del input
-  const onInputChange = () => {};
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
 
   //* Función para enviar el formulario
-  const handleSubmit = () => {};
+  const loginUser = async (e) => {
+    e.preventDefault();
+
+    //* Validación de los inputs
+    if (!email || !password) {
+      return toast.error("Todos los campos son obligatorios");
+    }
+
+    if (!validateEmail(email)) {
+      return toast.error("Ingresa un correo válido");
+    }
+
+    const userData = {
+      email,
+      password,
+    };
+
+    // console.log(userData)
+
+    await dispatch(login(userData));
+  };
+
+  useEffect(() => {
+    if (isSuccess && isLoggedIn) {
+      navigate("/home");
+    }
+
+    dispatch(RESET());
+  }, [isLoggedIn, isSuccess, dispatch, navigate]);
 
   return (
     <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>
+      {isLoading && <Loader />}
       <img src={Background} alt="" />
 
       <div className="containerLogin">
         <img src={LoginIlustration} alt="" />
 
-        <Form className="rowLogin">
+        <Form className="rowLogin" onSubmit={loginUser}>
           <div className="colLogin">
             <h1>Iniciar Sesión</h1>
             <FormGroup>
@@ -55,6 +109,7 @@ const Login = () => {
                 name="email"
                 placeholder="Correo"
                 type="email"
+                onChange={onInputChange}
                 required
               />
             </FormGroup>
@@ -71,7 +126,9 @@ const Login = () => {
                 id="password"
                 name="password"
                 placeholder="Contraseña"
+                onChange={onInputChange}
                 type="password"
+                required
               />
             </FormGroup>
           </div>
@@ -94,12 +151,7 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              <Link
-                to={"/home"}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <span>Ingresar</span>
-              </Link>
+              Ingresar
             </button>
           </div>
         </Form>

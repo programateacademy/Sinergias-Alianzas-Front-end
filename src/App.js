@@ -4,8 +4,8 @@ import { ToastContainer } from "react-toastify"; // Notificaciones en pantalla
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Manejo de rutas
 import { useDispatch } from "react-redux";
 
-// Reducer de usuario
-import { setUser } from "./store/actions/authSlice";
+// Funciones de Redux
+import { getLoginStatus } from "./store/actions/auth/authSlice";
 
 // Componentes
 import Layout from "./components/Layout/Layout";
@@ -29,14 +29,23 @@ import SeeComponent from "./components/seeComponent/SeeComponent";
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
 
+// Credenciales
+import axios from "axios";
+axios.defaults.withCredentials = true
+
 function App() {
+  /* 
+  - =================================
+  -    FUNCIONES DEL COMPONENTE
+  - =================================
+  */
+  //* Hooks Redux
   const dispatch = useDispatch();
-
-  const user = JSON.parse(localStorage.getItem("profile"));
-
+  
+  //* Determinar si el usuario inicio sesión o no
   useEffect(() => {
-    dispatch(setUser(user));
-  }, []);
+    dispatch(getLoginStatus())
+  }, [dispatch])
 
   return (
     <BrowserRouter>

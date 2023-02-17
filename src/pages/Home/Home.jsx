@@ -12,7 +12,12 @@ import { useNavigate, Link } from "react-router-dom";
 import CardComponent from "../../components/CardComponent/CardComponent";
 import { Spinner } from "reactstrap";
 
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+
 const Home = () => {
+  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  useRedirectLoggedOutUser("/");
+
   const { componentes, loading } = useSelector((state) => ({
     ...state.componentes,
   }));

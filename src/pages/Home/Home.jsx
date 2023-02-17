@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-<<<<<<< HEAD
 import { getComponents } from "../../store/actions/componentSlice";
 
 import "../../components/ListCourses/ListCourses.css";
@@ -69,18 +68,6 @@ const Home = () => {
             )}
         </div>
       </div>
-=======
-// Componentes
-import ListCourses from "../../components/ListCourses/ListCourses";
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
-
-const Home = () => {
-  //* Hook personalizado para redireccionar el usuario si la sesión expira
-  useRedirectLoggedOutUser("/");
-  return (
-    <>
-      <ListCourses />
->>>>>>> 90bf80900b7c237c94ae61f2b51db4a3a724a75a
     </>
   );
 };

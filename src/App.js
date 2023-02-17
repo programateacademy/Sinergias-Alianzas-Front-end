@@ -4,6 +4,9 @@ import { ToastContainer } from "react-toastify"; // Notificaciones en pantalla
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Manejo de rutas
 import { useDispatch } from "react-redux";
 
+// Funciones de Redux
+import { getLoginStatus } from "./store/actions/auth/authSlice";
+
 // Componentes
 import Layout from "./components/Layout/Layout";
 import Verify from "./components/Verify/Verify";
@@ -30,6 +33,19 @@ import axios from "axios";
 axios.defaults.withCredentials = true
 
 function App() {
+  /* 
+  - =================================
+  -    FUNCIONES DEL COMPONENTE
+  - =================================
+  */
+  //* Hooks Redux
+  const dispatch = useDispatch();
+  
+  //* Determinar si el usuario inicio sesión o no
+  useEffect(() => {
+    dispatch(getLoginStatus())
+  }, [dispatch])
+
   return (
     <BrowserRouter>
       {/* Notificaciones */}
@@ -91,7 +107,7 @@ function App() {
           path="/addComponent"
           element={
             <Layout>
-              <AddComponent/>
+              <AddComponent />
             </Layout>
           }
         />
@@ -99,12 +115,11 @@ function App() {
           path="/seeComponent"
           element={
             <Layout>
-              <SeeComponent/>
+              <SeeComponent />
             </Layout>
           }
         />
       </Routes>
-      
     </BrowserRouter>
   );
 }

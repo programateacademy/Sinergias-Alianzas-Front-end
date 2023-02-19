@@ -10,12 +10,15 @@ import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
 import Search from "../../components/Search/Search";
 import RowTableUsers from "../../components/RowTableUsers/RowTableUsers";
 import Pagination from "../../components/Pagination/Pagination";
+import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser'
 
 // Estilos
 import { Table } from "reactstrap";
 import "./Users.css";
 
 const Users = () => {
+  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  useRedirectLoggedOutUser("/");
   return (
     <>
       <div className="users-title">

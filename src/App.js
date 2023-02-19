@@ -9,7 +9,7 @@ import { getLoginStatus } from "./store/actions/auth/authSlice";
 
 // Componentes
 import Layout from "./components/Layout/Layout";
-import Verify from "./components/Verify/Verify";
+import Verify from "./pages/Verify/Verify";
 
 // Páginas
 import Login from "./pages/Login/Login";

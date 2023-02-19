@@ -55,11 +55,23 @@ const getLoginStatus = async () => {
   return response.data;
 };
 
+/*
+- =================================
+-       Perfil del usuario
+- =================================
+*/
+const getUser = async () => {
+  const response = await axios.get(API_URL + "getUser");
+
+  return response.data;
+};
+
 const authService = {
   register,
   login,
   logout,
   getLoginStatus,
+  getUser
 };
 
 export default authService;

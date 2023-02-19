@@ -104,6 +104,29 @@ export const getLoginStatus = createAsyncThunk(
   }
 );
 
+/*
+- =================================
+-   Perfil del usuario
+- =================================
+*/
+export const getUser = createAsyncThunk(
+  "auth/getUser",
+  async (_, thunkAPI) => {
+    try {
+      return await authService.getUser();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -194,12 +217,33 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      //* Perfil del Usuario
+      .addCase(getUser.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true
+        state.user = action.payload;
+      })
+      .addCase(getUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.payload)
       });
   },
 });
 
 export const { RESET } = authSlice.actions;
 
+//* Estado de la sesión (activa o inactiva)
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+
+//* Seleccionar usuario
+export const selectUser = (state) => state.auth.user;
 
 export default authSlice.reducer;

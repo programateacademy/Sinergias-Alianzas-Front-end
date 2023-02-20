@@ -1,23 +1,31 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { getComponents } from "../../store/actions/componentSlice";
 
+/* styles & images */
 import "../../components/ListCourses/ListCourses.css";
-import { motion } from "framer-motion"; //Animation library
+import { motion } from "framer-motion";
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
 import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
 
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import CardComponent from "../../components/CardComponent/CardComponent";
+
 import { Spinner } from "reactstrap";
 
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+
 const Home = () => {
+  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  useRedirectLoggedOutUser("/");
+
   const { componentes, loading } = useSelector((state) => ({
     ...state.componentes,
   }));
+  console.log(componentes);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //* React router dom use
 
   function addComp() {
     navigate("/addComponent");
@@ -61,6 +69,7 @@ const Home = () => {
             <input type="text" placeholder=" Buscar" />
           </motion.button>
         </div>
+
         <div className="listCards">
           {componentes &&
             componentes.map((item, index) => (

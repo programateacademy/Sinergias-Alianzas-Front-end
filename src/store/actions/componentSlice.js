@@ -35,7 +35,6 @@ export const getComponent = createAsyncThunk(
   async (id,{rejectWithValue}) => {
     try{
       const response = await api.getComponent(id);
-
       return response.data;
     }catch(error){
       return rejectWithValue(error.message.data);

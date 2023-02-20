@@ -18,12 +18,16 @@ import Home from "./pages/Home/Home";
 
 import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import LoginWithCode from './pages/Login/LoginWithCode'
-import Profile from './pages/Profile/Profile'
+import LoginWithCode from "./pages/Login/LoginWithCode";
+import Profile from "./pages/Profile/Profile";
+
+//Page components
+import AddComponent from "./components/AddComponent/AddComponent";
+import EditComponent from "./components/EditComponent/EditComponent";
+import SeeComponent from "./components/seeComponent/SeeComponent";
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
-
 
 function App() {
   const dispatch = useDispatch();
@@ -68,11 +72,17 @@ function App() {
         <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
 
         <Route path="/login-with-code/:email" element={<LoginWithCode />} />
-        
-        <Route path="/verify/:verificationToken" element={<Layout><Verify/></Layout>}/>
-        
-        {
-          /* 
+
+        <Route
+          path="/verify/:verificationToken"
+          element={
+            <Layout>
+              <Verify />
+            </Layout>
+          }
+        />
+
+        {/* 
             - =================================
             -     RUTAS MÓDULO COMPONENTES
             - =================================
@@ -89,20 +99,28 @@ function App() {
           path="/addComponent"
           element={
             <Layout>
-              <AddComponent/>
+              <AddComponent />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/editComponent"
+          element={
+            <Layout>
+              <EditComponent />
             </Layout>
           }
         />
         <Route
-          path="/seeComponent"
+          path="/seeComponent/:id"
           element={
             <Layout>
-              <SeeComponent/>
+              <SeeComponent />
             </Layout>
           }
         />
       </Routes>
-      
     </BrowserRouter>
   );
 }

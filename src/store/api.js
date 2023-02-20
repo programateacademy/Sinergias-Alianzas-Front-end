@@ -9,3 +9,9 @@ export const signIn = (formData) => API.post("/users/signin", formData);
 
 // Petición para ingresar toda la información del componente
 export const addComponent = (componentData) => API.post('/component/new', componentData);
+
+//Request to get the components
+export const getComponents = () => API.get('/component');
+
+//Request to get the component info
+export const getComponent = (id) => API.get(`/component/seeComponent/${id}`)

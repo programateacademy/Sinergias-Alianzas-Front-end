@@ -1,150 +1,130 @@
 .texttitle {
-    position: absolute;
-    width: 100vw;
-    top: 105px;  
-    display: flex;
-    justify-content: center;
+  position: absolute;
+  width: 100vw;
+  top: 105px;
+  display: flex;
+  justify-content: center;
 }
 .texttitle h1 {
-    background-color: white;
-    width: 50vw;
-    font-size: 5vw;
-    text-align: center;
+  background-color: white;
+  width: 50vw;
+  font-size: 5vw;
+  text-align: center;
 }
-
-.partForm{
-    border: 5px solid green;
-    margin: 110px 5vw 0 5vw;
-    padding: 5vw;
-    border-radius: 15px;
+.partForm {
+  border: 5px solid green;
+  margin: 110px 5vw 0 5vw;
+  padding: 5vw;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.book {
+  width: 78vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book img {
+  width: 50vw;
+}
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.info_label p {
+  padding: 0;
+  margin: 0;
+  color: #555555;
+}
+.info_label input {
+  border-radius: 20px;
+  background-color: #d6d6d6e0;
+  border: solid #54e9839c;
+}
+.pict_cont2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pict_cont2 p {
+  padding: 0;
+  margin: 0;
+  color: #868686;
+}
+.info_label2 input {
+  border-radius: 20px;
+  background-color: #d6d6d6e0;
+  border: solid #54e9839c;
+}
+.butadd {
+  margin-top: 20px;
+  width: 120px;
+  border-radius: 20px;
+  border: none;
+  background-color: #1e7c3c;
+  color: white;
+}
+.butadd:hover {
+  background-color: rgb(148, 247, 148);
+  color: black;
+}
+.container_last {
+  text-align: center;
+}
+.container_last h1 {
+  font-size: 20px;
+  margin: 20px 0;
+}
+.profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.profile h1 {
+  font-size: 15px;
+}
+.profile button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  background-color: #1e7c3c;
+  color: white;
+}
+.profile button:hover {
+  background-color: rgb(148, 247, 148);
+  color: black;
+}
+@media screen and (min-width: 570px) {
+  .texttitle {
+    top: 90px;
+  }
+  .texttitle h1 {
+    font-size: 4vw;
+  }
+  .pict_cont1 {
     display: flex;
-    flex-direction: column;
-}
-
-.book{
-    width: 78vw;
+  }
+  .book img {
+    width: 30vw;
+  }
+  .book {
+    width: 40vw;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.book img{
-    width: 50vw;
-    
-}
-.info{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.info_label{
-
-}
-.info_label p{
-    padding: 0;
-    margin: 0;
-    color: #555555;
-}
-.info_label input{
-    border-radius: 20px;
-    background-color: #d6d6d6e0;
-    border: solid #54e9839c;
-    
-
-}
-.pict_cont2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
-.pict_cont2 p{
-    padding: 0;
-    margin: 0;
-    color: #868686;
-}
-.info_label2 input{
-    border-radius: 20px;
-    background-color: #d6d6d6e0;
-    border: solid #54e9839c;
-
-}
-.butadd{
-    margin-top: 20px;
-    width: 120px;
-    border-radius: 20px;
-    border: none;
-    background-color: #1E7C3C;
-    color: white;
-}
-.butadd:hover{
-    background-color: rgb(148, 247, 148);
-    color: black;
-}
-.container_last{
-    text-align: center;
-
-}
-.container_last h1{
-    font-size: 20px;
-    margin: 20px 0;
-
-}
-.profile{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-}
-.profile h1{
-    font-size: 15px;
-}
-.profile button{
-    width: 35px ;
-    height: 35px;
-    border-radius: 50px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    border: none;
-    background-color: #1E7C3C;
-    color: white;
-}
-.profile button:hover{
-    background-color: rgb(148, 247, 148);
-    color: black;
-    
-}
-
-@media screen and (min-width:570px){
-    .texttitle{
-        top: 90px;
-    }
-    .texttitle h1{
-        font-size:4vw;
-    }
-    
-    .pict_cont1{
-        display: flex;
-        
-    }
-    .book img{
-        width: 30vw;
-        
-    }
-    .book{
-        width: 40vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .info_label input{
-        width: 35vw;
-    }
-    .info_label2 input{
-        width: 70vw;
-    
-    }
+  }
+  .info_label input {
+    width: 35vw;
+  }
+  .info_label2 input {
+    width: 70vw;
+  }
 }

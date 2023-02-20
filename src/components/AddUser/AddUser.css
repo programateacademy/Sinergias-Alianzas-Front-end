@@ -14,7 +14,6 @@
   text-decoration: none;
   background: #1e7c3c;
 }
-
 .adduser-button button {
   position: absolute;
   right: 10px; 
@@ -22,4 +21,7 @@
 button.newUser {
   background: transparent;
   border: none;
+}
+button.newUser:hover{
+  background-color: transparent;
 }

@@ -121,7 +121,10 @@ function App() {
             </Layout>
           }
         />
+
+        
         <Route
+          
           path="/seeComponent/:id"
           element={
             <Layout>

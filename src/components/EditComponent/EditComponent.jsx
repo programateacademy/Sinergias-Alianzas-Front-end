@@ -28,24 +28,24 @@ import {updateComponent} from "../../store/actions/componentSlice";
 const EditComponent = ({editComponent}) => {
 
   const initialState = {
-    compTitulo: "",
-    compImgPpal: "",
-    compDefinicion: "",
-    compVideo: "",
-    compDescripcion: "",
-    compImg1: "",
-    compImg2: "",
-    compImg3: "",
-    compObjetivo1: "",
-    compObjetivo2: "",
-    compObjetivo3: "",
-    compLineaTrabajo1: "",
-    compLineaTrabajo2: "",
-    recursosMetodologia: "",
-    recursosFormatos: "",
-    recursosDiagnosticos: "",
-    recursosHerramientas: "",
-    recursosMaterial: "",
+    compTitulo,
+    compImgPpal,
+    compDefinicion,
+    compVideo,
+    compDescripcion,
+    compImg1,
+    compImg2,
+    compImg3,
+    compObjetivo1,
+    compObjetivo2,
+    compObjetivo3,
+    compLineaTrabajo1,
+    compLineaTrabajo2,
+    recursosMetodologia,
+    recursosFormatos,
+    recursosDiagnosticos,
+    recursosHerramientas,
+    recursosMaterial,
   };
 
   // Estado para editar la tarea
@@ -83,7 +83,7 @@ const [editing, setEditing] = useState(false);
             <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text" />{" "}
+                <Input className="urlImagen2" value="" type="text" />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>

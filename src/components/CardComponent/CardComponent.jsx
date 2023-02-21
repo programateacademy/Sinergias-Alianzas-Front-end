@@ -18,7 +18,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { deleteComponent } from "../../store/actions/componentSlice";
 
-export default function CardComponent({ compTitulo, compImgPpal, _id }) {
+export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }) {
+
+  console.log({compColor})
+
   //! MODAL
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -35,11 +38,11 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
   const deleteFunction = (e) => {
     dispatch(deleteComponent(_id));     
     window.location.reload(true);
-  };  
-
-  function seeComp() {
+  }; 
+ /*  function seeComp() {
     navigate(`/component/seeComponent/${_id}`);
-  }
+  } */
+  
   function editComp() {
     navigate("/editComponent");
   }
@@ -47,7 +50,7 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
   return (
     <>
       <div className="cardComponent">
-        <h2>{compTitulo}</h2>
+        <h2 style={{backgroundColor:`${compColor}`}} >{compTitulo}</h2>
         <img className="imageCard" src={compImgPpal} alt="" />
         <div className="buttons_cards">
           <Link to={`/seeComponent/${_id}`}>

@@ -22,7 +22,7 @@ const SeeComponent = () => {
       dispatch(getComponent(id))
     }
   }, [id])
-
+ 
   return (
     <div>
       <ViewComponent {...componente}/>

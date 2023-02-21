@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getComponents } from "../../store/actions/componentSlice";
 
@@ -20,10 +20,25 @@ const Home = () => {
   //* Hook personalizado para redireccionar el usuario si la sesión expira
   useRedirectLoggedOutUser("/");
 
+  //Filtro
+  const [search, setSearch] = useState(""); //constante para el filtro
+
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
   }));
   console.log(componentes);
+
+  /*-----------FILTRAR Y BUSCAR----------- */
+  const searcher = (e) => {
+    setSearch(e.target.value);
+  };
+
+  //método de filtrado por nombre
+  const results = !search
+    ? componentes
+    : componentes.filter((dato) =>
+        dato.compTitulo.toLowerCase().includes(search.toLocaleLowerCase())
+      );
 
   const navigate = useNavigate(); //* React router dom use
 
@@ -66,21 +81,23 @@ const Home = () => {
           >
             <img src={searchButton} alt="" />
 
-            <input type="text" placeholder=" Buscar" />
+            <input
+              type="text"
+              placeholder=" Buscar"
+              value={search}
+              onChange={searcher}
+            />
           </motion.button>
         </div>
 
         <div className="listCards">
-          {componentes &&
-            componentes.map((item, index) => (
+          {results &&
+            results.map((item, index) => (
               <CardComponent key={index} {...item} />
             ))}
         </div>
-
-        
-      </div>      
+      </div>
     </>
   );
 };
-
 export default Home;

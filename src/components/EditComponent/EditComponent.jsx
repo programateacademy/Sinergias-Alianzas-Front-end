@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./editComponent.css";
 
 import metodologia from "../AddComponent/assest/Rectangle25.png";
@@ -13,62 +13,7 @@ import pencil from "./assest/editar.png";
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
-// Unifacion back y front
-// Dependencias
-import { toast } from "react-toastify";
-import { useNavigate, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-// Acciones de redux
-import {updateComponent} from "../../store/actions/componentSlice";
-
-
-
-
-const EditComponent = ({editComponent}) => {
-
-  const initialState = {
-    compTitulo,
-    compImgPpal,
-    compDefinicion,
-    compVideo,
-    compDescripcion,
-    compImg1,
-    compImg2,
-    compImg3,
-    compObjetivo1,
-    compObjetivo2,
-    compObjetivo3,
-    compLineaTrabajo1,
-    compLineaTrabajo2,
-    recursosMetodologia,
-    recursosFormatos,
-    recursosDiagnosticos,
-    recursosHerramientas,
-    recursosMaterial,
-  };
-
-  // Estado para editar la tarea
-const [editing, setEditing] = useState(false);
-
-// Estado para el valor del input
-  const [compTitulo,setcompTitulo] = useState(editComponent?.data);
-
-  // Se declara la constante para hacer uso del hook que dispara la acción del reducer
-  const dispatch = useDispatch();
-
-    // Función para el envío del formulario al actualizar la tarea
-    const onFormSubmit = (e) => {
-      // Previene el evento por defecto del elemento
-      e.preventDefault();
-  
-      // Permite leer el estado previo
-      setEditing((prevState) => !prevState);
-  
-      // Se dispara la acción del reducer para actualizar la tarea recibiendo el id y la nueva información
-      dispatch(updateTodo(todo._id, text));
-    };
-
+const EditComponent = () => {
   return (
     <>
       <div className="containerTitle1">
@@ -83,19 +28,17 @@ const [editing, setEditing] = useState(false);
             <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text" />
+                <Input className="urlImagen2" value="" type="text" />{" "}
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
               </div>
             </FormGroup>
 
-            <FormGroup
-            onSubmit={onFormSubmit}>
+            <FormGroup>
               <Label className="labels">Titulo Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text"
-                 onChange={(e) => setcompTitulo(e.target.value)} />
+                <Input className="urlImagen2" value="" type="text" />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>

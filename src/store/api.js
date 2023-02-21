@@ -15,3 +15,6 @@ export const getComponents = () => API.get('/component');
 
 //Request to get the component info
 export const getComponent = (id) => API.get(`/component/seeComponent/${id}`)
+
+
+export const updateComponent =(id) => API.put(`/component/updateComponent/${id}`)

@@ -8,6 +8,6 @@ import ComponentReducer from "./actions/componentSlice";
 export default configureStore({
   reducer: {
     auth: authReducer,
-    componentes: ComponentReducer,
+    componente: ComponentReducer,
   },
 });

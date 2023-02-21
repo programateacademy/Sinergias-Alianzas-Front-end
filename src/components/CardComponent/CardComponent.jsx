@@ -57,9 +57,9 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
             whileHover={{ scale: 1.2 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            <DeleteButton />
           </motion.button>
-        </div>        
+          <DeleteButton />
+        </div>
       </div>
     </>
   );

@@ -21,7 +21,7 @@ const Home = () => {
   useRedirectLoggedOutUser("/");
 
   const { componentes, loading } = useSelector((state) => ({
-    ...state.componentes,
+    ...state.componente,
   }));
   console.log(componentes);
 

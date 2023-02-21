@@ -13,7 +13,7 @@ const SeeComponent = () => {
   //Dispatch action
   const dispatch = useDispatch()
 
-  const {componentes} = useSelector((state) => ({...state.componentes}))
+  const {componente} = useSelector((state) => ({...state.componente}))
 
   const {id} = useParams()
 
@@ -25,7 +25,7 @@ const SeeComponent = () => {
 
   return (
     <div>
-      <ViewComponent {...componentes}/>
+      <ViewComponent {...componente}/>
     </div>
   );
 };

@@ -45,7 +45,7 @@ const AddComponent = () => {
   const [componentData, setComponentData] = useState(initialState);
 
   // Constante para mostrar si hay errores al enviar la información
-  const { error } = useSelector((state) => ({ ...state.componentes }));
+  const { error } = useSelector((state) => ({ ...state.componente }));
 
   //   Se destructura la información del usuario que ingresó al sistema
   const { user } = useSelector((state) => ({ ...state.auth }));

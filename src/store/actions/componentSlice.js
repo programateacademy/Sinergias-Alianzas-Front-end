@@ -61,13 +61,11 @@ export const updateComponent = (id, data) => async (dispatch) => {
 //! Working delete
 export const deleteComponent = (id, data) => async (dispatch) => {
   try {
-    
     const res = await api.deleteComponent(id);
-     return response.data
-    
+     return response.data    
     dispatch({ type: deleteComponent, payload: res.data });
   } catch (error) {    
-    console.log("Error al editar el componente", error.message);
+    console.log("Error al eliminar el componente", error.message);
   }
 };
 
@@ -80,6 +78,7 @@ export const deleteComponent = (id, data) => async (dispatch) => {
 
 const componentSlice = createSlice({
   name: "componente",
+  
   initialState: {
     componente: {},
     componentes: [],

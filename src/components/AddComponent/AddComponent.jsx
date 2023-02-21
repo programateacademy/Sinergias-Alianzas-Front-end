@@ -83,7 +83,7 @@ const AddComponent = () => {
     recursosMaterial,
   } = componentData;
 
-  //   Función para el envío del formulario
+  //   Función para validación en el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     if (

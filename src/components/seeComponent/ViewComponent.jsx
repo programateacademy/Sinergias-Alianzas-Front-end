@@ -7,7 +7,7 @@ import Formato from "../../components/AddComponent/assest/Rectangle26.png";
 import Diagnostico from "../../components/AddComponent/assest/Rectangle27.png";
 import Herramientas from "../../components/AddComponent/assest/Rectangle28.png";
 import Material from "../../components/AddComponent/assest/Rectangle29.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ViewComponent = ({
   compTitulo,
@@ -44,9 +44,9 @@ const ViewComponent = ({
           className="video"
           src={compVideo}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
+          allowFullScreen
         />
 
         <h3>Descripción del componente</h3>
@@ -102,9 +102,9 @@ const ViewComponent = ({
             <img alt="Sample" src={Material} />
           </a>
         </div>
-        {/* <Link to={"/home"}>
+        {/*<NavLink to="/home">
           <button>Volver</button>
-        </Link> */}
+        </NavLink> */}
       </div>
     </>
   );

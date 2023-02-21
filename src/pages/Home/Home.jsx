@@ -19,7 +19,7 @@ const Home = () => {
   useRedirectLoggedOutUser("/");
 
   const { componentes, loading } = useSelector((state) => ({
-    ...state.componentes,
+    ...state.componente,
   }));
 
   const navigate = useNavigate();

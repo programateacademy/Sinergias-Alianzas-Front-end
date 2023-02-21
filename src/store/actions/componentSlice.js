@@ -67,7 +67,7 @@ export const updateComponent = (id, data) => async (dispatch) => {
 
 
 const componentSlice = createSlice({
-  name: "componentes",
+  name: "componente",
   initialState: {
     componente: {},
     componentes: [],
@@ -103,7 +103,7 @@ const componentSlice = createSlice({
     },
     [getComponent.fulfilled]: (state, action) => {
       state.loading = false;
-      state.componentes = action.payload;
+      state.componente = action.payload;
     },
     [getComponent.rejected]: (state, action) => {
       state.loading = false;

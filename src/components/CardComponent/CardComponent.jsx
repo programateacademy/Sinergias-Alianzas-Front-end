@@ -6,7 +6,10 @@ import iconEdit from "../ListCourses/Assets/icono editar.png";
 import DeleteButton from "../ListCourses/modal";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function CardComponent({ compTitulo, compImgPpal, _id }) {
+import React, { useState } from "react";
+
+export default function CardComponent({ compTitulo, compImgPpal, _id }) { 
+
   const navigate = useNavigate();
 
   function seeComp() {
@@ -20,19 +23,19 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
     <>
       <div className="cardComponent">
         <h2>{compTitulo}</h2>
-        <img className="imageCard"  src={compImgPpal} alt=""/>
+        <img className="imageCard" src={compImgPpal} alt="" />
         <div className="buttons_cards">
           <Link to={`/seeComponent/${_id}`}>
-          <motion.div
-            // onClick={seeComp}
-            whileHover={{ scale: 1.2 }}
-            onHoverStart={(e) => {}}
-            onHoverEnd={(e) => {}}
-          >
-            <img src={iconAbout} alt="" />
-          </motion.div>
+            <motion.div
+              // onClick={seeComp}
+              whileHover={{ scale: 1.2 }}
+              onHoverStart={(e) => {}}
+              onHoverEnd={(e) => {}}
+            >
+              <img src={iconAbout} alt="" />
+            </motion.div>
           </Link>
-          
+
           <motion.a
             href="#"
             onClick={editComp}
@@ -56,7 +59,7 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
           >
             <DeleteButton />
           </motion.button>
-        </div>
+        </div>        
       </div>
     </>
   );

@@ -35,7 +35,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getComponents());
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
     return <Spinner>Cargando</Spinner>;
@@ -76,7 +76,9 @@ const Home = () => {
               <CardComponent key={index} {...item} />
             ))}
         </div>
-      </div>
+
+        
+      </div>      
     </>
   );
 };

@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom'
 import "./seeComponent.css";
 
 //Redux actions
-import {getComponent} from "../../store/actions/componentSlice"
+import { getComponent } from "../../store/actions/componentSlice"
 
 import ViewComponent from './ViewComponent';
 
@@ -29,5 +29,4 @@ const SeeComponent = () => {
     </div>
   );
 };
-
 export default SeeComponent;

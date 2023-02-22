@@ -25,6 +25,7 @@ import Profile from "./pages/Profile/Profile";
 import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/SeeComponent";
+import UpdateComponent from "./components/EditComponent/UpdateComponent"
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
@@ -114,10 +115,10 @@ function App() {
         />
 
         <Route
-          path="/editComponent"
+          path="/editComponent/:id"
           element={
             <Layout>
-              <EditComponent />
+              <UpdateComponent/>
             </Layout>
           }
         />

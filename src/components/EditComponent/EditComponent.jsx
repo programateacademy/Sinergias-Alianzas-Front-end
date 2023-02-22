@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./editComponent.css";
 
 import metodologia from "../AddComponent/assest/Rectangle25.png";
@@ -13,7 +13,39 @@ import pencil from "./assest/editar.png";
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
-const EditComponent = () => {
+import { NavLink, useParams } from 'react-router-dom'
+
+
+const EditComponent = ({
+  compTitulo,
+  compImgPpal,
+  compDefinicion,
+  compVideo,
+  compDescripcion,
+  compImg1,
+  compImg2,
+  compImg3,
+  compObjetivo1,
+  compObjetivo2,
+  compObjetivo3,
+  compLineaTrabajo1,
+  compLineaTrabajo2,
+  recursosMetodologia,
+  recursosFormatos,
+  recursosDiagnosticos,
+  recursosHerramientas,
+  recursosMaterial,
+}) => {
+  // const [data, setData] =useState({})
+  // const {id} = useParams();
+
+  // console.log(id)
+  // useEffect(async ()=>{
+  //   const json = await fetch(`http://localhost:5000/component/seeComponent/${id}`).then(req=>
+  //     req.json()
+  //   )
+  //   console.log(json)
+  // },[])
   return (
     <>
       <div className="containerTitle1">
@@ -28,17 +60,18 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text" />{" "}
+                <Input className="urlImagen2" value={compImgPpal} type="url"
+                name="compImgPpal" />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
               </div>
             </FormGroup>
-
             <FormGroup>
               <Label className="labels">Titulo Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text" />
+                <Input className="urlImagen2" type="text"
+                name="compTitulo" value={compTitulo} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -48,7 +81,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="labels">Definición</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text" />
+                <Input className="urlImagen2" type="text"
+                name="compDefinicion" value={compDefinicion} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -60,7 +94,8 @@ const EditComponent = () => {
                 Url Video
               </Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text" />
+                <Input className="urlImagen2" name="compVideo"
+                type="text" value={compVideo} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -70,7 +105,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="labels">Descripción Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" name="text" type="textarea" />
+                <Input className="urlImagen2" name="compDescripcion"
+                type="textarea" value={compDescripcion} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -82,7 +118,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Imagen 1</Label>
               <div className="containerInput">
-                <Input className="form2Images2" type="text" />
+                <Input className="form2Images2" type="text"
+                name="compImg1" value={compImg1} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -92,7 +129,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Imagen 2</Label>
               <div className="containerInput">
-                <Input className="form2Images2" type="text" />
+                <Input className="form2Images2" type="text"
+                name="compImg2" value={compImg2} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -102,7 +140,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Imagen 3</Label>
               <div className="containerInput">
-                <Input className="form2Images2" type="text" />
+                <Input className="form2Images2" type="text"
+                name="compImg3" value={compImg3} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -114,7 +153,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Objetivo 1</Label>
               <div className="containerInput">
-                <Input className="formObj2" type="text" />
+                <Input className="formObj2" type="text"
+                name="compObjetivo1" value={compObjetivo1} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -124,7 +164,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Objetivo 2</Label>
               <div className="containerInput">
-                <Input className="formObj2" type="text" />
+                <Input className="formObj2" type="text"
+                name="compObjetivo2" value={compObjetivo2} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -134,7 +175,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Objetivo 3</Label>
               <div className="containerInput">
-                <Input className="formObj2" type="text" />
+                <Input className="formObj2" type="text"
+                name="compObjetivo3" value={compObjetivo3} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -149,8 +191,9 @@ const EditComponent = () => {
                 <Input
                   className="urlImagen2"
                   id="exampleText"
-                  name="text"
-                  type="textLine"
+                  name="compLineaTrabajo1"
+                  type="text"
+                  value={compLineaTrabajo1}
                 />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
@@ -164,8 +207,9 @@ const EditComponent = () => {
                 <Input
                   className="urlImagen2"
                   id="exampleText"
-                  name="text"
-                  type="textLine"
+                  name="compLineaTrabajo2"
+                  type="text"
+                  value={compLineaTrabajo2}
                 />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
@@ -180,7 +224,8 @@ const EditComponent = () => {
               <img className="Logos" src={metodologia} alt="" />
               <Label className="image1">Metodologia</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text" />
+                <Input className="recursosForm2" type="text"
+                name="recursosMetodologia" value={recursosMetodologia} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -192,7 +237,8 @@ const EditComponent = () => {
               <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text" />
+                <Input className="recursosForm2" type="text"
+                name="recursosFormatos" value={recursosFormatos} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -204,7 +250,8 @@ const EditComponent = () => {
               <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text" />
+                <Input className="recursosForm2" type="text"
+                name="recursosDiagnosticos" value={recursosDiagnosticos} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -218,7 +265,8 @@ const EditComponent = () => {
                 Herramientas y Manuales de Protocolo
               </Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text" />
+                <Input className="recursosForm2" type="text"
+                name="recursosHerramientas" value={recursosHerramientas} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -230,7 +278,8 @@ const EditComponent = () => {
               <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text" />
+                <Input className="recursosForm2" type="text"
+                name="recursosMaterial" value={recursosMaterial} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -244,7 +293,9 @@ const EditComponent = () => {
             <img className="iconos" src={Guardar} alt="" />
           </button>
           <button>
-            <img className="iconos" src={Cancelar} alt="" />
+          <NavLink to="/home" className="col-12">
+              <img className="iconos" src={Cancelar} alt="" />
+          </NavLink>
           </button>
         </div>
       </div>

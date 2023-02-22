@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getComponents } from "../../store/actions/componentSlice";
@@ -18,11 +18,28 @@ const Home = () => {
   //* Hook personalizado para redireccionar el usuario si la sesión expira
   useRedirectLoggedOutUser("/");
 
+  const [search, setSearch] = useState("");//constante para el filtro
+  const [order, setOrder] = useState("ASC");//constantes para ordenar 
+
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
   }));
 
   const navigate = useNavigate();
+
+  /*-----------FILTRAR Y BUSCAR----------- */
+  const searcher = (e) => {
+    setSearch(e.target.value);
+  };
+
+  //metodo de filtrado por nombre
+  const results = !search
+    ? componentes
+    : componentes.filter(
+      (dato) =>
+        dato.compTitulo.toLowerCase().includes(search.toLocaleLowerCase())
+    );
+
 
   function addComp() {
     navigate("/addComponent");
@@ -63,12 +80,23 @@ const Home = () => {
           >
             <img src={searchButton} alt="" />
 
-            <input type="text" placeholder=" Buscar" />
+            <input type="text" placeholder=" Buscar" value={search}
+              onChange={searcher} />
+          </motion.button>
+
+          <motion.button
+            className="box"
+            onClick={() => sorting("compTitulo")}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            Ordenar por nombre
           </motion.button>
         </div>
         <div className="listCards">
-          {componentes &&
-            componentes.map((item, index) => (
+          {results &&
+            results.map((item, index) => (
               <CardComponent key={index} {...item} />
             ))}
         </div>

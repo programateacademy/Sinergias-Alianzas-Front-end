@@ -45,7 +45,7 @@ const AddComponent = () => {
   const [componentData, setComponentData] = useState(initialState);
 
   // Constante para mostrar si hay errores al enviar la información
-  const { error } = useSelector((state) => ({ ...state.componentes }));
+  const { error } = useSelector((state) => ({ ...state.componente }));
 
   //   Se destructura la información del usuario que ingresó al sistema
   const { user } = useSelector((state) => ({ ...state.auth }));
@@ -64,6 +64,7 @@ const AddComponent = () => {
 
   const {
     compTitulo,
+    compColor,     
     compImgPpal,
     compDefinicion,
     compVideo,
@@ -83,11 +84,12 @@ const AddComponent = () => {
     recursosMaterial,
   } = componentData;
 
-  //   Función para el envío del formulario
+  //   Función para validación en el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
       compTitulo &&
+      compColor &&
       compImgPpal &&
       compDefinicion &&
       compVideo &&
@@ -126,6 +128,7 @@ const AddComponent = () => {
   const handleClear = () => {
     setComponentData({
       compTitulo: "",
+      compColor: "",
       compImgPpal: "",
       compDefinicion: "",
       compVideo: "",
@@ -156,7 +159,8 @@ const AddComponent = () => {
         <h2 className="Titulo2">Información del Componente</h2>
         <img className="imgComponent" src={ImgComponent} alt="" />
         <Form onSubmit={handleSubmit} className="containerAdd">
-          <Form className="form1">
+          <Form className="form1">               
+            
             <FormGroup>
               <Label className="labels">Imagen del componente</Label>
               <Input
@@ -166,6 +170,19 @@ const AddComponent = () => {
                 name="compImgPpal"
                 value={compImgPpal}
                 onChange={onInputChange}
+                required
+              />
+            </FormGroup>
+
+            
+            <FormGroup>
+              <Label className="labels">Color del componente</Label>              
+              <Input
+                className=""                
+                type="color"
+                name="compColor"
+                value={compColor}
+                onChange={onInputChange}                
                 required
               />
             </FormGroup>
@@ -408,6 +425,10 @@ const AddComponent = () => {
               />
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
+
+
+
+            
           </Form>
         </Form>
         <div className="botones">

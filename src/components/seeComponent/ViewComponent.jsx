@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardTitle, CardText } from "reactstrap";
+/* import { Card, CardBody, CardTitle, CardText } from "reactstrap"; */
 import "./seeComponent.css";
 
 import Metodologia from "../../components/AddComponent/assest/Rectangle25.png";
@@ -7,10 +7,12 @@ import Formato from "../../components/AddComponent/assest/Rectangle26.png";
 import Diagnostico from "../../components/AddComponent/assest/Rectangle27.png";
 import Herramientas from "../../components/AddComponent/assest/Rectangle28.png";
 import Material from "../../components/AddComponent/assest/Rectangle29.png";
-import { Link } from "react-router-dom";
+
+/* import { NavLink } from "react-router-dom"; */
 
 const ViewComponent = ({
   compTitulo,
+  compColor,
   compImgPpal,
   compDefinicion,
   compVideo,
@@ -35,8 +37,11 @@ const ViewComponent = ({
         <img alt="Sample" src={compImgPpal} />
       </div>
 
-      <div className="containerSeeComponent">
-        <h1>{compTitulo}</h1>
+      <div
+        className="containerSeeComponent"
+        style={{ border: `5px solid ${compColor}` }}
+      >
+        <h1 style={{ color: `${compColor}` }}>{compTitulo}</h1>
         <h3>Definición</h3>
         <p>{compDefinicion}</p>
 
@@ -44,9 +49,9 @@ const ViewComponent = ({
           className="video"
           src={compVideo}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
+          allowFullScreen
         />
 
         <h3>Descripción del componente</h3>
@@ -59,26 +64,35 @@ const ViewComponent = ({
         </div>
 
         <h3>Objetivos</h3>
-        <div className="containerObjetives">          
-          <div className="objetive">
+        <div className="containerObjetives">
+          <div
+            className="objetive"
+            style={{ border: `2px dashed ${compColor}` }}
+          >
             <p>{compObjetivo1}</p>
           </div>
 
-          <div className="objetive">
+          <div
+            className="objetive"
+            style={{ border: `2px dashed ${compColor}` }}
+          >
             <p>{compObjetivo2}</p>
           </div>
 
-          <div className="objetive">
+          <div
+            className="objetive"
+            style={{ border: `2px dashed ${compColor}` }}
+          >
             <p>{compObjetivo3}</p>
           </div>
         </div>
 
         <h3>Líneas de trabajo </h3>
-        <div className="containerLinesWork">          
-          <div className="lineWork">
+        <div className="containerLinesWork">
+          <div className="lineWork" style={{ backgroundColor: `${compColor}` }}>
             <h3>{compLineaTrabajo1}</h3>
           </div>
-          <div className="lineWork">
+          <div className="lineWork" style={{ backgroundColor: `${compColor}` }}>
             <h3>{compLineaTrabajo2}</h3>
           </div>
         </div>
@@ -101,10 +115,7 @@ const ViewComponent = ({
           <a target="_blank" href={recursosMaterial}>
             <img alt="Sample" src={Material} />
           </a>
-        </div>
-        {/* <Link to={"/home"}>
-          <button>Volver</button>
-        </Link> */}
+        </div>        
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api";
+import axios from "axios";
 
 //Add new component
 export const addComponent = createAsyncThunk(
@@ -42,8 +43,42 @@ export const getComponent = createAsyncThunk(
   }
 );
 
+
+
+export const updateComponent = (id, data) => async (dispatch) => {
+  try {
+    // Acceso a la ruta de la API que ejecuta la función de actualizar la tarea
+    const res = await api.updateComponent(id);
+     return response.data
+    // Se referencia el tipo de acción y los datos que recibe
+    dispatch({ type: updateComponent, payload: res.data });
+  } catch (error) {
+    // Se captura el error en caso de que no se pueda actualizar la tarea
+    console.log("Error al editar el componente", error.message);
+  }
+};
+
+//! Working delete
+export const deleteComponent = (id, data) => async (dispatch) => {
+  try {
+    const res = await api.deleteComponent(id);
+     return response.data    
+    dispatch({ type: deleteComponent, payload: res.data });
+  } catch (error) {    
+    console.log("Error al eliminar el componente", error.message);
+  }
+};
+
+
+
+
+
+
+
+
 const componentSlice = createSlice({
-  name: "componentes",
+  name: "componente",
+  
   initialState: {
     componente: {},
     componentes: [],
@@ -79,13 +114,33 @@ const componentSlice = createSlice({
     },
     [getComponent.fulfilled]: (state, action) => {
       state.loading = false;
-      state.componentes = action.payload;
+      state.componente = action.payload;
     },
     [getComponent.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },
+    [updateComponent.pending]: (state, action) => {
+  state.loading = true;
+},
+[updateComponent.fulfilled]: (state, action) => {
+  state.loading = false;
+  console.log("action", action)
+  const {
+    arg: {id},
+  } = action.meta
+
+  if(id) {
+    state.componentes = state.componentes.map((item) => item._id === id ? action.payload : item)
+  }
+},
+[updateComponent.rejected]: (state, action) => {
+  state.loading = false;
+  state.error = action.payload.message;
+},
   },
 });
+
+
 
 export default componentSlice.reducer;

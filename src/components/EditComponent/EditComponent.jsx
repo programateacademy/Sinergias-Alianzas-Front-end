@@ -23,51 +23,49 @@ import { useDispatch, useSelector } from "react-redux";
 import {updateComponent} from "../../store/actions/componentSlice";
 
 
+const EditComponent = ({
+  // compTitulo,
+  // compImgPpal,
+  // compDefinicion,
+  // compVideo,
+  // compDescripcion,
+  // compImg1,
+  // compImg2,
+  // compImg3,
+  // compObjetivo1,
+  // compObjetivo2,
+  // compObjetivo3,
+  // compLineaTrabajo1,
+  // compLineaTrabajo2,
+  // recursosMetodologia,
+  // recursosFormatos,
+  // recursosDiagnosticos,
+  // recursosHerramientas,
+  // recursosMaterial,
+}) =>{
 
+// const EditComponent = ({editComponent}) => {
 
-const EditComponent = ({editComponent}) => {
+//   // Estado para editar la tarea
+// const [editing, setEditing] = useState(false);
 
-  const initialState = {
-    compTitulo,
-    compImgPpal,
-    compDefinicion,
-    compVideo,
-    compDescripcion,
-    compImg1,
-    compImg2,
-    compImg3,
-    compObjetivo1,
-    compObjetivo2,
-    compObjetivo3,
-    compLineaTrabajo1,
-    compLineaTrabajo2,
-    recursosMetodologia,
-    recursosFormatos,
-    recursosDiagnosticos,
-    recursosHerramientas,
-    recursosMaterial,
-  };
+// // Estado para el valor del input
+//   const [compTitulo,setcompTitulo] = useState(editComponent?.data);
 
-  // Estado para editar la tarea
-const [editing, setEditing] = useState(false);
+//   // Se declara la constante para hacer uso del hook que dispara la acción del reducer
+//   const dispatch = useDispatch();
 
-// Estado para el valor del input
-  const [compTitulo,setcompTitulo] = useState(editComponent?.data);
-
-  // Se declara la constante para hacer uso del hook que dispara la acción del reducer
-  const dispatch = useDispatch();
-
-    // Función para el envío del formulario al actualizar la tarea
-    const onFormSubmit = (e) => {
-      // Previene el evento por defecto del elemento
-      e.preventDefault();
+//     // Función para el envío del formulario al actualizar la tarea
+//     const onFormSubmit = (e) => {
+//       // Previene el evento por defecto del elemento
+//       e.preventDefault();
   
-      // Permite leer el estado previo
-      setEditing((prevState) => !prevState);
+//       // Permite leer el estado previo
+//       setEditing((prevState) => !prevState);
   
-      // Se dispara la acción del reducer para actualizar la tarea recibiendo el id y la nueva información
-      dispatch(updateTodo(todo._id, text));
-    };
+//       // Se dispara la acción del reducer para actualizar la tarea recibiendo el id y la nueva información
+//       dispatch(updateTodo(todo._id, text));
+//     };
 
   return (
     <>
@@ -83,19 +81,18 @@ const [editing, setEditing] = useState(false);
             <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text" />
+                <Input className="urlImagen2"  type="text" style={{color:"black"}} >{compImgPpal}</Input>
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
               </div>
             </FormGroup>
 
-            <FormGroup
-            onSubmit={onFormSubmit}>
+            <FormGroup>
               <Label className="labels">Titulo Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value="" type="text"
-                 onChange={(e) => setcompTitulo(e.target.value)} />
+                <Input className="urlImagen2"  type="text"
+                 value={compTitulo} />
                 <button className="btnEdit">
                   <img className="edit" src={pencil} alt="" />
                 </button>
@@ -308,5 +305,5 @@ const [editing, setEditing] = useState(false);
     </>
   );
 };
-
+// }
 export default EditComponent;

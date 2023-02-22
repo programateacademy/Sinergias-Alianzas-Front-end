@@ -114,7 +114,7 @@ function App() {
         />
 
         <Route
-          path="/editComponent"
+          path="/editComponent/:id"
           element={
             <Layout>
               <EditComponent />

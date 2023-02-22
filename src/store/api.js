@@ -17,4 +17,4 @@ export const getComponents = () => API.get('/component');
 export const getComponent = (id) => API.get(`/component/seeComponent/${id}`)
 
 
-export const updateComponent =(id) => API.put(`/component/updateComponent/${id}`)
+export const updateComponent =(id) => API.put(`/component/editComponent/${id}`)

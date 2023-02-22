@@ -12,8 +12,9 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
   function seeComp() {
     navigate(`/component/seeComponent/${_id}`);
   }
-  function editComp() {
-    navigate("/editComponent");
+  
+  function updateComponent() {
+    navigate(`/component/updateComponent/${_id}`);
   }
 
   return (
@@ -32,16 +33,17 @@ export default function CardComponent({ compTitulo, compImgPpal, _id }) {
             <img src={iconAbout} alt="" />
           </motion.div>
           </Link>
-          
+          {/* <Link to={`/updateComponent/${_id}`}> */}
           <motion.a
             href="#"
-            onClick={editComp}
+            // onClick={updateComponent}
             whileHover={{ scale: 1.2 }}
             onHoverStart={(e) => {}}
             onHoverEnd={(e) => {}}
           >
             <img src={iconEdit} alt="" />
           </motion.a>
+          {/* </Link> */}
 
           <motion.button
             style={{

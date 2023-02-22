@@ -36,7 +36,6 @@ export const getComponent = createAsyncThunk(
   async (id,{rejectWithValue}) => {
     try{
       const response = await api.getComponent(id);
-
       return response.data;
     }catch(error){
       return rejectWithValue(error.message.data);
@@ -51,16 +50,27 @@ export const updateComponent = (id, data) => async (dispatch) => {
     // Acceso a la ruta de la API que ejecuta la función de actualizar la tarea
     const res = await api.updateComponent(id);
      return response.data
-
     // Se referencia el tipo de acción y los datos que recibe
     dispatch({ type: updateComponent, payload: res.data });
   } catch (error) {
     // Se captura el error en caso de que no se pueda actualizar la tarea
     console.log("Error al editar el componente", error.message);
   }
-
-
 };
+
+//! Working delete
+export const deleteComponent = (id, data) => async (dispatch) => {
+  try {
+    const res = await api.deleteComponent(id);
+     return response.data    
+    dispatch({ type: deleteComponent, payload: res.data });
+  } catch (error) {    
+    console.log("Error al eliminar el componente", error.message);
+  }
+};
+
+
+
 
 
 
@@ -68,6 +78,7 @@ export const updateComponent = (id, data) => async (dispatch) => {
 
 const componentSlice = createSlice({
   name: "componente",
+  
   initialState: {
     componente: {},
     componentes: [],

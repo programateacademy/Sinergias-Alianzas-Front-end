@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { getComponents } from "../../store/actions/componentSlice";
 
+/* styles & images */
 import "../../components/ListCourses/ListCourses.css";
-import { motion } from "framer-motion"; //Animation library
+import { motion } from "framer-motion";
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
 import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
 
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import CardComponent from "../../components/CardComponent/CardComponent";
+
 import { Spinner } from "reactstrap";
 
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
@@ -18,28 +20,27 @@ const Home = () => {
   //* Hook personalizado para redireccionar el usuario si la sesión expira
   useRedirectLoggedOutUser("/");
 
-  const [search, setSearch] = useState("");//constante para el filtro
-  const [order, setOrder] = useState("ASC");//constantes para ordenar 
+  //Filtro
+  const [search, setSearch] = useState(""); //constante para el filtro
 
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
   }));
-
-  const navigate = useNavigate();
+  console.log(componentes);
 
   /*-----------FILTRAR Y BUSCAR----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
   };
 
-  //metodo de filtrado por nombre
+  //método de filtrado por nombre
   const results = !search
     ? componentes
-    : componentes.filter(
-      (dato) =>
+    : componentes.filter((dato) =>
         dato.compTitulo.toLowerCase().includes(search.toLocaleLowerCase())
-    );
+      );
 
+  const navigate = useNavigate(); //* React router dom use
 
   function addComp() {
     navigate("/addComponent");
@@ -49,7 +50,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getComponents());
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
     return <Spinner>Cargando</Spinner>;
@@ -80,20 +81,15 @@ const Home = () => {
           >
             <img src={searchButton} alt="" />
 
-            <input type="text" placeholder=" Buscar" value={search}
-              onChange={searcher} />
-          </motion.button>
-
-          <motion.button
-            className="box"
-            onClick={() => sorting("compTitulo")}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            Ordenar por nombre
+            <input
+              type="text"
+              placeholder=" Buscar"
+              value={search}
+              onChange={searcher}
+            />
           </motion.button>
         </div>
+
         <div className="listCards">
           {results &&
             results.map((item, index) => (
@@ -104,5 +100,4 @@ const Home = () => {
     </>
   );
 };
-
 export default Home;

@@ -43,20 +43,20 @@ export const getComponent = createAsyncThunk(
   }
 );
 
-
-
-export const updateComponent = (id, data) => async (dispatch) => {
-  try {
-    // Acceso a la ruta de la API que ejecuta la función de actualizar la tarea
-    const res = await api.updateComponent(id);
-     return response.data
-    // Se referencia el tipo de acción y los datos que recibe
-    dispatch({ type: updateComponent, payload: res.data });
-  } catch (error) {
-    // Se captura el error en caso de que no se pueda actualizar la tarea
-    console.log("Error al editar el componente", error.message);
+export const updateComponent= createAsyncThunk(
+  "component/updateComponent",
+  async ({id, updateComponentData, navigate, toast }, { rejectWithValue }) => {
+    try {
+      const response = await api.updateComponent(id, updateComponentData);
+      toast.success("Componente editado satisfactoriamente");
+      navigate("/home");
+      return (response.data, res.data);
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-};
+);
+
 
 //! Working delete
 export const deleteComponent = (id, data) => async (dispatch) => {
@@ -121,23 +121,17 @@ const componentSlice = createSlice({
       state.error = action.payload.message;
     },
     [updateComponent.pending]: (state, action) => {
-  state.loading = true;
-},
-[updateComponent.fulfilled]: (state, action) => {
-  state.loading = false;
-  console.log("action", action)
-  const {
-    arg: {id},
-  } = action.meta
+      state.loading = true;
+    },
+    [updateComponent.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.componentes = [action.payload];
+    },
+    [updateComponent.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
 
-  if(id) {
-    state.componentes = state.componentes.map((item) => item._id === id ? action.payload : item)
-  }
-},
-[updateComponent.rejected]: (state, action) => {
-  state.loading = false;
-  state.error = action.payload.message;
-},
   },
 });
 

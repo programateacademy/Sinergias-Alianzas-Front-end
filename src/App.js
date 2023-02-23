@@ -24,10 +24,16 @@ import Profile from "./pages/Profile/Profile";
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
-import SeeComponent from "./components/seeComponent/seeComponent";
+import SeeComponent from "./components/seeComponent/SeeComponent";
+import UpdateComponent from "./components/EditComponent/UpdateComponent"
 
 // Estilos
 import "react-toastify/dist/ReactToastify.css";
+
+// Credenciales
+import axios from "axios";
+axios.defaults.withCredentials = true
+
 
 function App() {
   /* 
@@ -92,6 +98,8 @@ function App() {
             -     RUTAS MÓDULO COMPONENTES
             - =================================
           */}
+
+
         <Route
           path="/home"
           element={
@@ -100,6 +108,7 @@ function App() {
             </Layout>
           }
         />
+        
         <Route
           path="/addComponent"
           element={
@@ -110,15 +119,18 @@ function App() {
         />
 
         <Route
-          path="/editComponent"
+          path="/updateComponent/:id"
           element={
             <Layout>
-              <EditComponent />
+              <UpdateComponent/>
             </Layout>
           }
         />
+
+        
         <Route
-          path="/seeComponent"
+          
+          path="/seeComponent/:id"
           element={
             <Layout>
               <SeeComponent />

@@ -119,7 +119,7 @@ function App() {
         />
 
         <Route
-          path="/editComponent/:id"
+          path="/updateComponent/:id"
           element={
             <Layout>
               <UpdateComponent/>

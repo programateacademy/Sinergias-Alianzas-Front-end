@@ -62,7 +62,7 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
             <img src={iconAbout} alt="" />
           </motion.div>
           </Link>
-          <Link to={`/editComponent/${_id}`}>
+          <Link to={`/updateComponent/${_id}`}>
           <motion.a
             
             whileHover={{ scale: 1.2 }}

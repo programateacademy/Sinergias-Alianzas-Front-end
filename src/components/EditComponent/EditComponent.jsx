@@ -136,15 +136,12 @@ const EditComponent = (initialState = {
         <h2 className="Titulo2">Titulo del Componente</h2>
         <img className="imgComponent" src={ImgComponent} alt="" />
         <Form className="containerAdd" onSubmit={handleSubmit}>
-          <Form className="form1">
+          <div className="form1">
             <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" value={compImgPpal} type="url"
                   name="compImgPpal" onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
             <FormGroup>
@@ -152,9 +149,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
                   name="compTitulo" value={compTitulo} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -163,9 +157,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
                   name="compDefinicion" value={compDefinicion} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -176,9 +167,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="urlImagen2" name="compVideo"
                   type="text" value={compVideo} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -187,22 +175,16 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="urlImagen2" name="compDescripcion"
                   type="textarea" value={compDescripcion} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
-          <Form className="form2">
+          <div className="form2">
             <FormGroup>
               <Label className="image1">Imagen 1</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
                   name="compImg1" value={compImg1} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -211,9 +193,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
                   name="compImg2" value={compImg2} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -222,22 +201,16 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
                   name="compImg3" value={compImg3} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
-          <Form className="Objetivos">
+          <div className="Objetivos">
             <FormGroup>
               <Label className="image1">Objetivo 1</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
                   name="compObjetivo1" value={compObjetivo1} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -246,9 +219,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="formObj2" type="text"
                   name="compObjetivo2" value={compObjetivo2} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -257,14 +227,11 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="formObj2" type="text"
                   name="compObjetivo3" value={compObjetivo3} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
-          <Form className="lineasTrabajo">
+          <div className="lineasTrabajo">
             <FormGroup>
               <Label className="lineas">Lineas de Trabajo 1</Label>
               <div className="containerInput">
@@ -277,9 +244,6 @@ const EditComponent = (initialState = {
                   onChange={onInputChange}
                   required
                 />
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -295,24 +259,18 @@ const EditComponent = (initialState = {
                   onChange={onInputChange}
                   required
                 />
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
           <h2 className="principalComponente1">Recursos</h2>
-          <Form className="Recursos">
+          <div className="Recursos">
             <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
               <Label className="image1">Metodologia</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
                   name="recursosMetodologia" value={recursosMetodologia} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -323,9 +281,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
                   name="recursosFormatos" value={recursosFormatos} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -336,9 +291,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
                   name="recursosDiagnosticos" value={recursosDiagnosticos} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -351,9 +303,6 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
                   name="recursosHerramientas" value={recursosHerramientas} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -364,13 +313,10 @@ const EditComponent = (initialState = {
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
                   name="recursosMaterial" value={recursosMaterial} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
-          </Form>
+          </div>
         </Form>
         <div className="botones">
           <button>

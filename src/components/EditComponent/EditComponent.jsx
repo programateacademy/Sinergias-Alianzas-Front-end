@@ -125,7 +125,7 @@ const EditComponent = (initialState = {
     const { name, value } = e.target;
     setComponentData({ ...componentData, [name]: value });
   };
-
+  
   return (
     <>
       <div className="containerTitle1">
@@ -136,8 +136,8 @@ const EditComponent = (initialState = {
         <h2 className="Titulo2">Titulo del Componente</h2>
         <img className="imgComponent" src={ImgComponent} alt="" />
         <Form className="containerAdd" onSubmit={handleSubmit}>
-          <Form className="form1" onSubmit={handleSubmit}>
-            <FormGroup onSubmit={handleSubmit}>
+          <Form className="form1">
+            <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" value={compImgPpal} type="url"
@@ -147,7 +147,7 @@ const EditComponent = (initialState = {
                 </button>
               </div>
             </FormGroup>
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="labels">Titulo Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
@@ -158,7 +158,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="labels">Definición</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
@@ -169,7 +169,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="labels" for="exampleUrl">
                 Url Video
               </Label>
@@ -182,7 +182,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="labels">Descripción Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" name="compDescripcion"
@@ -194,8 +194,8 @@ const EditComponent = (initialState = {
             </FormGroup>
           </Form>
 
-          <Form className="form2" onSubmit={handleSubmit}>
-            <FormGroup onSubmit={handleSubmit}>
+          <Form className="form2">
+            <FormGroup>
               <Label className="image1">Imagen 1</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
@@ -206,7 +206,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Imagen 2</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
@@ -217,7 +217,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Imagen 3</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
@@ -229,7 +229,7 @@ const EditComponent = (initialState = {
             </FormGroup>
           </Form>
 
-          <Form className="Objetivos" onSubmit={handleSubmit}>
+          <Form className="Objetivos">
             <FormGroup>
               <Label className="image1">Objetivo 1</Label>
               <div className="containerInput">
@@ -241,7 +241,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Objetivo 2</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
@@ -252,7 +252,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Objetivo 3</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
@@ -264,8 +264,8 @@ const EditComponent = (initialState = {
             </FormGroup>
           </Form>
 
-          <Form className="lineasTrabajo" onSubmit={handleSubmit}>
-            <FormGroup onSubmit={handleSubmit}>
+          <Form className="lineasTrabajo">
+            <FormGroup>
               <Label className="lineas">Lineas de Trabajo 1</Label>
               <div className="containerInput">
                 <Input
@@ -283,7 +283,7 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="lineas">Lineas de Trabajo 2</Label>
               <div className="containerInput">
                 <Input
@@ -303,7 +303,7 @@ const EditComponent = (initialState = {
           </Form>
 
           <h2 className="principalComponente1">Recursos</h2>
-          <Form className="Recursos" onSubmit={handleSubmit}>
+          <Form className="Recursos">
             <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
               <Label className="image1">Metodologia</Label>
@@ -317,7 +317,7 @@ const EditComponent = (initialState = {
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
@@ -330,7 +330,7 @@ const EditComponent = (initialState = {
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
@@ -343,7 +343,7 @@ const EditComponent = (initialState = {
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Material} alt="" />
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
@@ -358,7 +358,7 @@ const EditComponent = (initialState = {
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">

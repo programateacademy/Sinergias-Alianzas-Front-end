@@ -52,7 +52,7 @@ export const updateComponent= createAsyncThunk(
       navigate("/home");
       return (response.data, res.data);
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.message.data);
     }
   }
 );
@@ -125,7 +125,14 @@ const componentSlice = createSlice({
     },
     [updateComponent.fulfilled]: (state, action) => {
       state.loading = false;
-      state.componentes = [action.payload];
+      console.log("action", action)
+      const {
+        arg: {id},
+      } = action.meta
+
+      if(id) {
+        state.componentes = state.componentes.map((item) => item._id === id ? action.payload : item)
+      }
     },
     [updateComponent.rejected]: (state, action) => {
       state.loading = false;

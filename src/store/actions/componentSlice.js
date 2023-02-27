@@ -33,11 +33,11 @@ export const getComponents = createAsyncThunk(
 //get component info
 export const getComponent = createAsyncThunk(
   "component/getComponent",
-  async (id, { rejectWithValue }) => {
-    try {
+  async (id,{rejectWithValue}) => {
+    try{
       const response = await api.getComponent(id);
       return response.data;
-    } catch (error) {
+    }catch(error){
       return rejectWithValue(error.message.data);
     }
   }
@@ -52,7 +52,7 @@ export const updateComponent= createAsyncThunk(
       navigate("/home");
       return (response.data, res.data);
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.message.data);
     }
   }
 );
@@ -62,15 +62,23 @@ export const updateComponent= createAsyncThunk(
 export const deleteComponent = (id, data) => async (dispatch) => {
   try {
     const res = await api.deleteComponent(id);
-    return response.data;
+     return response.data    
     dispatch({ type: deleteComponent, payload: res.data });
-  } catch (error) {
+  } catch (error) {    
     console.log("Error al eliminar el componente", error.message);
   }
 };
 
+
+
+
+
+
+
+
 const componentSlice = createSlice({
   name: "componente",
+  
   initialState: {
     componente: {},
     componentes: [],
@@ -117,7 +125,14 @@ const componentSlice = createSlice({
     },
     [updateComponent.fulfilled]: (state, action) => {
       state.loading = false;
-      state.componentes = [action.payload];
+      console.log("action", action)
+      const {
+        arg: {id},
+      } = action.meta
+
+      if(id) {
+        state.componentes = state.componentes.map((item) => item._id === id ? action.payload : item)
+      }
     },
     [updateComponent.rejected]: (state, action) => {
       state.loading = false;
@@ -126,5 +141,7 @@ const componentSlice = createSlice({
 
   },
 });
+
+
 
 export default componentSlice.reducer;

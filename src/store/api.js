@@ -17,7 +17,7 @@ export const getComponents = () => API.get('/component');
 export const getComponent = (id) => API.get(`/component/seeComponent/${id}`);
 
 //Request to update the component info
-export const updateComponent =(id) => API.put(`/component/updateComponent/${id}`);
+export const updateComponent =(id, updateComponentData) => API.put(`/component/updateComponent/${id}`, updateComponentData);
 
 //! Working delete
 export const deleteComponent =(id) => API.put(`/component/delete/${id}`);

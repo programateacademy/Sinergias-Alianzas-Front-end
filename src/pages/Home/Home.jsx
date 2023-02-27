@@ -16,7 +16,7 @@ import { Spinner } from "reactstrap";
 
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
-const Home = () => {
+const Home = () => {  
   //* Hook personalizado para redireccionar el usuario si la sesión expira
   useRedirectLoggedOutUser("/");
 
@@ -25,8 +25,7 @@ const Home = () => {
 
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
-  }));
-  console.log(componentes);
+  }));  
 
   /*-----------FILTRAR Y BUSCAR----------- */
   const searcher = (e) => {

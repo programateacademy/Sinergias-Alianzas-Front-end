@@ -13,9 +13,7 @@ import Verify from "./components/Verify/Verify";
 
 // Páginas
 import Login from "./pages/Login/Login";
-
 import Home from "./pages/Home/Home";
-
 import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginWithCode from "./pages/Login/LoginWithCode";
@@ -23,7 +21,7 @@ import Profile from "./pages/Profile/Profile";
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
-import EditComponent from "./components/EditComponent/EditComponent";
+/* import EditComponent from "./components/EditComponent/EditComponent"; */
 import SeeComponent from "./components/seeComponent/SeeComponent";
 import UpdateComponent from "./components/EditComponent/UpdateComponent"
 
@@ -125,7 +123,7 @@ function App() {
               <UpdateComponent/>
             </Layout>
           }
-        />
+        />        
 
         
         <Route

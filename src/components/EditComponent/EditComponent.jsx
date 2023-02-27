@@ -1,4 +1,8 @@
+import React, { useEffect, useState } from "react";
 import "./editComponent.css";
+
+//Use same css for the form
+import "../AddComponent/addComponent.css";
 
 import metodologia from "../AddComponent/assest/Rectangle25.png";
 import Formato from "../AddComponent/assest/Rectangle26.png";
@@ -9,24 +13,7 @@ import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
 import ImgComponent from "../AddComponent/assest/libro.png";
 
-//TODO Buscar donde poner logo editar
-//import pencil from "./assest/editar.png";
-
-import { useState } from "react";
-
-// Redux 
-import { useDispatch, useSelector } from "react-redux";
-
-//Redux actions
-import { updateComponent } from "../../store/actions/componentSlice";
-
-//Router 
-import { NavLink, useNavigate  } from "react-router-dom";
-import { toast } from "react-toastify";
-
-
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
-
 
 // Dependencias
 import { toast } from "react-toastify";
@@ -36,27 +23,29 @@ import { useDispatch, useSelector } from "react-redux";
 // Acciones de redux
 import { updateComponent } from "../../store/actions/componentSlice";
 
-const EditComponent = (initialState = {
-  compTitulo,
-  compImgPpal,
-  compColor,
-  compDefinicion,
-  compVideo,
-  compDescripcion,
-  compImg1,
-  compImg2,
-  compImg3,
-  compObjetivo1,
-  compObjetivo2,
-  compObjetivo3,
-  compLineaTrabajo1,
-  compLineaTrabajo2,
-  recursosMetodologia,
-  recursosFormatos,
-  recursosDiagnosticos,
-  recursosHerramientas,
-  recursosMaterial,
-}) => {
+const EditComponent = (
+  initialState = {
+    compTitulo,
+    compImgPpal,
+    compColor,
+    compDefinicion,
+    compVideo,
+    compDescripcion,
+    compImg1,
+    compImg2,
+    compImg3,
+    compObjetivo1,
+    compObjetivo2,
+    compObjetivo3,
+    compLineaTrabajo1,
+    compLineaTrabajo2,
+    recursosMetodologia,
+    recursosFormatos,
+    recursosDiagnosticos,
+    recursosHerramientas,
+    recursosMaterial,
+  }
+) => {
   const [componentData, setComponentData] = useState(initialState);
 
   // Constante para mostrar si hay errores al enviar la información
@@ -71,7 +60,7 @@ const EditComponent = (initialState = {
   //   Redireccionar
   const navigate = useNavigate();
 
-  const { id } = useParams() 
+  const { id } = useParams();
 
   useEffect(() => {
     error && toast.error(error);
@@ -148,144 +137,197 @@ const EditComponent = (initialState = {
       </div>
 
       <div className="containerDashboard1">
-        <h2 className="Titulo2">Titulo del Componente</h2>
-        <img className="imgComponent" src={ImgComponent} alt="" />
+        <h2 className="Titulo2" style={{color:`${compColor}`}}>{compTitulo}</h2>
+
+        <img className="imgComponent" src={compImgPpal} alt="Image form BD" />
+
         <Form className="containerAdd" onSubmit={handleSubmit}>
-          <Form className="form1" onSubmit={handleSubmit}>
-            <FormGroup onSubmit={handleSubmit}>
+          <Form className="form1">
+            
+          <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
+              <Input
+                className="urlImagen"
+                value={compImgPpal}
+                type="url"
+                name="compImgPpal"
+                onChange={onInputChange}
+                required
+              />
+            </FormGroup>
+
+
+            {/* COLOR */}
+
+            <FormGroup>
+              <Label className="labels">Color del Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value={compImgPpal} type="url"
-                  name="compImgPpal" onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="inputColor"
+                  value={compColor}
+                  type="color"
+                  name="compColor"
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
-            <FormGroup onSubmit={handleSubmit}>
+
+            <FormGroup>
               <Label className="labels">Titulo Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" type="text"
-                  name="compTitulo" value={compTitulo} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="urlImagen"
+                  type="text"
+                  name="compTitulo"
+                  value={compTitulo}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="labels">Definición</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" type="text"
-                  name="compDefinicion" value={compDefinicion} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="urlImagen"
+                  type="text"
+                  name="compDefinicion"
+                  value={compDefinicion}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="labels" for="exampleUrl">
                 Url Video
               </Label>
               <div className="containerInput">
-                <Input className="urlImagen2" name="compVideo"
-                  type="text" value={compVideo} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="urlImagen"
+                  name="compVideo"
+                  type="text"
+                  value={compVideo}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="labels">Descripción Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" name="compDescripcion"
-                  type="textarea" value={compDescripcion} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="urlImagen"
+                  name="compDescripcion"
+                  type="textarea"
+                  value={compDescripcion}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
-          </Form>
+          </Form>        
 
-          <Form className="form2" onSubmit={handleSubmit}>
-            <FormGroup onSubmit={handleSubmit}>
+            
+
+          <div className="form2">
+            <FormGroup>
               <Label className="image1">Imagen 1</Label>
               <div className="containerInput">
-                <Input className="form2Images2" type="text"
-                  name="compImg1" value={compImg1} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="form2Images2"
+                  type="text"
+                  name="compImg1"
+                  value={compImg1}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Imagen 2</Label>
               <div className="containerInput">
-                <Input className="form2Images2" type="text"
-                  name="compImg2" value={compImg2} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="form2Images2"
+                  type="text"
+                  name="compImg2"
+                  value={compImg2}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Imagen 3</Label>
               <div className="containerInput">
-                <Input className="form2Images2" type="text"
-                  name="compImg3" value={compImg3} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="form2Images2"
+                  type="text"
+                  name="compImg3"
+                  value={compImg3}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
-          <Form className="Objetivos" onSubmit={handleSubmit}>
+          <div className="Objetivos">
             <FormGroup>
               <Label className="image1">Objetivo 1</Label>
               <div className="containerInput">
-                <Input className="formObj2" type="text"
-                  name="compObjetivo1" value={compObjetivo1} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="formObj2"
+                  type="text"
+                  name="compObjetivo1"
+                  value={compObjetivo1}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Objetivo 2</Label>
               <div className="containerInput">
-                <Input className="formObj2" type="text"
-                  name="compObjetivo2" value={compObjetivo2} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="formObj2"
+                  type="text"
+                  name="compObjetivo2"
+                  value={compObjetivo2}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="image1">Objetivo 3</Label>
               <div className="containerInput">
-                <Input className="formObj2" type="text"
-                  name="compObjetivo3" value={compObjetivo3} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="formObj2"
+                  type="text"
+                  name="compObjetivo3"
+                  value={compObjetivo3}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
-          <Form className="lineasTrabajo" onSubmit={handleSubmit}>
-            <FormGroup onSubmit={handleSubmit}>
+          <div className="lineasTrabajo">
+            <FormGroup>
               <Label className="lineas">Lineas de Trabajo 1</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
-                  onChange={onInputChange}
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo1"
                   type="text"
@@ -296,12 +338,11 @@ const EditComponent = (initialState = {
               </div>
             </FormGroup>
 
-            <FormGroup onSubmit={handleSubmit}>
+            <FormGroup>
               <Label className="lineas">Lineas de Trabajo 2</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
-                  onChange={onInputChange}
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo2"
                   type="text"
@@ -311,84 +352,102 @@ const EditComponent = (initialState = {
                 />
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
           <h2 className="principalComponente1">Recursos</h2>
-          <Form className="Recursos" onSubmit={handleSubmit}>
+          <div className="Recursos">
             <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
               <Label className="image1">Metodologia</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text"
-                  name="recursosMetodologia" value={recursosMetodologia} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="recursosForm2"
+                  type="text"
+                  name="recursosMetodologia"
+                  value={recursosMetodologia}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text"
-                  name="recursosFormatos" value={recursosFormatos} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="recursosForm2"
+                  type="text"
+                  name="recursosFormatos"
+                  value={recursosFormatos}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text"
-                  name="recursosDiagnosticos" value={recursosDiagnosticos} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="recursosForm2"
+                  type="text"
+                  name="recursosDiagnosticos"
+                  value={recursosDiagnosticos}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Material} alt="" />
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
               </Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text"
-                  name="recursosHerramientas" value={recursosHerramientas} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="recursosForm2"
+                  type="text"
+                  name="recursosHerramientas"
+                  value={recursosHerramientas}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
 
-            <FormGroup className="containerRecursos" onSubmit={handleSubmit}>
+            <FormGroup className="containerRecursos">
               <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
-                <Input className="recursosForm2" type="text"
-                  name="recursosMaterial" value={recursosMaterial} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                <Input
+                  className="recursosForm2"
+                  type="text"
+                  name="recursosMaterial"
+                  value={recursosMaterial}
+                  onChange={onInputChange}
+                  required
+                />
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
-          </Form>
+          </div>
         </Form>
-
         <div className="botones">
           <button>
-            <img className="iconos" onClick={handleSubmit} src={Guardar} alt="" />
+            <img
+              className="iconos"
+              onClick={handleSubmit}
+              src={Guardar}
+              alt=""
+            />
           </button>
-
           <button>
             <NavLink to="/home" className="col-12">
               <img className="iconos" src={Cancelar} alt="" />

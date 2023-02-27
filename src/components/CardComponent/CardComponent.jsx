@@ -18,9 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { deleteComponent } from "../../store/actions/componentSlice";
 
-export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }) {
-
-  console.log({compColor})
+export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }) {  
 
   //! MODAL
   const [modal, setModal] = useState(false);
@@ -28,24 +26,12 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
 
   //!Function delete
   const dispatch = useDispatch();
-  
-  /* useEffect(() => {
-    dispatch(deleteComponent());
-  }, [dispatch]); */
-
   const navigate = useNavigate();
 
   const deleteFunction = (e) => {
     dispatch(deleteComponent(_id));     
     window.location.reload(true);
   }; 
- /*  function seeComp() {
-    navigate(`/component/seeComponent/${_id}`);
-  } */
-  
-  function editComp() {
-    navigate("/editComponent");
-  }
 
   return (
     <>
@@ -53,6 +39,7 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
         <h2 style={{backgroundColor:`${compColor}`}} >{compTitulo}</h2>
         <img className="imageCard" src={compImgPpal} alt="" />
         <div className="buttons_cards">
+          
           <Link to={`/seeComponent/${_id}`}>
           <motion.div
             whileHover={{ scale: 1.2 }}
@@ -62,15 +49,15 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
             <img src={iconAbout} alt="" />
           </motion.div>
           </Link>
-          <Link to={`/updateComponent/${_id}`}>
-          <motion.a
-            
+          
+          <Link to={`/updateComponent/${_id}`}>         
+          <motion.div
             whileHover={{ scale: 1.2 }}
             onHoverStart={(e) => {}}
             onHoverEnd={(e) => {}}
           >
             <img src={iconEdit} alt="" />
-          </motion.a>
+          </motion.div>
           </Link>
 
           <motion.button
@@ -94,9 +81,6 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
                 </ModalHeader>
 
                 <ModalFooter>
-
-                  {/* boton para borrar */}
-
                   <Button
                     style={{ backgroundColor: "red", border: "none" }}
                     onClick = {deleteFunction}  

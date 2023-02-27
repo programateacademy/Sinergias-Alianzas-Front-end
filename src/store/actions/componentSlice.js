@@ -45,21 +45,19 @@ export const getComponent = createAsyncThunk(
   }
 );
 
-
-export const updateComponent =(state,action) => async (dispatch) =>{
-  try{
-    const { id, compTitulo,compImgPpal } = action.payload;
-    const existingComponent = state.entities.find((component) => component.id === id);
-    if (existingComponent) {
-      existingComponent.compTitulo = compTitulo;
-      existingComponent.compImgPpal = compImgPpal;
+export const updateComponent= createAsyncThunk(
+  "component/updateComponent",
+  async ({id, updateComponentData, navigate, toast }, { rejectWithValue }) => {
+    try {
+      const response = await api.updateComponent(id, updateComponentData);
+      toast.success("Componente editado satisfactoriamente");
+      navigate("/home");
+      return (response.data, res.data);
+    } catch (error) {
+      return rejectWithValue(error.message.data);
     }
-  }catch(error){
-    onsole.log("Error al actualizar el componente", error.message);
   }
-}
-
-
+);
 
 
 //! Working delete
@@ -119,6 +117,25 @@ const componentSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+    [updateComponent.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [updateComponent.fulfilled]: (state, action) => {
+      state.loading = false;
+      console.log("action", action)
+      const {
+        arg: {id},
+      } = action.meta
+
+      if(id) {
+        state.componentes = state.componentes.map((item) => item._id === id ? action.payload : item)
+      }
+    },
+    [updateComponent.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+
   },
 });
 

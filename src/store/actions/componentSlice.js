@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api";
-import axios from "axios";
+import { useEffect, useState } from "react";
+
+
 
 //Add new component
 export const addComponent = createAsyncThunk(
@@ -44,19 +46,21 @@ export const getComponent = createAsyncThunk(
 );
 
 
-
-export const updateComponent = (id, data) => async (dispatch) => {
-  try {
-    // Acceso a la ruta de la API que ejecuta la función de actualizar la tarea
-    const res = await api.updateComponent(id);
-     return response.data
-    // Se referencia el tipo de acción y los datos que recibe
-    dispatch({ type: updateComponent, payload: res.data });
-  } catch (error) {
-    // Se captura el error en caso de que no se pueda actualizar la tarea
-    console.log("Error al editar el componente", error.message);
+export const updateComponent =(state,action) => async (dispatch) =>{
+  try{
+    const { id, compTitulo,compImgPpal } = action.payload;
+    const existingComponent = state.entities.find((component) => component.id === id);
+    if (existingComponent) {
+      existingComponent.compTitulo = compTitulo;
+      existingComponent.compImgPpal = compImgPpal;
+    }
+  }catch(error){
+    onsole.log("Error al actualizar el componente", error.message);
   }
-};
+}
+
+
+
 
 //! Working delete
 export const deleteComponent = (id, data) => async (dispatch) => {
@@ -68,12 +72,6 @@ export const deleteComponent = (id, data) => async (dispatch) => {
     console.log("Error al eliminar el componente", error.message);
   }
 };
-
-
-
-
-
-
 
 
 const componentSlice = createSlice({
@@ -115,29 +113,12 @@ const componentSlice = createSlice({
     [getComponent.fulfilled]: (state, action) => {
       state.loading = false;
       state.componente = action.payload;
+      state.entities = [...state.entities, ...action.payload];
     },
     [getComponent.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },
-    [updateComponent.pending]: (state, action) => {
-  state.loading = true;
-},
-[updateComponent.fulfilled]: (state, action) => {
-  state.loading = false;
-  console.log("action", action)
-  const {
-    arg: {id},
-  } = action.meta
-
-  if(id) {
-    state.componentes = state.componentes.map((item) => item._id === id ? action.payload : item)
-  }
-},
-[updateComponent.rejected]: (state, action) => {
-  state.loading = false;
-  state.error = action.payload.message;
-},
   },
 });
 

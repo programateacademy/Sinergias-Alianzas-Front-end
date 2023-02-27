@@ -27,10 +27,10 @@ const Profile = () => {
 
   // Estado inicial
   const initialState = {
-    name: user?.name || "",
-    email: user?.email || "",
-    rol: user?.rol || "",
-    isVerified: user?.isVerify || false,
+    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
+    email:  user?.email,
+    rol:  user?.rol,
+    isVerified:  user?.isVerify,
   };
 
   /* 
@@ -40,6 +40,7 @@ const Profile = () => {
   */
   //* Estado del perfil
   const [profile, setProfile] = useState(initialState);
+  console.log(initialState)
 
   /* 
   - =================================
@@ -47,18 +48,21 @@ const Profile = () => {
   - =================================
   */
 
+  //* Función para capturar el valor del input
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setProfile({ ...profile, [name]: value });
+  };
+
   //* Renderizar información del usuario
-  /*
-  ! Solucionar: Cuando se renderiza le componente no muestra la información 
-  ! del usuario y tampoco retorna a la página de usuarios. 
-  ! Al mirar con el console.log la información si se está cargando en el state
-  */
-  // useEffect(() => {
-  //   dispatch(getUser())
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getUser())
+  }, [dispatch])
 
   return (
     <>
+    {isLoading && <Loader/>}
       <Card
         style={{
           width: "18rem",
@@ -73,7 +77,8 @@ const Profile = () => {
                 id="rol"
                 name="rol"
                 type="text"
-                value={profile?.rol}
+                value={initialState?.rol}
+                onChange={onInputChange}
                 disabled
               />
             </FormGroup>
@@ -83,7 +88,8 @@ const Profile = () => {
                 id="name"
                 name="name"
                 type="text"
-                value={profile?.name.firstName}
+                value={initialState?.name}
+                onChange={onInputChange}
                 disabled
               />
             </FormGroup>
@@ -95,7 +101,8 @@ const Profile = () => {
                 id="email"
                 name="email"
                 type="email"
-                value={profile?.email}
+                value={initialState?.email}
+                onChange={onInputChange}
                 disabled
               />
             </FormGroup>

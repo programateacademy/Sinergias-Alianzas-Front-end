@@ -106,14 +106,32 @@ export const getLoginStatus = createAsyncThunk(
 
 /*
 - =================================
--   Perfil del usuario
+-       Perfil del usuario
 - =================================
 */
-export const getUser = createAsyncThunk(
-  "auth/getUser",
+export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
+  try {
+    return await authService.getUser();
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+/*
+- =================================
+-   Enviar email de verificación
+- =================================
+*/
+export const sendVerificationEmail = createAsyncThunk(
+  "auth/sendVerificationEmail",
   async (_, thunkAPI) => {
     try {
-      return await authService.getUser();
+      return await authService.sendVerificationEmail();
     } catch (error) {
       const message =
         (error.response &&
@@ -225,7 +243,6 @@ const authSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.isLoggedIn = true
         state.user = action.payload;
       })
       .addCase(getUser.rejected, (state, action) => {
@@ -233,7 +250,25 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
 
-        toast.error(action.payload)
+        toast.error(action.payload);
+      })
+      //* Email de verificación
+      .addCase(sendVerificationEmail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(sendVerificationEmail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+
+        toast.success(action.payload);
+      })
+      .addCase(sendVerificationEmail.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.payload);
       });
   },
 });

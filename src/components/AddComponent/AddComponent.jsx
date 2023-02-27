@@ -61,7 +61,6 @@ const AddComponent = () => {
   }, [error]);
 
   // Se destructura el valor del estado inicial
-
   const {
     compTitulo,
     compColor,     

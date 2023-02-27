@@ -9,6 +9,9 @@ import { RESET, logout } from "../../store/actions/auth/authSlice";
 // Motion
 import { motion } from "framer-motion";
 
+// Componentes
+import { UserName } from "../../pages/Profile/Profile";
+
 // Icons
 import { FaUsersCog, FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
@@ -92,9 +95,7 @@ const Header = () => {
       {/* Navegación para ir al perfil del usuario */}
       <Container>
         <Breadcrumb listTag="div">
-          <BreadcrumbItem active tag="span">
-            Hola, NombreUsuario
-          </BreadcrumbItem>
+          <UserName />
 
           <BreadcrumbItem tag="span" className="breadcrumb-profile">
             <FaUserAlt className="breadcrumb-icon" />

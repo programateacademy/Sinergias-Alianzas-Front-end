@@ -9,9 +9,28 @@ import { getUser, selectUser } from "../../store/actions/auth/authSlice";
 import ChangePassword from "../../components/ChangePassword/ChangePassword";
 import Loader from "../../components/Loader/Loader";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import Notification from "../../components/Notification/Notification";
 
 // Estilos
-import { Card, CardBody, Form, FormGroup, Input } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  Form,
+  FormGroup,
+  Input,
+  BreadcrumbItem,
+} from "reactstrap";
+
+// Función para cortar el nombre del usuario
+const shortenText = (text, n) => {
+  if (text.length > n) {
+    const shoretenedText = text.substring(0, n).concat("...");
+
+    return shoretenedText;
+  }
+
+  return text;
+};
 
 const Profile = () => {
   //* Hook personalizado para redireccionar el usuario si la sesión expira
@@ -25,12 +44,12 @@ const Profile = () => {
     (state) => state.auth
   );
 
-  // Estado inicial
+  //* Estado inicial
   const initialState = {
     name: `${user?.name.firstName} ${user?.name.lastName}` || "",
-    email:  user?.email,
-    rol:  user?.rol,
-    isVerified:  user?.isVerify,
+    email: user?.email,
+    rol: user?.rol,
+    isVerified: user?.isVerify,
   };
 
   /* 
@@ -40,7 +59,7 @@ const Profile = () => {
   */
   //* Estado del perfil
   const [profile, setProfile] = useState(initialState);
-  console.log(initialState)
+  // console.log(initialState)
 
   /* 
   - =================================
@@ -57,12 +76,13 @@ const Profile = () => {
 
   //* Renderizar información del usuario
   useEffect(() => {
-    dispatch(getUser())
-  }, [dispatch])
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <>
-    {isLoading && <Loader/>}
+      <Notification />
+      {isLoading && <Loader />}
       <Card
         style={{
           width: "18rem",
@@ -77,6 +97,7 @@ const Profile = () => {
                 id="rol"
                 name="rol"
                 type="text"
+                defaultValue={""}
                 value={initialState?.rol}
                 onChange={onInputChange}
                 disabled
@@ -112,6 +133,21 @@ const Profile = () => {
         </CardBody>
       </Card>
     </>
+  );
+};
+
+//* Exportar componente para el nombre del usuario
+export const UserName = () => {
+  const user = useSelector(selectUser);
+
+  const userName = {
+    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
+  };
+
+  return (
+    <BreadcrumbItem active tag="span">
+      Hola, {shortenText(userName.name, 15)}
+    </BreadcrumbItem>
   );
 };
 

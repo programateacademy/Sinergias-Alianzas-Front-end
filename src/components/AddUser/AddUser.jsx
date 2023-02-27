@@ -6,7 +6,11 @@ import { toast } from "react-toastify";
 
 // Funciones Redux
 import { validateEmail } from "../../store/actions/auth/authService";
-import { RESET, register } from "../../store/actions/auth/authSlice";
+import {
+  RESET,
+  register,
+  sendVerificationEmail,
+} from "../../store/actions/auth/authSlice";
 
 // Componentes
 import PasswordInput from "../Layout/PasswordInput/PasswordInput";
@@ -175,6 +179,7 @@ const AddUser = () => {
     // console.log(userData)
 
     await dispatch(register(userData));
+    await dispatch(sendVerificationEmail());
   };
 
   useEffect(() => {

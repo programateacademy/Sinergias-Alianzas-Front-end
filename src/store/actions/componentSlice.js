@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api";
-import axios from "axios";
+import { useEffect, useState } from "react";
+
+
 
 //Add new component
 export const addComponent = createAsyncThunk(
@@ -70,12 +72,6 @@ export const deleteComponent = (id, data) => async (dispatch) => {
 };
 
 
-
-
-
-
-
-
 const componentSlice = createSlice({
   name: "componente",
   
@@ -115,6 +111,7 @@ const componentSlice = createSlice({
     [getComponent.fulfilled]: (state, action) => {
       state.loading = false;
       state.componente = action.payload;
+      state.entities = [...state.entities, ...action.payload];
     },
     [getComponent.rejected]: (state, action) => {
       state.loading = false;

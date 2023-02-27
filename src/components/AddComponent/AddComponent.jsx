@@ -1,9 +1,9 @@
 import "./addComponent.css";
-import metodologia from "./assest/Rectangle25.png";
-import Formato from "./assest/Rectangle26.png";
-import Diagnostico from "./assest/Rectangle27.png";
-import Herramientas from "./assest/Rectangle28.png";
-import Material from "./assest/Rectangle29.png";
+import metodologia from "./assest/Metodologia.png";
+import Formato from "./assest/Salud.png";
+import Diagnostico from "./assest/Diagnostico.png";
+import Herramientas from "./assest/Herramientas.png";
+import Material from "./assest/Material.png";
 import Guardar from "./assest/guardar.png";
 import Cancelar from "./assest/cancelar.png";
 import ImgComponent from "./assest/libro.png";

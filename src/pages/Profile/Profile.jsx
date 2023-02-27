@@ -81,8 +81,9 @@ const Profile = () => {
 
   return (
     <>
-      <Notification />
+      
       {isLoading && <Loader />}
+      {!initialState.isVerified && <Notification />}
       <Card
         style={{
           width: "18rem",

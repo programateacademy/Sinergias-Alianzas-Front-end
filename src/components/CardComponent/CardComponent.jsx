@@ -20,7 +20,6 @@ import { deleteComponent } from "../../store/actions/componentSlice";
 
 export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }) {
 
-  console.log({compColor})
 
   //! MODAL
   const [modal, setModal] = useState(false);
@@ -72,7 +71,7 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
           </motion.div>
           </Link>
 
-          <motion.button
+          <motion.div
             style={{
               border: "none",
               margin: "0",
@@ -108,7 +107,7 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
                 </ModalFooter>
               </Modal>
             </div>
-          </motion.button>
+          </motion.div>
         </div>
       </div>
     </>

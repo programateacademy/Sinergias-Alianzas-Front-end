@@ -26,8 +26,6 @@ const Home = () => {
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
   }));
-  console.log(componentes);
-
   /*-----------FILTRAR Y BUSCAR----------- */
   const searcher = (e) => {
     setSearch(e.target.value);

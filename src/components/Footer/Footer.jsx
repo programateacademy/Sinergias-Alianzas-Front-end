@@ -1,8 +1,11 @@
 import React from 'react';
+import './Footer.css'
 
 const Footer = () => {
   return (
-    <div>VERSION 0.1 DEVELOPMENT BY NICOLÁS NARANJO, EDWARD MELO, JONATHAN VANEGAS. KAREN NIÑO, JULIANA CRISTANCHO, CRISTIAN BETANCOURT  </div>
+    <div className='footerBackground'>
+      <p className='parrafoFooter'> Todos los derechos reservados - Sinergias Alianzas Estratégicas para la Salud y el Desarrollo.</p>
+    </div>
   )
 }
 export default Footer

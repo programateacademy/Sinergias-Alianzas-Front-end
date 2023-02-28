@@ -22,7 +22,7 @@ const Users = () => {
   return (
     <>
       <div className="users-title">
-        <h1>Módulo de Usuarios</h1>
+        <h1>MÓDULO DE USUARIOS</h1>
       </div>
 
       <div className="border-container">

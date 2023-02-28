@@ -1,5 +1,8 @@
 import "./editComponent.css";
 
+//Use same css for the form
+import "../AddComponent/addComponent.css";
+
 import metodologia from "../AddComponent/assest/Metodología.png";
 import Formato from "../AddComponent/assest/Formatos.png";
 import Diagnostico from "../AddComponent/assest/Diagnosticos.png";
@@ -173,28 +176,41 @@ const EditComponent = () => {
       </div>
 
       <div className="containerDashboard1">
-        <h2 className="Titulo2">Titulo del Componente</h2>
-        <img className="imgComponent" src={ImgComponent} alt="" />
+        <h2 className="Titulo2" style={{color:`${compColor}`}}>{compTitulo}</h2>
+
+        <img className="imgComponent" src={compImgPpal} alt="Image form BD" />
+
         <Form className="containerAdd" onSubmit={handleSubmit}>
-          <div className="form1">
-            <FormGroup>
+          <Form className="form1">
+            
+          <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
-              <div className="containerInput">
-                <Input className="urlImagen2" value={compImgPpal || ''} type="url"
-                  name="compImgPpal" onChange={onInputChange} required/>
-              </div>
-            </FormGroup>
-            <FormGroup>
-              <Label className="labels">Color del componente</Label>              
               <Input
-                className="urlImagen"                
-                type="color"
-                name="compColor"
-                value={compColor || ''}
-                onChange={onInputChange}                
+                className="urlImagen"
+                value={compImgPpal || ''}
+                type="url"
+                name="compImgPpal"
+                onChange={onInputChange}
                 required
               />
             </FormGroup>
+
+
+            {/* COLOR */}
+
+            <FormGroup>
+              <Label className="labels">Color del Componente</Label>
+              <div className="containerInput">
+                <Input
+                  className="inputColor"
+                  value={compColor || ''}
+                  type="color"
+                  name="compColor"
+                  onChange={onInputChange}
+                  required
+                />
+              </div>
+            </FormGroup>            
 
             <FormGroup>
               <Label className="labels">Titulo Componente</Label>
@@ -229,7 +245,7 @@ const EditComponent = () => {
                   type="textarea" value={compDescripcion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
-          </div>
+          </Form>
 
           <div className="form2">
             <FormGroup>
@@ -288,7 +304,7 @@ const EditComponent = () => {
               <Label className="lineas">Lineas de Trabajo 1</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo1"
                   type="text"
@@ -303,7 +319,7 @@ const EditComponent = () => {
               <Label className="lineas">Lineas de Trabajo 2</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo2"
                   type="text"
@@ -372,7 +388,12 @@ const EditComponent = () => {
         </Form>
         <div className="botones">
           <button>
-            <img className="iconos" onClick={toggle} src={Guardar} alt="" />
+            <img
+              className="iconos"
+              onClick={toggle}
+              src={Guardar}
+              alt=""
+            />
           </button>
 
           <Modal isOpen={modal} toggle={toggle}>

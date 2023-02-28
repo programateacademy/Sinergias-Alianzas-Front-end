@@ -149,9 +149,11 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              Ingresar
+              <span>Ingresar</span>
+              
             </button>
           </div>
+
         </Form>
       </div>
     </div>

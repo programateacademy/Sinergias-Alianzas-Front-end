@@ -64,7 +64,7 @@ const AddComponent = () => {
 
   const {
     compTitulo,
-    compColor,     
+    compColor,
     compImgPpal,
     compDefinicion,
     compVideo,
@@ -158,9 +158,10 @@ const AddComponent = () => {
       <div className="containerDashboard1">
         <h2 className="Titulo2">Información del Componente</h2>
         <img className="imgComponent" src={ImgComponent} alt="" />
+        
         <Form onSubmit={handleSubmit} className="containerAdd">
-          <Form className="form1">               
-            
+          
+          <Form className="form1">
             <FormGroup>
               <Label className="labels">Imagen del componente</Label>
               <Input
@@ -174,15 +175,14 @@ const AddComponent = () => {
               />
             </FormGroup>
 
-            
             <FormGroup>
-              <Label className="labels">Color del componente</Label>              
-              <Input
-                className="urlImagen"                
+              <Label className="labels">Color del componente</Label>
+              <Input                
+                className="inputColor"
                 type="color"
                 name="compColor"
                 value={compColor}
-                onChange={onInputChange}                
+                onChange={onInputChange}
                 required
               />
             </FormGroup>

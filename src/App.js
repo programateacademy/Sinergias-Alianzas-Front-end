@@ -13,9 +13,7 @@ import Verify from "./pages/Verify/Verify";
 
 // pages
 import Login from "./pages/Login/Login";
-
 import Home from "./pages/Home/Home";
-
 import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginWithCode from "./pages/Login/LoginWithCode";
@@ -124,7 +122,7 @@ function App() {
               <EditComponent/>
             </Layout>
           }
-        />
+        />        
 
         
         <Route

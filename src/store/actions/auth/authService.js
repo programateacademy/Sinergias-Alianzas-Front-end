@@ -4,7 +4,7 @@ import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API_URL = `${BACKEND_URL}/api/users/`;
 
-//* Validar email
+//* Validar email+
 export const validateEmail = (email) => {
   return email.match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -55,11 +55,35 @@ const getLoginStatus = async () => {
   return response.data;
 };
 
+/*
+- =================================
+-       Perfil del usuario
+- =================================
+*/
+const getUser = async () => {
+  const response = await axios.get(API_URL + "getUser");
+
+  return response.data;
+};
+
+/*
+- =================================
+-   Enviar email de verificación
+- =================================
+*/
+const sendVerificationEmail = async () => {
+  const response = await axios.post(API_URL + "sendVerificationEmail");
+
+  return response.data.message;
+};
+
 const authService = {
   register,
   login,
   logout,
   getLoginStatus,
+  getUser,
+  sendVerificationEmail,
 };
 
 export default authService;

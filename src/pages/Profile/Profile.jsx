@@ -1,11 +1,15 @@
 // Dependencias
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+// Funciones de Redux
+import { getUser, selectUser } from "../../store/actions/auth/authSlice";
 
 // Componentes
-import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
-
-// Iconos
-import { FaTimes, FaCheck } from "react-icons/fa";
+import ChangePassword from "../../components/ChangePassword/ChangePassword";
+import Loader from "../../components/Loader/Loader";
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import Notification from "../../components/Notification/Notification";
 
 // Estilos
 import {
@@ -14,63 +18,48 @@ import {
   Form,
   FormGroup,
   Input,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  CardHeader,
-  ListGroup,
-  ListGroupItem,
+  BreadcrumbItem,
 } from "reactstrap";
 
-// Estado inicial
-const initialState = {
-  name: "usuario",
-  email: "usuario@correo.com",
-  role: "colaborador",
-  isVerified: false,
-};
+// Función para cortar el nombre del usuario
+const shortenText = (text, n) => {
+  if (text.length > n) {
+    const shoretenedText = text.substring(0, n).concat("...");
 
-const passwordState = {
-  oldPassword: "",
-  password: "",
-  confirmPassword: "",
+    return shoretenedText;
+  }
+
+  return text;
 };
 
 const Profile = () => {
+  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  useRedirectLoggedOutUser("/");
+
+  //* Hooks Redux
+  const dispatch = useDispatch();
+
+  //* Estado función redux
+  const { isLoading, isLoggedIn, isSuccess, message, user } = useSelector(
+    (state) => state.auth
+  );
+
+  //* Estado inicial
+  const initialState = {
+    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
+    email: user?.email,
+    rol: user?.rol,
+    isVerified: user?.isVerify,
+  };
+
   /* 
   - =================================
   -       ESTADOS DEL COMPONENTE
   - =================================
   */
-
-  //* Estado de la ventana modal
-  const [modal, setModal] = useState(false);
-
-  //* Estado información del usuario
+  //* Estado del perfil
   const [profile, setProfile] = useState(initialState);
-
-  //* Estado del formulario para cambiar la contraseña
-  const [formData, setFormData] = useState(passwordState);
-
-  const { oldPassword, password, confirmPassword } = formData;
-
-  //* Estado para validar la estructura de la contraseña
-  /*
-   La contraseña debe tener las siguientes características:
-   Letras mayusculas y minusculas
-   Números
-   Caracter especial (!@#$...)
-   No puede tener menos de 8 caracteres
-  */
-  const [upperCase, setUpperCase] = useState(false);
-  const [numbers, setNumbers] = useState(false);
-  const [specialCharacter, setSpecialCharacter] = useState(false);
-  const [passLength, setPassLength] = useState(false);
-
-  const timesIcon = <FaTimes color="red" size={15} />;
-  const checkIcon = <FaCheck color="green" size={15} />;
+  // console.log(initialState)
 
   /* 
   - =================================
@@ -78,63 +67,22 @@ const Profile = () => {
   - =================================
   */
 
-  //* Función para mostrar u ocultar el modal
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  //* Función para cambiar el icono en las condiciones de la contraseña
-  const switchIcon = (condition) => {
-    if (condition) {
-      return checkIcon;
-    }
-
-    return timesIcon;
-  };
-
   //* Función para capturar el valor del input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData({ ...formData, [name]: value });
+    setProfile({ ...profile, [name]: value });
   };
 
-  //* Renderizar el componente de acuerdo a las condiciones de la contraseña
+  //* Renderizar información del usuario
   useEffect(() => {
-    //? ¿Contiene letras mayúsculas y minúsculas?
-    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
-      setUpperCase(true);
-    } else {
-      setUpperCase(false);
-    }
-
-    //? ¿Contiene números?
-    if (password.match(/([0-9])/)) {
-      setNumbers(true);
-    } else {
-      setNumbers(false);
-    }
-
-    //? ¿Contiene caracteres especiales?
-    if (password.match(/([!,%,&,@,#,$,^,*,?,_,-])/)) {
-      setSpecialCharacter(true);
-    } else {
-      setSpecialCharacter(false);
-    }
-
-    //? ¿Contiene mínimo 8 caracteres?
-    if (password.length > 7) {
-      setPassLength(true);
-    } else {
-      setPassLength(false);
-    }
-  }, [password]);
-
-  //* Función para enviar el formulario
-  const handleSubmit = () => {};
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <>
+      <Notification />
+      {isLoading && <Loader />}
       <Card
         style={{
           width: "18rem",
@@ -149,7 +97,9 @@ const Profile = () => {
                 id="rol"
                 name="rol"
                 type="text"
-                value={profile.role}
+                defaultValue={""}
+                value={initialState?.rol}
+                onChange={onInputChange}
                 disabled
               />
             </FormGroup>
@@ -159,7 +109,8 @@ const Profile = () => {
                 id="name"
                 name="name"
                 type="text"
-                value={profile.name}
+                value={initialState?.name}
+                onChange={onInputChange}
                 disabled
               />
             </FormGroup>
@@ -171,96 +122,32 @@ const Profile = () => {
                 id="email"
                 name="email"
                 type="email"
-                value={profile.email}
+                value={initialState?.email}
+                onChange={onInputChange}
                 disabled
               />
             </FormGroup>
           </Form>
 
-          <Button color="primary" onClick={toggleModal}>
-            Cambiar Contraseña
-          </Button>
+          <ChangePassword />
         </CardBody>
       </Card>
-
-      {/* Ventana Modal */}
-      <Modal isOpen={modal} toggle={toggleModal}>
-        <ModalHeader>Cambiar Contraseña</ModalHeader>
-        <ModalBody>
-          <Form onSubmit={handleSubmit}>
-            <FormGroup>
-              <PasswordInput
-                name="oldPassword"
-                placeholder="Contraseña actual"
-                type="password"
-                value={oldPassword}
-                onChange={onInputChange}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <PasswordInput
-                name="password"
-                placeholder="Contraseña"
-                type="password"
-                value={password}
-                onChange={onInputChange}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <PasswordInput
-                name="confirmPassword"
-                placeholder="Confirmar Contraseña"
-                type="password"
-                value={confirmPassword}
-                onChange={onInputChange}
-              />
-            </FormGroup>
-
-            {/* Característica de la contraseña */}
-            <Card
-              style={{
-                width: "100%",
-              }}
-            >
-              <CardHeader>La contraseña debe contener al menos:</CardHeader>
-              <ListGroup flush>
-                <ListGroupItem>
-                  {switchIcon(upperCase)}
-                  &nbsp; Una letra minúscula y mayúscula
-                </ListGroupItem>
-
-                <ListGroupItem>
-                  {switchIcon(numbers)}
-                  &nbsp; Un número (0-9)
-                </ListGroupItem>
-
-                <ListGroupItem>
-                  {switchIcon(specialCharacter)}
-                  &nbsp; Un caracter especial (!%&@#$^*?_-)
-                </ListGroupItem>
-
-                <ListGroupItem>
-                  {switchIcon(passLength)}
-                  &nbsp; Mínimo 8 caracteres
-                </ListGroupItem>
-              </ListGroup>
-            </Card>
-
-            <Button color="success" className="mt-3">
-              Actualizar
-            </Button>
-          </Form>
-        </ModalBody>
-
-        <ModalFooter>
-          <Button color="primary" onClick={toggleModal}>
-            Cancelar
-          </Button>
-        </ModalFooter>
-      </Modal>
     </>
+  );
+};
+
+//* Exportar componente para el nombre del usuario
+export const UserName = () => {
+  const user = useSelector(selectUser);
+
+  const userName = {
+    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
+  };
+
+  return (
+    <BreadcrumbItem active tag="span">
+      Hola, {shortenText(userName.name, 15)}
+    </BreadcrumbItem>
   );
 };
 

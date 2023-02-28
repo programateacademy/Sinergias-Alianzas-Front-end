@@ -9,7 +9,7 @@ import { getLoginStatus } from "./store/actions/auth/authSlice";
 
 // Componentes
 import Layout from "./components/Layout/Layout";
-import Verify from "./components/Verify/Verify";
+import Verify from "./pages/Verify/Verify";
 
 // Páginas
 import Login from "./pages/Login/Login";
@@ -31,7 +31,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Credenciales
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
 
 function App() {
@@ -42,11 +42,11 @@ function App() {
   */
   //* Hooks Redux
   const dispatch = useDispatch();
-  
+
   //* Determinar si el usuario inicio sesión o no
   useEffect(() => {
-    dispatch(getLoginStatus())
-  }, [dispatch])
+    dispatch(getLoginStatus());
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

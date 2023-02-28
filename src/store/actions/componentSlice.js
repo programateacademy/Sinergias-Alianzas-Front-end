@@ -133,10 +133,6 @@ const componentSlice = createSlice({
       const {
         arg: { id },
       } = action.meta;
-<<<<<<< HEAD
-
-=======
->>>>>>> 3ba101121d05c8eaa48f001b2ec6bb9f1f154165
       if (id) {
         state.componentes = state.componentes.map((item) =>
           item._id === id ? action.payload : item

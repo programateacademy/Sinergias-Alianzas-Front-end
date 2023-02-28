@@ -296,7 +296,6 @@ const EditComponent = () => {
                   name="compLineaTrabajo1"
                   type="text"
                   value={compLineaTrabajo1 || ''}
-                  onChange={onInputChange}
                   required
                 />
               </div>
@@ -312,7 +311,6 @@ const EditComponent = () => {
                   name="compLineaTrabajo2"
                   type="text"
                   value={compLineaTrabajo2 || ''}
-                  onChange={onInputChange}
                   required
                 />
               </div>

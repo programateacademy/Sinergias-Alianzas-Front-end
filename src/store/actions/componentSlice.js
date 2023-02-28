@@ -43,16 +43,16 @@ export const getComponent = createAsyncThunk(
   }
 );
 
-export const updateComponent= createAsyncThunk(
+export const updateComponent = createAsyncThunk(
   "component/updateComponent",
-  async ({id, updateComponentData, navigate, toast }, { rejectWithValue }) => {
+  async ({ id, updatedComponentData, toast, navigate }, { rejectWithValue }) => {
     try {
-      const response = await api.updateComponent(id, updateComponentData);
+      const response = await api.updateComponent(updatedComponentData, id);
       toast.success("Componente editado satisfactoriamente");
       navigate("/home");
-      return (response.data, res.data);
-    } catch (error) {
-      return rejectWithValue(error.message.data);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
     }
   }
 );
@@ -125,13 +125,14 @@ const componentSlice = createSlice({
     },
     [updateComponent.fulfilled]: (state, action) => {
       state.loading = false;
-      console.log("action", action)
+      console.log("action", action);
       const {
-        arg: {id},
-      } = action.meta
-
-      if(id) {
-        state.componentes = state.componentes.map((item) => item._id === id ? action.payload : item)
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.componentes = state.componentes.map((item) =>
+          item._id === id ? action.payload : item
+        );
       }
     },
     [updateComponent.rejected]: (state, action) => {

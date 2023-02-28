@@ -149,16 +149,24 @@ label.image1.form-label {
     margin: 3vw 8vw;
     padding: 1.5vw 5vw;
   }
+  .form1 {
+    width: 58vw;
+    margin: 0 auto;
+  }
   .form1 input.inputColor{    
     width: 5vw;
     margin: 0 0vw 0 42vw; 
     border: 1px solid green;
+  }
+  .containerTitle1 {    
+    margin-top: 5px;
   }
   .containerTitle1 h1 {
     width: 5vw;
     font-size: 2vw;
     padding: 5px;
   }
+  
   .Titulo2 {
     width: 80vw;
     font-size: 2vw;

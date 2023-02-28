@@ -135,10 +135,14 @@ const Profile = () => {
 
   return (
     <>
+      <div className="containerTitle">
+        <h1>DETALLE DE USUARIO</h1>
+      </div>
+      <div className="containerDashboard">
       <Card
         style={{
           width: "18rem",
-          margin: "auto",
+          margin: "20px auto 20px auto",
         }}
       >
         <CardBody>
@@ -260,6 +264,7 @@ const Profile = () => {
           </Button>
         </ModalFooter>
       </Modal>
+      </div>
     </>
   );
 };

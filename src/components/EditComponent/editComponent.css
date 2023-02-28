@@ -91,12 +91,12 @@ label.image1.form-label {
   list-style: none;
 }
 @media screen and (min-width: 800px) {
-  .containerDashboard1 {
+  /* .containerDashboard1 {
     margin: 3vw 8vw;
     padding: 1.5vw 5vw;
-  }
+  } */
   .containerTitle1 h1 {
-    width: 30vw;
+    width: 30vw;    
     font-size: 2vw;
     padding: 5px;
   }
@@ -135,7 +135,7 @@ label.image1.form-label {
     border: none;
     border-radius: 25px;
     height: 40px;
-    width: 80vw;
+    width: 28vw;
     font-size: 1.2vw;
     margin-left: 30vw;
   }

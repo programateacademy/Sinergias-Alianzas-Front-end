@@ -11,7 +11,6 @@ import Herramientas from "../AddComponent/assest/Rectangle28.png";
 import Material from "../AddComponent/assest/Rectangle29.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
-import ImgComponent from "../AddComponent/assest/libro.png";
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
@@ -182,7 +181,7 @@ const EditComponent = () => {
               <Label className="labels">Imagen del Componente</Label>
               <Input
                 className="urlImagen"
-                value={compImgPpal}
+                value={compImgPpal || ''}
                 type="url"
                 name="compImgPpal"
                 onChange={onInputChange}
@@ -198,25 +197,14 @@ const EditComponent = () => {
               <div className="containerInput">
                 <Input
                   className="inputColor"
-                  value={compColor}
+                  value={compColor || ''}
                   type="color"
                   name="compColor"
                   onChange={onInputChange}
                   required
                 />
               </div>
-            </FormGroup>
-            <FormGroup>
-              <Label className="labels">Color del componente</Label>              
-              <Input
-                className=""                
-                type="color"
-                name="compColor"
-                value={compColor || ''}
-                onChange={onInputChange}                
-                required
-              />
-            </FormGroup>
+            </FormGroup>            
 
             <FormGroup>
               <Label className="labels">Titulo Componente</Label>
@@ -251,7 +239,7 @@ const EditComponent = () => {
                   type="textarea" value={compDescripcion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
-          </div>
+          </Form>
 
           <div className="form2">
             <FormGroup>

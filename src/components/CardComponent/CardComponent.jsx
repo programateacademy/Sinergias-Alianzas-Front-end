@@ -18,8 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { deleteComponent } from "../../store/actions/componentSlice";
 
-export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }) {
-
+export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }) {  
 
   //! MODAL
   const [modal, setModal] = useState(false);
@@ -50,8 +49,6 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
             <img src={iconAbout} alt="" />
           </motion.div>
           </Link>
-          <Link to={`/updateComponent/${_id}`}>
-          <motion.div
           
           <Link to={`/updateComponent/${_id}`}>         
           <motion.div
@@ -60,7 +57,6 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
             onHoverEnd={(e) => {}}
           >
             <img src={iconEdit} alt="" />
-          </motion.div>
           </motion.div>
           </Link>
 

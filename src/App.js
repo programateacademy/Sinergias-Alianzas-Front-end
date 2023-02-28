@@ -21,7 +21,7 @@ import Profile from "./pages/Profile/Profile";
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
-/* import EditComponent from "./components/EditComponent/EditComponent"; */
+import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/SeeComponent";
 
 // Estilos

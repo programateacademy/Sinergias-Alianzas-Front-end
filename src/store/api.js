@@ -20,5 +20,5 @@ export const getComponent = (id) => API.get(`/component/seeComponent/${id}`);
 export const updateComponent = (updatedComponentData, id) =>
   API.patch(`/component/${id}`, updatedComponentData);
 
-//! Working delete
+//Request to change the visibility of the component
 export const deleteComponent =(id) => API.put(`/component/delete/${id}`);

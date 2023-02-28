@@ -406,12 +406,12 @@ const EditComponent = () => {
                   {/* button to edit */}
 
                   <Button
-                    style={{ backgroundColor: "red", border: "none" }}
+                    style={{ backgroundColor: "yellow", border: "none" }}
                     onClick = {handleSubmit}  
                   >
                     Editar
                   </Button>
-                  <Button color="secondary" onClick={toggle}>
+                  <Button style={{ backgroundColor: "grey", border: "none" }} onClick={toggle}>
                     Cancel
                   </Button>
                 </ModalFooter>

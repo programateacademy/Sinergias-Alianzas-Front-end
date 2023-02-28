@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./editComponent.css";
 
-import metodologia from "../AddComponent/assest/Rectangle25.png";
-import Formato from "../AddComponent/assest/Rectangle26.png";
-import Diagnostico from "../AddComponent/assest/Rectangle27.png";
-import Herramientas from "../AddComponent/assest/Rectangle28.png";
-import Material from "../AddComponent/assest/Rectangle29.png";
+import metodologia from "../AddComponent/assest/Metodología.png";
+import Formato from "../AddComponent/assest/Formatos.png";
+import Diagnostico from "../AddComponent/assest/Diagnosticos.png";
+import Herramientas from "../AddComponent/assest/Herramientas.png";
+import Material from "../AddComponent/assest/Material.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
 import ImgComponent from "../AddComponent/assest/libro.png";
@@ -184,7 +184,7 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="labels">Color del componente</Label>              
               <Input
-                className=""                
+                className="urlImagen"                
                 type="color"
                 name="compColor"
                 value={compColor || ''}
@@ -325,7 +325,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Diagnostico} alt="" />
+              <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
@@ -335,7 +335,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Formato} alt="" />
+              <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
@@ -345,7 +345,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Material} alt="" />
+              <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
               </Label>
@@ -357,7 +357,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Herramientas} alt="" />
+              <img className="Logos" src={Material} alt="" />
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"

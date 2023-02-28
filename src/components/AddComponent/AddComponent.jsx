@@ -1,9 +1,9 @@
 import "./addComponent.css";
-import metodologia from "./assest/Rectangle25.png";
-import Formato from "./assest/Rectangle26.png";
-import Diagnostico from "./assest/Rectangle27.png";
-import Herramientas from "./assest/Rectangle28.png";
-import Material from "./assest/Rectangle29.png";
+import metodologia from "./assest/Metodología.png";
+import Formato from "./assest/Formatos.png";
+import Diagnostico from "./assest/Diagnosticos.png";
+import Herramientas from "./assest/Herramientas.png";
+import Material from "./assest/Material.png";
 import Guardar from "./assest/guardar.png";
 import Cancelar from "./assest/cancelar.png";
 import ImgComponent from "./assest/libro.png";
@@ -178,7 +178,7 @@ const AddComponent = () => {
             <FormGroup>
               <Label className="labels">Color del componente</Label>              
               <Input
-                className=""                
+                className="urlImagen"                
                 type="color"
                 name="compColor"
                 value={compColor}
@@ -369,7 +369,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Diagnostico} alt="" />
+              <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <Input
                 className="recursosForm"
@@ -383,7 +383,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Formato} alt="" />
+              <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <Input
                 className="recursosForm"
@@ -397,7 +397,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Material} alt="" />
+              <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
               </Label>
@@ -413,7 +413,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Herramientas} alt="" />
+              <img className="Logos" src={Material} alt="" />
               <Label className="image1">Material Educativo</Label>
               <Input
                 className="recursosForm"

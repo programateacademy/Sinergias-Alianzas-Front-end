@@ -26,50 +26,35 @@ import { useDispatch, useSelector } from "react-redux";
 // Acciones de redux
 import { updateComponent } from "../../store/actions/componentSlice";
 
-const EditComponent = (initialState = {
-  compTitulo,
-  compImgPpal,
-  compColor,
-  compDefinicion,
-  compVideo,
-  compDescripcion,
-  compImg1,
-  compImg2,
-  compImg3,
-  compObjetivo1,
-  compObjetivo2,
-  compObjetivo3,
-  compLineaTrabajo1,
-  compLineaTrabajo2,
-  recursosMetodologia,
-  recursosFormatos,
-  recursosDiagnosticos,
-  recursosHerramientas,
-  recursosMaterial,
-}) => {
-const initialState2 = {
-  compTitulo,
-  compImgPpal,
-  compColor,
-  compDefinicion,
-  compVideo,
-  compDescripcion,
-  compImg1,
-  compImg2,
-  compImg3,
-  compObjetivo1,
-  compObjetivo2,
-  compObjetivo3,
-  compLineaTrabajo1,
-  compLineaTrabajo2,
-  recursosMetodologia,
-  recursosFormatos,
-  recursosDiagnosticos,
-  recursosHerramientas,
-  recursosMaterial,
-  }
+const initialState = {
+  compTitulo:"",
+  compColor:"",
+  compImgPpal:"",
+  compDefinicion:"",
+  compVideo:"",
+  compDescripcion:"",
+  compImg1:"",
+  compImg2:"",
+  compImg3:"",
+  compObjetivo1:"",
+  compObjetivo2:"",
+  compObjetivo3:"",
+  compLineaTrabajo1:"",
+  compLineaTrabajo2:"",
+  recursosMetodologia:"",
+  recursosFormatos:"",
+  recursosDiagnosticos:"",
+  recursosHerramientas:"",
+  recursosMaterial:"",
+}
+
+const EditComponent = () => {
+
   const [componentData, setComponentData] = useState(initialState);
-  
+
+  // Constante para mostrar si hay errores al enviar la información
+  const { error, componentes } = useSelector((state) => ({ ...state.componente }));
+
   //   Se destructura la información del usuario que ingresó al sistema
   const { user } = useSelector((state) => ({ ...state.auth }));
 
@@ -79,10 +64,46 @@ const initialState2 = {
    //   Redireccionar
    const navigate = useNavigate();
 
-  const onInputChange = (e) => {    
-    const { name, value } = e.target;
-    setComponentData({ ...componentData, [name]: value });
-  };
+
+  // Se destructura el valor del estado inicial
+
+  const {
+    compTitulo,
+    compColor,
+    compImgPpal,
+    compDefinicion,
+    compVideo,
+    compDescripcion,
+    compImg1,
+    compImg2,
+    compImg3,
+    compObjetivo1,
+    compObjetivo2,
+    compObjetivo3,
+    compLineaTrabajo1,
+    compLineaTrabajo2,
+    recursosMetodologia,
+    recursosFormatos,
+    recursosDiagnosticos,
+    recursosHerramientas,
+    recursosMaterial,
+  } = componentData;
+
+  const { id } = useParams() 
+
+  useEffect(() => {
+    if (id) {
+      const singleComponent = componentes.find((componente) => componente._id === id);
+      console.log(singleComponent);
+      setComponentData({ ...singleComponent });
+    }
+  }, [id]);
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  //   Función para validación en el envío del formulario
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,17 +128,45 @@ const initialState2 = {
       recursosHerramientas ||
       recursosMaterial
     ) {
-      const updateComponentData = {
+      const updatedComponentData = {
         ...componentData,
         name: user?.result?.name,
       };
-
-      dispatch(updateComponent({ updateComponentData, navigate, toast }));      
+        dispatch(updateComponent({ id, updatedComponentData, navigate, toast }));
+      handleClear();
     }
   };
 
+  // Función para capturar cuando el valor del input cambie
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setComponentData({ ...componentData, [name]: value });
+  };
 
-
+  const handleClear = () => {
+    setComponentData({
+      compTitulo: "",
+      compColor: "",
+      compImgPpal: "",
+      compDefinicion: "",
+      compVideo: "",
+      compDescripcion: "",
+      compImg1: "",
+      compImg2: "",
+      compImg3: "",
+      compObjetivo1: "",
+      compObjetivo2: "",
+      compObjetivo3: "",
+      compLineaTrabajo1: "",
+      compLineaTrabajo2: "",
+      recursosMetodologia: "",
+      recursosFormatos: "",
+      recursosDiagnosticos: "",
+      recursosHerramientas: "",
+      recursosMaterial: "",
+    });
+  };
+  
   return (
     <>
       <div className="containerTitle1">
@@ -132,16 +181,28 @@ const initialState2 = {
             <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
               <div className="containerInput">
-                <Input className="urlImagen2" value={compImgPpal} type="url"
+                <Input className="urlImagen2" value={compImgPpal || ''} type="url"
                   name="compImgPpal" onChange={onInputChange} required/>
               </div>
+            </FormGroup>
+
+            <FormGroup>
+              <Label className="labels">Color del componente</Label>              
+              <Input
+                className=""                
+                type="color"
+                name="compColor"
+                value={compColor || ''}
+                onChange={onInputChange}                
+                required
+              />
             </FormGroup>
 
             <FormGroup>
               <Label className="labels">Titulo Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
-                  name="compTitulo" value={compTitulo} onChange={onInputChange} required/>
+                  name="compTitulo" value={compTitulo|| ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -149,7 +210,7 @@ const initialState2 = {
               <Label className="labels">Definición</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
-                  name="compDefinicion" value={compDefinicion} onChange={onInputChange} required/>
+                  name="compDefinicion" value={compDefinicion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -159,7 +220,7 @@ const initialState2 = {
               </Label>
               <div className="containerInput">
                 <Input className="urlImagen2" name="compVideo"
-                  type="text" value={compVideo} onChange={onInputChange} required/>
+                  type="text" value={compVideo || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -167,7 +228,7 @@ const initialState2 = {
               <Label className="labels">Descripción Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" name="compDescripcion"
-                  type="textarea" value={compDescripcion} onChange={onInputChange} required/>
+                  type="textarea" value={compDescripcion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
           </div>
@@ -177,7 +238,7 @@ const initialState2 = {
               <Label className="image1">Imagen 1</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
-                  name="compImg1" value={compImg1} onChange={onInputChange} required/>
+                  name="compImg1" value={compImg1 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -185,7 +246,7 @@ const initialState2 = {
               <Label className="image1">Imagen 2</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
-                  name="compImg2" value={compImg2} onChange={onInputChange} required/>
+                  name="compImg2" value={compImg2 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -193,7 +254,7 @@ const initialState2 = {
               <Label className="image1">Imagen 3</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
-                  name="compImg3" value={compImg3} onChange={onInputChange} required/>
+                  name="compImg3" value={compImg3 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
           </div>
@@ -203,7 +264,7 @@ const initialState2 = {
               <Label className="image1">Objetivo 1</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
-                  name="compObjetivo1" value={compObjetivo1} onChange={onInputChange} required/>
+                  name="compObjetivo1" value={compObjetivo1 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -211,7 +272,7 @@ const initialState2 = {
               <Label className="image1">Objetivo 2</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
-                  name="compObjetivo2" value={compObjetivo2} onChange={onInputChange} required/>
+                  name="compObjetivo2" value={compObjetivo2 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -219,7 +280,7 @@ const initialState2 = {
               <Label className="image1">Objetivo 3</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
-                  name="compObjetivo3" value={compObjetivo3} onChange={onInputChange} required/>
+                  name="compObjetivo3" value={compObjetivo3 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
           </div>
@@ -234,7 +295,9 @@ const initialState2 = {
                   id="exampleText"
                   name="compLineaTrabajo1"
                   type="text"
-                  placeholder={compLineaTrabajo1}
+                  value={compLineaTrabajo1 || ''}
+                  onChange={onInputChange}
+                  required
                 />
               </div>
             </FormGroup>
@@ -248,7 +311,9 @@ const initialState2 = {
                   id="exampleText"
                   name="compLineaTrabajo2"
                   type="text"
-                  placeholder={compLineaTrabajo2}
+                  value={compLineaTrabajo2 || ''}
+                  onChange={onInputChange}
+                  required
                 />
               </div>
             </FormGroup>
@@ -261,7 +326,7 @@ const initialState2 = {
               <Label className="image1">Metodologia</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosMetodologia" value={recursosMetodologia} onChange={onInputChange} required/>
+                  name="recursosMetodologia" value={recursosMetodologia || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -271,7 +336,7 @@ const initialState2 = {
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosFormatos" value={recursosFormatos} onChange={onInputChange} required/>
+                  name="recursosFormatos" value={recursosFormatos || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -281,7 +346,7 @@ const initialState2 = {
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosDiagnosticos" value={recursosDiagnosticos} onChange={onInputChange} required/>
+                  name="recursosDiagnosticos" value={recursosDiagnosticos || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -293,7 +358,7 @@ const initialState2 = {
               </Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosHerramientas" value={recursosHerramientas} onChange={onInputChange} required/>
+                  name="recursosHerramientas" value={recursosHerramientas || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -303,7 +368,7 @@ const initialState2 = {
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosMaterial" value={recursosMaterial} onChange={onInputChange} required/>
+                  name="recursosMaterial" value={recursosMaterial || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>

@@ -1,10 +1,10 @@
-// Dependencias
+// dependencies
 import React from "react";
 
 // Motion
 import { motion } from "framer-motion";
 
-// Componentes
+// Components
 import AddUser from "../../components/AddUser/AddUser";
 import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
 import Search from "../../components/Search/Search";
@@ -12,12 +12,12 @@ import RowTableUsers from "../../components/RowTableUsers/RowTableUsers";
 import Pagination from "../../components/Pagination/Pagination";
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser'
 
-// Estilos
+// styles
 import { Table } from "reactstrap";
 import "./Users.css";
 
 const Users = () => {
-  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  //* Custom Hook to redirect user if session expires
   useRedirectLoggedOutUser("/");
   return (
     <>

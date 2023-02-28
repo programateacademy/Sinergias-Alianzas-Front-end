@@ -4,7 +4,7 @@ import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API_URL = `${BACKEND_URL}/api/users/`;
 
-//* Validar email+
+//* validate email+
 export const validateEmail = (email) => {
   return email.match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -13,7 +13,7 @@ export const validateEmail = (email) => {
 
 /*
 - =================================
--         Registrar usuario
+-         register user
 - =================================
 */
 const register = async (userData) => {
@@ -24,7 +24,7 @@ const register = async (userData) => {
 
 /*
 - =================================
--         Iniciar Sesión
+-         Log in
 - =================================
 */
 const login = async (userData) => {
@@ -35,7 +35,7 @@ const login = async (userData) => {
 
 /*
 - =================================
--         Cerrar Sesión
+-         Sign off
 - =================================
 */
 const logout = async () => {
@@ -46,7 +46,7 @@ const logout = async () => {
 
 /*
 - =================================
--   Estado del inicio de Sesión
+-   Login Status
 - =================================
 */
 const getLoginStatus = async () => {
@@ -57,7 +57,7 @@ const getLoginStatus = async () => {
 
 /*
 - =================================
--       Perfil del usuario
+-       user profile
 - =================================
 */
 const getUser = async () => {
@@ -68,7 +68,7 @@ const getUser = async () => {
 
 /*
 - =================================
--   Enviar email de verificación
+-   Send verification email
 - =================================
 */
 const sendVerificationEmail = async () => {

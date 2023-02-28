@@ -1,16 +1,16 @@
-// Dependencias
+// dependencies
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-// Conexión API
+// API connection
 import authService from "./authService";
 
-// Estado inicial
+// Initial state
 const initialState = {
   isLoggedIn: false,
   user: null,
   users: [],
-  twoFact: false, // Trigger para una segunda autenticación
+  twoFact: false, // Trigger for a second authentication
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -19,7 +19,7 @@ const initialState = {
 
 /*
 - =================================
--         Registrar usuario
+-         register user
 - =================================
 */
 export const register = createAsyncThunk(
@@ -42,7 +42,7 @@ export const register = createAsyncThunk(
 
 /*
 - =================================
--         Iniciar sesión
+-         Log in
 - =================================
 */
 export const login = createAsyncThunk(
@@ -65,7 +65,7 @@ export const login = createAsyncThunk(
 
 /*
 - =================================
--         Cerrar sesión
+-         Sign off
 - =================================
 */
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
@@ -83,7 +83,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 
 /*
 - =================================
--   Estado del inicio de sesión
+-   login status
 - =================================
 */
 export const getLoginStatus = createAsyncThunk(
@@ -106,7 +106,7 @@ export const getLoginStatus = createAsyncThunk(
 
 /*
 - =================================
--       Perfil del usuario
+-       user profile
 - =================================
 */
 export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
@@ -124,7 +124,7 @@ export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
 
 /*
 - =================================
--   Enviar email de verificación
+-   Send verification email
 - =================================
 */
 export const sendVerificationEmail = createAsyncThunk(
@@ -163,7 +163,7 @@ const authSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      //* Registrar usuarios
+      //* register users
       .addCase(register.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -183,7 +183,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* Iniciar Sesión
+      //* Log in
       .addCase(login.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -203,7 +203,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* Cerrar Sesión
+      //* Sign off
       .addCase(logout.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -222,7 +222,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* Estado del Inicio de Sesión
+      //* Login Status
       .addCase(getLoginStatus.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -236,7 +236,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      //* Perfil del Usuario
+      //* User Profile
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -252,7 +252,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* Email de verificación
+      //* verification email
       .addCase(sendVerificationEmail.pending, (state) => {
         state.isLoading = true;
       })
@@ -275,10 +275,10 @@ const authSlice = createSlice({
 
 export const { RESET } = authSlice.actions;
 
-//* Estado de la sesión (activa o inactiva)
+//* Session status (active or inactive)
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 
-//* Seleccionar usuario
+//* select user
 export const selectUser = (state) => state.auth.user;
 
 export default authSlice.reducer;

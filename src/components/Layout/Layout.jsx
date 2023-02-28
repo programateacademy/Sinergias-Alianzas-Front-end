@@ -1,7 +1,7 @@
-// Dependencias
+// dependencies
 import React from "react";
 
-// Componentes
+// Components
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 

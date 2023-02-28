@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./editComponent.css";
 
 import metodologia from "../AddComponent/assest/Metodología.png";
@@ -9,17 +8,17 @@ import Material from "../AddComponent/assest/Material.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
 import ImgComponent from "../AddComponent/assest/libro.png";
-import pencil from "./assest/editar.png";
 
-import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
+import { FormText, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
 
 
-// Dependencias
+// dependencies
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// Acciones de redux
+// redux actions
 import { updateComponent } from "../../store/actions/componentSlice";
 
 const initialState = {
@@ -48,20 +47,20 @@ const EditComponent = () => {
 
   const [componentData, setComponentData] = useState(initialState);
 
-  // Constante para mostrar si hay errores al enviar la información
+  // Constant to show if there are errors when sending the information
   const { error, componentes } = useSelector((state) => ({ ...state.componente }));
 
-  //   Se destructura la información del usuario que ingresó al sistema
+  //   The information of the user who entered the system is destructured
   const { user } = useSelector((state) => ({ ...state.auth }));
 
-  //   Dispatch para disparar la acción
+  //   Dispatch to trigger the action
   const dispatch = useDispatch();
 
-  //   Redireccionar
+  //   Redirect
   const navigate = useNavigate();
 
 
-  // Se destructura el valor del estado inicial
+  // The value of the initial state is destructed
 
   const {
     compTitulo,
@@ -99,7 +98,7 @@ const EditComponent = () => {
     error && toast.error(error);
   }, [error]);
 
-  //   Función para validación en el envío del formulario
+  //   Function for validation in the submission of the form
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -133,7 +132,7 @@ const EditComponent = () => {
     }
   };
 
-  // Función para capturar cuando el valor del input cambie
+  // Function to capture when the value of the input changes
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setComponentData({ ...componentData, [name]: value });
@@ -162,6 +161,10 @@ const EditComponent = () => {
       recursosMaterial: "",
     });
   };
+
+  //! MODAL
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
   
   return (
     <>
@@ -369,8 +372,30 @@ const EditComponent = () => {
         </Form>
         <div className="botones">
           <button>
-            <img className="iconos" onClick={handleSubmit} src={Guardar} alt="" />
+            <img className="iconos" onClick={toggle} src={Guardar} alt="" />
           </button>
+
+          <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                  ¿Está seguro de editar este componente?
+                </ModalHeader>
+
+                <ModalFooter>
+
+                  {/* button to edit */}
+
+                  <Button
+                    style={{ backgroundColor: "red", border: "none" }}
+                    onClick = {handleSubmit}  
+                  >
+                    Editar
+                  </Button>
+                  <Button color="secondary" onClick={toggle}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
+
           <button>
             <NavLink to="/home" className="col-12">
               <img className="iconos" src={Cancelar} alt="" />

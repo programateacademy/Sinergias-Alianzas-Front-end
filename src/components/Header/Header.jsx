@@ -1,22 +1,22 @@
-// Dependencias
+// dependencies
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-// Funciones Redux
+// Redux functions
 import { RESET, logout } from "../../store/actions/auth/authSlice";
 
 // Motion
 import { motion } from "framer-motion";
 
-// Componentes
+// Components
 import { UserName } from "../../pages/Profile/Profile";
 
 // Icons
 import { FaUsersCog, FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 
-// Estilos
+// styles
 import { Breadcrumb, BreadcrumbItem, Container } from "reactstrap";
 import Logosinergias from "./Assets/Logosinergias.png";
 import "./Header.css";
@@ -24,19 +24,19 @@ import "./Header.css";
 const Header = () => {
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
   //* Hooks Redux
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  //* Función para regresar al dashboard desde el logo
+  //* Function to return to the dashboard from the logo
   const goHome = () => {
     navigate("/home");
   };
 
-  //* Función para cerrar sesión
+  //* Function to log out
   const logoutUser = async () => {
     dispatch(RESET());
 
@@ -56,7 +56,7 @@ const Header = () => {
           onClick={goHome}
         />
 
-        {/* Navegación */}
+        {/* Navigation */}
         <nav>
           <ul className="container_btn_header">
             <motion.li
@@ -92,7 +92,7 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Navegación para ir al perfil del usuario */}
+      {/* Navigation to go to user profile */}
       <Container>
         <Breadcrumb listTag="div">
           <UserName />

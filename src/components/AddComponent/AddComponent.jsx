@@ -10,14 +10,14 @@ import ImgComponent from "./assest/libro.png";
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
-// Unifacion back y front
-// Dependencias
+// Back and front unification
+// dependencies
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// Acciones de redux
+// redux actions
 import { addComponent } from "../../store/actions/componentSlice";
 
 const initialState = {
@@ -44,23 +44,23 @@ const initialState = {
 const AddComponent = () => {
   const [componentData, setComponentData] = useState(initialState);
 
-  // Constante para mostrar si hay errores al enviar la información
+  // Constant to show if there are errors when sending the information
   const { error } = useSelector((state) => ({ ...state.componente }));
 
-  //   Se destructura la información del usuario que ingresó al sistema
+  //  The information of the user who entered the system is destructured
   const { user } = useSelector((state) => ({ ...state.auth }));
 
-  //   Dispatch para disparar la acción
+  //   Dispatch to trigger the action
   const dispatch = useDispatch();
 
-  //   Redireccionar
+  //   Redirect
   const navigate = useNavigate();
 
   useEffect(() => {
     error && toast.error(error);
   }, [error]);
 
-  // Se destructura el valor del estado inicial
+  // The value of the initial state is destructed
 
   const {
     compTitulo,
@@ -84,7 +84,7 @@ const AddComponent = () => {
     recursosMaterial,
   } = componentData;
 
-  //   Función para validación en el envío del formulario
+  //   Function for validation in the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -118,13 +118,13 @@ const AddComponent = () => {
     }
   };
 
-  // Función para capturar cuando el valor del input cambie
+  // Function to capture when the value of the input changes
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setComponentData({ ...componentData, [name]: value });
   };
 
-  // Función para limpiar el formulario
+  // Function to clear the form
   const handleClear = () => {
     setComponentData({
       compTitulo: "",
@@ -425,12 +425,10 @@ const AddComponent = () => {
               />
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
-
-
-
             
           </Form>
         </Form>
+        
         <div className="botones">
           <button>
             <img

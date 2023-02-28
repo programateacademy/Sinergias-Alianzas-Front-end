@@ -1,10 +1,10 @@
-// Dependencias
+// Dependencies
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-// Funciones Redux
+// Redux functions
 import { validateEmail } from "../../store/actions/auth/authService";
 import {
   RESET,
@@ -12,18 +12,18 @@ import {
   sendVerificationEmail,
 } from "../../store/actions/auth/authSlice";
 
-// Componentes
+// Components
 import PasswordInput from "../Layout/PasswordInput/PasswordInput";
 import Loader from "../Loader/Loader";
 
-// Iconos
+// icons
 import { RiUserAddFill } from "react-icons/ri";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-// Estilos
+// styles
 import "./AddUser.css";
 
-//Elementos de reacstrap
+//reactstrap elements
 import {
   Button,
   Modal,
@@ -39,7 +39,7 @@ import {
   ListGroupItem,
 } from "reactstrap";
 
-// Estado inicial del formulario
+// Initial state of the form
 const initialState = {
   lastName: "",
   firstName: "",
@@ -52,20 +52,20 @@ const initialState = {
 const AddUser = () => {
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
 
-  //* Estado de la ventana modal
+  //* Modal window state
   const [modal, setModal] = useState(false);
 
-  //* Estado del formulario
+  //* form status
   const [formData, setFormData] = useState(initialState);
 
   const { lastName, firstName, secondName, email, password, confirmPassword } =
     formData;
 
-  //* Hooks Redux
+  //* Redux Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -73,13 +73,13 @@ const AddUser = () => {
     (state) => state.auth
   );
 
-  //* Estado para validar la estructura de la contraseña
+  //* State to validate the password structure
   /*
-   La contraseña debe tener las siguientes características:
-   Letras mayusculas y minusculas
-   Números
-   Caracter especial (!@#$...)
-   No puede tener menos de 8 caracteres
+    The password must have the following characteristics:
+    Uppercase and lowercase letters
+    Numbers
+    Special character (!@#$...)
+    Cannot be less than 8 characters
   */
   const [upperCase, setUpperCase] = useState(false);
   const [numbers, setNumbers] = useState(false);
@@ -91,16 +91,16 @@ const AddUser = () => {
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
 
-  //* Función para mostrar u ocultar el modal
+  //* Function to show or hide the modal
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  //* Función para cambiar el icono en las condiciones de la contraseña
+  //* Function to change the icon in the password conditions
   const switchIcon = (condition) => {
     if (condition) {
       return checkIcon;
@@ -109,37 +109,37 @@ const AddUser = () => {
     return timesIcon;
   };
 
-  //* Función para capturar el valor del input
+  //* Function to capture the value of the input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
   };
 
-  //* Renderizar el componente de acuerdo a las condiciones de la contraseña
+  //* Render the component according to the password conditions
   useEffect(() => {
-    //? ¿Contiene letras mayúsculas y minúsculas?
+    //? Does it contain uppercase and lowercase letters?
     if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
       setUpperCase(true);
     } else {
       setUpperCase(false);
     }
 
-    //? ¿Contiene números?
+    //? Does it contain numbers?
     if (password.match(/([0-9])/)) {
       setNumbers(true);
     } else {
       setNumbers(false);
     }
 
-    //? ¿Contiene caracteres especiales?
+    //? Does it contain special characters?
     if (password.match(/([!,%,&,@,#,$,^,*,?,_,-])/)) {
       setSpecialCharacter(true);
     } else {
       setSpecialCharacter(false);
     }
 
-    //? ¿Contiene mínimo 8 caracteres?
+    //? Does it contain at least 8 characters?
     if (password.length > 7) {
       setPassLength(true);
     } else {
@@ -147,11 +147,11 @@ const AddUser = () => {
     }
   }, [password]);
 
-  //* Función para enviar el formulario
+  //* Function to submit the form
   const registerUser = async (e) => {
     e.preventDefault();
 
-    //* Validación de los inputs
+    //* Input validation
     if (!lastName || !firstName || !email || !password) {
       return toast.error("Todos los campos son obligatorios");
     }
@@ -204,7 +204,7 @@ const AddUser = () => {
         </Button>
       </div>
 
-      {/* Ventana Modal */}
+      {/* modal window */}
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader>Registro de Usuario</ModalHeader>
         <ModalBody>
@@ -277,7 +277,7 @@ const AddUser = () => {
               />
             </FormGroup>
 
-            {/* Característica de la contraseña */}
+            {/* password feature */}
             <Card
               style={{
                 width: "100%",

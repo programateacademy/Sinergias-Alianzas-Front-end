@@ -1,13 +1,13 @@
-//* Dependencias
+//* dependencies
 import React, { useState, useEffect } from "react";
 
-// Componentes
+// Components
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
 
-// Iconos
+// icons
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-// Estilos
+// styles
 import {
   Card,
   Form,
@@ -31,24 +31,24 @@ const passwordState = {
 const ChangePassword = () => {
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
-  //* Estado de la ventana modal
+  //* Modal window state
   const [modal, setModal] = useState(false);
 
-  //* Estado del formulario para cambiar la contraseña
+  //* Status of the form to change the password
   const [formData, setFormData] = useState(passwordState);
 
   const { oldPassword, password, confirmPassword } = formData;
 
-  //* Estado para validar la estructura de la contraseña
+  //* State to validate the password structure
   /*
-   La contraseña debe tener las siguientes características:
-   Letras mayusculas y minusculas
-   Números
-   Caracter especial (!@#$...)
-   No puede tener menos de 8 caracteres
+    The password must have the following characteristics:
+    Uppercase and lowercase letters
+    Numbers
+    Special character (!@#$...)
+    Cannot be less than 8 characters
   */
   const [upperCase, setUpperCase] = useState(false);
   const [numbers, setNumbers] = useState(false);
@@ -60,15 +60,15 @@ const ChangePassword = () => {
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
-  //* Función para mostrar u ocultar el modal
+  //* Function to show or hide the modal
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  //* Función para cambiar el icono en las condiciones de la contraseña
+  //* Function to change the icon in the password conditions
   const switchIcon = (condition) => {
     if (condition) {
       return checkIcon;
@@ -77,40 +77,40 @@ const ChangePassword = () => {
     return timesIcon;
   };
 
-  //* Función para capturar el valor del input
+  //* Function to capture the value of the input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
   };
 
-  //* Función para enviar el formulario
+  //* Function to submit the form
   const handleSubmit = () => {};
 
-  //* Renderizar el componente de acuerdo a las condiciones de la contraseña
+  //* Render the component according to the password conditions
   useEffect(() => {
-    //? ¿Contiene letras mayúsculas y minúsculas?
+    //? Does it contain uppercase and lowercase letters?
     if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
       setUpperCase(true);
     } else {
       setUpperCase(false);
     }
 
-    //? ¿Contiene números?
+    //? Does it contain numbers?
     if (password.match(/([0-9])/)) {
       setNumbers(true);
     } else {
       setNumbers(false);
     }
 
-    //? ¿Contiene caracteres especiales?
+    //? Does it contain special characters?
     if (password.match(/([!,%,&,@,#,$,^,*,?,_,-])/)) {
       setSpecialCharacter(true);
     } else {
       setSpecialCharacter(false);
     }
 
-    //? ¿Contiene mínimo 8 caracteres?
+    //? Does it contain at least 8 characters?
     if (password.length > 7) {
       setPassLength(true);
     } else {
@@ -122,7 +122,7 @@ const ChangePassword = () => {
     <Button color="primary" onClick={toggleModal}>
             Cambiar Contraseña
           </Button>
-      {/* Ventana Modal */}
+      {/* modal window */}
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader>Cambiar Contraseña</ModalHeader>
         <ModalBody>
@@ -157,7 +157,7 @@ const ChangePassword = () => {
               />
             </FormGroup>
 
-            {/* Característica de la contraseña */}
+            {/* password feature */}
             <Card
               style={{
                 width: "100%",

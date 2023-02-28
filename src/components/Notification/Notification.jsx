@@ -1,8 +1,8 @@
-// Dependencias
+// dependencies
 import React from "react";
 import { useDispatch } from "react-redux";
 
-// Funciones de Redux
+// Redux functions
 import {
   RESET,
   sendVerificationEmail,

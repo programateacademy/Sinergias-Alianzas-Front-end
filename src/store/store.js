@@ -1,7 +1,7 @@
-// Configuración redux
+// redux configuration
 import { configureStore } from "@reduxjs/toolkit";
 
-// Importar archivo con el reducer
+// Import file with reducer
 import authReducer from "./actions/auth/authSlice";
 import ComponentReducer from "./actions/componentSlice";
 

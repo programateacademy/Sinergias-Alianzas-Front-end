@@ -1,17 +1,17 @@
-// Dependencias
+// dependencies
 import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify"; // Notificaciones en pantalla
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Manejo de rutas
 import { useDispatch } from "react-redux";
 
-// Funciones de Redux
+// Redux functions
 import { getLoginStatus } from "./store/actions/auth/authSlice";
 
-// Componentes
+// Components
 import Layout from "./components/Layout/Layout";
 import Verify from "./pages/Verify/Verify";
 
-// Páginas
+// pages
 import Login from "./pages/Login/Login";
 
 import Home from "./pages/Home/Home";
@@ -26,10 +26,10 @@ import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/SeeComponent";
 
-// Estilos
+// styles
 import "react-toastify/dist/ReactToastify.css";
 
-// Credenciales
+// credentials
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
@@ -37,26 +37,26 @@ axios.defaults.withCredentials = true;
 function App() {
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
   //* Hooks Redux
   const dispatch = useDispatch();
 
-  //* Determinar si el usuario inicio sesión o no
+  //* Determine if the user logged in or not
   useEffect(() => {
     dispatch(getLoginStatus());
   }, [dispatch]);
 
   return (
     <BrowserRouter>
-      {/* Notificaciones */}
+      {/* notifications */}
       <ToastContainer />
 
       <Routes>
         {/* 
             - =================================
-            -       RUTAS MÓDULO USUARIOS
+            -       USERS MODULE ROUTES
             - =================================
           */}
         <Route path="/" element={<Login />} />
@@ -94,7 +94,7 @@ function App() {
 
         {/* 
             - =================================
-            -     RUTAS MÓDULO COMPONENTES
+            -     ROUTES MODULE COMPONENTS
             - =================================
           */}
 

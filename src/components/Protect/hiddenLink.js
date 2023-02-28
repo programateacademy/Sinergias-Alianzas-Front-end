@@ -4,12 +4,12 @@ import {
   selectUser,
 } from "../../store/actions/auth/authSlice";
 
-//* Función para mostrar las páginas de acuerdo al rol del usuario
+//* Function to display the pages according to the role of the user
 export const AdminAuthorLink = ({ children }) => {
-  // Estado de la sesión (activa o inactiva)
+  // Session status (active or inactive)
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  // Rol del usuario
+  // user role
   const userRole = useSelector(selectUser);
 
   if (

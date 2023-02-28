@@ -43,6 +43,7 @@ export const getComponent = createAsyncThunk(
   }
 );
 
+//edit component
 export const updateComponent = createAsyncThunk(
   "component/updateComponent",
   async ({ id, updatedComponentData, toast, navigate }, { rejectWithValue }) => {
@@ -68,11 +69,6 @@ export const deleteComponent = (id, data) => async (dispatch) => {
     console.log("Error al eliminar el componente", error.message);
   }
 };
-
-
-
-
-
 
 
 

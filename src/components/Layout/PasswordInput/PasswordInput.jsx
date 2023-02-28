@@ -1,30 +1,30 @@
-// Dependencias
+// dependencies
 import React, { useState } from "react";
 
-// Iconos
+// icons
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-// Estilos
+// styles
 import { Input } from "reactstrap";
 import "./PasswordInput.css";
 
 const PasswordInput = ({ placeholder, value, onChange, name, onPaste }) => {
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
 
-  //* Estado de la contraseña: Visible u oculta
+  //* Password status: Visible or hidden
   const [showPassword, setShowPassword] = useState(false);
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
 
-  //* Función para mostrar u ocultar la contraseña en el input
+  //* Function to show or hide the password in the input
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };

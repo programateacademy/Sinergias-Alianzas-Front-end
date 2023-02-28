@@ -1,17 +1,17 @@
-// Dependencias
+// dependencies
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-// Funciones de Redux
+// Redux functions
 import { getUser, selectUser } from "../../store/actions/auth/authSlice";
 
-// Componentes
+// Components
 import ChangePassword from "../../components/ChangePassword/ChangePassword";
 import Loader from "../../components/Loader/Loader";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import Notification from "../../components/Notification/Notification";
 
-// Estilos
+// styles
 import {
   Card,
   CardBody,
@@ -21,7 +21,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 
-// Función para cortar el nombre del usuario
+// Function to cut the user's name
 const shortenText = (text, n) => {
   if (text.length > n) {
     const shoretenedText = text.substring(0, n).concat("...");
@@ -33,18 +33,18 @@ const shortenText = (text, n) => {
 };
 
 const Profile = () => {
-  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  //* Custom Hook to redirect user if session expires
   useRedirectLoggedOutUser("/");
 
   //* Hooks Redux
   const dispatch = useDispatch();
 
-  //* Estado función redux
+  //* redux function status
   const { isLoading, isLoggedIn, isSuccess, message, user } = useSelector(
     (state) => state.auth
   );
 
-  //* Estado inicial
+  //* Initial state
   const initialState = {
     name: `${user?.name.firstName} ${user?.name.lastName}` || "",
     email: user?.email,
@@ -54,27 +54,26 @@ const Profile = () => {
 
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
-  //* Estado del perfil
+  //* profile status
   const [profile, setProfile] = useState(initialState);
-  // console.log(initialState)
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
 
-  //* Función para capturar el valor del input
+  //* Function to capture the value of the input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
     setProfile({ ...profile, [name]: value });
   };
 
-  //* Renderizar información del usuario
+  //* Render user information
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
@@ -136,7 +135,7 @@ const Profile = () => {
   );
 };
 
-//* Exportar componente para el nombre del usuario
+//* Export component for username
 export const UserName = () => {
   const user = useSelector(selectUser);
 

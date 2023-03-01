@@ -29,8 +29,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Credenciales
 import axios from "axios";
-axios.defaults.withCredentials = true
-
+axios.defaults.withCredentials = true;
 
 function App() {
   /* 
@@ -40,11 +39,11 @@ function App() {
   */
   //* Hooks Redux
   const dispatch = useDispatch();
-  
+
   //* Determinar si el usuario inicio sesión o no
   useEffect(() => {
-    dispatch(getLoginStatus())
-  }, [dispatch])
+    dispatch(getLoginStatus());
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
@@ -105,7 +104,7 @@ function App() {
             </Layout>
           }
         />
-        
+
         <Route
           path="/addComponent"
           element={
@@ -119,14 +118,14 @@ function App() {
           path="/updateComponent/:id"
           element={
             <Layout>
-              <EditComponent/>
+              <EditComponent />
             </Layout>
           }
-        />        
+        />
 
-        
+
         <Route
-          
+
           path="/seeComponent/:id"
           element={
             <Layout>

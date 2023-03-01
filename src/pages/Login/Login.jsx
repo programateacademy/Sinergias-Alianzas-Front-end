@@ -1,24 +1,24 @@
-// Dependencias
+// dependencies
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-// Funciones Redux
+// Redux functions
 import { validateEmail } from "../../store/actions/auth/authService";
 import { RESET, login } from "../../store/actions/auth/authSlice";
 
-// Componentes
+// Components
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
 import Loader from "../../components/Loader/Loader";
 
-// Estilos
+// styles
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
 import "./login.css";
 
-// Estado inicial
+// Initial state
 const initialState = {
   email: "",
   password: "",
@@ -27,11 +27,11 @@ const initialState = {
 const Login = () => {
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
 
-  //* Estado del formulario
+  //* form status
   const [formData, setFormData] = useState(initialState);
   const { email, password } = formData;
 
@@ -45,22 +45,22 @@ const Login = () => {
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
 
-  //* Función para capturar el valor del input
+  //* Function to capture the value of the input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
   };
 
-  //* Función para enviar el formulario
+  //* Function to submit the form
   const loginUser = async (e) => {
     e.preventDefault();
 
-    //* Validación de los inputs
+    //* Input validation
     if (!email || !password) {
       return toast.error("Todos los campos son obligatorios");
     }
@@ -73,8 +73,6 @@ const Login = () => {
       email,
       password,
     };
-
-    // console.log(userData)
 
     await dispatch(login(userData));
   };
@@ -151,9 +149,11 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              Ingresar
+              <span>Ingresar</span>
+              
             </button>
           </div>
+
         </Form>
       </div>
     </div>

@@ -1,68 +1,66 @@
-import React, { Component, useEffect, useState } from "react";
 import "./editComponent.css";
 
-import metodologia from "../AddComponent/assest/Metodologia.png";
-import Formato from "../AddComponent/assest/Salud.png";
-import Diagnostico from "../AddComponent/assest/Diagnostico.png";
-import Herramientas from "../AddComponent/assest/Herramientas.png";
-import Material from "../AddComponent/assest/Material.png";
+import metodologia from "../AddComponent/assest/Rectangle25.png";
+import Formato from "../AddComponent/assest/Rectangle26.png";
+import Diagnostico from "../AddComponent/assest/Rectangle27.png";
+import Herramientas from "../AddComponent/assest/Rectangle28.png";
+import Material from "../AddComponent/assest/Rectangle29.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
 import ImgComponent from "../AddComponent/assest/libro.png";
-import pencil from "./assest/editar.png";
 
-import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
+import { FormText, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
 
 
-// Dependencias
+// dependencies
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// Acciones de redux
+// redux actions
 import { updateComponent } from "../../store/actions/componentSlice";
 
-const EditComponent = (initialState = {
-  compTitulo,
-  compImgPpal,
-  compDefinicion,
-  compVideo,
-  compDescripcion,
-  compImg1,
-  compImg2,
-  compImg3,
-  compObjetivo1,
-  compObjetivo2,
-  compObjetivo3,
-  compLineaTrabajo1,
-  compLineaTrabajo2,
-  recursosMetodologia,
-  recursosFormatos,
-  recursosDiagnosticos,
-  recursosHerramientas,
-  recursosMaterial,
-}) => {
+const initialState = {
+  compTitulo:"",
+  compColor:"",
+  compImgPpal:"",
+  compDefinicion:"",
+  compVideo:"",
+  compDescripcion:"",
+  compImg1:"",
+  compImg2:"",
+  compImg3:"",
+  compObjetivo1:"",
+  compObjetivo2:"",
+  compObjetivo3:"",
+  compLineaTrabajo1:"",
+  compLineaTrabajo2:"",
+  recursosMetodologia:"",
+  recursosFormatos:"",
+  recursosDiagnosticos:"",
+  recursosHerramientas:"",
+  recursosMaterial:"",
+}
+
+const EditComponent = () => {
+
   const [componentData, setComponentData] = useState(initialState);
 
-  // Constante para mostrar si hay errores al enviar la información
-  const { error } = useSelector((state) => ({ ...state.componente }));
+  // Constant to show if there are errors when sending the information
+  const { error, componentes } = useSelector((state) => ({ ...state.componente }));
 
-  //   Se destructura la información del usuario que ingresó al sistema
+  //   The information of the user who entered the system is destructured
   const { user } = useSelector((state) => ({ ...state.auth }));
 
-  //   Dispatch para disparar la acción
+  //   Dispatch to trigger the action
   const dispatch = useDispatch();
 
-  //   Redireccionar
+  //   Redirect
   const navigate = useNavigate();
 
-  const { id } = useParams() 
 
-  useEffect(() => {
-    error && toast.error(error);
-  }, [error]);
-
-  // Se destructura el valor del estado inicial
+  // The value of the initial state is destructed
 
   const {
     compTitulo,
@@ -86,7 +84,21 @@ const EditComponent = (initialState = {
     recursosMaterial,
   } = componentData;
 
-  //   Función para validación en el envío del formulario
+  const { id } = useParams() 
+
+  useEffect(() => {
+    if (id) {
+      const singleComponent = componentes.find((componente) => componente._id === id);
+      console.log(singleComponent);
+      setComponentData({ ...singleComponent });
+    }
+  }, [id]);
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  //   Function for validation in the submission of the form
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -111,20 +123,48 @@ const EditComponent = (initialState = {
       recursosHerramientas &&
       recursosMaterial
     ) {
-      const updateComponentData = {
+      const updatedComponentData = {
         ...componentData,
         name: user?.result?.name,
       };
-
-      dispatch(updateComponent({ id, updateComponentData, navigate, toast }));
+        dispatch(updateComponent({ id, updatedComponentData, navigate, toast }));
+      handleClear();
     }
   };
 
-  // Función para capturar cuando el valor del input cambie
+  // Function to capture when the value of the input changes
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setComponentData({ ...componentData, [name]: value });
   };
+
+  const handleClear = () => {
+    setComponentData({
+      compTitulo: "",
+      compColor: "",
+      compImgPpal: "",
+      compDefinicion: "",
+      compVideo: "",
+      compDescripcion: "",
+      compImg1: "",
+      compImg2: "",
+      compImg3: "",
+      compObjetivo1: "",
+      compObjetivo2: "",
+      compObjetivo3: "",
+      compLineaTrabajo1: "",
+      compLineaTrabajo2: "",
+      recursosMetodologia: "",
+      recursosFormatos: "",
+      recursosDiagnosticos: "",
+      recursosHerramientas: "",
+      recursosMaterial: "",
+    });
+  };
+
+  //! MODAL
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
   
   return (
     <>
@@ -133,28 +173,47 @@ const EditComponent = (initialState = {
       </div>
 
       <div className="containerDashboard1">
-        <h2 className="Titulo2">Titulo del Componente</h2>
-        <img className="imgComponent" src={ImgComponent} alt="" />
+        <h2 className="Titulo2" style={{color:`${compColor}`}}>{compTitulo}</h2>
+
+        <img className="imgComponent" src={compImgPpal} alt="Image form BD" />
+
         <Form className="containerAdd" onSubmit={handleSubmit}>
           <Form className="form1">
-            <FormGroup>
+            
+          <FormGroup>
               <Label className="labels">Imagen del Componente</Label>
-              <div className="containerInput">
-                <Input className="urlImagen2" value={compImgPpal} type="url"
-                  name="compImgPpal" onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
-              </div>
+              <Input
+                className="urlImagen"
+                value={compImgPpal || ''}
+                type="url"
+                name="compImgPpal"
+                onChange={onInputChange}
+                required
+              />
             </FormGroup>
+
+
+            {/* COLOR */}
+
+            <FormGroup>
+              <Label className="labels">Color del Componente</Label>
+              <div className="containerInput">
+                <Input
+                  className="inputColor"
+                  value={compColor || ''}
+                  type="color"
+                  name="compColor"
+                  onChange={onInputChange}
+                  required
+                />
+              </div>
+            </FormGroup>            
+
             <FormGroup>
               <Label className="labels">Titulo Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
-                  name="compTitulo" value={compTitulo} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compTitulo" value={compTitulo|| ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -162,10 +221,7 @@ const EditComponent = (initialState = {
               <Label className="labels">Definición</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" type="text"
-                  name="compDefinicion" value={compDefinicion} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compDefinicion" value={compDefinicion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -175,10 +231,7 @@ const EditComponent = (initialState = {
               </Label>
               <div className="containerInput">
                 <Input className="urlImagen2" name="compVideo"
-                  type="text" value={compVideo} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  type="text" value={compVideo || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -186,23 +239,17 @@ const EditComponent = (initialState = {
               <Label className="labels">Descripción Componente</Label>
               <div className="containerInput">
                 <Input className="urlImagen2" name="compDescripcion"
-                  type="textarea" value={compDescripcion} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  type="textarea" value={compDescripcion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
           </Form>
 
-          <Form className="form2">
+          <div className="form2">
             <FormGroup>
               <Label className="image1">Imagen 1</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
-                  name="compImg1" value={compImg1} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compImg1" value={compImg1 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -210,10 +257,7 @@ const EditComponent = (initialState = {
               <Label className="image1">Imagen 2</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
-                  name="compImg2" value={compImg2} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compImg2" value={compImg2 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -221,23 +265,17 @@ const EditComponent = (initialState = {
               <Label className="image1">Imagen 3</Label>
               <div className="containerInput">
                 <Input className="form2Images2" type="text"
-                  name="compImg3" value={compImg3} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compImg3" value={compImg3 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
-          <Form className="Objetivos">
+          <div className="Objetivos">
             <FormGroup>
               <Label className="image1">Objetivo 1</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
-                  name="compObjetivo1" value={compObjetivo1} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compObjetivo1" value={compObjetivo1 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -245,10 +283,7 @@ const EditComponent = (initialState = {
               <Label className="image1">Objetivo 2</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
-                  name="compObjetivo2" value={compObjetivo2} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compObjetivo2" value={compObjetivo2 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -256,30 +291,24 @@ const EditComponent = (initialState = {
               <Label className="image1">Objetivo 3</Label>
               <div className="containerInput">
                 <Input className="formObj2" type="text"
-                  name="compObjetivo3" value={compObjetivo3} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="compObjetivo3" value={compObjetivo3 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
-          <Form className="lineasTrabajo">
+          <div className="lineasTrabajo">
             <FormGroup>
               <Label className="lineas">Lineas de Trabajo 1</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo1"
                   type="text"
-                  value={compLineaTrabajo1}
+                  value={compLineaTrabajo1 || ''}
                   onChange={onInputChange}
                   required
                 />
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
 
@@ -287,32 +316,26 @@ const EditComponent = (initialState = {
               <Label className="lineas">Lineas de Trabajo 2</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo2"
                   type="text"
-                  value={compLineaTrabajo2}
+                  value={compLineaTrabajo2 || ''}
                   onChange={onInputChange}
                   required
                 />
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
               </div>
             </FormGroup>
-          </Form>
+          </div>
 
           <h2 className="principalComponente1">Recursos</h2>
-          <Form className="Recursos">
+          <div className="Recursos">
             <FormGroup className="containerRecursos">
               <img className="Logos" src={metodologia} alt="" />
               <Label className="image1">Metodologia</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosMetodologia" value={recursosMetodologia} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="recursosMetodologia" value={recursosMetodologia || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -322,10 +345,7 @@ const EditComponent = (initialState = {
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosFormatos" value={recursosFormatos} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="recursosFormatos" value={recursosFormatos || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -335,10 +355,7 @@ const EditComponent = (initialState = {
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosDiagnosticos" value={recursosDiagnosticos} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="recursosDiagnosticos" value={recursosDiagnosticos || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -350,10 +367,7 @@ const EditComponent = (initialState = {
               </Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosHerramientas" value={recursosHerramientas} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="recursosHerramientas" value={recursosHerramientas || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -363,19 +377,43 @@ const EditComponent = (initialState = {
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
-                  name="recursosMaterial" value={recursosMaterial} onChange={onInputChange} required/>
-                <button className="btnEdit">
-                  <img className="edit" src={pencil} alt="" />
-                </button>
+                  name="recursosMaterial" value={recursosMaterial || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
-          </Form>
+          </div>
         </Form>
         <div className="botones">
           <button>
-            <img className="iconos" onClick={handleSubmit} src={Guardar} alt="" />
+            <img
+              className="iconos"
+              onClick={toggle}
+              src={Guardar}
+              alt=""
+            />
           </button>
+
+          <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                  ¿Está seguro de editar este componente?
+                </ModalHeader>
+
+                <ModalFooter>
+
+                  {/* button to edit */}
+
+                  <Button
+                    style={{ backgroundColor: "yellow", border: "none" }}
+                    onClick = {handleSubmit}  
+                  >
+                    Editar
+                  </Button>
+                  <Button style={{ backgroundColor: "grey", border: "none" }} onClick={toggle}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
+
           <button>
             <NavLink to="/home" className="col-12">
               <img className="iconos" src={Cancelar} alt="" />

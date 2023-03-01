@@ -1,31 +1,31 @@
-// Dependencias
+// dependencies
 import React, { useState } from "react";
 
-// Estilos
+// styles
 import { Button, Form, FormGroup, Input, Card, CardHeader } from "reactstrap";
 
 const LoginWithCode = () => {
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
 
-  //* Estado del formulario
+  //* form status
   const [loginCode, setLoginCode] = useState("");
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
 
-  //* Función para capturar el valor del input
+  //* Function to capture the value of the input
   const onInputChange = (e) => {
     setLoginCode(e.target.value);
   };
 
-  //* Función para enviar el formulario
+  //* Function to submit the form
   const handleSubmit = () => {};
 
   return (

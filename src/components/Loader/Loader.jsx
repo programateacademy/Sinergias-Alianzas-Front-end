@@ -1,8 +1,8 @@
-// Dependencias
+// dependencies
 import React from "react";
 import ReactDOM from "react-dom";
 
-// Estilos
+// styles
 import { Spinner } from "reactstrap";
 
 const Loader = () => {

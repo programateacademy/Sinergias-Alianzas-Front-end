@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from "react";
 import "./editComponent.css";
 
 //Use same css for the form
 import "../AddComponent/addComponent.css";
 
-import metodologia from "../AddComponent/assest/Rectangle25.png";
-import Formato from "../AddComponent/assest/Rectangle26.png";
-import Diagnostico from "../AddComponent/assest/Rectangle27.png";
-import Herramientas from "../AddComponent/assest/Rectangle28.png";
-import Material from "../AddComponent/assest/Rectangle29.png";
+import metodologia from "../AddComponent/assest/Metodología.png";
+import Formato from "../AddComponent/assest/Formatos.png";
+import Diagnostico from "../AddComponent/assest/Diagnosticos.png";
+import Herramientas from "../AddComponent/assest/Herramientas.png";
+import Material from "../AddComponent/assest/Material.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
+import ImgComponent from "../AddComponent/assest/libro.png";
 
-import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
+import { FormText, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
 
-// Dependencias
+
+// dependencies
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// Acciones de redux
+// redux actions
 import { updateComponent } from "../../store/actions/componentSlice";
 
 const initialState = {
@@ -47,21 +49,20 @@ const initialState = {
 const EditComponent = () => {
   const [componentData, setComponentData] = useState(initialState);
 
-  // Constante para mostrar si hay errores al enviar la información
-  const { error, componentes } = useSelector((state) => ({
-    ...state.componente,
-  }));
+  // Constant to show if there are errors when sending the information
+  const { error, componentes } = useSelector((state) => ({ ...state.componente }));
 
-  //   Se destructura la información del usuario que ingresó al sistema
+  //   The information of the user who entered the system is destructured
   const { user } = useSelector((state) => ({ ...state.auth }));
 
-  //   Dispatch para disparar la acción
+  //   Dispatch to trigger the action
   const dispatch = useDispatch();
 
-  //   Redireccionar
+  //   Redirect
   const navigate = useNavigate();
 
-  // Se destructura el valor del estado inicial
+
+  // The value of the initial state is destructed
 
   const {
     compTitulo,
@@ -100,7 +101,7 @@ const EditComponent = () => {
     error && toast.error(error);
   }, [error]);
 
-  //   Función para validación en el envío del formulario
+  //   Function for validation in the submission of the form
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -134,7 +135,7 @@ const EditComponent = () => {
     }
   };
 
-  // Función para capturar cuando el valor del input cambie
+  // Function to capture when the value of the input changes
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setComponentData({ ...componentData, [name]: value });
@@ -164,6 +165,10 @@ const EditComponent = () => {
     });
   };
 
+  //! MODAL
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+  
   return (
     <>
       <div className="containerTitle1">
@@ -405,7 +410,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Diagnostico} alt="" />
+              <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
                 <Input
@@ -421,7 +426,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Formato} alt="" />
+              <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
                 <Input
@@ -437,7 +442,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Material} alt="" />
+              <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
               </Label>
@@ -455,7 +460,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Herramientas} alt="" />
+              <img className="Logos" src={Material} alt="" />
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
                 <Input
@@ -475,11 +480,33 @@ const EditComponent = () => {
           <button>
             <img
               className="iconos"
-              onClick={handleSubmit}
+              onClick={toggle}
               src={Guardar}
               alt=""
             />
           </button>
+
+          <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                  ¿Está seguro de editar este componente?
+                </ModalHeader>
+
+                <ModalFooter>
+
+                  {/* button to edit */}
+
+                  <Button
+                    style={{ backgroundColor: "yellow", border: "none" }}
+                    onClick = {handleSubmit}  
+                  >
+                    Editar
+                  </Button>
+                  <Button style={{ backgroundColor: "grey", border: "none" }} onClick={toggle}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
+
           <button>
             <NavLink to="/home" className="col-12">
               <img className="iconos" src={Cancelar} alt="" />

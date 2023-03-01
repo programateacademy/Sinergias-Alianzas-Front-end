@@ -1,7 +1,7 @@
-// Dependencias
+// dependencies
 import React from "react";
 
-// Estilos
+// styles
 import { Input } from "reactstrap";
 
 const Search = ({ value, onChange }) => {

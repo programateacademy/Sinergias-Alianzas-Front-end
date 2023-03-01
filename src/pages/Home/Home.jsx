@@ -16,22 +16,22 @@ import { Spinner } from "reactstrap";
 
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
-const Home = () => {  
-  //* Hook personalizado para redireccionar el usuario si la sesión expira
+const Home = () => {
+  //* Custom Hook to redirect user if session expires
   useRedirectLoggedOutUser("/");
 
-  //Filtro
-  const [search, setSearch] = useState(""); //constante para el filtro
+  //Filter
+  const [search, setSearch] = useState(""); //constant for filter
 
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
   }));
-  /*-----------FILTRAR Y BUSCAR----------- */
+  /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
   };
 
-  //método de filtrado por nombre
+  //filter method by name
   const results = !search
     ? componentes
     : componentes.filter((dato) =>

@@ -1,13 +1,13 @@
-// Axios para consumir para la API
+// Axios to consume for the API
 import axios from 'axios'
 
-// Crear la URL de la api
+// Create the api url
 const API = axios.create({baseURL: "http://localhost:5000"}) // local
 
-// Petición para iniciar sesión
+// Request to login
 export const signIn = (formData) => API.post("/users/signin", formData);
 
-// Petición para ingresar toda la información del componente
+// Request to enter all component information
 export const addComponent = (componentData) => API.post('/component/new', componentData);
 
 //Request to get the components

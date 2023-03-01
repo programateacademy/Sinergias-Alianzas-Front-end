@@ -5,14 +5,13 @@ import { motion } from "framer-motion"; //Animation library
 
 import iconAbout from "../ListCourses/Assets/about.png";
 import iconEdit from "../ListCourses/Assets/icono editar.png";
+import iconDelete from "../ListCourses/Assets/icono borrar.png";
 
-/* import DeleteButton from "../ListCourses/modal"; */
 import { useNavigate, Link } from "react-router-dom";
 
 
 //! REACTSTRAP IMPORTATION
 import { Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
-import iconDelete from "../ListCourses/Assets/icono borrar.png";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,12 +25,14 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
 
   //!Function delete
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const deleteFunction = (e) => {
     dispatch(deleteComponent(_id));     
     window.location.reload(true);
   }; 
+  
 
   return (
     <>
@@ -81,6 +82,9 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
                 </ModalHeader>
 
                 <ModalFooter>
+
+                  {/* button to delete */}
+
                   <Button
                     style={{ backgroundColor: "red", border: "none" }}
                     onClick = {deleteFunction}  

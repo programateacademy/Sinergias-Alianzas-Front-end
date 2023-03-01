@@ -1,10 +1,10 @@
-// Dependencias
+// dependencies
 import React, { useState } from "react";
 
-// Iconos
+// icons
 import { RiLockPasswordFill } from "react-icons/ri";
 
-// Estilos
+// styles
 import {
   Button,
   Modal,
@@ -20,32 +20,32 @@ import "./ForgotPassword.css";
 const ForgotPassword = () => {
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
 
-  //* Estado de la ventana modal
+  //* Modal window state
   const [modal, setModal] = useState(false);
 
   const [email, setEmail] = useState();
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
 
-  //* Función para mostrar u ocultar el modal
+  //* Function to show or hide the modal
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  //* Función para capturar el valor del input
+  //* Function to capture the value of the input
   const onInputChange = (e) => {
     setEmail(e.target.value);
   };
 
-  //* Función para enviar el formulario
+  //* Function to submit the form
   const handleSubmit = () => {};
 
   return (
@@ -59,7 +59,7 @@ const ForgotPassword = () => {
         </Button>
       </div>
 
-      {/* Ventana Modal */}
+      {/* modal window */}
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader>Recuperar Contraseña</ModalHeader>
         <ModalBody>

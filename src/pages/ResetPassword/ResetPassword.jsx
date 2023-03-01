@@ -1,13 +1,13 @@
-// Dependencias
+// dependencies
 import React, { useState, useEffect } from "react";
 
-// Componentes
+// Components
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
 
-// Iconos
+// icons
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-// Estilos
+// styles
 import {
   Button,
   Form,
@@ -18,7 +18,7 @@ import {
   ListGroupItem,
 } from "reactstrap";
 
-// Estado inicial
+// Initial state
 const initialState = {
   password: "",
   confirmPassword: "",
@@ -27,22 +27,22 @@ const initialState = {
 const ResetPassword = () => {
   /* 
   - =================================
-  -       ESTADOS DEL COMPONENTE
+  -       COMPONENT STATES
   - =================================
   */
 
-  //* Estado del formulario
+  //* form status
   const [formData, setFormData] = useState(initialState);
 
   const { password, confirmPassword } = formData;
 
-  //* Estado para validar la estructura de la contraseña
+  //* State to validate the password structure
   /*
-   La contraseña debe tener las siguientes características:
-   Letras mayusculas y minusculas
-   Números
-   Caracter especial (!@#$...)
-   No puede tener menos de 8 caracteres
+    The password must have the following characteristics:
+    Uppercase and lowercase letters
+    Numbers
+    Special character (!@#$...)
+    Cannot be less than 8 characters
   */
   const [upperCase, setUpperCase] = useState(false);
   const [numbers, setNumbers] = useState(false);
@@ -54,11 +54,11 @@ const ResetPassword = () => {
 
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
 
-  //* Función para cambiar el icono en las condiciones de la contraseña
+  //* Function to change the icon in the password conditions
   const switchIcon = (condition) => {
     if (condition) {
       return checkIcon;
@@ -67,37 +67,37 @@ const ResetPassword = () => {
     return timesIcon;
   };
 
-  //* Función para capturar el valor del input
+  //* Function to capture the value of the input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
   };
 
-  //* Renderizar el componente de acuerdo a las condiciones de la contraseña
+  //* Render the component according to the password conditions
   useEffect(() => {
-    //? ¿Contiene letras mayúsculas y minúsculas?
+    //? Does it contain uppercase and lowercase letters?
     if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
       setUpperCase(true);
     } else {
       setUpperCase(false);
     }
 
-    //? ¿Contiene números?
+    //? Does it contain numbers?
     if (password.match(/([0-9])/)) {
       setNumbers(true);
     } else {
       setNumbers(false);
     }
 
-    //? ¿Contiene caracteres especiales?
+    //? Does it contain special characters?
     if (password.match(/([!,%,&,@,#,$,^,*,?,_,-])/)) {
       setSpecialCharacter(true);
     } else {
       setSpecialCharacter(false);
     }
 
-    //? ¿Contiene mínimo 8 caracteres?
+    //? Does it contain at least 8 characters?
     if (password.length > 7) {
       setPassLength(true);
     } else {
@@ -105,7 +105,7 @@ const ResetPassword = () => {
     }
   }, [password]);
 
-  //* Función para enviar el formulario
+  //* Function to submit the form
   const handleSubmit = () => {};
 
   return (
@@ -134,7 +134,7 @@ const ResetPassword = () => {
             />
           </FormGroup>
 
-          {/* Característica de la contraseña */}
+          {/* password feature*/}
           <Card
             style={{
               width: "100%",

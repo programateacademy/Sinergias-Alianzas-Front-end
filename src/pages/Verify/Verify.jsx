@@ -1,7 +1,7 @@
-// Dependencias
+// dependencies
 import React from "react";
 
-// Estilos
+// styles
 import { Button } from "reactstrap";
 
 const Verify = () => {

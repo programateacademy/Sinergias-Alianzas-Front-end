@@ -25,10 +25,8 @@ import {
 const shortenText = (text, n) => {
   if (text.length > n) {
     const shoretenedText = text.substring(0, n).concat("...");
-
     return shoretenedText;
   }
-
   return text;
 };
 
@@ -70,7 +68,6 @@ const Profile = () => {
   //* Function to capture the value of the input
   const onInputChange = (e) => {
     const { name, value } = e.target;
-
     setProfile({ ...profile, [name]: value });
   };
 
@@ -85,57 +82,57 @@ const Profile = () => {
         <h1>DETALLE DE USUARIO</h1>
       </div>
       <div className="containerDashboard">
-      <Notification />
-      {isLoading && <Loader />}
-      <Card
-        style={{
-          width: "18rem",
-          margin: "auto",
-        }}
-      >
-        <CardBody>
-          <Form>
-            <FormGroup>
-              <p style={{ color: "#126a2e", fontWeight: "700" }}>Rol</p>
-              <Input
-                id="rol"
-                name="rol"
-                type="text"
-                defaultValue={""}
-                value={initialState?.rol}
-                onChange={onInputChange}
-                disabled
-              />
-            </FormGroup>
-            <FormGroup>
-              <p style={{ color: "#126a2e", fontWeight: "700" }}>Nombre</p>
-              <Input
-                id="name"
-                name="name"
-                type="text"
-                value={initialState?.name}
-                onChange={onInputChange}
-                disabled
-              />
-            </FormGroup>
+        <Notification />
+        {isLoading && <Loader />}
+        <Card
+          style={{
+            width: "18rem",
+            margin: "auto",
+          }}
+        >
+          <CardBody>
+            <Form>
+              <FormGroup>
+                <p style={{ color: "#126a2e", fontWeight: "700" }}>Rol</p>
+                <Input
+                  id="rol"
+                  name="rol"
+                  type="text"
+                  defaultValue={""}
+                  value={initialState?.rol}
+                  onChange={onInputChange}
+                  disabled
+                />
+              </FormGroup>
+              <FormGroup>
+                <p style={{ color: "#126a2e", fontWeight: "700" }}>Nombre</p>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  value={initialState?.name}
+                  onChange={onInputChange}
+                  disabled
+                />
+              </FormGroup>
 
-            <FormGroup>
-              <p style={{ color: "#126a2e", fontWeight: "700" }}> Correo</p>
+              <FormGroup>
+                <p style={{ color: "#126a2e", fontWeight: "700" }}> Correo</p>
 
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                value={initialState?.email}
-                onChange={onInputChange}
-                disabled
-              />
-            </FormGroup>
-          </Form>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={initialState?.email}
+                  onChange={onInputChange}
+                  disabled
+                />
+              </FormGroup>
+            </Form>
 
-          <ChangePassword />
-        </CardBody>
-      </Card>
+            <ChangePassword />
+          </CardBody>
+        </Card>
       </div>
     </>
   );

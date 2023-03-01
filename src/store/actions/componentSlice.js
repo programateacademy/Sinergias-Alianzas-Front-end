@@ -32,11 +32,11 @@ export const getComponents = createAsyncThunk(
 //get component info
 export const getComponent = createAsyncThunk(
   "component/getComponent",
-  async (id,{rejectWithValue}) => {
-    try{
+  async (id, { rejectWithValue }) => {
+    try {
       const response = await api.getComponent(id);
       return response.data;
-    }catch(error){
+    } catch (error) {
       return rejectWithValue(error.message.data);
     }
   }
@@ -45,7 +45,10 @@ export const getComponent = createAsyncThunk(
 //edit component
 export const updateComponent = createAsyncThunk(
   "component/updateComponent",
-  async ({ id, updatedComponentData, toast, navigate }, { rejectWithValue }) => {
+  async (
+    { id, updatedComponentData, toast, navigate },
+    { rejectWithValue }
+  ) => {
     try {
       const response = await api.updateComponent(updatedComponentData, id);
       toast.success("Componente editado satisfactoriamente");
@@ -57,23 +60,19 @@ export const updateComponent = createAsyncThunk(
   }
 );
 
-
-//! Working delete
+// Delete component
 export const deleteComponent = (id, data) => async (dispatch) => {
   try {
     const res = await api.deleteComponent(id);
-     return response.data    
+    return response.data;
     dispatch({ type: deleteComponent, payload: res.data });
-  } catch (error) {    
+  } catch (error) {
     console.log("Error al eliminar el componente", error.message);
   }
 };
 
-
-
 const componentSlice = createSlice({
   name: "componente",
-  
   initialState: {
     componente: {},
     componentes: [],
@@ -134,10 +133,7 @@ const componentSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
-
   },
 });
-
-
 
 export default componentSlice.reducer;

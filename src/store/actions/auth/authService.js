@@ -18,7 +18,6 @@ export const validateEmail = (email) => {
 */
 const register = async (userData) => {
   const response = await axios.post(API_URL + "register", userData);
-
   return response.data;
 };
 
@@ -29,7 +28,6 @@ const register = async (userData) => {
 */
 const login = async (userData) => {
   const response = await axios.post(API_URL + "login", userData);
-
   return response.data;
 };
 
@@ -40,7 +38,6 @@ const login = async (userData) => {
 */
 const logout = async () => {
   const response = await axios.get(API_URL + "logout");
-
   return response.data.message;
 };
 
@@ -51,7 +48,6 @@ const logout = async () => {
 */
 const getLoginStatus = async () => {
   const response = await axios.get(API_URL + "loginStatus");
-
   return response.data;
 };
 
@@ -62,7 +58,6 @@ const getLoginStatus = async () => {
 */
 const getUser = async () => {
   const response = await axios.get(API_URL + "getUser");
-
   return response.data;
 };
 
@@ -73,7 +68,6 @@ const getUser = async () => {
 */
 const sendVerificationEmail = async () => {
   const response = await axios.post(API_URL + "sendVerificationEmail");
-
   return response.data.message;
 };
 

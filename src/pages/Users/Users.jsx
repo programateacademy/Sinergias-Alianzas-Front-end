@@ -10,7 +10,7 @@ import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
 import Search from "../../components/Search/Search";
 import RowTableUsers from "../../components/RowTableUsers/RowTableUsers";
 import Pagination from "../../components/Pagination/Pagination";
-import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser'
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
 // styles
 import { Table } from "reactstrap";
@@ -51,12 +51,10 @@ const Users = () => {
                 <th>Acciones</th>
               </tr>
             </thead>
-
             <tbody>
               <RowTableUsers />
             </tbody>
           </Table>
-
           <Pagination />
         </section>
       </div>

@@ -1,23 +1,23 @@
 import "./addComponent.css";
-import metodologia from "./assest/Rectangle25.png";
-import Formato from "./assest/Rectangle26.png";
-import Diagnostico from "./assest/Rectangle27.png";
-import Herramientas from "./assest/Rectangle28.png";
-import Material from "./assest/Rectangle29.png";
+import metodologia from "./assest/Metodología.png";
+import Formato from "./assest/Formatos.png";
+import Diagnostico from "./assest/Diagnosticos.png";
+import Herramientas from "./assest/Herramientas.png";
+import Material from "./assest/Material.png";
 import Guardar from "./assest/guardar.png";
 import Cancelar from "./assest/cancelar.png";
 import ImgComponent from "./assest/libro.png";
 
 import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
 
-// Unifacion back y front
-// Dependencias
+// Back and front unification
+// dependencies
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// Acciones de redux
+// redux actions
 import { addComponent } from "../../store/actions/componentSlice";
 
 const initialState = {
@@ -44,26 +44,27 @@ const initialState = {
 const AddComponent = () => {
   const [componentData, setComponentData] = useState(initialState);
 
-  // Constante para mostrar si hay errores al enviar la información
+  // Constant to show if there are errors when sending the information
   const { error } = useSelector((state) => ({ ...state.componente }));
 
-  //   Se destructura la información del usuario que ingresó al sistema
+  //  The information of the user who entered the system is destructured
   const { user } = useSelector((state) => ({ ...state.auth }));
 
-  //   Dispatch para disparar la acción
+  //   Dispatch to trigger the action
   const dispatch = useDispatch();
 
-  //   Redireccionar
+  //   Redirect
   const navigate = useNavigate();
 
   useEffect(() => {
     error && toast.error(error);
   }, [error]);
 
-  // Se destructura el valor del estado inicial
+  // The value of the initial state is destructed
+
   const {
     compTitulo,
-    compColor,     
+    compColor,
     compImgPpal,
     compDefinicion,
     compVideo,
@@ -83,7 +84,7 @@ const AddComponent = () => {
     recursosMaterial,
   } = componentData;
 
-  //   Función para validación en el envío del formulario
+  //   Function for validation in the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -117,13 +118,13 @@ const AddComponent = () => {
     }
   };
 
-  // Función para capturar cuando el valor del input cambie
+  // Function to capture when the value of the input changes
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setComponentData({ ...componentData, [name]: value });
   };
 
-  // Función para limpiar el formulario
+  // Function to clear the form
   const handleClear = () => {
     setComponentData({
       compTitulo: "",
@@ -157,9 +158,10 @@ const AddComponent = () => {
       <div className="containerDashboard1">
         <h2 className="Titulo2">Información del Componente</h2>
         <img className="imgComponent" src={ImgComponent} alt="" />
+        
         <Form onSubmit={handleSubmit} className="containerAdd">
-          <Form className="form1">               
-            
+          
+          <Form className="form1">
             <FormGroup>
               <Label className="labels">Imagen del componente</Label>
               <Input
@@ -173,15 +175,14 @@ const AddComponent = () => {
               />
             </FormGroup>
 
-            
             <FormGroup>
-              <Label className="labels">Color del componente</Label>              
-              <Input
-                className=""                
+              <Label className="labels">Color del componente</Label>
+              <Input                
+                className="inputColor"
                 type="color"
                 name="compColor"
                 value={compColor}
-                onChange={onInputChange}                
+                onChange={onInputChange}
                 required
               />
             </FormGroup>
@@ -368,7 +369,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Diagnostico} alt="" />
+              <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <Input
                 className="recursosForm"
@@ -382,7 +383,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Formato} alt="" />
+              <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <Input
                 className="recursosForm"
@@ -396,7 +397,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Material} alt="" />
+              <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
               </Label>
@@ -412,7 +413,7 @@ const AddComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Herramientas} alt="" />
+              <img className="Logos" src={Material} alt="" />
               <Label className="image1">Material Educativo</Label>
               <Input
                 className="recursosForm"
@@ -424,12 +425,10 @@ const AddComponent = () => {
               />
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
-
-
-
             
           </Form>
         </Form>
+        
         <div className="botones">
           <button>
             <img

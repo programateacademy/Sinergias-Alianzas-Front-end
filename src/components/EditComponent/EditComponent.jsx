@@ -1,29 +1,27 @@
 import "./editComponent.css";
 
-import metodologia from "../AddComponent/assest/Rectangle25.png";
-import Formato from "../AddComponent/assest/Rectangle26.png";
-import Diagnostico from "../AddComponent/assest/Rectangle27.png";
-import Herramientas from "../AddComponent/assest/Rectangle28.png";
-import Material from "../AddComponent/assest/Rectangle29.png";
+//Use same css for the form
+import "../AddComponent/addComponent.css";
+
+import metodologia from "../AddComponent/assest/Metodología.png";
+import Formato from "../AddComponent/assest/Formatos.png";
+import Diagnostico from "../AddComponent/assest/Diagnosticos.png";
+import Herramientas from "../AddComponent/assest/Herramientas.png";
+import Material from "../AddComponent/assest/Material.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
 import ImgComponent from "../AddComponent/assest/libro.png";
 
-//TODO Buscar donde poner logo editar
-//import pencil from "./assest/editar.png";
-
-import { useState } from "react";
+import { FormText, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
 
 
-import { FormText, Form, FormGroup, Label, Input } from "reactstrap";
-
-
-// Dependencias
+// dependencies
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// Acciones de redux
+// redux actions
 import { updateComponent } from "../../store/actions/componentSlice";
 
 const initialState = {
@@ -52,20 +50,20 @@ const EditComponent = () => {
 
   const [componentData, setComponentData] = useState(initialState);
 
-  // Constante para mostrar si hay errores al enviar la información
+  // Constant to show if there are errors when sending the information
   const { error, componentes } = useSelector((state) => ({ ...state.componente }));
 
-  //   Se destructura la información del usuario que ingresó al sistema
+  //   The information of the user who entered the system is destructured
   const { user } = useSelector((state) => ({ ...state.auth }));
 
-  //   Dispatch para disparar la acción
+  //   Dispatch to trigger the action
   const dispatch = useDispatch();
 
-   //   Redireccionar
-   const navigate = useNavigate();
+  //   Redirect
+  const navigate = useNavigate();
 
 
-  // Se destructura el valor del estado inicial
+  // The value of the initial state is destructed
 
   const {
     compTitulo,
@@ -103,7 +101,7 @@ const EditComponent = () => {
     error && toast.error(error);
   }, [error]);
 
-  //   Función para validación en el envío del formulario
+  //   Function for validation in the submission of the form
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -137,7 +135,7 @@ const EditComponent = () => {
     }
   };
 
-  // Función para capturar cuando el valor del input cambie
+  // Function to capture when the value of the input changes
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setComponentData({ ...componentData, [name]: value });
@@ -166,6 +164,10 @@ const EditComponent = () => {
       recursosMaterial: "",
     });
   };
+
+  //! MODAL
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
   
   return (
     <>
@@ -174,29 +176,41 @@ const EditComponent = () => {
       </div>
 
       <div className="containerDashboard1">
-        <h2 className="Titulo2">Titulo del Componente</h2>
-        <img className="imgComponent" src={ImgComponent} alt="" />
-        <Form className="containerAdd" onSubmit={handleSubmit}>
-          <div className="form1">
-            <FormGroup>
-              <Label className="labels">Imagen del Componente</Label>
-              <div className="containerInput">
-                <Input className="urlImagen2" value={compImgPpal || ''} type="url"
-                  name="compImgPpal" onChange={onInputChange} required/>
-              </div>
-            </FormGroup>
+        <h2 className="Titulo2" style={{color:`${compColor}`}}>{compTitulo}</h2>
 
-            <FormGroup>
-              <Label className="labels">Color del componente</Label>              
+        <img className="imgComponent" src={compImgPpal} alt="Image form BD" />
+
+        <Form className="containerAdd" onSubmit={handleSubmit}>
+          <Form className="form1">
+            
+          <FormGroup>
+              <Label className="labels">Imagen del Componente</Label>
               <Input
-                className=""                
-                type="color"
-                name="compColor"
-                value={compColor || ''}
-                onChange={onInputChange}                
+                className="urlImagen"
+                value={compImgPpal || ''}
+                type="url"
+                name="compImgPpal"
+                onChange={onInputChange}
                 required
               />
             </FormGroup>
+
+
+            {/* COLOR */}
+
+            <FormGroup>
+              <Label className="labels">Color del Componente</Label>
+              <div className="containerInput">
+                <Input
+                  className="inputColor"
+                  value={compColor || ''}
+                  type="color"
+                  name="compColor"
+                  onChange={onInputChange}
+                  required
+                />
+              </div>
+            </FormGroup>            
 
             <FormGroup>
               <Label className="labels">Titulo Componente</Label>
@@ -231,7 +245,7 @@ const EditComponent = () => {
                   type="textarea" value={compDescripcion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
-          </div>
+          </Form>
 
           <div className="form2">
             <FormGroup>
@@ -290,8 +304,7 @@ const EditComponent = () => {
               <Label className="lineas">Lineas de Trabajo 1</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
-                  onChange={onInputChange}
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo1"
                   type="text"
@@ -305,8 +318,7 @@ const EditComponent = () => {
               <Label className="lineas">Lineas de Trabajo 2</Label>
               <div className="containerInput">
                 <Input
-                  className="urlImagen2"
-                  onChange={onInputChange}
+                  className="urlImagen"
                   id="exampleText"
                   name="compLineaTrabajo2"
                   type="text"
@@ -330,7 +342,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Diagnostico} alt="" />
+              <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
@@ -340,7 +352,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Formato} alt="" />
+              <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
@@ -350,7 +362,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Material} alt="" />
+              <img className="Logos" src={Herramientas} alt="" />
               <Label className="image1">
                 Herramientas y Manuales de Protocolo
               </Label>
@@ -362,7 +374,7 @@ const EditComponent = () => {
             </FormGroup>
 
             <FormGroup className="containerRecursos">
-              <img className="Logos" src={Herramientas} alt="" />
+              <img className="Logos" src={Material} alt="" />
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
                 <Input className="recursosForm2" type="text"
@@ -372,16 +384,36 @@ const EditComponent = () => {
             </FormGroup>
           </div>
         </Form>
-
         <div className="botones">
           <button>
             <img
               className="iconos"
+              onClick={toggle}
               src={Guardar}
               alt=""
-              onClick={handleSubmit}
             />
           </button>
+
+          <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                  ¿Está seguro de editar este componente?
+                </ModalHeader>
+
+                <ModalFooter>
+
+                  {/* button to edit */}
+
+                  <Button
+                    style={{ backgroundColor: "yellow", border: "none" }}
+                    onClick = {handleSubmit}  
+                  >
+                    Editar
+                  </Button>
+                  <Button style={{ backgroundColor: "grey", border: "none" }} onClick={toggle}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
           <button>
             <NavLink to="/home" className="col-12">

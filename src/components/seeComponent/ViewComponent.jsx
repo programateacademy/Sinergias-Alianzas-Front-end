@@ -1,14 +1,11 @@
 import React from "react";
-/* import { Card, CardBody, CardTitle, CardText } from "reactstrap"; */
 import "./seeComponent.css";
 
-import Metodologia from "../../components/AddComponent/assest/Rectangle25.png";
-import Formato from "../../components/AddComponent/assest/Rectangle26.png";
-import Diagnostico from "../../components/AddComponent/assest/Rectangle27.png";
-import Herramientas from "../../components/AddComponent/assest/Rectangle28.png";
-import Material from "../../components/AddComponent/assest/Rectangle29.png";
-
-/* import { NavLink } from "react-router-dom"; */
+import Metodologia from "../../components/AddComponent/assest/Metodología.png";
+import Formato from "../../components/AddComponent/assest/Formatos.png";
+import Diagnostico from "../../components/AddComponent/assest/Diagnosticos.png";
+import Herramientas from "../../components/AddComponent/assest/Herramientas.png";
+import Material from "../../components/AddComponent/assest/Material.png";
 
 const ViewComponent = ({
   compTitulo,

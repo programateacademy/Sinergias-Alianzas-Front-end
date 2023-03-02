@@ -1,31 +1,29 @@
-import React, {useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {useParams} from 'react-router-dom'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import "./seeComponent.css";
 
 //Redux actions
-import { getComponent } from "../../store/actions/componentSlice"
+import { getComponent } from "../../store/actions/componentSlice";
 
-import ViewComponent from './ViewComponent';
+import ViewComponent from "./ViewComponent";
 
 const SeeComponent = () => {
-
   //Dispatch action
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
-  const {componente} = useSelector((state) => ({...state.componente}))
-
-  const {id} = useParams()
-
-  useEffect(() =>{
-    if(id){
-      dispatch(getComponent(id))
+  useEffect(() => {
+    if (id) {
+      dispatch(getComponent(id));
     }
-  }, [id])
- 
+  }, [id]);
+
+  const { componente } = useSelector((state) => ({ ...state.componente }));
+
   return (
     <div>
-      <ViewComponent {...componente}/>
+      <ViewComponent {...componente} />
     </div>
   );
 };

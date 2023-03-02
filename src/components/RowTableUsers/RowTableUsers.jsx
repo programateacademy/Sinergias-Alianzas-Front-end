@@ -1,11 +1,10 @@
-// Dependencias
+// dependencies
 import React, { useState, useEffect } from "react";
-// Manejo de rutas
 
-// Iconos
+// icons
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-// Estilos
+// styles
 import {  
   Button  
 } from "reactstrap";

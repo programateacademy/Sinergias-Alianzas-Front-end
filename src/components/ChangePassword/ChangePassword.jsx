@@ -1,77 +1,46 @@
-// Dependencies
+//* dependencies
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-
-// Redux functions
-import { validateEmail } from "../../store/actions/auth/authService";
-import {
-  RESET,
-  register,
-  sendVerificationEmail,
-} from "../../store/actions/auth/authSlice";
 
 // Components
-import PasswordInput from "../Layout/PasswordInput/PasswordInput";
-import Loader from "../Loader/Loader";
+import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
 
 // icons
-import { RiUserAddFill } from "react-icons/ri";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
 // styles
-import "./AddUser.css";
-
-//reactstrap elements
 import {
+  Card,
+  Form,
+  FormGroup,
   Button,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Form,
-  FormGroup,
-  Input,
-  Card,
   CardHeader,
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
 
-// Initial state of the form
-const initialState = {
-  lastName: "",
-  firstName: "",
-  secondName: "",
-  email: "",
+const passwordState = {
+  oldPassword: "",
   password: "",
   confirmPassword: "",
 };
 
-const AddUser = () => {
+const ChangePassword = () => {
   /* 
   - =================================
   -       COMPONENT STATES
   - =================================
   */
-
   //* Modal window state
   const [modal, setModal] = useState(false);
 
-  //* form status
-  const [formData, setFormData] = useState(initialState);
+  //* Status of the form to change the password
+  const [formData, setFormData] = useState(passwordState);
 
-  const { lastName, firstName, secondName, email, password, confirmPassword } =
-    formData;
-
-  //* Redux Hooks
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { oldPassword, password, confirmPassword } = formData;
 
   //* State to validate the password structure
   /*
@@ -94,7 +63,6 @@ const AddUser = () => {
   -    COMPONENT FUNCTIONS
   - =================================
   */
-
   //* Function to show or hide the modal
   const toggleModal = () => {
     setModal(!modal);
@@ -115,6 +83,9 @@ const AddUser = () => {
 
     setFormData({ ...formData, [name]: value });
   };
+
+  //* Function to submit the form
+  const handleSubmit = () => {};
 
   //* Render the component according to the password conditions
   useEffect(() => {
@@ -146,109 +117,23 @@ const AddUser = () => {
       setPassLength(false);
     }
   }, [password]);
-
-  //* Function to submit the form
-  const registerUser = async (e) => {
-    e.preventDefault();
-
-    //* Input validation
-    if (!lastName || !firstName || !email || !password) {
-      return toast.error("Todos los campos son obligatorios");
-    }
-
-    if (password.length < 8) {
-      return toast.error("La contraseña debe ser de 8 caracteres.");
-    }
-
-    if (!validateEmail(email)) {
-      return toast.error("Ingresa un correo válido");
-    }
-
-    if (password !== confirmPassword) {
-      return toast.error("La contraseña no coincide");
-    }
-
-    const userData = {
-      firstName,
-      secondName,
-      lastName,
-      email,
-      password,
-    };
-
-    // console.log(userData)
-
-    await dispatch(register(userData));
-    await dispatch(sendVerificationEmail());
-  };
-
-  useEffect(() => {
-    if (isSuccess && isLoggedIn) {
-      navigate("/profile");
-    }
-
-    dispatch(RESET());
-
-    // toggleModal();
-  }, [isLoggedIn, isSuccess, dispatch, navigate]);
-
   return (
     <>
-      <div className="adduser-button">
-        {isLoading && <Loader />}
-        <div className="icon_container">
-          <RiUserAddFill />
-        </div>
-        <Button className="newUser" onClick={toggleModal}>
-          Nuevo Usuario
-        </Button>
-      </div>
-
+    <Button color="primary" onClick={toggleModal}>
+            Cambiar Contraseña
+          </Button>
       {/* modal window */}
       <Modal isOpen={modal} toggle={toggleModal}>
-        <ModalHeader>Registro de Usuario</ModalHeader>
+        <ModalHeader>Cambiar Contraseña</ModalHeader>
         <ModalBody>
-          <Form onSubmit={registerUser}>
+          <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <Input
-                name="lastName"
-                placeholder="Apellidos"
-                type="text"
-                value={lastName}
+              <PasswordInput
+                name="oldPassword"
+                placeholder="Contraseña actual"
+                type="password"
+                value={oldPassword}
                 onChange={onInputChange}
-                required
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Input
-                name="firstName"
-                placeholder="Primer nombre"
-                type="text"
-                value={firstName}
-                onChange={onInputChange}
-                required
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Input
-                name="secondName"
-                placeholder="Segundo nombre"
-                type="text"
-                value={secondName}
-                onChange={onInputChange}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Input
-                name="email"
-                placeholder="Correo electrónico"
-                type="email"
-                value={email}
-                onChange={onInputChange}
-                required
               />
             </FormGroup>
 
@@ -269,11 +154,6 @@ const AddUser = () => {
                 type="password"
                 value={confirmPassword}
                 onChange={onInputChange}
-                onPaste={(e) => {
-                  e.preventDefault();
-                  toast.error("Por favor, escribe la contraseña.");
-                  return false;
-                }}
               />
             </FormGroup>
 
@@ -308,7 +188,7 @@ const AddUser = () => {
             </Card>
 
             <Button color="success" className="mt-3">
-              Registrar
+              Actualizar
             </Button>
           </Form>
         </ModalBody>
@@ -323,4 +203,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default ChangePassword;

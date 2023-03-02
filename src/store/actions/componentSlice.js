@@ -33,8 +33,8 @@ export const getComponents = createAsyncThunk(
 //get component info
 export const getComponent = createAsyncThunk(
   "component/getComponent",
-  async (id, { rejectWithValue }) => {
-    try {
+  async (id,{rejectWithValue}) => {
+    try{
       const response = await api.getComponent(id);
       return response.data;
     }catch(error){
@@ -43,6 +43,7 @@ export const getComponent = createAsyncThunk(
   }
 );
 
+//edit component
 export const updateComponent = createAsyncThunk(
   "component/updateComponent",
   async ({ id, updatedComponentData, toast, navigate }, { rejectWithValue }) => {
@@ -62,15 +63,18 @@ export const updateComponent = createAsyncThunk(
 export const deleteComponent = (id, data) => async (dispatch) => {
   try {
     const res = await api.deleteComponent(id);
-    return response.data;
+     return response.data    
     dispatch({ type: deleteComponent, payload: res.data });
-  } catch (error) {
+  } catch (error) {    
     console.log("Error al eliminar el componente", error.message);
   }
 };
 
+
+
 const componentSlice = createSlice({
   name: "componente",
+  
   initialState: {
     componente: {},
     componentes: [],
@@ -133,5 +137,7 @@ const componentSlice = createSlice({
     },
   },
 });
+
+
 
 export default componentSlice.reducer;

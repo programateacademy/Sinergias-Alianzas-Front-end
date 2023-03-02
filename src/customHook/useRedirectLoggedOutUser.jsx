@@ -1,25 +1,25 @@
-// Dependencias
+// dependencies
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-// Funciones de redux
+// redux functions
 import authService from "../store/actions/auth/authService";
 
 const useRedirectLoggedOutUser = (path) => {
   /* 
   - =================================
-  -    FUNCIONES DEL COMPONENTE
+  -    COMPONENT FUNCTIONS
   - =================================
   */
-  //* Hooks Redux
+  //* Redux Hooks
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Variables
+    // variables
     let isLoggedIn;
 
-    // Redireccionar al usuario
+    // redirect user
     const redirectLoggedOutUser = async () => {
       try {
         isLoggedIn = await authService.getLoginStatus();
@@ -27,7 +27,7 @@ const useRedirectLoggedOutUser = (path) => {
         console.log(error.message);
       }
 
-      // Se valida si la sesión no esta activa
+      // It is validated if the session is not active
       if (!isLoggedIn) {
         toast.info("La sesión expiró, por favor ingresa de nuevo");
 

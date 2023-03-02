@@ -1,4 +1,4 @@
-// Dependencias
+// dependencies
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -8,10 +8,10 @@ import { Provider } from "react-redux";
 // Store
 import store from "./store/store";
 
-// Componentes
+// Components
 import App from "./App";
 
-// Estilos
+// styles
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
 

@@ -62,7 +62,7 @@ const Home = () => {
 
       <div className="containerDashboard">
         <div className="container_buttons">
-          <motion.button
+          <motion.buttonadd
             className="box"
             onClick={addComp}
             whileHover={{ scale: 1.2 }}

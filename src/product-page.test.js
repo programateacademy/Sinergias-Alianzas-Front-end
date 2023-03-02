@@ -7,11 +7,14 @@ import Home from "./pages/Home/Home";
 jest.mock("react-redux")
 jest.mock("react-router-dom")
 
-// describe("testeos", () => {
-
+describe("testeos en home", () => {
 test("Prueba unitaria home", () => {
   const component = render(<Home/>);
+  expect().toBe(4);
+  
   console.log(component);
 });
 
-// });
+});
+
+

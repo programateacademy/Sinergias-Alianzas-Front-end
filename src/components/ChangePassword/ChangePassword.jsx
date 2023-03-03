@@ -1,13 +1,18 @@
+//! Este componente toca pasarlo como página y no como modal
+//! Se debe importar el customHook para proteger la ruta  
 //* Dependencias
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-// Componentes
+//* Componentes
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
 
-// Iconos
+//* Iconos
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-// Estilos
+//* Estilos
 import {
   Card,
   Form,
@@ -21,6 +26,12 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
+import {
+  changePassword,
+  logout,
+  RESET,
+} from "../../store/actions/auth/authSlice";
+import Loader from "../Loader/Loader";
 
 const passwordState = {
   oldPassword: "",
@@ -29,6 +40,11 @@ const passwordState = {
 };
 
 const ChangePassword = () => {
+  //* Hooks Redux
+  const dispatch = useDispatch;
+  const navigate = useNavigate;
+
+  const { isLoading, user } = useSelector((state) => state.auth);
   /* 
   - =================================
   -       ESTADOS DEL COMPONENTE
@@ -85,7 +101,29 @@ const ChangePassword = () => {
   };
 
   //* Función para enviar el formulario
-  const handleSubmit = () => {};
+  const updatePassword = async (e) => {
+    e.preventDefault();
+
+    if (!oldPassword || !password || !confirmPassword) {
+      return toast.error("Todos los campos son obligatorios");
+    }
+
+    if (password !== confirmPassword) {
+      return toast.error("La contraseña no coincide");
+    }
+
+    const userData = {
+      oldPassword,
+      password,
+    };
+
+    await dispatch(changePassword(userData));
+    await dispatch(logout());
+    await dispatch(RESET(userData));
+
+    toggleModal()
+    navigate("/");
+  };
 
   //* Renderizar el componente de acuerdo a las condiciones de la contraseña
   useEffect(() => {
@@ -119,14 +157,14 @@ const ChangePassword = () => {
   }, [password]);
   return (
     <>
-    <Button color="primary" onClick={toggleModal}>
-            Cambiar Contraseña
-          </Button>
+      <Button color="primary" onClick={toggleModal}>
+        Cambiar Contraseña
+      </Button>
       {/* Ventana Modal */}
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader>Cambiar Contraseña</ModalHeader>
         <ModalBody>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={updatePassword}>
             <FormGroup>
               <PasswordInput
                 name="oldPassword"
@@ -187,9 +225,13 @@ const ChangePassword = () => {
               </ListGroup>
             </Card>
 
-            <Button color="success" className="mt-3">
-              Actualizar
-            </Button>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <Button color="success" className="mt-3">
+                Actualizar
+              </Button>
+            )}
           </Form>
         </ModalBody>
 

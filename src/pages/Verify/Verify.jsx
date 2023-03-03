@@ -23,7 +23,7 @@ const Verify = () => {
 
   return (
     <section>
-      {isLoading && <Loader/>}
+      {isLoading && <Loader />}
       <div>
         <h2>Verificación de la Cuenta</h2>
 

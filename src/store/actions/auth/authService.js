@@ -1,10 +1,10 @@
 // API
 import axios from "axios";
-//Conection with the environment variables
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API_URL = `${BACKEND_URL}/api/users/`;
 
-//* validate email+
+//* Validar email+
 export const validateEmail = (email) => {
   return email.match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -13,61 +13,67 @@ export const validateEmail = (email) => {
 
 /*
 - =================================
--         register user
+-         Registrar usuario
 - =================================
 */
 const register = async (userData) => {
   const response = await axios.post(API_URL + "register", userData);
+
   return response.data;
 };
 
 /*
 - =================================
--         Log in
+-         Iniciar Sesión
 - =================================
 */
 const login = async (userData) => {
   const response = await axios.post(API_URL + "login", userData);
+
   return response.data;
 };
 
 /*
 - =================================
--         Sign off
+-         Cerrar Sesión
 - =================================
 */
 const logout = async () => {
   const response = await axios.get(API_URL + "logout");
+
   return response.data.message;
 };
 
 /*
 - =================================
--   Login Status
+-   Estado del inicio de Sesión
 - =================================
 */
 const getLoginStatus = async () => {
   const response = await axios.get(API_URL + "loginStatus");
+
   return response.data;
 };
 
 /*
 - =================================
--       user profile
+-       Perfil del usuario
 - =================================
 */
 const getUser = async () => {
   const response = await axios.get(API_URL + "getUser");
+
   return response.data;
 };
 
 /*
 - =================================
--   Send verification email
+-   Enviar email de verificación
 - =================================
 */
 const sendVerificationEmail = async () => {
   const response = await axios.post(API_URL + "sendVerificationEmail");
+
   return response.data.message;
 };
 

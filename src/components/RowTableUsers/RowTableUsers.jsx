@@ -15,13 +15,15 @@ import Buttondelete from "../../components/buttondelete/buttondelete";
 //style
 import "../RowTableUsers/RowTableUsers.css";
 
-const RowTableUsers = () => {
+const RowTableUsers = ({name, email, rol}) => {
   return (
     <tr className="tableinfo2">
+
+
       <th scope="row">1</th>
-      <td>Nombre usuario</td>
-      <td>usuario@correo.com</td>
-      <td>Colaborador</td>
+      <td>{user?.name.lastName}</td>
+      <td>{email}</td>
+      <td>{rol}</td>
       <td>
         <Button color="">
           <Buttonedit>

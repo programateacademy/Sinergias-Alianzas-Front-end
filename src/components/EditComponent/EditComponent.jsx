@@ -226,14 +226,8 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="labels">Definición</Label>
               <div className="containerInput">
-                <Input
-                  className="urlImagen2"
-                  type="text"
-                  name="compDefinicion"
-                  value={compDefinicion || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="urlImagen2" type="text"
+                  name="compDefinicion" value={compDefinicion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
@@ -242,28 +236,16 @@ const EditComponent = () => {
                 Url Video
               </Label>
               <div className="containerInput">
-                <Input
-                  className="urlImagen2"
-                  name="compVideo"
-                  type="text"
-                  value={compVideo || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="urlImagen2" name="compVideo"
+                  type="text" value={compVideo || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
             <FormGroup>
               <Label className="labels">Descripción Componente</Label>
               <div className="containerInput">
-                <Input
-                  className="urlImagen2"
-                  name="compDescripcion"
-                  type="textarea"
-                  value={compDescripcion || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="urlImagen2" name="compDescripcion"
+                  type="textarea" value={compDescripcion || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
           </Form>
@@ -272,42 +254,24 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Imagen 1</Label>
               <div className="containerInput">
-                <Input
-                  className="form2Images2"
-                  type="text"
-                  name="compImg1"
-                  value={compImg1 || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="form2Images2" type="text"
+                  name="compImg1" value={compImg1 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Imagen 2</Label>
               <div className="containerInput">
-                <Input
-                  className="form2Images2"
-                  type="text"
-                  name="compImg2"
-                  value={compImg2 || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="form2Images2" type="text"
+                  name="compImg2" value={compImg2 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Imagen 3</Label>
               <div className="containerInput">
-                <Input
-                  className="form2Images2"
-                  type="text"
-                  name="compImg3"
-                  value={compImg3 || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="form2Images2" type="text"
+                  name="compImg3" value={compImg3 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
           </div>
@@ -316,42 +280,24 @@ const EditComponent = () => {
             <FormGroup>
               <Label className="image1">Objetivo 1</Label>
               <div className="containerInput">
-                <Input
-                  className="formObj2"
-                  type="text"
-                  name="compObjetivo1"
-                  value={compObjetivo1 || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="formObj2" type="text"
+                  name="compObjetivo1" value={compObjetivo1 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Objetivo 2</Label>
               <div className="containerInput">
-                <Input
-                  className="formObj2"
-                  type="text"
-                  name="compObjetivo2"
-                  value={compObjetivo2 || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="formObj2" type="text"
+                  name="compObjetivo2" value={compObjetivo2 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
 
             <FormGroup>
               <Label className="image1">Objetivo 3</Label>
               <div className="containerInput">
-                <Input
-                  className="formObj2"
-                  type="text"
-                  name="compObjetivo3"
-                  value={compObjetivo3 || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="formObj2" type="text"
+                  name="compObjetivo3" value={compObjetivo3 || ''} onChange={onInputChange} required/>
               </div>
             </FormGroup>
           </div>
@@ -365,7 +311,7 @@ const EditComponent = () => {
                   id="exampleText"
                   name="compLineaTrabajo1"
                   type="text"
-                  value={compLineaTrabajo1 || ""}
+                  value={compLineaTrabajo1 || ''}
                   onChange={onInputChange}
                   required
                 />
@@ -380,7 +326,7 @@ const EditComponent = () => {
                   id="exampleText"
                   name="compLineaTrabajo2"
                   type="text"
-                  value={compLineaTrabajo2 || ""}
+                  value={compLineaTrabajo2 || ''}
                   onChange={onInputChange}
                   required
                 />
@@ -394,14 +340,8 @@ const EditComponent = () => {
               <img className="Logos" src={metodologia} alt="" />
               <Label className="image1">Metodologia</Label>
               <div className="containerInput">
-                <Input
-                  className="recursosForm2"
-                  type="text"
-                  name="recursosMetodologia"
-                  value={recursosMetodologia || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="recursosForm2" type="text"
+                  name="recursosMetodologia" value={recursosMetodologia || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -410,14 +350,8 @@ const EditComponent = () => {
               <img className="Logos" src={Formato} alt="" />
               <Label className="image1">Formatos e Instructivos</Label>
               <div className="containerInput">
-                <Input
-                  className="recursosForm2"
-                  type="text"
-                  name="recursosFormatos"
-                  value={recursosFormatos || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="recursosForm2" type="text"
+                  name="recursosFormatos" value={recursosFormatos || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -426,14 +360,8 @@ const EditComponent = () => {
               <img className="Logos" src={Diagnostico} alt="" />
               <Label className="image1">Diagnosticos de Salud</Label>
               <div className="containerInput">
-                <Input
-                  className="recursosForm2"
-                  type="text"
-                  name="recursosDiagnosticos"
-                  value={recursosDiagnosticos || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="recursosForm2" type="text"
+                  name="recursosDiagnosticos" value={recursosDiagnosticos || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -444,14 +372,8 @@ const EditComponent = () => {
                 Herramientas y Manuales de Protocolo
               </Label>
               <div className="containerInput">
-                <Input
-                  className="recursosForm2"
-                  type="text"
-                  name="recursosHerramientas"
-                  value={recursosHerramientas || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="recursosForm2" type="text"
+                  name="recursosHerramientas" value={recursosHerramientas || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
@@ -460,14 +382,8 @@ const EditComponent = () => {
               <img className="Logos" src={Material} alt="" />
               <Label className="image1">Material Educativo</Label>
               <div className="containerInput">
-                <Input
-                  className="recursosForm2"
-                  type="text"
-                  name="recursosMaterial"
-                  value={recursosMaterial || ""}
-                  onChange={onInputChange}
-                  required
-                />
+                <Input className="recursosForm2" type="text"
+                  name="recursosMaterial" value={recursosMaterial || ''} onChange={onInputChange} required/>
               </div>
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>

@@ -145,6 +145,73 @@ export const sendVerificationEmail = createAsyncThunk(
   }
 );
 
+/*
+- =================================
+-   Verificar Usuario
+- =================================
+*/
+export const verifyUser = createAsyncThunk(
+  "auth/verifyUser",
+  async (verificationToken, thunkAPI) => {
+    try {
+      return await authService.verifyUser(verificationToken);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+/*
+- =================================
+-       Cambiar Contraseña
+- =================================
+*/
+export const changePassword = createAsyncThunk(
+  "auth/changePassword",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.changePassword(userData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+/*
+- =================================
+-       Listar Usuarios
+- =================================
+*/
+export const getUsers = createAsyncThunk(
+  "auth/getUsers",
+  async (_, thunkAPI) => {
+    try {
+      return await authService.getUsers();
+    } catch (error) {
+      const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+
+    return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -236,7 +303,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      //* User Profile
+      //* 
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -269,7 +336,59 @@ const authSlice = createSlice({
         state.message = action.payload;
 
         toast.error(action.payload);
-      });
+      })
+      //* Verificar Usuario
+      .addCase(verifyUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(verifyUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+
+        toast.success(action.payload);
+      })
+      .addCase(verifyUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.payload);
+      })
+      //* Cambiar Contraseña
+      .addCase(changePassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(changePassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+
+        toast.success(action.payload);
+      })
+      .addCase(changePassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.payload);
+      })
+      //* User Profile
+      .addCase(getUsers.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.users = action.payload;
+      })
+      .addCase(getUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.payload);
+      })
   },
 });
 

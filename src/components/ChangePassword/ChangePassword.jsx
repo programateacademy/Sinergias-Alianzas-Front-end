@@ -1,13 +1,18 @@
-//* dependencies
+//! Este componente toca pasarlo como página y no como modal
+//! Se debe importar el customHook para proteger la ruta  
+//* Dependencias
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-// Components
+//* Componentes
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
 
-// icons
+//* Iconos
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-// styles
+//* Estilos
 import {
   Card,
   Form,
@@ -21,6 +26,12 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
+import {
+  changePassword,
+  logout,
+  RESET,
+} from "../../store/actions/auth/authSlice";
+import Loader from "../Loader/Loader";
 
 const passwordState = {
   oldPassword: "",
@@ -29,26 +40,31 @@ const passwordState = {
 };
 
 const ChangePassword = () => {
+  //* Hooks Redux
+  const dispatch = useDispatch;
+  const navigate = useNavigate;
+
+  const { isLoading, user } = useSelector((state) => state.auth);
   /* 
   - =================================
-  -       COMPONENT STATES
+  -       ESTADOS DEL COMPONENTE
   - =================================
   */
-  //* Modal window state
+  //* Estado de la ventana modal
   const [modal, setModal] = useState(false);
 
-  //* Status of the form to change the password
+  //* Estado del formulario para cambiar la contraseña
   const [formData, setFormData] = useState(passwordState);
 
   const { oldPassword, password, confirmPassword } = formData;
 
-  //* State to validate the password structure
+  //* Estado para validar la estructura de la contraseña
   /*
-    The password must have the following characteristics:
-    Uppercase and lowercase letters
-    Numbers
-    Special character (!@#$...)
-    Cannot be less than 8 characters
+   La contraseña debe tener las siguientes características:
+   Letras mayusculas y minusculas
+   Números
+   Caracter especial (!@#$...)
+   No puede tener menos de 8 caracteres
   */
   const [upperCase, setUpperCase] = useState(false);
   const [numbers, setNumbers] = useState(false);
@@ -60,15 +76,15 @@ const ChangePassword = () => {
 
   /* 
   - =================================
-  -    COMPONENT FUNCTIONS
+  -    FUNCIONES DEL COMPONENTE
   - =================================
   */
-  //* Function to show or hide the modal
+  //* Función para mostrar u ocultar el modal
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  //* Function to change the icon in the password conditions
+  //* Función para cambiar el icono en las condiciones de la contraseña
   const switchIcon = (condition) => {
     if (condition) {
       return checkIcon;
@@ -77,40 +93,62 @@ const ChangePassword = () => {
     return timesIcon;
   };
 
-  //* Function to capture the value of the input
+  //* Función para capturar el valor del input
   const onInputChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
   };
 
-  //* Function to submit the form
-  const handleSubmit = () => {};
+  //* Función para enviar el formulario
+  const updatePassword = async (e) => {
+    e.preventDefault();
 
-  //* Render the component according to the password conditions
+    if (!oldPassword || !password || !confirmPassword) {
+      return toast.error("Todos los campos son obligatorios");
+    }
+
+    if (password !== confirmPassword) {
+      return toast.error("La contraseña no coincide");
+    }
+
+    const userData = {
+      oldPassword,
+      password,
+    };
+
+    await dispatch(changePassword(userData));
+    await dispatch(logout());
+    await dispatch(RESET(userData));
+
+    toggleModal()
+    navigate("/");
+  };
+
+  //* Renderizar el componente de acuerdo a las condiciones de la contraseña
   useEffect(() => {
-    //? Does it contain uppercase and lowercase letters?
+    //? ¿Contiene letras mayúsculas y minúsculas?
     if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
       setUpperCase(true);
     } else {
       setUpperCase(false);
     }
 
-    //? Does it contain numbers?
+    //? ¿Contiene números?
     if (password.match(/([0-9])/)) {
       setNumbers(true);
     } else {
       setNumbers(false);
     }
 
-    //? Does it contain special characters?
+    //? ¿Contiene caracteres especiales?
     if (password.match(/([!,%,&,@,#,$,^,*,?,_,-])/)) {
       setSpecialCharacter(true);
     } else {
       setSpecialCharacter(false);
     }
 
-    //? Does it contain at least 8 characters?
+    //? ¿Contiene mínimo 8 caracteres?
     if (password.length > 7) {
       setPassLength(true);
     } else {
@@ -119,14 +157,14 @@ const ChangePassword = () => {
   }, [password]);
   return (
     <>
-    <Button color="primary" onClick={toggleModal}>
-            Cambiar Contraseña
-          </Button>
-      {/* modal window */}
+      <Button color="primary" onClick={toggleModal}>
+        Cambiar Contraseña
+      </Button>
+      {/* Ventana Modal */}
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader>Cambiar Contraseña</ModalHeader>
         <ModalBody>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={updatePassword}>
             <FormGroup>
               <PasswordInput
                 name="oldPassword"
@@ -157,7 +195,7 @@ const ChangePassword = () => {
               />
             </FormGroup>
 
-            {/* password feature */}
+            {/* Característica de la contraseña */}
             <Card
               style={{
                 width: "100%",
@@ -187,9 +225,13 @@ const ChangePassword = () => {
               </ListGroup>
             </Card>
 
-            <Button color="success" className="mt-3">
-              Actualizar
-            </Button>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <Button color="success" className="mt-3">
+                Actualizar
+              </Button>
+            )}
           </Form>
         </ModalBody>
 

@@ -1,5 +1,7 @@
 // dependencies
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../store/actions/auth/authSlice";
 
 // Motion
 import { motion } from "framer-motion";
@@ -19,6 +21,18 @@ import "./Users.css";
 const Users = () => {
   //* Custom Hook to redirect user if session expires
   useRedirectLoggedOutUser("/");
+
+  const { users } = useSelector((state) => 
+    state.auth,
+  );
+
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+  
+  console.log(users)
   return (
     <>
       <div className="users-title">
@@ -52,9 +66,13 @@ const Users = () => {
               </tr>
             </thead>
 
-            <tbody>
-              <RowTableUsers />
-            </tbody>
+          
+            {users &&
+            users.map((item, index) => (
+              <RowTableUsers 
+              key={index} {...item}
+               />
+            ))}
           </Table>
 
           <Pagination />

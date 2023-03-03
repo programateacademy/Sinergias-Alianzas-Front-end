@@ -77,6 +77,41 @@ const sendVerificationEmail = async () => {
   return response.data.message;
 };
 
+/*
+- =================================
+-   Verificar usuario
+- =================================
+*/
+const verifyUser = async (verificationToken) => {
+  const response = await axios.patch(
+    `${API_URL}verifyUser/${verificationToken}`
+  );
+
+  return response.data.message;
+};
+
+/*
+- =================================
+-       Cambiar Contraseña
+- =================================
+*/
+const changePassword = async (userData) => {
+  const response = await axios.patch(API_URL + "changePassword", userData);
+
+  return response.data.message;
+};
+
+/*
+- =================================
+-       listar usuarios
+- =================================
+*/
+const getUsers = async (userData) => {
+  const response = await axios.get(API_URL + "getUsers", userData);
+
+  return response.data;
+};
+
 const authService = {
   register,
   login,
@@ -84,6 +119,10 @@ const authService = {
   getLoginStatus,
   getUser,
   sendVerificationEmail,
+  verifyUser,
+  changePassword,
+  getUsers
 };
 
 export default authService;
+

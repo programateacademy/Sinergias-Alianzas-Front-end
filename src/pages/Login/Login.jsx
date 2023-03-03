@@ -81,7 +81,6 @@ const Login = () => {
     if (isSuccess && isLoggedIn) {
       navigate("/home");
     }
-
     dispatch(RESET());
   }, [isLoggedIn, isSuccess, dispatch, navigate]);
 
@@ -150,10 +149,8 @@ const Login = () => {
                 </div>
               </div>
               <span>Ingresar</span>
-              
             </button>
           </div>
-
         </Form>
       </div>
     </div>

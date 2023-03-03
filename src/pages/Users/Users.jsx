@@ -1,5 +1,3 @@
-// dependencies
-import React from "react";
 
 // Motion
 import { motion } from "framer-motion";
@@ -10,15 +8,35 @@ import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
 import Search from "../../components/Search/Search";
 import RowTableUsers from "../../components/RowTableUsers/RowTableUsers";
 import Pagination from "../../components/Pagination/Pagination";
-import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser'
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+
+//! users
+import { getUsers } from "../../store/actions/auth/usersSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 // styles
 import { Table } from "reactstrap";
 import "./Users.css";
+import { useEffect } from "react";
 
 const Users = () => {
   //* Custom Hook to redirect user if session expires
-  useRedirectLoggedOutUser("/");
+  /* useRedirectLoggedOutUser("/"); */
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const { usuarios } = useSelector((state) => ({
+    ...state.usuario,
+  }));
+  console.log(usuarios)
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+  
+
+//!!!!!!!!!!!!!!!!!!!!!!!!
   return (
     <>
       <div className="users-title">
@@ -51,12 +69,19 @@ const Users = () => {
                 <th>Acciones</th>
               </tr>
             </thead>
-
             <tbody>
-              <RowTableUsers />
+
+
+            <div className="listCards">
+          {usuarios &&
+            usuarios.map((item, index) => (
+              <RowTableUsers key={index} {...item} />
+            ))}
+        </div>
+
+              
             </tbody>
           </Table>
-
           <Pagination />
         </section>
       </div>

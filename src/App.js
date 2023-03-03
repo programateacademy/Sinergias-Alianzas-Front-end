@@ -1,7 +1,7 @@
 // dependencies
 import React, { useEffect } from "react";
-import { ToastContainer } from "react-toastify"; // Notificaciones en pantalla
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // Manejo de rutas
+import { ToastContainer } from "react-toastify"; // screen notifications 
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // Route management
 import { useDispatch } from "react-redux";
 
 // Redux functions
@@ -105,7 +105,7 @@ function App() {
             </Layout>
           }
         />
-        
+
         <Route
           path="/addComponent"
           element={
@@ -119,14 +119,13 @@ function App() {
           path="/updateComponent/:id"
           element={
             <Layout>
-              <EditComponent/>
+              <EditComponent />
             </Layout>
           }
-        />        
+        />
 
-        
+
         <Route
-          
           path="/seeComponent/:id"
           element={
             <Layout>

@@ -1,13 +1,12 @@
 .containerIcon {
   position: absolute;
-  width: 100vw;  
-  display: flex;
-  *top: 40vh;
-  translate: 0vw -10vw; 
+  width: 100vw;
+  display: flex;  
+  translate: 0vw -10vw;
   justify-content: center;
 }
 .containerIcon img {
- width: 25vw;
+  width: 25vw;
 }
 .containerSeeComponent {
   *border: 5px solid green;
@@ -48,15 +47,15 @@ iframe.video {
   margin: 5px;
   display: flex;
   justify-content: center;
-  align-items: center;   
+  align-items: center;
 }
-.objetive p { 
-  margin: 0; 
+.objetive p {
+  margin: 0;
 }
 .containerLinesWork {
   width: 100%;
 }
-.lineWork {  
+.lineWork {
   width: 100%;
   border-radius: 15px;
   *height: 200px;
@@ -78,8 +77,7 @@ iframe.video {
 @media screen and (min-width: 570px) {
   .containerIcon {
     justify-content: left;
-    translate: 0vw -3vw; 
-
+    translate: 0vw -3vw;
   }
   .containerIcon img {
     width: 8vw;

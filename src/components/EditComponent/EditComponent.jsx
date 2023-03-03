@@ -1,13 +1,13 @@
 import "./editComponent.css";
 
-import metodologia from "../AddComponent/assest/Rectangle25.png";
+/* import metodologia from "../AddComponent/assest/Rectangle25.png";
 import Formato from "../AddComponent/assest/Rectangle26.png";
 import Diagnostico from "../AddComponent/assest/Rectangle27.png";
 import Herramientas from "../AddComponent/assest/Rectangle28.png";
 import Material from "../AddComponent/assest/Rectangle29.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
-import ImgComponent from "../AddComponent/assest/libro.png";
+import ImgComponent from "../AddComponent/assest/libro.png"; */
 
 import { FormText, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
 

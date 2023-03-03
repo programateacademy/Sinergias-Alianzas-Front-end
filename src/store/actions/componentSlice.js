@@ -73,10 +73,6 @@ export const deleteComponent = (id, data) => async (dispatch) => {
 };
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9d49d6fbd6940dd89ffa7683e9bede18c79e06ba
 const componentSlice = createSlice({
   name: "componente",
   

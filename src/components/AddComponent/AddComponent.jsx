@@ -1,13 +1,7 @@
 import "./addComponent.css";
-<<<<<<< HEAD
-import metodologia from "./assest/Metodologia.png";
-import Formato from "./assest/Salud.png";
-import Diagnostico from "./assest/Diagnostico.png";
-=======
 import metodologia from "./assest/Metodología.png";
 import Formato from "./assest/Formatos.png";
 import Diagnostico from "./assest/Diagnosticos.png";
->>>>>>> 9d49d6fbd6940dd89ffa7683e9bede18c79e06ba
 import Herramientas from "./assest/Herramientas.png";
 import Material from "./assest/Material.png";
 import Guardar from "./assest/guardar.png";

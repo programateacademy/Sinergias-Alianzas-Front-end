@@ -78,43 +78,40 @@ const Profile = () => {
 
   return (
     <>
-      <div className="containerTitle">
-        <h1>DETALLE DE USUARIO</h1>
-      </div>
-      <div className="containerDashboard">
-        <Notification />
-        {isLoading && <Loader />}
-        <Card
-          style={{
-            width: "18rem",
-            margin: "auto",
-          }}
-        >
-          <CardBody>
-            <Form>
-              <FormGroup>
-                <p style={{ color: "#126a2e", fontWeight: "700" }}>Rol</p>
-                <Input
-                  id="rol"
-                  name="rol"
-                  type="text"
-                  defaultValue={""}
-                  value={initialState?.rol}
-                  onChange={onInputChange}
-                  disabled
-                />
-              </FormGroup>
-              <FormGroup>
-                <p style={{ color: "#126a2e", fontWeight: "700" }}>Nombre</p>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={initialState?.name}
-                  onChange={onInputChange}
-                  disabled
-                />
-              </FormGroup>
+      
+      {isLoading && <Loader />}
+      {!initialState.isVerified && <Notification />}
+      <Card
+        style={{
+          width: "18rem",
+          margin: "auto",
+        }}
+      >
+        <CardBody>
+          <Form>
+            <FormGroup>
+              <p style={{ color: "#126a2e", fontWeight: "700" }}>Rol</p>
+              <Input
+                id="rol"
+                name="rol"
+                type="text"
+                defaultValue={""}
+                value={initialState?.rol}
+                onChange={onInputChange}
+                disabled
+              />
+            </FormGroup>
+            <FormGroup>
+              <p style={{ color: "#126a2e", fontWeight: "700" }}>Nombre</p>
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                value={initialState?.name}
+                onChange={onInputChange}
+                disabled
+              />
+            </FormGroup>
 
               <FormGroup>
                 <p style={{ color: "#126a2e", fontWeight: "700" }}> Correo</p>

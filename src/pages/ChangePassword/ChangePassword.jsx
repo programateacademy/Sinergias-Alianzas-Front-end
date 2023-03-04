@@ -33,6 +33,7 @@ import {
   ListGroupItem,
   Container,
 } from "reactstrap";
+import { sendAutomatedEmail } from "../../store/actions/mail/emailSlice";
 
 const passwordState = {
   oldPassword: "",
@@ -123,7 +124,15 @@ const ChangePassword = () => {
       password,
     };
 
+    const emailData = {
+      subject: "Cambio de Contraseña - Fundación Sinergias",
+      send_to: user.email,
+      reply_to: "noreply@fundacionsinergias.com",
+      template: "changePassword",
+    }
+
     await dispatch(changePassword(userData));
+    await dispatch(sendAutomatedEmail(emailData));
     await dispatch(logout());
     await dispatch(RESET(userData));
 

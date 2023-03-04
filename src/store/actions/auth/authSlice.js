@@ -290,7 +290,7 @@ export const sendLoginCode = createAsyncThunk(
 */
 export const loginWithCode = createAsyncThunk(
   "auth/loginWithCode",
-  async ({code, email}, thunkAPI) => {
+  async ({ code, email }, thunkAPI) => {
     try {
       return await authService.loginWithCode(code, email);
     } catch (error) {

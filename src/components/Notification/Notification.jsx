@@ -34,7 +34,7 @@ const Notification = () => {
 
     await dispatch(RESET());
   };
-  
+
   return (
     <Container>
       <Row className="mt-5 mb-5">

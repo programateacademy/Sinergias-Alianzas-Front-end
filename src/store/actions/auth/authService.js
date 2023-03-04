@@ -118,7 +118,10 @@ const forgotPassword = async (userData) => {
 - =================================
 */
 const resetPassword = async (userData, resetToken) => {
-  const response = await axios.patch(`${API_URL}resetPassword/${resetToken}`, userData);
+  const response = await axios.patch(
+    `${API_URL}resetPassword/${resetToken}`,
+    userData
+  );
 
   return response.data.message;
 };
@@ -169,8 +172,7 @@ const authService = {
   resetPassword,
   getUsers,
   sendLoginCode,
-  loginWithCode
+  loginWithCode,
 };
 
 export default authService;
-

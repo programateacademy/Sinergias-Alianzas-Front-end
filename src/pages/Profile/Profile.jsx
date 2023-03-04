@@ -1,5 +1,6 @@
 // Dependencias
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // Funciones de Redux
@@ -20,7 +21,6 @@ import {
   BreadcrumbItem,
   Button,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 
 // Función para cortar el nombre del usuario
 const shortenText = (text, n) => {
@@ -41,9 +41,7 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   //* Estado función redux
-  const { isLoading, isLoggedIn, isSuccess, message, user } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading, user } = useSelector((state) => state.auth);
 
   //* Estado inicial
   const initialState = {
@@ -129,7 +127,7 @@ const Profile = () => {
               />
             </FormGroup>
           </Form>
-          <Link to={'/changePassword'}>
+          <Link to={"/changePassword"}>
             <Button color="primary">Cambiar Contraseña</Button>
           </Link>
         </CardBody>

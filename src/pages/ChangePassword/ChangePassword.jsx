@@ -24,10 +24,6 @@ import {
   Form,
   FormGroup,
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   CardHeader,
   ListGroup,
   ListGroupItem,
@@ -49,9 +45,7 @@ const ChangePassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, isSuccess, message, user } = useSelector(
-    (state) => state.auth
-  );
+  const { user } = useSelector((state) => state.auth);
   /* 
   - =================================
   -       ESTADOS DEL COMPONENTE
@@ -129,7 +123,7 @@ const ChangePassword = () => {
       send_to: user.email,
       reply_to: "noreply@fundacionsinergias.com",
       template: "changePassword",
-    }
+    };
 
     await dispatch(changePassword(userData));
     await dispatch(sendAutomatedEmail(emailData));

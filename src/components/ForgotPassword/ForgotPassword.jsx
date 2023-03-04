@@ -25,9 +25,7 @@ const ForgotPassword = () => {
   //* Hooks Redux
   const dispatch = useDispatch();
 
-  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading } = useSelector((state) => state.auth);
 
   /* 
   - =================================

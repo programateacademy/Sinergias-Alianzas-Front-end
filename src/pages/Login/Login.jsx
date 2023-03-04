@@ -1,6 +1,6 @@
 // dependencies
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -40,7 +40,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, isSuccess, message, isError, twoFact } = useSelector(
+  const { isLoading, isLoggedIn, isSuccess, isError, twoFact } = useSelector(
     (state) => state.auth
   );
 
@@ -83,10 +83,10 @@ const Login = () => {
       navigate("/home");
     }
 
-    if(isError && twoFact) {
-      dispatch(sendLoginCode(email))
+    if (isError && twoFact) {
+      dispatch(sendLoginCode(email));
 
-      navigate(`/loginWithCode/${email}`)
+      navigate(`/loginWithCode/${email}`);
     }
 
     dispatch(RESET());
@@ -157,10 +157,8 @@ const Login = () => {
                 </div>
               </div>
               <span>Ingresar</span>
-              
             </button>
           </div>
-
         </Form>
       </div>
     </div>

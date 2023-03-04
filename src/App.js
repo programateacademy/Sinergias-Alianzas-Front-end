@@ -32,7 +32,6 @@ import axios from "axios";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 axios.defaults.withCredentials = true;
 
-
 function App() {
   /* 
   - =================================
@@ -77,7 +76,7 @@ function App() {
             </Layout>
           }
         />
-        
+
         <Route
           path="/changePassword"
           element={
@@ -106,7 +105,6 @@ function App() {
             - =================================
           */}
 
-
         <Route
           path="/home"
           element={
@@ -115,7 +113,7 @@ function App() {
             </Layout>
           }
         />
-        
+
         <Route
           path="/addComponent"
           element={
@@ -129,14 +127,12 @@ function App() {
           path="/updateComponent/:id"
           element={
             <Layout>
-              <EditComponent/>
+              <EditComponent />
             </Layout>
           }
-        />        
+        />
 
-        
         <Route
-          
           path="/seeComponent/:id"
           element={
             <Layout>

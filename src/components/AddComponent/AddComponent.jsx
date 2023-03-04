@@ -158,9 +158,8 @@ const AddComponent = () => {
       <div className="containerDashboard1">
         <h2 className="Titulo2">Información del Componente</h2>
         <img className="imgComponent" src={ImgComponent} alt="" />
-        
+
         <Form onSubmit={handleSubmit} className="containerAdd">
-          
           <Form className="form1">
             <FormGroup>
               <Label className="labels">Imagen del componente</Label>
@@ -177,7 +176,7 @@ const AddComponent = () => {
 
             <FormGroup>
               <Label className="labels">Color del componente</Label>
-              <Input                
+              <Input
                 className="inputColor"
                 type="color"
                 name="compColor"
@@ -425,10 +424,9 @@ const AddComponent = () => {
               />
               <FormText>Enlace de los recursos</FormText>
             </FormGroup>
-            
           </Form>
         </Form>
-        
+
         <div className="botones">
           <button>
             <img

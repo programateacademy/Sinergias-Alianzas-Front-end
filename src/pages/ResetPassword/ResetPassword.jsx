@@ -1,8 +1,15 @@
 // dependencies
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+
+// Redux
+import { RESET, resetPassword } from "../../store/actions/auth/authSlice";
 
 // Components
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
+import Loader from "../../components/Loader/Loader";
 
 // icons
 import { FaTimes, FaCheck } from "react-icons/fa";
@@ -18,11 +25,6 @@ import {
   ListGroupItem,
   Container,
 } from "reactstrap";
-import Loader from "../../components/Loader/Loader";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import { RESET, resetPassword } from "../../store/actions/auth/authSlice";
 
 // Initial state
 const initialState = {
@@ -35,9 +37,7 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading, isSuccess, message } = useSelector((state) => state.auth);
   /* 
   - =================================
   -       COMPONENT STATES
@@ -122,27 +122,25 @@ const ResetPassword = () => {
 
   //* Function to submit the form
   const handleSubmit = async (e) => {
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      //* Input validation
-      if (password.length < 8) {
-        return toast.error("La contraseña debe ser de 8 caracteres.");
-      }
+    //* Input validation
+    if (password.length < 8) {
+      return toast.error("La contraseña debe ser de 8 caracteres.");
+    }
 
-      if (password !== confirmPassword) {
-        return toast.error("La contraseña no coincide");
-      }
+    if (password !== confirmPassword) {
+      return toast.error("La contraseña no coincide");
+    }
 
-      const userData = {
-        password,
-        confirmPassword,
-      };
-
-      await dispatch(resetPassword(userData.password, resetToken));
-      await dispatch(RESET(userData));
-      navigate("/");
+    const userData = {
+      password,
+      confirmPassword,
     };
+
+    await dispatch(resetPassword(userData.password, resetToken));
+    await dispatch(RESET(userData));
+    navigate("/");
   };
 
   useEffect(() => {
@@ -167,7 +165,11 @@ const ResetPassword = () => {
         <Card style={{ width: "40%" }}>
           <CardHeader>Cambiar Contraseña</CardHeader>
 
-          <Form className="mt-1" style={{ maxWidth: "100%", padding: "10px" }}>
+          <Form
+            className="mt-1"
+            style={{ maxWidth: "100%", padding: "10px" }}
+            onSubmit={handleSubmit}
+          >
             <FormGroup>
               <PasswordInput
                 name="password"

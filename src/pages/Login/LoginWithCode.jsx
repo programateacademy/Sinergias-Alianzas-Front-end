@@ -1,5 +1,4 @@
 // dependencies
-import { async } from "q";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -38,9 +37,7 @@ const LoginWithCode = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, isSuccess } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoggedIn, isSuccess } = useSelector((state) => state.auth);
 
   /* 
   - =================================

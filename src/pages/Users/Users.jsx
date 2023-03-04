@@ -1,5 +1,5 @@
 // dependencies
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../store/actions/auth/authSlice";
 
@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import AddUser from "../../components/AddUser/AddUser";
 import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
 import Search from "../../components/Search/Search";
-import RowTableUsers from "../../components/RowTableUsers/RowTableUsers";
 import Pagination from "../../components/Pagination/Pagination";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
@@ -20,7 +19,6 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 // styles
 import { Table, Button } from "reactstrap";
 import "./Users.css";
-import { useNavigate } from "react-router";
 
 const Users = () => {
   //* Hook personalizado para redireccionar el usuario si la sesión expira
@@ -29,9 +27,7 @@ const Users = () => {
   //* Hooks Redux
   const dispatch = useDispatch();
 
-  const { isLoading, isLoggedIn, isSuccess, message, users } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading, users } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -82,7 +78,7 @@ const Users = () => {
                   // console.log(`${name.firstName} ${name.lastName}`)
                   // console.log(rol);
                   return (
-                    <tr>
+                    <tr key={_id}>
                       <td>{index + 1}</td>
                       <td>{`${name.firstName} ${name.lastName}`}</td>
                       <td>{email}</td>

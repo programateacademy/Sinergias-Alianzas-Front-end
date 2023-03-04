@@ -89,7 +89,7 @@ function App() {
 
         <Route path="/resetPassword/:resetToken" element={<ResetPassword />} />
 
-        <Route path="/login-with-code/:email" element={<LoginWithCode />} />
+        <Route path="/loginWithCode/:email" element={<LoginWithCode />} />
 
         <Route
           path="/verify/:verificationToken"

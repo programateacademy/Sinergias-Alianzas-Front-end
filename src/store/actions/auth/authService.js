@@ -134,6 +134,28 @@ const getUsers = async () => {
   return response.data;
 };
 
+/*
+- =================================
+-   Enviar Código inicio de sesión
+- =================================
+*/
+const sendLoginCode = async (email) => {
+  const response = await axios.post(API_URL + `sendLoginCode/${email}`);
+
+  return response.data;
+};
+
+/*
+- =================================
+-   Ingresar con código
+- =================================
+*/
+const loginWithCode = async (code, email) => {
+  const response = await axios.post(API_URL + `loginWithCode/${email}`, code);
+
+  return response.data;
+};
+
 const authService = {
   register,
   login,
@@ -145,7 +167,9 @@ const authService = {
   changePassword,
   forgotPassword,
   resetPassword,
-  getUsers
+  getUsers,
+  sendLoginCode,
+  loginWithCode
 };
 
 export default authService;

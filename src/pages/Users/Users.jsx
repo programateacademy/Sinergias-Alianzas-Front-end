@@ -78,9 +78,9 @@ const Users = () => {
                 {users.map((user, index) => {
                   const { _id, name, email, rol } = user;
 
-                  console.log(email)
-                  console.log(`${name.firstName} ${name.lastName}`)
-                  console.log(rol);
+                  // console.log(email)
+                  // console.log(`${name.firstName} ${name.lastName}`)
+                  // console.log(rol);
                   return (
                     <tr>
                       <td>{index + 1}</td>

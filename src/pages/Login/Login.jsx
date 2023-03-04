@@ -17,6 +17,7 @@ import { Form, FormGroup, Label, Input } from "reactstrap";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
 import "./login.css";
+import { sendLoginCode } from "../../store/actions/auth/authSlice";
 
 // Initial state
 const initialState = {
@@ -39,7 +40,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
+  const { isLoading, isLoggedIn, isSuccess, message, isError, twoFact } = useSelector(
     (state) => state.auth
   );
 
@@ -82,8 +83,14 @@ const Login = () => {
       navigate("/home");
     }
 
+    if(isError && twoFact) {
+      dispatch(sendLoginCode(email))
+
+      navigate(`/loginWithCode/${email}`)
+    }
+
     dispatch(RESET());
-  }, [isLoggedIn, isSuccess, dispatch, navigate]);
+  }, [isLoggedIn, isSuccess, dispatch, navigate, isError, twoFact, email]);
 
   return (
     <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>

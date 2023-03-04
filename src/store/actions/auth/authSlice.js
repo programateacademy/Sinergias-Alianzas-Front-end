@@ -260,6 +260,52 @@ export const getUsers = createAsyncThunk(
   }
 );
 
+/*
+- =================================
+-  Enviar Código inicio de sesión
+- =================================
+*/
+export const sendLoginCode = createAsyncThunk(
+  "auth/sendLoginCode",
+  async (email, thunkAPI) => {
+    try {
+      return await authService.sendLoginCode(email);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+/*
+- =================================
+-  Ingresar con código
+- =================================
+*/
+export const loginWithCode = createAsyncThunk(
+  "auth/loginWithCode",
+  async ({code, email}, thunkAPI) => {
+    try {
+      return await authService.loginWithCode(code, email);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -317,6 +363,12 @@ const authSlice = createSlice({
         state.user = null;
 
         toast.error(action.payload);
+        if (
+          action.payload.includes("dispositivo") ||
+          action.payload.includes("buscador")
+        ) {
+          state.twoFact = true;
+        }
       })
       //* Sign off
       .addCase(logout.pending, (state, action) => {
@@ -470,6 +522,43 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+
+        toast.error(action.payload);
+      })
+      //* Enviar Código inicio de sesión
+      .addCase(sendLoginCode.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(sendLoginCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.users = action.payload;
+      })
+      .addCase(sendLoginCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.payload);
+      })
+      //* Ingresar con código
+      .addCase(loginWithCode.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(loginWithCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.twoFact = false;
+        state.user = action.payload;
+
+        toast.success(action.payload);
+      })
+      .addCase(loginWithCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
 
         toast.error(action.payload);
       });

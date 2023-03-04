@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+<div align="center">
+  <h1 align="center">SINERGIAS</h1>
+  <h2 align="center">Alianzas Estratégicas Para La Salud Y El Desarollo Social</h2>
+  <a href="#" target="_blank">
+    <img src="4-Sinergias-Alianzas-Back-end/assets/Sinergias.jpg" alt="Imagen Proyecto" width="40%" height="40%">
+  </a>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sobre el Proyecto
 
-## Available Scripts
+Este repositorio corresponde al desarrollo del frontend de la aplicación web realizada para la fundación Sinergias, en la cual, se gestiona la creación de Componentes (Cursos) para líderes sociales y comunidades indígenas en todo el territorio Colombiano.
 
-In the project directory, you can run:
+### Características del Proyecto
 
-### `npm start`
+- CRUD para los componentes
+- Autenticación de usuarios
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Tecnologías de Desarrollo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+El frontend fue desarrollado con las siguientes tecnologías:
 
-### `npm test`
+![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![image](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instalación
 
-### `npm run build`
+Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu equipo local para propósitos de desarrollo y pruebas.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clonar el repositorio
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```sh
+   git clone https://github.com/programateacademy/4-Sinergias-Alianzas-Front-end.git
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Ingresar a la carpeta `4-Sinergias-Alianzas-Front-end` y crear una rama local con el nombre `dev`
 
-### `npm run eject`
+   ```sh
+   git checkout -b dev
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Una vez en la rama local `dev` deberás clonar la misma rama que se encuentra en el repositorio, esta rama es la que contiene todo el código de desarrollo.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```sh
+   git pull origin dev
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Instalar dependencias de NPM
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```sh
+   npm install
+   ```
 
-## Learn More
+4. Crear el archivo `.env` para las diferentes variables de entorno utilizadas en el desarrollo, para esto puedes guiarte del archivo `.env.example`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- USAGE EXAMPLES -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Iniciar los servidores
 
-### Code Splitting
+1. Para iniciar el servidor deberás escribir el siguiente comando
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```sh
+   npm start
+   ```
 
-### Analyzing the Bundle Size
+## Equipo de Desarrollo Primera Fase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="left"> <a href="https://github.com/Nisanech" target="_blank"> <img src="4-Sinergias-Alianzas-Back-end/assets/Logo-Nicolas.png" alt="Logo Nicolas" width="20%" height="20%"/></a> <a href="https://github.com/Andrea-25-11" target="_blank"> <img src="4-Sinergias-Alianzas-Back-end/assets/Logo-Andrea.png" alt="Logo Andrea" width="10%" height="5%"/></a> <a href="https://github.com/EdwardMelo1" target="_blank"> <img src="4-Sinergias-Alianzas-Back-end/assets/Logo-Edward.png" alt="Logo Edward" width="20%" height="20%"/></a> <a href="https://github.com/Jonathanvg97" target="_blank"> <img src="4-Sinergias-Alianzas-Back-end/assets/Logo-Jonathan.png" alt="Logo-Jonathan" width="20%" height="20%"/></a> <a href="https://github.com/CrisCaBeRi" target="_blank"> <img src="4-Sinergias-Alianzas-Back-end/assets/Logo-Cristian.png" alt="Logo-Cristian" width="15%" height="20%"/></a> <a href="https://github.com/Juliana1497" target="_blank"> <img src="4-Sinergias-Alianzas-Back-end/assets/Logo-Juliana.png" alt="Logo-Juliana" width="10%" height="5%"/></a></p>

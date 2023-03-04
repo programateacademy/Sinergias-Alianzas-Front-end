@@ -29,6 +29,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // credentials
 import axios from "axios";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 axios.defaults.withCredentials = true;
 
 
@@ -73,6 +74,15 @@ function App() {
           element={
             <Layout>
               <Profile />
+            </Layout>
+          }
+        />
+        
+        <Route
+          path="/changePassword"
+          element={
+            <Layout>
+              <ChangePassword />
             </Layout>
           }
         />

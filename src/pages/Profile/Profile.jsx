@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, selectUser } from "../../store/actions/auth/authSlice";
 
 // Componentes
-import ChangePassword from "../../components/ChangePassword/ChangePassword";
 import Loader from "../../components/Loader/Loader";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import Notification from "../../components/Notification/Notification";
@@ -19,7 +18,9 @@ import {
   FormGroup,
   Input,
   BreadcrumbItem,
+  Button,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 // Función para cortar el nombre del usuario
 const shortenText = (text, n) => {
@@ -81,7 +82,6 @@ const Profile = () => {
 
   return (
     <>
-      
       {isLoading && <Loader />}
       {!initialState.isVerified && <Notification />}
       <Card
@@ -129,8 +129,9 @@ const Profile = () => {
               />
             </FormGroup>
           </Form>
-
-          <ChangePassword />
+          <Link to={'/changePassword'}>
+            <Button color="primary">Cambiar Contraseña</Button>
+          </Link>
         </CardBody>
       </Card>
     </>

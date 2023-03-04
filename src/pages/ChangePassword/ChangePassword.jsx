@@ -1,13 +1,19 @@
-//! Este componente toca pasarlo como página y no como modal
-//! Se debe importar el customHook para proteger la ruta  
 //* Dependencias
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+//* Redux
+import {
+  changePassword,
+  logout,
+  RESET,
+} from "../../store/actions/auth/authSlice";
+
 //* Componentes
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
 //* Iconos
 import { FaTimes, FaCheck } from "react-icons/fa";
@@ -25,13 +31,8 @@ import {
   CardHeader,
   ListGroup,
   ListGroupItem,
+  Container,
 } from "reactstrap";
-import {
-  changePassword,
-  logout,
-  RESET,
-} from "../../store/actions/auth/authSlice";
-import Loader from "../Loader/Loader";
 
 const passwordState = {
   oldPassword: "",
@@ -40,11 +41,16 @@ const passwordState = {
 };
 
 const ChangePassword = () => {
-  //* Hooks Redux
-  const dispatch = useDispatch;
-  const navigate = useNavigate;
+  //* Hook personalizado para redireccionar el usuario si la sesión expira
+  useRedirectLoggedOutUser("/");
 
-  const { isLoading, user } = useSelector((state) => state.auth);
+  //* Hooks Redux
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isLoading, isLoggedIn, isSuccess, message, user } = useSelector(
+    (state) => state.auth
+  );
   /* 
   - =================================
   -       ESTADOS DEL COMPONENTE
@@ -121,7 +127,7 @@ const ChangePassword = () => {
     await dispatch(logout());
     await dispatch(RESET(userData));
 
-    toggleModal()
+    toggleModal();
     navigate("/");
   };
 
@@ -157,90 +163,71 @@ const ChangePassword = () => {
   }, [password]);
   return (
     <>
-      <Button color="primary" onClick={toggleModal}>
-        Cambiar Contraseña
-      </Button>
-      {/* Ventana Modal */}
-      <Modal isOpen={modal} toggle={toggleModal}>
-        <ModalHeader>Cambiar Contraseña</ModalHeader>
-        <ModalBody>
-          <Form onSubmit={updatePassword}>
-            <FormGroup>
-              <PasswordInput
-                name="oldPassword"
-                placeholder="Contraseña actual"
-                type="password"
-                value={oldPassword}
-                onChange={onInputChange}
-              />
-            </FormGroup>
+      <Container>
+        <h3>Cambiar Contraseña</h3>
+        <Form onSubmit={updatePassword}>
+          <FormGroup>
+            <PasswordInput
+              name="oldPassword"
+              placeholder="Contraseña actual"
+              type="password"
+              value={oldPassword}
+              onChange={onInputChange}
+            />
+          </FormGroup>
 
-            <FormGroup>
-              <PasswordInput
-                name="password"
-                placeholder="Contraseña"
-                type="password"
-                value={password}
-                onChange={onInputChange}
-              />
-            </FormGroup>
+          <FormGroup>
+            <PasswordInput
+              name="password"
+              placeholder="Contraseña"
+              type="password"
+              value={password}
+              onChange={onInputChange}
+            />
+          </FormGroup>
 
-            <FormGroup>
-              <PasswordInput
-                name="confirmPassword"
-                placeholder="Confirmar Contraseña"
-                type="password"
-                value={confirmPassword}
-                onChange={onInputChange}
-              />
-            </FormGroup>
+          <FormGroup>
+            <PasswordInput
+              name="confirmPassword"
+              placeholder="Confirmar Contraseña"
+              type="password"
+              value={confirmPassword}
+              onChange={onInputChange}
+            />
+          </FormGroup>
 
-            {/* Característica de la contraseña */}
-            <Card
-              style={{
-                width: "100%",
-              }}
-            >
-              <CardHeader>La contraseña debe contener al menos:</CardHeader>
-              <ListGroup flush>
-                <ListGroupItem>
-                  {switchIcon(upperCase)}
-                  &nbsp; Una letra minúscula y mayúscula
-                </ListGroupItem>
+          {/* Característica de la contraseña */}
+          <Card
+            style={{
+              width: "100%",
+            }}
+          >
+            <CardHeader>La contraseña debe contener al menos:</CardHeader>
+            <ListGroup flush>
+              <ListGroupItem>
+                {switchIcon(upperCase)}
+                &nbsp; Una letra minúscula y mayúscula
+              </ListGroupItem>
 
-                <ListGroupItem>
-                  {switchIcon(numbers)}
-                  &nbsp; Un número (0-9)
-                </ListGroupItem>
+              <ListGroupItem>
+                {switchIcon(numbers)}
+                &nbsp; Un número (0-9)
+              </ListGroupItem>
 
-                <ListGroupItem>
-                  {switchIcon(specialCharacter)}
-                  &nbsp; Un caracter especial (!%&@#$^*?_-)
-                </ListGroupItem>
+              <ListGroupItem>
+                {switchIcon(specialCharacter)}
+                &nbsp; Un caracter especial (!%&@#$^*?_-)
+              </ListGroupItem>
 
-                <ListGroupItem>
-                  {switchIcon(passLength)}
-                  &nbsp; Mínimo 8 caracteres
-                </ListGroupItem>
-              </ListGroup>
-            </Card>
-
-            {isLoading ? (
-              <Loader />
-            ) : (
-              <Button color="success" className="mt-3">
-                Actualizar
-              </Button>
-            )}
-          </Form>
-        </ModalBody>
-
-        <ModalFooter>
-          <Button color="primary" onClick={toggleModal}>
-            Cancelar
-          </Button>
-        </ModalFooter>
-      </Modal>
+              <ListGroupItem>
+                {switchIcon(passLength)}
+                &nbsp; Mínimo 8 caracteres
+              </ListGroupItem>
+            </ListGroup>
+          </Card>
+          <Button>Actualizar</Button>
+        </Form>
+      </Container>
     </>
   );
 };

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 // icons
 import { RiLockPasswordFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 
 // styles
 import {
@@ -15,9 +16,19 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
+import { validateEmail } from "../../store/actions/auth/authService";
+import { forgotPassword, RESET } from "../../store/actions/auth/authSlice";
+import Loader from "../Loader/Loader";
 import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
+  //* Hooks Redux
+  const dispatch = useDispatch();
+
+  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
   /* 
   - =================================
   -       COMPONENT STATES
@@ -46,11 +57,32 @@ const ForgotPassword = () => {
   };
 
   //* Function to submit the form
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    //* Input validation
+    if (!email) {
+      return toast.error("Por favor ingresa un correo.");
+    }
+
+    if (!validateEmail(email)) {
+      return toast.error("Ingresa un correo válido");
+    }
+
+    const userData = {
+      email,
+    };
+
+    await dispatch(forgotPassword(userData));
+    await dispatch(RESET(userData));
+
+    toggleModal();
+  };
 
   return (
     <>
       <div className="fgpass-button">
+        {isLoading && <Loader />}
         <div className="icon_container">
           <RiLockPasswordFill />
         </div>

@@ -103,6 +103,17 @@ const changePassword = async (userData) => {
 
 /*
 - =================================
+-       Olvido Contraseña
+- =================================
+*/
+const forgotPassword = async (userData) => {
+  const response = await axios.post(API_URL + "forgotPassword", userData);
+
+  return response.data.message;
+};
+
+/*
+- =================================
 -       listar usuarios
 - =================================
 */
@@ -121,6 +132,7 @@ const authService = {
   sendVerificationEmail,
   verifyUser,
   changePassword,
+  forgotPassword,
   getUsers
 };
 

@@ -193,6 +193,29 @@ export const changePassword = createAsyncThunk(
 
 /*
 - =================================
+-       Olvido Contraseña
+- =================================
+*/
+export const forgotPassword = createAsyncThunk(
+  "auth/forgotPassword",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.forgotPassword(userData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+/*
+- =================================
 -       Listar Usuarios
 - =================================
 */
@@ -203,11 +226,13 @@ export const getUsers = createAsyncThunk(
       return await authService.getUsers();
     } catch (error) {
       const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
 
-    return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -303,7 +328,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      //* 
+      //*
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -373,6 +398,24 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
+      //* Olvido Contraseña
+      .addCase(forgotPassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(forgotPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+
+        toast.success(action.payload);
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.payload);
+      })
       //* User Profile
       .addCase(getUsers.pending, (state, action) => {
         state.isLoading = true;
@@ -388,7 +431,7 @@ const authSlice = createSlice({
         state.message = action.payload;
 
         toast.error(action.payload);
-      })
+      });
   },
 });
 

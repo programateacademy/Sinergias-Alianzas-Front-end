@@ -87,7 +87,7 @@ function App() {
           }
         />
 
-        <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+        <Route path="/resetPassword/:resetToken" element={<ResetPassword />} />
 
         <Route path="/login-with-code/:email" element={<LoginWithCode />} />
 

@@ -114,6 +114,17 @@ const forgotPassword = async (userData) => {
 
 /*
 - =================================
+-       Resetear Contraseña
+- =================================
+*/
+const resetPassword = async (userData, resetToken) => {
+  const response = await axios.patch(`${API_URL}resetPassword/${resetToken}`, userData);
+
+  return response.data.message;
+};
+
+/*
+- =================================
 -       listar usuarios
 - =================================
 */
@@ -133,6 +144,7 @@ const authService = {
   verifyUser,
   changePassword,
   forgotPassword,
+  resetPassword,
   getUsers
 };
 

@@ -221,7 +221,7 @@ export const forgotPassword = createAsyncThunk(
 */
 export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
-  async ({userData, resetToken}, thunkAPI) => {
+  async ({ userData, resetToken }, thunkAPI) => {
     try {
       return await authService.resetPassword(userData, resetToken);
     } catch (error) {
@@ -457,7 +457,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* User Profile
+      //* Listar Usuarios
       .addCase(getUsers.pending, (state, action) => {
         state.isLoading = true;
       })

@@ -496,7 +496,7 @@ const EditComponent = () => {
                   {/* button to edit */}
 
                   <Button
-                    style={{ backgroundColor: "yellow", border: "none" }}
+                    style={{ backgroundColor: "green", border: "none" }}
                     onClick = {handleSubmit}  
                   >
                     Editar

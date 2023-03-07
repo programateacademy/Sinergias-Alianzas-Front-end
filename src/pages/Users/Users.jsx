@@ -56,7 +56,7 @@ const Users = () => {
           </ul>
         </nav>
 
-        <section className="all-users">
+        {/* <section className="all-users">
           <Search />
 
           <Table hover responsive size="sm" striped className="table-users">
@@ -82,8 +82,10 @@ const Users = () => {
               
             </tbody>
           </Table>
+
+
           <Pagination />
-        </section>
+        </section> */}
       </div>
     </>
   );

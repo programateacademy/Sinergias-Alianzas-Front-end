@@ -1,11 +1,10 @@
-.footerBackground{
-    background-color:#3C9661;
-    padding: 5vh;
-    margin-top: 20px;
+.footerBackground {
+  background-color: #3c9661;
+  padding: 5vh;
+  margin-top: 20px;
 }
-
-.parrafoFooter{
-    text-align: center;
-    color: #fff;
-    margin: 0;
+.parrafoFooter {
+  text-align: center;
+  color: #fff;
+  margin: 0;
 }

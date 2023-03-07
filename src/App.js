@@ -18,6 +18,7 @@ import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginWithCode from "./pages/Login/LoginWithCode";
 import Profile from "./pages/Profile/Profile";
+import ButtonsUsers from "./pages/Users/ButtonsUsers";
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
@@ -29,8 +30,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 // credentials
 import axios from "axios";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 axios.defaults.withCredentials = true;
-
 
 function App() {
   /* 
@@ -77,9 +78,27 @@ function App() {
           }
         />
 
-        <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+        <Route
+          path="/changePassword"
+          element={
+            <Layout>
+              <ChangePassword />
+            </Layout>
+          }
+        />
 
-        <Route path="/login-with-code/:email" element={<LoginWithCode />} />
+        <Route
+          path="/buttonsUsers"
+          element={
+            <Layout>
+              <ButtonsUsers />
+            </Layout>
+          }
+        />
+
+        <Route path="/resetPassword/:resetToken" element={<ResetPassword />} />
+
+        <Route path="/loginWithCode/:email" element={<LoginWithCode />} />
 
         <Route
           path="/verify/:verificationToken"
@@ -96,7 +115,6 @@ function App() {
             - =================================
           */}
 
-
         <Route
           path="/home"
           element={
@@ -105,7 +123,7 @@ function App() {
             </Layout>
           }
         />
-        
+
         <Route
           path="/addComponent"
           element={
@@ -119,14 +137,12 @@ function App() {
           path="/updateComponent/:id"
           element={
             <Layout>
-              <EditComponent/>
+              <EditComponent />
             </Layout>
           }
-        />        
+        />
 
-        
         <Route
-          
           path="/seeComponent/:id"
           element={
             <Layout>

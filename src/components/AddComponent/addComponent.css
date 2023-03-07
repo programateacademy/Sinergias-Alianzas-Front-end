@@ -38,7 +38,7 @@
   text-align: center;
   margin: 30px auto;
 }
-.imgComponent{
+.imgComponent {
   display: flex;
   width: 40vw;
   margin: 40px auto;
@@ -75,17 +75,17 @@
 .lineasTrabajo {
   width: 60vw;
   margin: 0 auto;
-  color: #000;  
+  color: #000;
 }
 .lineasTrabajo .urlImagen {
   background: rgba(105, 211, 138, 0.5);
   border-radius: 25px;
-  border: 1px solid green;  
+  border: 1px solid green;
 }
-.form1 input.inputColor{ 
+.form1 input.inputColor {
   width: 15vw;
   height: 5vh;
-  margin: auto;  
+  margin: auto;
 }
 .lineas {
   color: #000;
@@ -124,21 +124,21 @@ label.image1.form-label {
   border: 2px solid green;
   background: rgba(105, 211, 138, 0.5);
   border-radius: 15px;
-  padding:1.4vw;
+  padding: 1.4vw;
   width: 58vw;
-  margin:auto;
+  margin: auto;
 }
-.botones{
+.botones {
   display: flex;
   margin: auto;
   justify-content: center;
 }
-.botones button{
+.botones button {
   text-decoration: none;
   background: none;
   border: none;
 }
-.iconos{
+.iconos {
   margin: 10px;
   width: 10vw;
   text-decoration: none;
@@ -153,12 +153,12 @@ label.image1.form-label {
     width: 58vw;
     margin: 0 auto;
   }
-  .form1 input.inputColor{    
+  .form1 input.inputColor {
     width: 5vw;
-    margin: 0 0vw 0 42vw; 
+    margin: 0 0vw 0 42vw;
     border: 1px solid green;
   }
-  .containerTitle1 {    
+  .containerTitle1 {
     margin-top: 5px;
   }
   .containerTitle1 h1 {
@@ -166,14 +166,13 @@ label.image1.form-label {
     font-size: 2vw;
     padding: 5px;
   }
-  
   .Titulo2 {
     width: 80vw;
     font-size: 2vw;
     text-align: center;
     margin: 40px auto;
   }
-  .imgComponent{
+  .imgComponent {
     width: 20vw;
     position: absolute;
     margin: 40px 80px;
@@ -206,13 +205,13 @@ label.image1.form-label {
     font-size: 1.2vw;
     margin-left: 30vw;
   }
-  .inputColor{
+  .inputColor {
     background: rgba(105, 211, 138, 0.5);
     border: 1px solid green;
     border-radius: 25px;
     *height: 40px;
     width: 2vw;
-    *font-size: 1.2vw;    
+    *font-size: 1.2vw;
   }
   textarea.form-control {
     width: 60vw;
@@ -306,7 +305,7 @@ label.image1.form-label {
     margin: 10px auto;
     display: flex;
   }
-  .iconos{
+  .iconos {
     margin: 10px;
     width: 6vw;
     text-decoration: none;

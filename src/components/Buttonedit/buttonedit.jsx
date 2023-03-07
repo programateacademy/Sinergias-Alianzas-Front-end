@@ -6,7 +6,7 @@ import {
   ModalBody,
   ModalFooter,
   Form,
-  FormGroup,  
+  FormGroup,
   Input,
 } from "reactstrap";
 

@@ -112,7 +112,7 @@ const ViewComponent = ({
           <a target="_blank" href={recursosMaterial}>
             <img alt="Sample" src={Material} />
           </a>
-        </div>        
+        </div>
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 // dependencies
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -17,6 +17,7 @@ import { Form, FormGroup, Label, Input } from "reactstrap";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
 import "./login.css";
+import { sendLoginCode } from "../../store/actions/auth/authSlice";
 
 // Initial state
 const initialState = {
@@ -39,7 +40,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
+  const { isLoading, isLoggedIn, isSuccess, isError, twoFact } = useSelector(
     (state) => state.auth
   );
 
@@ -82,8 +83,14 @@ const Login = () => {
       navigate("/home");
     }
 
+    if (isError && twoFact) {
+      dispatch(sendLoginCode(email));
+
+      navigate(`/loginWithCode/${email}`);
+    }
+
     dispatch(RESET());
-  }, [isLoggedIn, isSuccess, dispatch, navigate]);
+  }, [isLoggedIn, isSuccess, dispatch, navigate, isError, twoFact, email]);
 
   return (
     <div className="Generalcontainer" style={{ padding: "0", margin: "0" }}>
@@ -150,10 +157,8 @@ const Login = () => {
                 </div>
               </div>
               <span>Ingresar</span>
-              
             </button>
           </div>
-
         </Form>
       </div>
     </div>

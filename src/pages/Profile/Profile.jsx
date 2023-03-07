@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // Funciones de Redux
-import { getUser, selectUser } from "../../store/actions/auth/authSlice";
+import { getUser } from "../../store/actions/auth/authSlice";
 
 // Componentes
 import Loader from "../../components/Loader/Loader";
@@ -17,21 +17,9 @@ import {
   CardBody,
   Form,
   FormGroup,
-  Input,
-  BreadcrumbItem,
+  Input,  
   Button,
 } from "reactstrap";
-
-// Función para cortar el nombre del usuario
-const shortenText = (text, n) => {
-  if (text.length > n) {
-    const shoretenedText = text.substring(0, n).concat("...");
-
-    return shoretenedText;
-  }
-
-  return text;
-};
 
 const Profile = () => {
   //* Hook personalizado para redireccionar el usuario si la sesión expira
@@ -135,21 +123,4 @@ const Profile = () => {
     </>
   );
 };
-
-//* Exportar componente para el nombre del usuario
-export const UserName = () => {
-  const user = useSelector(selectUser);
-
-  const userName = {
-    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
-    rol: `${user?.rol}`
-  };
-
-  return (
-    <BreadcrumbItem active tag="span">
-      Hola, {shortenText(userName.name, 15)}    
-    </BreadcrumbItem>
-  );
-};
-
 export default Profile;

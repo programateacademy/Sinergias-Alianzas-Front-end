@@ -85,6 +85,9 @@ div.breadcrumb {
   color: #126a2e;
   margin-left: 10px;
 }
+.breadcrumb-item + .breadcrumb-item::before {
+  display: none;   
+}
 @media (min-width: 570px) {
   .header_container {
     flex-direction: row;

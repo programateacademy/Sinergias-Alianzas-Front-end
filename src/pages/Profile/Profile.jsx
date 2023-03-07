@@ -85,7 +85,7 @@ const Profile = () => {
       <Card
         style={{
           width: "18rem",
-          margin: "auto",
+          margin: "100px auto",
         }}
       >
         <CardBody>

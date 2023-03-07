@@ -67,8 +67,7 @@ export const deleteComponent = (id, data) => async (dispatch) => {
     return response.data;
     return response.data;
     dispatch({ type: deleteComponent, payload: res.data });
-  } catch (error) {
-  } catch (error) {
+  } catch (error) {  
     console.log("Error al eliminar el componente", error.message);
   }
 };

@@ -5,14 +5,12 @@ import { useParams } from "react-router-dom";
 
 // styles
 import { Button } from "reactstrap";
-import Loader from "../../components/Loader/Loader";
 import { RESET, verifyUser } from "../../store/actions/auth/authSlice";
 
 // Component
 import Loader from "../../components/Loader/Loader";
 
-// Estilos
-import { Button } from "reactstrap";
+
 
 const Verify = () => {
   const dispatch = useDispatch();

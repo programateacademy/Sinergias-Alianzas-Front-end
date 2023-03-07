@@ -17,9 +17,11 @@ import "../RowTableUsers/RowTableUsers.css";
 
 const RowTableUsers = () => {
   return (
+    <div>
     <tr className="tableinfo2">
       <th scope="row">1</th>
-      <td>Nombre usuario</td>
+      <td style ={{color:"green"}}>Nombre  usuario</td>
+      <td style ={{color:"red"}}>Nombre  usuario</td>
       <td>usuario@correo.com</td>
       <td>Colaborador</td>
       <td>
@@ -36,6 +38,7 @@ const RowTableUsers = () => {
         </Button>
       </td>
     </tr>
+    </div>
   );
 };
 

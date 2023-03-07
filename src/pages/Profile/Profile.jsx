@@ -85,7 +85,7 @@ const Profile = () => {
       <Card
         style={{
           width: "18rem",
-          margin: "auto",
+          margin: "100px auto",
         }}
       >
         <CardBody>
@@ -142,11 +142,12 @@ export const UserName = () => {
 
   const userName = {
     name: `${user?.name.firstName} ${user?.name.lastName}` || "",
+    rol: `${user?.rol}`
   };
 
   return (
     <BreadcrumbItem active tag="span">
-      Hola, {shortenText(userName.name, 15)}
+      Hola, {shortenText(userName.name, 15)}    
     </BreadcrumbItem>
   );
 };

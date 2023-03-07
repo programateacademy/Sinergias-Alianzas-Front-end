@@ -16,7 +16,14 @@ import { motion } from "framer-motion";
 import { FaEdit, FaTrash, FaUsersCog } from "react-icons/fa";
 
 // styles
-import { Table, Button, Input, Modal, ModalHeader, ModalFooter } from "reactstrap";
+import {
+  Table,
+  Button,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalFooter,
+} from "reactstrap";
 import "./Users.css";
 
 const Users = () => {
@@ -39,10 +46,15 @@ const Users = () => {
   //filter method by name
   const results = !search
     ? users
-    : users.filter((dato) =>
-      dato.name.firstName.toLowerCase().includes(search.toLocaleLowerCase()) ||
-      dato.name.secondName.toLowerCase().includes(search.toLocaleLowerCase())
-    );
+    : users.filter(
+        (dato) =>
+          dato.name.firstName
+            .toLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          dato.name.secondName
+            .toLowerCase()
+            .includes(search.toLocaleLowerCase())
+      );
 
   useEffect(() => {
     dispatch(getUsers());
@@ -50,7 +62,7 @@ const Users = () => {
 
   const handleDelete = (id) => {
     //if (window.confirm("¿Estás seguro de eliminar el usuario?")) {
-      dispatch(deleteUser( id ));
+    dispatch(deleteUser(id));
     //}
     window.location.reload(true);
   };
@@ -67,9 +79,32 @@ const Users = () => {
       </div>
 
       <div className="border-container">
+        <ul
+          className="container_btn_header"
+          style={{ margin: "0", display: "initial" }}
+        >
+          <motion.li
+            className="buttons_header"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link to={"/buttonsUsers"} className="buttons_header-users">
+              <div className="icon_container">
+                <FaUsersCog className="header_icon" />
+              </div>
+              <span>Funciones Usuarios</span>
+            </Link>
+          </motion.li>
+        </ul>
 
         <section className="all-users">
-          <Input placeholder="Buscar" type="text" value={search} onChange={searcher} />
+          <Input
+            placeholder="Buscar"
+            type="text"
+            value={search}
+            onChange={searcher}
+          />
 
           {!isLoading && users.length === 0 ? (
             <p>Usuarios no encontrados</p>
@@ -106,7 +141,6 @@ const Users = () => {
                         <Button color="" onClick={() => handleDelete(_id)}>
                           <FaTrash color="red" size={15} />
                         </Button>
-
                       </td>
                     </tr>
                   );
@@ -116,23 +150,6 @@ const Users = () => {
           )}
 
           <Pagination />
-
-          <ul className="container_btn_header">
-            <motion.li
-              className="buttons_header"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Link to={"/buttonsUsers"} className="buttons_header-users">
-                <div className="icon_container">
-                  <FaUsersCog className="header_icon" />
-                </div>
-
-                <span>Funciones Usuarios</span>
-              </Link>
-            </motion.li>
-          </ul>
         </section>
       </div>
     </>

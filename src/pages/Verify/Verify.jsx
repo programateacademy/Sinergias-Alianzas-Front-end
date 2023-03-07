@@ -1,16 +1,16 @@
-// dependencies
+// Dependencias
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-// Redux
+// styles
+import { Button } from "reactstrap";
 import { RESET, verifyUser } from "../../store/actions/auth/authSlice";
 
 // Component
 import Loader from "../../components/Loader/Loader";
 
-// styles
-import { Button } from "reactstrap";
+
 
 const Verify = () => {
   const dispatch = useDispatch();

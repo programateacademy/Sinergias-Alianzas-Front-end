@@ -139,6 +139,17 @@ const getUsers = async () => {
 
 /*
 - =================================
+-       eliminar usuario
+- =================================
+*/
+const deleteUser = async (id) => {
+  const response = await axios.delete(API_URL + `/${id}`);
+
+  return response.data;
+};
+
+/*
+- =================================
 -   Enviar Código inicio de sesión
 - =================================
 */
@@ -173,6 +184,7 @@ const authService = {
   getUsers,
   sendLoginCode,
   loginWithCode,
+  deleteUser
 };
 
 export default authService;

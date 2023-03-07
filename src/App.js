@@ -18,6 +18,7 @@ import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginWithCode from "./pages/Login/LoginWithCode";
 import Profile from "./pages/Profile/Profile";
+import ButtonsUsers from "./pages/Users/ButtonsUsers";
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
@@ -82,6 +83,15 @@ function App() {
           element={
             <Layout>
               <ChangePassword />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/buttonsUsers"
+          element={
+            <Layout>
+              <ButtonsUsers />
             </Layout>
           }
         />

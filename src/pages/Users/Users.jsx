@@ -1,37 +1,63 @@
 // dependencies
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../store/actions/auth/authSlice";
+import { Link } from "react-router-dom";
+
+import { selectUser, deleteUser } from "../../store/actions/auth/authSlice";
+
+import Pagination from "../../components/Pagination/Pagination";
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
 // Motion
 import { motion } from "framer-motion";
 
-// Components
-import AddUser from "../../components/AddUser/AddUser";
-import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
-import Search from "../../components/Search/Search";
-import Pagination from "../../components/Pagination/Pagination";
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
-
 // icons
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaUsersCog } from "react-icons/fa";
 
 // styles
-import { Table, Button } from "reactstrap";
+import { Table, Button, Input, Modal, ModalHeader, ModalFooter } from "reactstrap";
 import "./Users.css";
 
 const Users = () => {
   //* Hook personalizado para redireccionar el usuario si la sesión expira
   useRedirectLoggedOutUser("/");
 
+  //Filter
+  const [search, setSearch] = useState(""); //constant for filter
+
   //* Hooks Redux
   const dispatch = useDispatch();
 
   const { isLoading, users } = useSelector((state) => state.auth);
 
+  /*-----------FILTER AND SEARCH----------- */
+  const searcher = (e) => {
+    setSearch(e.target.value);
+  };
+
+  //filter method by name
+  const results = !search
+    ? users
+    : users.filter((dato) =>
+      dato.name.firstName.toLowerCase().includes(search.toLocaleLowerCase()) ||
+      dato.name.secondName.toLowerCase().includes(search.toLocaleLowerCase())
+    );
+
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
+  const handleDelete = (id) => {
+    //if (window.confirm("¿Estás seguro de eliminar el usuario?")) {
+      dispatch(deleteUser( id ));
+    //}
+    window.location.reload(true);
+  };
+
+  //! MODAL
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   console.log(users);
   return (
@@ -41,20 +67,9 @@ const Users = () => {
       </div>
 
       <div className="border-container">
-        <nav>
-          <ul className="buttons-container">
-            <motion.li className="buttons-users">
-              <AddUser />
-            </motion.li>
-
-            <motion.li className="buttons-users">
-              <ForgotPassword />
-            </motion.li>
-          </ul>
-        </nav>
 
         <section className="all-users">
-          <Search />
+          <Input placeholder="Buscar" type="text" value={search} onChange={searcher} />
 
           {!isLoading && users.length === 0 ? (
             <p>Usuarios no encontrados</p>
@@ -71,7 +86,7 @@ const Users = () => {
               </thead>
 
               <tbody>
-                {users.map((user, index) => {
+                {results.map((user, index) => {
                   const { _id, name, email, rol } = user;
 
                   // console.log(email)
@@ -88,9 +103,10 @@ const Users = () => {
                           <FaEdit color="green" size={15} />
                         </Button>
 
-                        <Button color="">
+                        <Button color="" onClick={() => handleDelete(_id)}>
                           <FaTrash color="red" size={15} />
                         </Button>
+
                       </td>
                     </tr>
                   );
@@ -100,9 +116,40 @@ const Users = () => {
           )}
 
           <Pagination />
+
+          <ul className="container_btn_header">
+            <motion.li
+              className="buttons_header"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Link to={"/buttonsUsers"} className="buttons_header-users">
+                <div className="icon_container">
+                  <FaUsersCog className="header_icon" />
+                </div>
+
+                <span>Funciones Usuarios</span>
+              </Link>
+            </motion.li>
+          </ul>
         </section>
       </div>
     </>
+  );
+};
+
+export const UserName = () => {
+  const user = useSelector(selectUser);
+
+  const userName = {
+    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
+  };
+
+  return (
+    <BreadcrumbItem active tag="span">
+      Hola, {shortenText(userName.name, 15)}
+    </BreadcrumbItem>
   );
 };
 

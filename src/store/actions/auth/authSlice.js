@@ -306,6 +306,30 @@ export const loginWithCode = createAsyncThunk(
   }
 );
 
+/*
+- =================================
+-  Eliminar usuario
+- =================================
+*/
+export const deleteUser = createAsyncThunk(
+  "auth/deleteUser",
+  async (id, thunkAPI) => {
+    try {
+      return response = await authService.deleteUser(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -561,6 +585,27 @@ const authSlice = createSlice({
         state.user = null;
 
         toast.error(action.payload);
+      })
+      //* Eliminar Usuarios
+      .addCase(deleteUser.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const{
+          arg: {id},
+        } = action.meta;
+        if(id){
+          state.users = state.users.filter((item) => item._id !==id);
+        }
+        state.isSuccess = true;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+
+        toast.error(action.meta);
       });
   },
 });

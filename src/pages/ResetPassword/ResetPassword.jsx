@@ -1,8 +1,15 @@
 // dependencies
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+
+// Redux
+import { RESET, resetPassword } from "../../store/actions/auth/authSlice";
 
 // Components
 import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
+import Loader from "../../components/Loader/Loader";
 
 // icons
 import { FaTimes, FaCheck } from "react-icons/fa";
@@ -16,6 +23,7 @@ import {
   CardHeader,
   ListGroup,
   ListGroupItem,
+  Container,
 } from "reactstrap";
 
 // Initial state
@@ -25,6 +33,11 @@ const initialState = {
 };
 
 const ResetPassword = () => {
+  //* Hooks Redux
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isLoading, isSuccess, message } = useSelector((state) => state.auth);
   /* 
   - =================================
   -       COMPONENT STATES
@@ -35,6 +48,8 @@ const ResetPassword = () => {
   const [formData, setFormData] = useState(initialState);
 
   const { password, confirmPassword } = formData;
+
+  const { resetToken } = useParams();
 
   //* State to validate the password structure
   /*
@@ -106,69 +121,111 @@ const ResetPassword = () => {
   }, [password]);
 
   //* Function to submit the form
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    //* Input validation
+    if (password.length < 8) {
+      return toast.error("La contraseña debe ser de 8 caracteres.");
+    }
+
+    if (password !== confirmPassword) {
+      return toast.error("La contraseña no coincide");
+    }
+
+    const userData = {
+      password,
+      confirmPassword,
+    };
+
+    await dispatch(resetPassword(userData.password, resetToken));
+    await dispatch(RESET(userData));
+    navigate("/");
+  };
+
+  useEffect(() => {
+    if (isSuccess && message.includes("Contraseña reestablecida")) {
+      navigate("/");
+    }
+
+    dispatch(RESET());
+  }, [dispatch, navigate, message, isSuccess]);
 
   return (
     <>
-      <Card style={{ width: "40%" }}>
-        <CardHeader>Cambiar Contraseña</CardHeader>
+      <Container
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "20%",
+        }}
+      >
+        {isLoading && <Loader />}
+        <Card style={{ width: "40%" }}>
+          <CardHeader>Cambiar Contraseña</CardHeader>
 
-        <Form className="mt-1" style={{ maxWidth: "100%", padding: "10px" }}>
-          <FormGroup>
-            <PasswordInput
-              name="password"
-              placeholder="Nueva Contraseña"
-              type="password"
-              value={password}
-              onChange={onInputChange}
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <PasswordInput
-              name="confirmPassword"
-              placeholder="Confirmar Nueva Contraseña"
-              type="password"
-              value={confirmPassword}
-              onChange={onInputChange}
-            />
-          </FormGroup>
-
-          {/* password feature*/}
-          <Card
-            style={{
-              width: "100%",
-            }}
+          <Form
+            className="mt-1"
+            style={{ maxWidth: "100%", padding: "10px" }}
+            onSubmit={handleSubmit}
           >
-            <CardHeader>La contraseña debe contener al menos:</CardHeader>
-            <ListGroup flush>
-              <ListGroupItem>
-                {switchIcon(upperCase)}
-                &nbsp; Una letra minúscula y mayúscula
-              </ListGroupItem>
+            <FormGroup>
+              <PasswordInput
+                name="password"
+                placeholder="Nueva Contraseña"
+                type="password"
+                value={password}
+                onChange={onInputChange}
+              />
+            </FormGroup>
 
-              <ListGroupItem>
-                {switchIcon(numbers)}
-                &nbsp; Un número (0-9)
-              </ListGroupItem>
+            <FormGroup>
+              <PasswordInput
+                name="confirmPassword"
+                placeholder="Confirmar Nueva Contraseña"
+                type="password"
+                value={confirmPassword}
+                onChange={onInputChange}
+              />
+            </FormGroup>
 
-              <ListGroupItem>
-                {switchIcon(specialCharacter)}
-                &nbsp; Un caracter especial (!%&@#$^*?_-)
-              </ListGroupItem>
+            {/* password feature*/}
+            <Card
+              style={{
+                width: "100%",
+              }}
+            >
+              <CardHeader>La contraseña debe contener al menos:</CardHeader>
+              <ListGroup flush>
+                <ListGroupItem>
+                  {switchIcon(upperCase)}
+                  &nbsp; Una letra minúscula y mayúscula
+                </ListGroupItem>
 
-              <ListGroupItem>
-                {switchIcon(passLength)}
-                &nbsp; Mínimo 8 caracteres
-              </ListGroupItem>
-            </ListGroup>
-          </Card>
+                <ListGroupItem>
+                  {switchIcon(numbers)}
+                  &nbsp; Un número (0-9)
+                </ListGroupItem>
 
-          <Button color="success" className="mt-1">
-            Cambiar contraseña
-          </Button>
-        </Form>
-      </Card>
+                <ListGroupItem>
+                  {switchIcon(specialCharacter)}
+                  &nbsp; Un caracter especial (!%&@#$^*?_-)
+                </ListGroupItem>
+
+                <ListGroupItem>
+                  {switchIcon(passLength)}
+                  &nbsp; Mínimo 8 caracteres
+                </ListGroupItem>
+              </ListGroup>
+            </Card>
+
+            <Button color="success" className="mt-1">
+              Cambiar contraseña
+            </Button>
+          </Form>
+        </Card>
+      </Container>
     </>
   );
 };

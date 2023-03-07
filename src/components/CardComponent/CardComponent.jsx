@@ -9,16 +9,19 @@ import iconDelete from "../ListCourses/Assets/icono borrar.png";
 
 import { useNavigate, Link } from "react-router-dom";
 
-
 //! REACTSTRAP IMPORTATION
 import { Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { deleteComponent } from "../../store/actions/componentSlice";
 
-export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }) {  
-
+export default function CardComponent({
+  compTitulo,
+  compImgPpal,
+  compColor,
+  _id,
+}) {
   //! MODAL
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -26,39 +29,35 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
   //!Function delete
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const deleteFunction = (e) => {
-    dispatch(deleteComponent(_id));     
+    dispatch(deleteComponent(_id));
     window.location.reload(true);
-  }; 
-  
+  };
 
   return (
     <>
       <div className="cardComponent">
-        <h2 style={{backgroundColor:`${compColor}`}} >{compTitulo}</h2>
+        <h2 style={{ backgroundColor: `${compColor}` }}>{compTitulo}</h2>
         <img className="imageCard" src={compImgPpal} alt="" />
         <div className="buttons_cards">
-          
           <Link to={`/seeComponent/${_id}`}>
-          <motion.div
-            whileHover={{ scale: 1.2 }}
-            onHoverStart={(e) => {}}
-            onHoverEnd={(e) => {}}
-          >
-            <img src={iconAbout} alt="" />
-          </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              onHoverStart={(e) => {}}
+              onHoverEnd={(e) => {}}
+            >
+              <img src={iconAbout} alt="" />
+            </motion.div>
           </Link>
-          
-          <Link to={`/updateComponent/${_id}`}>         
-          <motion.div
-            whileHover={{ scale: 1.2 }}
-            onHoverStart={(e) => {}}
-            onHoverEnd={(e) => {}}
-          >
-            <img src={iconEdit} alt="" />
-          </motion.div>
+
+          <Link to={`/updateComponent/${_id}`}>
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              onHoverStart={(e) => {}}
+              onHoverEnd={(e) => {}}
+            >
+              <img src={iconEdit} alt="" />
+            </motion.div>
           </Link>
 
           <motion.div
@@ -82,12 +81,11 @@ export default function CardComponent({ compTitulo, compImgPpal,compColor, _id }
                 </ModalHeader>
 
                 <ModalFooter>
-
                   {/* button to delete */}
 
                   <Button
                     style={{ backgroundColor: "red", border: "none" }}
-                    onClick = {deleteFunction}  
+                    onClick={deleteFunction}
                   >
                     Borrar
                   </Button>

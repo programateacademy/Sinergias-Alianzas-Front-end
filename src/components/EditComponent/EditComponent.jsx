@@ -10,10 +10,18 @@ import Herramientas from "../AddComponent/assest/Herramientas.png";
 import Material from "../AddComponent/assest/Material.png";
 import Guardar from "../AddComponent/assest/guardar.png";
 import Cancelar from "../AddComponent/assest/cancelar.png";
-import ImgComponent from "../AddComponent/assest/libro.png";
 
-import { FormText, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalFooter } from "reactstrap";
-
+import {
+  FormText,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalFooter,
+} from "reactstrap";
 
 // dependencies
 import React, { useEffect, useState } from "react";
@@ -50,7 +58,9 @@ const EditComponent = () => {
   const [componentData, setComponentData] = useState(initialState);
 
   // Constant to show if there are errors when sending the information
-  const { error, componentes } = useSelector((state) => ({ ...state.componente }));
+  const { error, componentes } = useSelector((state) => ({
+    ...state.componente,
+  }));
 
   //   The information of the user who entered the system is destructured
   const { user } = useSelector((state) => ({ ...state.auth }));
@@ -60,7 +70,6 @@ const EditComponent = () => {
 
   //   Redirect
   const navigate = useNavigate();
-
 
   // The value of the initial state is destructed
 
@@ -92,7 +101,8 @@ const EditComponent = () => {
     if (id) {
       const singleComponent = componentes.find(
         (componente) => componente._id === id
-      );      
+      );
+      console.log(singleComponent);
       setComponentData({ ...singleComponent });
     }
   }, [id]);
@@ -168,7 +178,7 @@ const EditComponent = () => {
   //! MODAL
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  
+
   return (
     <>
       <div className="containerTitle1">
@@ -478,34 +488,31 @@ const EditComponent = () => {
         </Form>
         <div className="botones">
           <button>
-            <img
-              className="iconos"
-              onClick={toggle}
-              src={Guardar}
-              alt=""
-            />
+            <img className="iconos" onClick={toggle} src={Guardar} alt="" />
           </button>
 
           <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>
-                  ¿Está seguro de editar este componente?
-                </ModalHeader>
+            <ModalHeader toggle={toggle}>
+              ¿Está seguro de editar este componente?
+            </ModalHeader>
 
-                <ModalFooter>
+            <ModalFooter>
+              {/* button to edit */}
 
-                  {/* button to edit */}
-
-                  <Button
-                    style={{ backgroundColor: "green", border: "none" }}
-                    onClick = {handleSubmit}  
-                  >
-                    Editar
-                  </Button>
-                  <Button style={{ backgroundColor: "grey", border: "none" }} onClick={toggle}>
-                    Cancel
-                  </Button>
-                </ModalFooter>
-              </Modal>
+              <Button
+                style={{ backgroundColor: "yellow", border: "none" }}
+                onClick={handleSubmit}
+              >
+                Editar
+              </Button>
+              <Button
+                style={{ backgroundColor: "grey", border: "none" }}
+                onClick={toggle}
+              >
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal>
 
           <button>
             <NavLink to="/home" className="col-12">

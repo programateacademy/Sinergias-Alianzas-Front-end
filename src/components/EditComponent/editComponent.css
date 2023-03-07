@@ -72,7 +72,7 @@ label.image1.form-label {
   border-radius: 15px;
   padding: 1.4vw;
   width: 58vw;
-  margin:auto;
+  margin: auto;
 }
 .botones {
   display: flex;
@@ -96,7 +96,7 @@ label.image1.form-label {
     padding: 1.5vw 5vw;
   } */
   .containerTitle1 h1 {
-    width: 30vw;    
+    width: 30vw;
     font-size: 2vw;
     padding: 5px;
   }
@@ -130,7 +130,7 @@ label.image1.form-label {
     text-align: center;
     justify-content: center;
   }
-  .form1 .urlImagen2  {
+  .form1 .urlImagen2 {
     background: rgba(105, 211, 138, 0.5);
     border: none;
     border-radius: 25px;
@@ -156,7 +156,7 @@ label.image1.form-label {
     background: rgba(105, 211, 138, 0.5);
     border-radius: 25px;
     border: 1px solid green;
-    width:10vw;
+    width: 10vw;
     height: 40px;
     font-size: 16px;
     margin: 10px;
@@ -209,7 +209,7 @@ label.image1.form-label {
     grid-row-gap: 40px;
   }
   .containerRecursos {
-    border:none;
+    border: none;
     background: rgba(105, 211, 138, 0.5);
     border-radius: 15px;
     padding: 3vw;
@@ -237,14 +237,14 @@ label.image1.form-label {
     text-decoration: none;
     list-style: none;
   }
-  .containerInput{
+  .containerInput {
     border-radius: 35px;
-    border:none;
+    border: none;
     background: none;
   }
-   .edit {
+  .edit {
     position: absolute;
     width: 2vw;
-    translate: -40px -13px
+    translate: -40px -13px;
   }
 }

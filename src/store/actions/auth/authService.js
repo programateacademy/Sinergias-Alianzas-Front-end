@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API_URL = `${BACKEND_URL}/api/users/`;
+export const API_URL = `${BACKEND_URL}/api/users/`;
 
 //* Validar email+
 export const validateEmail = (email) => {
@@ -101,6 +101,75 @@ const changePassword = async (userData) => {
   return response.data.message;
 };
 
+/*
+- =================================
+-       Olvido Contraseña
+- =================================
+*/
+const forgotPassword = async (userData) => {
+  const response = await axios.post(API_URL + "forgotPassword", userData);
+
+  return response.data.message;
+};
+
+/*
+- =================================
+-       Resetear Contraseña
+- =================================
+*/
+const resetPassword = async (userData, resetToken) => {
+  const response = await axios.patch(
+    `${API_URL}resetPassword/${resetToken}`,
+    userData
+  );
+
+  return response.data.message;
+};
+
+/*
+- =================================
+-       listar usuarios
+- =================================
+*/
+const getUsers = async () => {
+  const response = await axios.get(API_URL + "getUsers");
+
+  return response.data;
+};
+
+/*
+- =================================
+-       eliminar usuario
+- =================================
+*/
+const deleteUser = async (id) => {
+  const response = await axios.delete(API_URL + `/${id}`);
+
+  return response.data;
+};
+
+/*
+- =================================
+-   Enviar Código inicio de sesión
+- =================================
+*/
+const sendLoginCode = async (email) => {
+  const response = await axios.post(API_URL + `sendLoginCode/${email}`);
+
+  return response.data;
+};
+
+/*
+- =================================
+-   Ingresar con código
+- =================================
+*/
+const loginWithCode = async (code, email) => {
+  const response = await axios.post(API_URL + `loginWithCode/${email}`, code);
+
+  return response.data;
+};
+
 const authService = {
   register,
   login,
@@ -110,6 +179,12 @@ const authService = {
   sendVerificationEmail,
   verifyUser,
   changePassword,
+  forgotPassword,
+  resetPassword,
+  getUsers,
+  sendLoginCode,
+  loginWithCode,
+  deleteUser
 };
 
 export default authService;

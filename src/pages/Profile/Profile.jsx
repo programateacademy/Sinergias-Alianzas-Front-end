@@ -1,12 +1,12 @@
 // Dependencias
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // Funciones de Redux
 import { getUser, selectUser } from "../../store/actions/auth/authSlice";
 
 // Componentes
-import ChangePassword from "../../components/ChangePassword/ChangePassword";
 import Loader from "../../components/Loader/Loader";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import Notification from "../../components/Notification/Notification";
@@ -19,6 +19,7 @@ import {
   FormGroup,
   Input,
   BreadcrumbItem,
+  Button,
 } from "reactstrap";
 
 // Función para cortar el nombre del usuario
@@ -40,9 +41,7 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   //* Estado función redux
-  const { isLoading, isLoggedIn, isSuccess, message, user } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading, user } = useSelector((state) => state.auth);
 
   //* Estado inicial
   const initialState = {
@@ -81,7 +80,6 @@ const Profile = () => {
 
   return (
     <>
-      
       {isLoading && <Loader />}
       {!initialState.isVerified && <Notification />}
       <Card
@@ -129,8 +127,9 @@ const Profile = () => {
               />
             </FormGroup>
           </Form>
-
-          <ChangePassword />
+          <Link to={"/changePassword"}>
+            <Button color="primary">Cambiar Contraseña</Button>
+          </Link>
         </CardBody>
       </Card>
     </>

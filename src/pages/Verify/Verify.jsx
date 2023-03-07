@@ -3,18 +3,22 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-// Estilos
+// styles
 import { Button } from "reactstrap";
 import Loader from "../../components/Loader/Loader";
 import { RESET, verifyUser } from "../../store/actions/auth/authSlice";
+
+// Component
+import Loader from "../../components/Loader/Loader";
+
+// Estilos
+import { Button } from "reactstrap";
 
 const Verify = () => {
   const dispatch = useDispatch();
   const { verificationToken } = useParams();
 
-  const { isLoading, isLoggedIn, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading } = useSelector((state) => state.auth);
 
   const verifyAccount = async () => {
     await dispatch(verifyUser(verificationToken));

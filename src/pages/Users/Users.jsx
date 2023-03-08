@@ -1,10 +1,10 @@
 // dependencies
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../store/actions/auth/authSlice";
+import { getUsers, setCurrentPage } from "../../store/actions/auth/authSlice";
 import { Link } from "react-router-dom";
 
-import { selectUser, deleteUser } from "../../store/actions/auth/authSlice";
+import { deleteUser } from "../../store/actions/auth/authSlice";
 
 import Pagination from "../../components/Pagination/Pagination";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
@@ -13,10 +13,14 @@ import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser"
 import { motion } from "framer-motion";
 
 // icons
-import { FaEdit, FaTrash, FaUsersCog } from "react-icons/fa";
+import { FaTrash, FaUsersCog } from "react-icons/fa";
 
 // styles
-import { Table, Button, Input, Modal, ModalHeader, ModalFooter } from "reactstrap";
+import {
+  Table,
+  Button,
+  Input,
+} from "reactstrap";
 import "./Users.css";
 
 const Users = () => {
@@ -29,7 +33,7 @@ const Users = () => {
   //* Hooks Redux
   const dispatch = useDispatch();
 
-  const { isLoading, users } = useSelector((state) => state.auth);
+  const { isLoading, users, currentPage, numberOfPages } = useSelector((state) => state.auth);
 
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
@@ -39,25 +43,26 @@ const Users = () => {
   //filter method by name
   const results = !search
     ? users
-    : users.filter((dato) =>
-      dato.name.firstName.toLowerCase().includes(search.toLocaleLowerCase()) ||
-      dato.name.secondName.toLowerCase().includes(search.toLocaleLowerCase())
-    );
+    : users.filter(
+        (dato) =>
+          dato.name.firstName
+            .toLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          dato.name.secondName
+            .toLowerCase()
+            .includes(search.toLocaleLowerCase())
+      );
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+    dispatch(getUsers(currentPage));
+  }, [currentPage]);
 
   const handleDelete = (id) => {
     //if (window.confirm("¿Estás seguro de eliminar el usuario?")) {
-      dispatch(deleteUser( id ));
+    dispatch(deleteUser(id));
     //}
     window.location.reload(true);
   };
-
-  //! MODAL
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
 
   console.log(users);
   return (
@@ -67,9 +72,34 @@ const Users = () => {
       </div>
 
       <div className="border-container">
+        <nav>
+        <ul
+          className="container_btn_header"
+          style={{ margin: "0", display: "initial" }}
+        >
+          <motion.li
+            className="buttons_header"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link to={"/buttonsUsers"} className="buttons_header-users">
+              <div className="icon_container">
+                <FaUsersCog className="header_icon" />
+              </div>
+              <span>Funciones Usuarios</span>
+            </Link>
+          </motion.li>
+        </ul>
+        </nav>
 
         <section className="all-users">
-          <Input placeholder="Buscar" type="text" value={search} onChange={searcher} />
+          <Input
+            placeholder="Buscar"
+            type="text"
+            value={search}
+            onChange={searcher}
+          />
 
           {!isLoading && users.length === 0 ? (
             <p>Usuarios no encontrados</p>
@@ -81,7 +111,7 @@ const Users = () => {
                   <th>Nombre</th>
                   <th>Correo</th>
                   <th>Rol</th>
-                  <th>Acciones</th>
+                  <th>Acción</th>
                 </tr>
               </thead>
 
@@ -99,14 +129,10 @@ const Users = () => {
                       <td>{email}</td>
                       <td>{rol}</td>
                       <td>
-                        <Button color="">
-                          <FaEdit color="green" size={15} />
-                        </Button>
 
                         <Button color="" onClick={() => handleDelete(_id)}>
                           <FaTrash color="red" size={15} />
                         </Button>
-
                       </td>
                     </tr>
                   );
@@ -115,41 +141,15 @@ const Users = () => {
             </Table>
           )}
 
-          <Pagination />
-
-          <ul className="container_btn_header">
-            <motion.li
-              className="buttons_header"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Link to={"/buttonsUsers"} className="buttons_header-users">
-                <div className="icon_container">
-                  <FaUsersCog className="header_icon" />
-                </div>
-
-                <span>Funciones Usuarios</span>
-              </Link>
-            </motion.li>
-          </ul>
+          <Pagination 
+          setCurrentPage={setCurrentPage}
+          numberOfPages = {numberOfPages}
+          currentPage = {currentPage}
+          dispatch = {dispatch}
+          />
         </section>
       </div>
     </>
-  );
-};
-
-export const UserName = () => {
-  const user = useSelector(selectUser);
-
-  const userName = {
-    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
-  };
-
-  return (
-    <BreadcrumbItem active tag="span">
-      Hola, {shortenText(userName.name, 15)}
-    </BreadcrumbItem>
   );
 };
 

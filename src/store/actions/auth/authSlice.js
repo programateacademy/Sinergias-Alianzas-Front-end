@@ -1,16 +1,18 @@
-// dependencies
+// Dependencias
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-// API connection
+// Conexión API
 import authService from "./authService";
 
-// Initial state
+// Estado inicial
 const initialState = {
   isLoggedIn: false,
   user: null,
   users: [],
-  twoFact: false, // Trigger for a second authentication
+  currentPage: 1,
+  numberOfPages: null,
+  twoFact: false, // Trigger para una segunda autenticación
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -19,7 +21,7 @@ const initialState = {
 
 /*
 - =================================
--         register user
+-         Registrar usuario
 - =================================
 */
 export const register = createAsyncThunk(
@@ -42,7 +44,7 @@ export const register = createAsyncThunk(
 
 /*
 - =================================
--         Log in
+-         Iniciar sesión
 - =================================
 */
 export const login = createAsyncThunk(
@@ -65,7 +67,7 @@ export const login = createAsyncThunk(
 
 /*
 - =================================
--         Sign off
+-         Cerrar sesión
 - =================================
 */
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
@@ -83,7 +85,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 
 /*
 - =================================
--   login status
+-   Estado del inicio de sesión
 - =================================
 */
 export const getLoginStatus = createAsyncThunk(
@@ -106,7 +108,7 @@ export const getLoginStatus = createAsyncThunk(
 
 /*
 - =================================
--       user profile
+-       Perfil del usuario
 - =================================
 */
 export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
@@ -124,7 +126,7 @@ export const getUser = createAsyncThunk("auth/getUser", async (_, thunkAPI) => {
 
 /*
 - =================================
--   Send verification email
+-   Enviar email de verificación
 - =================================
 */
 export const sendVerificationEmail = createAsyncThunk(
@@ -244,9 +246,9 @@ export const resetPassword = createAsyncThunk(
 */
 export const getUsers = createAsyncThunk(
   "auth/getUsers",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      return await authService.getUsers();
+      return await authService.getUsers(page);
     } catch (error) {
       const message =
         (error.response &&
@@ -344,11 +346,14 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.message = "";
     },
+    setCurrentPage: (state, action)=>{
+      state.currentPage =action.payload;
+    }
   },
 
   extraReducers: (builder) => {
     builder
-      //* register users
+      //* Registrar usuarios
       .addCase(register.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -368,7 +373,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* Log in
+      //* Iniciar Sesión
       .addCase(login.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -394,7 +399,7 @@ const authSlice = createSlice({
           state.twoFact = true;
         }
       })
-      //* Sign off
+      //* Cerrar Sesión
       .addCase(logout.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -413,7 +418,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* Login Status
+      //* Estado del Inicio de Sesión
       .addCase(getLoginStatus.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -427,7 +432,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      //*
+      //* Perfil del Usuario
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -443,7 +448,7 @@ const authSlice = createSlice({
 
         toast.error(action.payload);
       })
-      //* verification email
+      //* Email de verificación
       .addCase(sendVerificationEmail.pending, (state) => {
         state.isLoading = true;
       })
@@ -540,7 +545,9 @@ const authSlice = createSlice({
       .addCase(getUsers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.users = action.payload;
+        state.users = action.payload.data;
+        state.numberOfPages = action.payload.numberOfPages;
+        state.currentPage = action.payload.currentPage;
       })
       .addCase(getUsers.rejected, (state, action) => {
         state.isLoading = false;
@@ -610,12 +617,12 @@ const authSlice = createSlice({
   },
 });
 
-export const { RESET } = authSlice.actions;
+export const { RESET, setCurrentPage } = authSlice.actions;
 
-//* Session status (active or inactive)
+//* Estado de la sesión (activa o inactiva)
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 
-//* select user
+//* Seleccionar usuario
 export const selectUser = (state) => state.auth.user;
 
 export default authSlice.reducer;

@@ -22,7 +22,7 @@ const ButtonsUsers = () => {
                 <h1>MÓDULO DE USUARIOS</h1>
             </div>
 
-            <div className="border-container">
+            <div className="border-container" style={{marginBottom:"270px"}}>
                 <nav>
                     <ul className="buttons-container">
                         <motion.li className="buttons-users">

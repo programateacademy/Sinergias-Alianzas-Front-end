@@ -1,16 +1,14 @@
 // dependencies
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Redux functions
 import { RESET, logout } from "../../store/actions/auth/authSlice";
+import { getUser, selectUser } from "../../store/actions/auth/authSlice";
 
 // Motion
 import { motion } from "framer-motion";
-
-// Components
-import { UserName } from "../../pages/Profile/Profile";
 
 // Icons
 import { FaUsersCog, FaUserAlt } from "react-icons/fa";
@@ -22,6 +20,23 @@ import Logosinergias from "./Assets/Logosinergias.png";
 import "./Header.css";
 
 const Header = () => {
+  const UserName = () => {
+    const user = useSelector(selectUser);  
+    const userName = {
+      name: `${user?.name.firstName} ${user?.name.lastName}` === undefined?"": `${user?.name.firstName} ${user?.name.lastName}` ,
+      rol: `${user?.rol}` === undefined?"": `${user?.rol}`,
+    };  
+    return (
+      <BreadcrumbItem active tag="span">
+        Hola {userName.name}, {userName.rol} {" "} /{" "}
+        <FaUserAlt className="breadcrumb-icon" />
+        <Link to={"/profile"} className="breadcrumb-link">
+          Perfil
+        </Link>
+      </BreadcrumbItem>
+    );
+  };
+
   /* 
   - =================================
   -    COMPONENT FUNCTIONS
@@ -39,11 +54,13 @@ const Header = () => {
   //* Function to log out
   const logoutUser = async () => {
     dispatch(RESET());
-
     await dispatch(logout());
-
     navigate("/");
   };
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <>
@@ -93,20 +110,18 @@ const Header = () => {
       </header>
 
       {/* Navigation to go to user profile */}
+
       <Container>
         <Breadcrumb listTag="div">
           <UserName />
 
-          <BreadcrumbItem tag="span" className="breadcrumb-profile">
-            <FaUserAlt className="breadcrumb-icon" />
-            <Link to={"/profile"} className="breadcrumb-link">
-              Perfil
-            </Link>
-          </BreadcrumbItem>
+          <BreadcrumbItem
+            tag="span"
+            className="breadcrumb-profile"
+          ></BreadcrumbItem>
         </Breadcrumb>
       </Container>
     </>
   );
 };
-
 export default Header;

@@ -60,20 +60,20 @@ export const updateComponent = createAsyncThunk(
   }
 );
 
-//! Working delete
+// Delete component
 export const deleteComponent = (id, data) => async (dispatch) => {
   try {
     const res = await api.deleteComponent(id);
     return response.data;
+    return response.data;
     dispatch({ type: deleteComponent, payload: res.data });
-  } catch (error) {
+  } catch (error) {  
     console.log("Error al eliminar el componente", error.message);
   }
 };
 
 const componentSlice = createSlice({
   name: "componente",
-
   initialState: {
     componente: {},
     componentes: [],

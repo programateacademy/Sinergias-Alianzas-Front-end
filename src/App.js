@@ -68,6 +68,15 @@ function App() {
             </Layout>
           }
         />
+        
+        <Route
+          path="/buttonsUsers"
+          element={
+            <Layout>
+              <ButtonsUsers />
+            </Layout>
+          }
+        />
 
         <Route
           path="/profile"
@@ -83,15 +92,6 @@ function App() {
           element={
             <Layout>
               <ChangePassword />
-            </Layout>
-          }
-        />
-
-        <Route
-          path="/buttonsUsers"
-          element={
-            <Layout>
-              <ButtonsUsers />
             </Layout>
           }
         />

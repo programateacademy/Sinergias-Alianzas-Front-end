@@ -1,10 +1,10 @@
 // dependencies
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../store/actions/auth/authSlice";
+import { getUsers, setCurrentPage } from "../../store/actions/auth/authSlice";
 import { Link } from "react-router-dom";
 
-import { selectUser, deleteUser } from "../../store/actions/auth/authSlice";
+import { deleteUser } from "../../store/actions/auth/authSlice";
 
 import Pagination from "../../components/Pagination/Pagination";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
@@ -13,16 +13,13 @@ import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser"
 import { motion } from "framer-motion";
 
 // icons
-import { FaEdit, FaTrash, FaUsersCog } from "react-icons/fa";
+import { FaTrash, FaUsersCog } from "react-icons/fa";
 
 // styles
 import {
   Table,
   Button,
   Input,
-  Modal,
-  ModalHeader,
-  ModalFooter,
 } from "reactstrap";
 import "./Users.css";
 
@@ -36,7 +33,7 @@ const Users = () => {
   //* Hooks Redux
   const dispatch = useDispatch();
 
-  const { isLoading, users } = useSelector((state) => state.auth);
+  const { isLoading, users, currentPage, numberOfPages } = useSelector((state) => state.auth);
 
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
@@ -57,8 +54,8 @@ const Users = () => {
       );
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+    dispatch(getUsers(currentPage));
+  }, [currentPage]);
 
   const handleDelete = (id) => {
     //if (window.confirm("¿Estás seguro de eliminar el usuario?")) {
@@ -66,10 +63,6 @@ const Users = () => {
     //}
     window.location.reload(true);
   };
-
-  //! MODAL
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
 
   console.log(users);
   return (
@@ -79,6 +72,7 @@ const Users = () => {
       </div>
 
       <div className="border-container">
+        <nav>
         <ul
           className="container_btn_header"
           style={{ margin: "0", display: "initial" }}
@@ -97,6 +91,7 @@ const Users = () => {
             </Link>
           </motion.li>
         </ul>
+        </nav>
 
         <section className="all-users">
           <Input
@@ -116,7 +111,7 @@ const Users = () => {
                   <th>Nombre</th>
                   <th>Correo</th>
                   <th>Rol</th>
-                  <th>Acciones</th>
+                  <th>Acción</th>
                 </tr>
               </thead>
 
@@ -134,9 +129,6 @@ const Users = () => {
                       <td>{email}</td>
                       <td>{rol}</td>
                       <td>
-                        <Button color="">
-                          <FaEdit color="green" size={15} />
-                        </Button>
 
                         <Button color="" onClick={() => handleDelete(_id)}>
                           <FaTrash color="red" size={15} />
@@ -149,24 +141,15 @@ const Users = () => {
             </Table>
           )}
 
-          <Pagination />
+          <Pagination 
+          setCurrentPage={setCurrentPage}
+          numberOfPages = {numberOfPages}
+          currentPage = {currentPage}
+          dispatch = {dispatch}
+          />
         </section>
       </div>
     </>
-  );
-};
-
-export const UserName = () => {
-  const user = useSelector(selectUser);
-
-  const userName = {
-    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
-  };
-
-  return (
-    <BreadcrumbItem active tag="span">
-      Hola, {shortenText(userName.name, 15)}
-    </BreadcrumbItem>
   );
 };
 

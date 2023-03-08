@@ -131,8 +131,8 @@ const resetPassword = async (userData, resetToken) => {
 -       listar usuarios
 - =================================
 */
-const getUsers = async () => {
-  const response = await axios.get(API_URL + "getUsers");
+const getUsers = async (page) => {
+  const response = await axios.get(API_URL + `getUsers?page=${page}`);
 
   return response.data;
 };

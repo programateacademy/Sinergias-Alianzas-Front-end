@@ -23,8 +23,8 @@ const Header = () => {
   const UserName = () => {
     const user = useSelector(selectUser);  
     const userName = {
-      name: `${user?.name.firstName} ${user?.name.lastName}`,
-      rol: `${user?.rol}`,
+      name: `${user?.name.firstName} ${user?.name.lastName}` === undefined?"": `${user?.name.firstName} ${user?.name.lastName}` ,
+      rol: `${user?.rol}` === undefined?"": `${user?.rol}`,
     };  
     return (
       <BreadcrumbItem active tag="span">

@@ -10,6 +10,8 @@ const initialState = {
   isLoggedIn: false,
   user: null,
   users: [],
+  currentPage: 1,
+  numberOfPages: null,
   twoFact: false, // Trigger para una segunda autenticación
   isError: false,
   isSuccess: false,
@@ -244,9 +246,9 @@ export const resetPassword = createAsyncThunk(
 */
 export const getUsers = createAsyncThunk(
   "auth/getUsers",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      return await authService.getUsers();
+      return await authService.getUsers(page);
     } catch (error) {
       const message =
         (error.response &&
@@ -344,6 +346,9 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.message = "";
     },
+    setCurrentPage: (state, action)=>{
+      state.currentPage =action.payload;
+    }
   },
 
   extraReducers: (builder) => {
@@ -540,7 +545,9 @@ const authSlice = createSlice({
       .addCase(getUsers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.users = action.payload;
+        state.users = action.payload.data;
+        state.numberOfPages = action.payload.numberOfPages;
+        state.currentPage = action.payload.currentPage;
       })
       .addCase(getUsers.rejected, (state, action) => {
         state.isLoading = false;
@@ -610,7 +617,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { RESET } = authSlice.actions;
+export const { RESET, setCurrentPage } = authSlice.actions;
 
 //* Estado de la sesión (activa o inactiva)
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;

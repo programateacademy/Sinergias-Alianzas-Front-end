@@ -18,6 +18,9 @@ import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginWithCode from "./pages/Login/LoginWithCode";
 import Profile from "./pages/Profile/Profile";
+import HomeU from "./pages/HomeU/HomeU";
+import ForoA from "./pages/ForoA/ForoA";
+import ForoU from "./pages/ForoU/ForoU"
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
@@ -110,6 +113,33 @@ function App() {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/homeu"
+          element={
+            <Layout>
+              <HomeU />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/foroa"
+          element={
+            <Layout>
+              <ForoA />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/forou"
+          element={
+            <Layout>
+              <ForoU />
             </Layout>
           }
         />

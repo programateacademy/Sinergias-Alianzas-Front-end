@@ -155,19 +155,4 @@ const Users = () => {
     </>
   );
 };
-
-export const UserName = () => {
-  const user = useSelector(selectUser);
-
-  const userName = {
-    name: `${user?.name.firstName} ${user?.name.lastName}` || "",
-  };
-
-  return (
-    <BreadcrumbItem active tag="span">
-      Hola, {shortenText(userName.name, 15)}
-    </BreadcrumbItem>
-  );
-};
-
 export default Users;

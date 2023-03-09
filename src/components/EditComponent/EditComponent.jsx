@@ -378,12 +378,8 @@ const EditComponent = () => {
                   id="exampleText"
                   name="compLineaTrabajo1"
                   type="text"
-<<<<<<< HEAD
-                  value={compLineaTrabajo1 || ''}
-=======
                   value={compLineaTrabajo1 || ""}
                   onChange={onInputChange}
->>>>>>> 2c6386360a204947bbc836f81fc260b948a820a7
                   required
                 />
               </div>
@@ -397,12 +393,8 @@ const EditComponent = () => {
                   id="exampleText"
                   name="compLineaTrabajo2"
                   type="text"
-<<<<<<< HEAD
-                  value={compLineaTrabajo2 || ''}
-=======
                   value={compLineaTrabajo2 || ""}
                   onChange={onInputChange}
->>>>>>> 2c6386360a204947bbc836f81fc260b948a820a7
                   required
                 />
               </div>

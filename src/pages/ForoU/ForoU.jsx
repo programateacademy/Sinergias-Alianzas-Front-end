@@ -14,11 +14,11 @@ import CardComponent from "../../components/CardComponent/CardComponent";
 
 import { Spinner } from "reactstrap";
 
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+// import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
 const Home = () => {
   //* Custom Hook to redirect user if session expires
-  useRedirectLoggedOutUser("/");
+  // useRedirectLoggedOutUser("/");
 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter

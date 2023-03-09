@@ -20,7 +20,8 @@ import LoginWithCode from "./pages/Login/LoginWithCode";
 import Profile from "./pages/Profile/Profile";
 import HomeU from "./pages/HomeU/HomeU";
 import ForoA from "./pages/ForoA/ForoA";
-import ForoU from "./pages/ForoU/ForoU"
+import ForoU from "./pages/ForoU/ForoU";
+import Header from "./components/HeaderU/HeaderU";
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
@@ -107,6 +108,15 @@ function App() {
             -     ROUTES MODULE COMPONENTS
             - =================================
           */}
+
+        <Route
+          path="/test"
+          element={
+            <Layout>
+              <Header/>
+            </Layout>
+          }
+        />
 
         <Route
           path="/home"

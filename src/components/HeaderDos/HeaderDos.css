@@ -1,0 +1,80 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  color: #fff;
+  height: 60px; /* altura del header */
+}
+
+.logo {
+  margin-left: 20px;
+  width: 20%; /* ancho del logo en porcentaje */
+  height: auto; /* altura ajustada automáticamente en función del ancho */
+  max-width: 100px; /* ancho máximo del logo */
+}
+
+.logo img {
+  width: 100%; /* Reduce el ancho de la imagen al 25% del ancho del contenedor */
+  height: auto; /* Ajusta la altura de la imagen de manera proporcional */
+}
+
+.logo button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.logo a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.logo a:hover {
+  background-color: #fff;
+  color: #221c1c;
+}
+
+.menu button {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 20px; /* Establece el radio de las esquinas para hacer un botón ovalado */
+  width: 120px; /* Ajusta el ancho del botón para que se ajuste al contenido */
+}
+
+.menu button:hover {
+  background-color: #1E7C3C;
+  color: #fff;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.dropdown button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: rgb(8, 8, 8);
+  padding: 10px;
+  cursor: pointer;
+}
+

@@ -10,7 +10,7 @@ import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponent/CardComponent";
+import CardComponent from "../../components/CardComponetUser/CardComponetUser";
 
 import { Spinner } from "reactstrap";
 

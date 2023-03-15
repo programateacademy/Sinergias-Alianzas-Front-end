@@ -11,6 +11,7 @@ import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
 import { useNavigate } from "react-router-dom";
 
 import CardComponent from "../../components/CardComponent/CardComponent";
+import Forum from "../../components/forum/forum";
 
 import { Spinner } from "reactstrap";
 
@@ -24,8 +25,10 @@ const Home = () => {
   const [search, setSearch] = useState(""); //constant for filter
 
   const { componentes, loading } = useSelector((state) => ({
-    ...state.componente,
+    componentes: state.componente.componentes,
+    loading: state.componente.loading,
   }));
+
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
@@ -53,6 +56,7 @@ const Home = () => {
   if (loading) {
     return <Spinner>Cargando</Spinner>;
   }
+
   return (
     <>
       <div className="containerTitle">
@@ -60,42 +64,18 @@ const Home = () => {
       </div>
 
       <div className="containerDashboard">
-        <div className="container_buttons">
-          {/* <motion.button
-            className="box"
-            onClick={addComp}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <img src={uploadButton} alt="" /> Añadir Componente
-          </motion.button> */}
 
-          <motion.button
-            className="box1"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <img src={searchButton} alt="" />
-
-            <input
-              type="text"
-              placeholder=" Buscar"
-              value={search}
-              onChange={searcher}
-            />
-          </motion.button>
-        </div>
-
-        <div className="listCards">
-          {results &&
-            results.map((item, index) => (
-              <CardComponent key={index} {...item} />
-            ))}
+        <div className="forum">
+          {!search && (
+            <div>
+              <h1>Mi Página</h1>
+              <Forum /> {/* Render the Forum component inside JSX tags */}
+            </div>
+          )}
         </div>
       </div>
     </>
   );
 };
+
 export default Home;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getComponents } from "../../store/actions/componentSlice";
 
 /* styles & images */
@@ -10,33 +10,27 @@ import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponent/CardComponent";
+import Forum from "../../components/forum/forum";
 
 import { Spinner } from "reactstrap";
 
-// import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
 const Home = () => {
   //* Custom Hook to redirect user if session expires
-  // useRedirectLoggedOutUser("/");
+  useRedirectLoggedOutUser("/");
 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
 
-  const { componentes, loading } = useSelector((state) => ({
-    ...state.componente,
+  const { loading } = useSelector((state) => ({
+    loading: state.componente.loading,
   }));
+
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
   };
-
-  //filter method by name
-  const results = !search
-    ? componentes
-    : componentes.filter((dato) =>
-        dato.compTitulo.toLowerCase().includes(search.toLocaleLowerCase())
-      );
 
   const navigate = useNavigate(); //* React router dom use
 
@@ -53,15 +47,15 @@ const Home = () => {
   if (loading) {
     return <Spinner>Cargando</Spinner>;
   }
+
   return (
     <>
       <div className="containerTitle">
         <h1>FORO</h1>
       </div>
-
       <div className="containerDashboard">
         <div className="container_buttons">
-          {/* <motion.button
+          <motion.button
             className="box"
             onClick={addComp}
             whileHover={{ scale: 1.2 }}
@@ -69,7 +63,7 @@ const Home = () => {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <img src={uploadButton} alt="" /> Añadir Componente
-          </motion.button> */}
+          </motion.button>
 
           <motion.button
             className="box1"
@@ -88,16 +82,17 @@ const Home = () => {
           </motion.button>
         </div>
 
-        <div className="listCards">
-          {results &&
-            results.map((item, index) => (
-              <CardComponent key={index} {...item} />
-            ))}
+        <div className="forum">
+          {!search && (
+            <div>
+              <h1>Mi Página</h1>
+              <Forum /> {/* Render the Forum component inside JSX tags */}
+            </div>
+          )}
         </div>
-
-
       </div>
     </>
   );
 };
+
 export default Home;

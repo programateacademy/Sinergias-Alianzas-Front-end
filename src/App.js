@@ -18,15 +18,12 @@ import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginWithCode from "./pages/Login/LoginWithCode";
 import Profile from "./pages/Profile/Profile";
-<<<<<<< HEAD
 import ButtonsUsers from "./pages/Users/ButtonsUsers";
-=======
 import HomeU from "./pages/HomeU/HomeU";
 import ForoA from "./pages/ForoA/ForoA";
 import ForoU from "./pages/ForoU/ForoU";
 import HeaderU from "./components/HeaderDos/HeaderDos";
 
->>>>>>> dev2
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";

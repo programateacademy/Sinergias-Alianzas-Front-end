@@ -21,7 +21,8 @@ import Profile from "./pages/Profile/Profile";
 import HomeU from "./pages/HomeU/HomeU";
 import ForoA from "./pages/ForoA/ForoA";
 import ForoU from "./pages/ForoU/ForoU";
-import Header from "./components/HeaderU/HeaderU";
+import HeaderU from "./components/HeaderDos/HeaderDos";
+
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
@@ -113,7 +114,7 @@ function App() {
           path="/test"
           element={
             <Layout>
-              <Header/>
+              <HeaderU/>
             </Layout>
           }
         />

@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import "./seeComponent.css";
+import "./seeComponentUser.css";
+
 
 //Redux actions
 import { getComponent } from "../../store/actions/componentSlice";
 
-import ViewComponent from "./ViewComponent";
+import ViewComponentUser from "./ViewComponentUser";
 
 const SeeComponent = () => {
   //Dispatch action
@@ -23,7 +24,7 @@ const SeeComponent = () => {
 
   return (
     <div>
-      <ViewComponent {...componente} />
+      <ViewComponentUser {...componente} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import "./seeComponent.css";
+import "./seeComponentUser.css";
 
 import Metodologia from "../../components/AddComponent/assest/Metodología.png";
 import Formato from "../../components/AddComponent/assest/Formatos.png";

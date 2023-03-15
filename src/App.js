@@ -29,6 +29,7 @@ import HeaderU from "./components/HeaderDos/HeaderDos";
 import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/SeeComponent";
+import SeeComponentUser from "./components/seeComponentUser/SeeComponentUser";
 
 // styles
 import "react-toastify/dist/ReactToastify.css";
@@ -188,6 +189,14 @@ function App() {
           element={
             <Layout>
               <SeeComponent />
+            </Layout>
+          }
+        />
+        <Route
+          path="/seeComponentUser/:id"
+          element={
+            <Layout>
+              <SeeComponentUser />
             </Layout>
           }
         />

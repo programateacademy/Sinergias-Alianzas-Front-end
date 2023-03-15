@@ -14,11 +14,9 @@ import CardComponent from "../../components/CardComponetUser/CardComponetUser";
 
 import { Spinner } from "reactstrap";
 
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+
 
 const Home = () => {
-  //* Custom Hook to redirect user if session expires
-  useRedirectLoggedOutUser("/");
 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
@@ -61,16 +59,6 @@ const Home = () => {
 
       <div className="containerDashboard">
         <div className="container_buttons">
-          {/* <motion.button
-            className="box"
-            onClick={addComp}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <img src={uploadButton} alt="" /> Añadir Componente
-          </motion.button> */}
-
           <motion.button
             className="box1"
             whileHover={{ scale: 1.2 }}

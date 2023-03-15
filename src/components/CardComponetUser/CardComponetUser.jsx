@@ -40,7 +40,7 @@ export default function CardComponent({
         <h2 style={{ backgroundColor: `${compColor}` }}>{compTitulo}</h2>
         <img className="imageCard" src={compImgPpal} alt="" />
         <div className="buttons_cards">
-          <Link to={`/seeComponent/${_id}`}>
+          <Link to={`/seeComponentUser/${_id}`}>
             <motion.div
               whileHover={{ scale: 1.2 }}
               onHoverStart={(e) => {}}

@@ -18,7 +18,15 @@ import Users from "./pages/Users/Users";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginWithCode from "./pages/Login/LoginWithCode";
 import Profile from "./pages/Profile/Profile";
+<<<<<<< HEAD
 import ButtonsUsers from "./pages/Users/ButtonsUsers";
+=======
+import HomeU from "./pages/HomeU/HomeU";
+import ForoA from "./pages/ForoA/ForoA";
+import ForoU from "./pages/ForoU/ForoU";
+import HeaderU from "./components/HeaderDos/HeaderDos";
+
+>>>>>>> dev2
 
 //Page components
 import AddComponent from "./components/AddComponent/AddComponent";
@@ -116,10 +124,46 @@ function App() {
           */}
 
         <Route
+          path="/test"
+          element={
+            <Layout>
+              <HeaderU/>
+            </Layout>
+          }
+        />
+
+        <Route
           path="/home"
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/homeu"
+          element={
+            <Layout>
+              <HomeU />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/foroa"
+          element={
+            <Layout>
+              <ForoA />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/forou"
+          element={
+            <Layout>
+              <ForoU />
             </Layout>
           }
         />

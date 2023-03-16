@@ -1,7 +1,9 @@
 // dependencies
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
+
 
 // Redux functions
 import { RESET, logout } from "../../store/actions/auth/authSlice";
@@ -20,8 +22,9 @@ import { MdLogout } from "react-icons/md";
 import { Breadcrumb, BreadcrumbItem, Container } from "reactstrap";
 import Logosinergias from "./Assets/Logosinergias.png";
 import "./Header.css";
+import "./HeaderUser.css";
 
-const Header = () => {
+const Header = ({ isAdminOrUser, setIsAdminOrUse}) => {
   /* 
   - =================================
   -    COMPONENT FUNCTIONS
@@ -35,6 +38,9 @@ const Header = () => {
   const goHome = () => {
     navigate("/home");
   };
+  const goHomeUser = () => {
+    navigate("/homeUser");
+  };
 
   //* Function to log out
   const logoutUser = async () => {
@@ -44,11 +50,18 @@ const Header = () => {
 
     navigate("/");
   };
+ // funcionalidad de headerUsuario
+ 
+  const [showMenu, setShowMenu] = useState(false);
 
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
   return (
-    <>
-      <header className="header_container">
-        {/* Logo */}
+    isAdminOrUser === false ? 
+    <> 
+      
+        {/* Logo
         <img
           src={Logosinergias}
           alt="Logo Sinergias"
@@ -57,8 +70,31 @@ const Header = () => {
         />
 
         {/* Navigation */}
-        <nav>
-          <ul className="container_btn_header">
+        
+        <nav className="navbar">
+      <div className="logo">
+        <a >
+          <img src={Logosinergias} alt="Logo" onClick={goHomeUser}/>
+        </a>
+      </div>
+      <div className="menu">
+        <button onClick={toggleMenu}>Menú</button>
+        {showMenu && (
+          <div className="dropdown">
+            <a  href="https://www.google.com/">
+            <button>Button 1</button>
+            </a>
+            <a  href="https://www.google.com/">
+            <button>Button 2</button>
+            </a>
+            <a  href="https://www.google.com/">
+            <button>Button 3</button>
+            </a>
+          </div>
+        )}
+      </div>
+    </nav>
+          {/* <ul className="container_btn_header">
             <motion.li
               className="buttons_header"
               whileHover={{ scale: 1.2 }}
@@ -72,9 +108,9 @@ const Header = () => {
 
                 <span>Usuarios</span>
               </Link>
-            </motion.li>
+            </motion.li> */}
 
-            <motion.li
+            {/* <motion.li
               className="buttons_header"
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
@@ -87,13 +123,13 @@ const Header = () => {
 
                 <span>Salir</span>
               </button>
-            </motion.li>
-          </ul>
-        </nav>
-      </header>
+            </motion.li> */}
+          {/* </ul> */}
+        
+      
 
       {/* Navigation to go to user profile */}
-      <Container>
+      {/* <Container>
         <Breadcrumb listTag="div">
           <UserName />
 
@@ -104,8 +140,71 @@ const Header = () => {
             </Link>
           </BreadcrumbItem>
         </Breadcrumb>
-      </Container>
+      </Container> */ }
+
     </>
+    :
+    <> 
+    <header className="header_container">
+      {/* Logo */}
+      <img
+        src={Logosinergias}
+        alt="Logo Sinergias"
+        className="header_logo"
+        onClick={goHome}
+      />
+
+      {/* Navigation */}
+      <nav>
+        <ul className="container_btn_header">
+          <motion.li
+            className="buttons_header"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link to={"/users"} className="buttons_header-users">
+              <div className="icon_container">
+                <FaUsersCog className="header_icon" />
+              </div>
+
+              <span>Usuarios</span>
+            </Link>
+          </motion.li>
+
+          <motion.li
+            className="buttons_header"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <button onClick={logoutUser} className="buttons_header-logout">
+              <div className="icon_container">
+                <MdLogout className="header_icon" />
+              </div>
+
+              <span>Salir</span>
+            </button>
+          </motion.li>
+        </ul>
+      </nav>
+    </header>
+
+    {/* Navigation to go to user profile */}
+    <Container>
+      <Breadcrumb listTag="div">
+        <UserName />
+
+        <BreadcrumbItem tag="span" className="breadcrumb-profile">
+          <FaUserAlt className="breadcrumb-icon" />
+          <Link to={"/profile"} className="breadcrumb-link">
+            Perfil
+          </Link>
+        </BreadcrumbItem>
+      </Breadcrumb>
+    </Container>
+
+  </>
   );
 };
 

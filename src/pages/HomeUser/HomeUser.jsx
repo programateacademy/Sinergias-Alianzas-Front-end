@@ -3,21 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComponents } from "../../store/actions/componentSlice";
 
 /* styles & images */
-import "../../components/ListCourses/ListCourses.css";
+import "./css/HomeU.css";
 import { motion } from "framer-motion";
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import loaded from "../../components/ListCourses/Assets/preload.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponetUser/CardComponetUser";
-
-import { Spinner } from "reactstrap";
+import CardComponentUser from "../../components/CardComponetUser/CardComponetUser";
 
 
 
-const Home = () => {
-
+const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
+  if(isAdminOrUser === true){
+    setIsAdminOrUse(!isAdminOrUser);
+  }
+ 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
 
@@ -44,13 +45,28 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  const [showPreload, setShowPreload] = useState(true); // add state to control showing preload
+
   useEffect(() => {
     dispatch(getComponents());
+
+    // change showPreload after 2 seconds
+    const timer = setTimeout(() => {
+      setShowPreload(false);
+    }, 1000);
+
+    // cleanup
+    return () => clearTimeout(timer);
   }, [dispatch]);
 
-  if (loading) {
-    return <Spinner>Cargando</Spinner>;
+  if (loading || showPreload) {
+    return (
+      <div className="preload">
+        <img src={loaded} alt="preload" />
+      </div>
+    );
   }
+
   return (
     <>
       <div className="containerTitle">
@@ -79,7 +95,7 @@ const Home = () => {
         <div className="listCards">
           {results &&
             results.map((item, index) => (
-              <CardComponent key={index} {...item} />
+              <CardComponentUser key={index} {...item} />
             ))}
         </div>
       </div>

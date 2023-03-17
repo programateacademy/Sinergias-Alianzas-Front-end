@@ -52,96 +52,36 @@ const Header = ({ isAdminOrUser, setIsAdminOrUse}) => {
   };
  // funcionalidad de headerUsuario
  
-  const [showMenu, setShowMenu] = useState(false);
+ const [showMenu, setShowMenu] = useState(false);
 
-  const toggleMenu = () => {
+  const handleMenuClick = () => {
     setShowMenu(!showMenu);
   };
   return (
     isAdminOrUser === false ? 
-    <> 
-      
-        {/* Logo
-        <img
-          src={Logosinergias}
-          alt="Logo Sinergias"
-          className="header_logo"
-          onClick={goHome}
-        />
-
-        {/* Navigation */}
-        
-        <nav className="navbar">
+    <>
+    <nav className="navigation-bar">
       <div className="logo">
-        <a >
-          <img src={Logosinergias} alt="Logo" onClick={goHomeUser}/>
+        <a href="https://www.google.com/">
+          <img src={Logosinergias} alt="Logo" />
         </a>
       </div>
       <div className="menu">
-        <button onClick={toggleMenu}>Menú</button>
-        {showMenu && (
-          <div className="dropdown">
-            <a  href="https://www.google.com/">
-            <button>Button 1</button>
-            </a>
-            <a  href="https://www.google.com/">
-            <button>Button 2</button>
-            </a>
-            <a  href="https://www.google.com/">
-            <button>Button 3</button>
-            </a>
-          </div>
-        )}
+        <button className="menu-button">Caja de herramientas</button>
+        <button className="menu-button">Foro</button>
+        <button className="menu-button">Iniciar sesión</button>
+        <button className="menu-toggle" onClick={handleMenuClick}>
+          Menu
+        </button>
       </div>
+      {showMenu && (
+        <div className="dropdown-menu">
+          <button className="dropdown-button">Caja de herramientas</button>
+          <button className="dropdown-button">Foro</button>
+          <button className="dropdown-button">Iniciar sesión</button>
+        </div>
+      )}
     </nav>
-          {/* <ul className="container_btn_header">
-            <motion.li
-              className="buttons_header"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Link to={"/users"} className="buttons_header-users">
-                <div className="icon_container">
-                  <FaUsersCog className="header_icon" />
-                </div>
-
-                <span>Usuarios</span>
-              </Link>
-            </motion.li> */}
-
-            {/* <motion.li
-              className="buttons_header"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <button onClick={logoutUser} className="buttons_header-logout">
-                <div className="icon_container">
-                  <MdLogout className="header_icon" />
-                </div>
-
-                <span>Salir</span>
-              </button>
-            </motion.li> */}
-          {/* </ul> */}
-        
-      
-
-      {/* Navigation to go to user profile */}
-      {/* <Container>
-        <Breadcrumb listTag="div">
-          <UserName />
-
-          <BreadcrumbItem tag="span" className="breadcrumb-profile">
-            <FaUserAlt className="breadcrumb-icon" />
-            <Link to={"/profile"} className="breadcrumb-link">
-              Perfil
-            </Link>
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </Container> */ }
-
     </>
     :
     <> 

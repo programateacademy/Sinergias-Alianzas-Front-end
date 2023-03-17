@@ -52,38 +52,37 @@ const Header = ({ isAdminOrUser, setIsAdminOrUse}) => {
   };
  // funcionalidad de headerUsuario
  
-  const [showMenu, setShowMenu] = useState(false);
+ const [showMenu, setShowMenu] = useState(false);
 
-  const toggleMenu = () => {
+  const handleMenuClick = () => {
     setShowMenu(!showMenu);
   };
   return (
     isAdminOrUser === false ? 
-    <>         
-      <nav className="navbar">
+    <>
+    <nav className="navigation-bar">
       <div className="logo">
-        <a  >
-          <img src={Logosinergias} alt="Logo" onClick={goHomeUser}/>
+        <a href="https://www.google.com/">
+          <img src={Logosinergias} alt="Logo" />
         </a>
       </div>
       <div className="menu">
-        <button onClick={toggleMenu}>Menú</button>
-        {showMenu && (
-          <div className="dropdown">
-            <a  href="https://www.google.com/">
-            <button>Button 1</button>
-            </a>
-            <a  href="https://www.google.com/">
-            <button>Button 2</button>
-            </a>
-            <a  href="https://www.google.com/">
-            <button>Button 3</button>
-            </a>
-          </div>
-        )}
+        <button className="menu-button">Caja de herramientas</button>
+        <button className="menu-button">Foro</button>
+        <button className="menu-button">Iniciar sesión</button>
+        <button className="menu-toggle" onClick={handleMenuClick}>
+          Menu
+        </button>
       </div>
+      {showMenu && (
+        <div className="dropdown-menu">
+          <button className="dropdown-button">Caja de herramientas</button>
+          <button className="dropdown-button">Foro</button>
+          <button className="dropdown-button">Iniciar sesión</button>
+        </div>
+      )}
     </nav>
-  </>
+    </>
     :
     <> 
     <header className="header_container">

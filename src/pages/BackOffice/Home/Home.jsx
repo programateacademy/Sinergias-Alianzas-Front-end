@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents } from "../../store/actions/componentSlice";
+import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
-import "../../components/ListCourses/ListCourses.css";
+import "./Home.css";
 import { motion } from "framer-motion";
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
 import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponent/CardComponent";
+import CardComponent from "../../../components/CardComponent/CardComponent";
 
 import { Spinner } from "reactstrap";
 
-// import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 const Home = () => {
   //* Custom Hook to redirect user if session expires
-  // useRedirectLoggedOutUser("/");
+  useRedirectLoggedOutUser("/");
 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
@@ -56,12 +57,12 @@ const Home = () => {
   return (
     <>
       <div className="containerTitle">
-        <h1>FORO</h1>
+        <h1>DASHBOARD COMPONENTES</h1>
       </div>
 
       <div className="containerDashboard">
         <div className="container_buttons">
-          {/* <motion.button
+          <motion.button
             className="box"
             onClick={addComp}
             whileHover={{ scale: 1.2 }}
@@ -69,8 +70,7 @@ const Home = () => {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <img src={uploadButton} alt="" /> Añadir Componente
-          </motion.button> */}
-
+          </motion.button>
           <motion.button
             className="box1"
             whileHover={{ scale: 1.2 }}
@@ -86,6 +86,15 @@ const Home = () => {
               onChange={searcher}
             />
           </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link className="link" to={"/foroa"}>
+              <button className="buttonComponent">Foros</button>
+            </Link>
+          </motion.button>
         </div>
 
         <div className="listCards">
@@ -94,8 +103,6 @@ const Home = () => {
               <CardComponent key={index} {...item} />
             ))}
         </div>
-
-
       </div>
     </>
   );

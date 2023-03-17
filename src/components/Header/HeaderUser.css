@@ -1,22 +1,23 @@
-.navbar {
+.navigation-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: green;
+  background-color: #3c9661;
   color: #fff;
-  height: 60px; /* altura del header */
+  padding: 0 20px;
+  height: 65px;
 }
 
 .logo {
   margin-left: 20px;
-  width: 20%; /* ancho del logo en porcentaje */
-  height: auto; /* altura ajustada automáticamente en función del ancho */
-  max-width: 100px; /* ancho máximo del logo */
+  width: 20%; 
+  height: auto; 
+  max-width: 160px; 
 }
 
 .logo img {
-  width: 100%; /* Reduce el ancho de la imagen al 25% del ancho del contenedor */
-  height: auto; /* Ajusta la altura de la imagen de manera proporcional */
+  width: 95%; 
+  height: auto; 
 }
 
 .logo button {
@@ -41,40 +42,63 @@
   color: #221c1c;
 }
 
-.menu button {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #333;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 20px; /* Establece el radio de las esquinas para hacer un botón ovalado */
-  width: 120px; /* Ajusta el ancho del botón para que se ajuste al contenido */
-}
-
-.menu button:hover {
-  background-color: #1E7C3C;
-  color: #fff;
-}
-
-.dropdown {
+.menu {
   display: flex;
-  flex-direction: column;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 22px;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
   position: absolute;
-  top: 60px;
-  right: 10px;
-  background-color: #ffffff;
+  top: 50px;
+  right: 20px;
+  background-color: #3c9661;
+  border: 1px solid #fff;
+  padding: 10px;
   z-index: 1;
 }
 
-.dropdown button {
+.dropdown-button {
+  display: block;
   background-color: transparent;
   border: none;
+  color: #fff;
   font-size: 16px;
-  color: rgb(8, 8, 8);
-  padding: 10px;
+  margin: 10px 0;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .dropdown-menu {
+    display: block;
+    
+  }
+}
+
 

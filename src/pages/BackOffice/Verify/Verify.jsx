@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 
 // styles
 import { Button } from "reactstrap";
-import { RESET, verifyUser } from "../../store/actions/auth/authSlice";
+import { RESET, verifyUser } from "../../../store/actions/auth/authSlice";
 
 // Component
-import Loader from "../../components/Loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 
 
 

@@ -9,20 +9,20 @@ import { getLoginStatus } from "./store/actions/auth/authSlice";
 
 // Components
 import Layout from "./components/Layout/Layout";
-import Verify from "./pages/Verify/Verify";
+import Verify from "./pages/BackOffice/Verify/Verify";
 
 // pages
-import Login from "./pages/Login/Login";
-import Home from "./pages/Home/Home";
-import Users from "./pages/Users/Users";
-import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import LoginWithCode from "./pages/Login/LoginWithCode";
-import Profile from "./pages/Profile/Profile";
-import ButtonsUsers from "./pages/Users/ButtonsUsers";
-import HomeUser from "./pages/HomeUser/HomeUser";
-import ForoA from "./pages/ForoA/ForoA";
-import ForoU from "./pages/ForoU/ForoU";
-import HeaderU from "./components/HeaderDos/HeaderDos";
+import Login from "./pages/BackOffice/Login/Login";
+import Home from "./pages/BackOffice/Home/Home";
+import Users from "./pages/BackOffice/Users/Users";
+import ResetPassword from "./pages/BackOffice/ResetPassword/ResetPassword";
+import LoginWithCode from "./pages/BackOffice/Login/LoginWithCode";
+import Profile from "./pages/BackOffice/Profile/Profile";
+import ButtonsUsers from "./pages/BackOffice/Users/ButtonsUsers";
+import HomeUser from "./pages/Public/HomeUser/HomeUser";
+import ForoA from "./pages/BackOffice/ForoA/ForoA";
+import ForoU from "./pages/Public/ForoU/ForoU";
+
 
 
 //Page components
@@ -38,7 +38,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // credentials
 import axios from "axios";
-import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import ChangePassword from "./pages/BackOffice/ChangePassword/ChangePassword";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -126,15 +126,6 @@ function App() {
           */}
 
         <Route
-          path="/test"
-          element={
-            <Layout>
-              <HeaderU/>
-            </Layout>
-          }
-        />
-
-        <Route
           path="/home"
           element={
             <Layout>
@@ -199,8 +190,16 @@ function App() {
         <Route
           path="/seeComponentUser/:id"
           element={
+            <Layout isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}>
+              <SeeComponentUser isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/seeforo/:id"
+          element={
             <Layout>
-              <SeeComponentUser />
+              <SeeForo/>
             </Layout>
           }
         />

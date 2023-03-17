@@ -9,11 +9,14 @@ import { getComponent } from "../../store/actions/componentSlice";
 
 import ViewComponentUser from "./ViewComponentUser";
 
-const SeeComponent = () => {
+const SeeComponent = ({ isAdminOrUser, setIsAdminOrUse}) => {
   //Dispatch action
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  if(isAdminOrUser === true){
+    setIsAdminOrUse(!isAdminOrUser);
+  }
   useEffect(() => {
     if (id) {
       dispatch(getComponent(id));

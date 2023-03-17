@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import "../ListCourses/ListCourses.css";
+import "./cardComponentUser.css";
 import { motion } from "framer-motion"; //Animation library
 import { Link } from "react-router-dom";
 
@@ -10,10 +10,11 @@ export default function CardComponent({
   compTitulo,
   compImgPpal,
   compColor,
-  _id,
+  _id
 }) {
+  
   return (
-      <Link className="link" to={`/seeComponent/${_id}`}>
+      <Link className="link" to={`/seeComponentUser/${_id}`}>
         <motion.div whileHover={{ scale: 1.02 }}
               onHoverStart={(e) => {}}
               onHoverEnd={(e) => {}}>

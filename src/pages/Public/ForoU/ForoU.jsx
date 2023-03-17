@@ -6,7 +6,7 @@ import { getComponents } from "../../../store/actions/componentSlice";
 import "../../../components/ListCourses/ListCourses.css";
 import { motion } from "framer-motion";
 import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
-import uploadButton from "../../../components/ListCourses/Assets/uploadButton.png";
+
 
 import { useNavigate } from "react-router-dom";
 

@@ -29,6 +29,8 @@ import HeaderU from "./components/HeaderDos/HeaderDos";
 import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/SeeComponent";
+import SeeForo from "./components/seeForo/seeForo";
+
 import SeeComponentUser from "./components/seeComponentUser/SeeComponentUser";
 
 // styles
@@ -199,6 +201,14 @@ function App() {
           element={
             <Layout>
               <SeeComponentUser />
+            </Layout>
+          }
+        />
+        <Route
+          path="/seeforo/:id"
+          element={
+            <Layout>
+              <SeeForo/>
             </Layout>
           }
         />

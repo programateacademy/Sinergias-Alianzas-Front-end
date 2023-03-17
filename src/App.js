@@ -29,6 +29,8 @@ import ForoU from "./pages/Public/ForoU/ForoU";
 import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/SeeComponent";
+import SeeForo from "./components/seeForo/seeForo";
+
 import SeeComponentUser from "./components/seeComponentUser/SeeComponentUser";
 
 // styles
@@ -190,6 +192,14 @@ function App() {
           element={
             <Layout isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}>
               <SeeComponentUser isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/seeforo/:id"
+          element={
+            <Layout>
+              <SeeForo/>
             </Layout>
           }
         />

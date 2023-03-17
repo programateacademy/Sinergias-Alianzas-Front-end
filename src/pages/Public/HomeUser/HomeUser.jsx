@@ -74,7 +74,7 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
       </div>
 
       <div className="containerDashboard">
-        <div className="container_buttons">
+      <div className="container_buttons">
           <motion.button
             className="box1"
             whileHover={{ scale: 1.2 }}
@@ -90,7 +90,17 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
               onChange={searcher}
             />
           </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link className="link" to={"/foroa"}>
+            <button className="buttonComponent">Foros</button>
+            </Link>
+          </motion.button>
         </div>
+
 
         <div className="listCards">
           {results &&

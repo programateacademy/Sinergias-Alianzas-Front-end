@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents } from "../../store/actions/componentSlice";
+import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
-import "../../components/ListCourses/ListCourses.css";
+import "./css/HomeUser.css";
 import { motion } from "framer-motion";
-import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
+import loaded from "../../../components/ListCourses/Assets/preload.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponent/CardComponent";
+import CardComponentUser from "../../../components/CardComponetUser/CardComponetUser";
 
-import { Spinner } from "reactstrap";
 
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
-const Home = () => {
-  //* Custom Hook to redirect user if session expires
-  useRedirectLoggedOutUser("/");
-
+const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
+  if(isAdminOrUser === true){
+    setIsAdminOrUse(!isAdminOrUser);
+  }
+ 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
 
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
-  })); 
+  }));
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
@@ -46,31 +45,36 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  const [showPreload, setShowPreload] = useState(true); // add state to control showing preload
+
   useEffect(() => {
     dispatch(getComponents());
+
+    // change showPreload after 2 seconds
+    const timer = setTimeout(() => {
+      setShowPreload(false);
+    }, 1000);
+
+    // cleanup
+    return () => clearTimeout(timer);
   }, [dispatch]);
 
-  if (loading) {
-    return <Spinner>Cargando</Spinner>;
+  if (loading || showPreload) {
+    return (
+      <div className="preload">
+        <img src={loaded} alt="preload" />
+      </div>
+    );
   }
+
   return (
     <>
       <div className="containerTitle">
-        <h1>DASHBOARD COMPONENTES</h1>
+        <h1>CAJA DE HERRAMIENTAS</h1>
       </div>
 
       <div className="containerDashboard">
         <div className="container_buttons">
-          <motion.button
-            className="box"
-            onClick={addComp}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <img src={uploadButton} alt="" /> Añadir Componente
-          </motion.button>
-
           <motion.button
             className="box1"
             whileHover={{ scale: 1.2 }}
@@ -91,7 +95,7 @@ const Home = () => {
         <div className="listCards">
           {results &&
             results.map((item, index) => (
-              <CardComponent key={index} {...item} />
+              <CardComponentUser key={index} {...item} isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse} />
             ))}
         </div>
       </div>

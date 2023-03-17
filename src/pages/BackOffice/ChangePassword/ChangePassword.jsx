@@ -9,11 +9,11 @@ import {
   changePassword,
   logout,
   RESET,
-} from "../../store/actions/auth/authSlice";
+} from "../../../store/actions/auth/authSlice";
 
 //* Componentes
-import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import PasswordInput from "../../../components/Layout/PasswordInput/PasswordInput";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 //* Iconos
 import { FaTimes, FaCheck } from "react-icons/fa";
@@ -29,7 +29,7 @@ import {
   ListGroupItem,
   Container,
 } from "reactstrap";
-import { sendAutomatedEmail } from "../../store/actions/mail/emailSlice";
+import { sendAutomatedEmail } from "../../../store/actions/mail/emailSlice";
 
 const passwordState = {
   oldPassword: "",

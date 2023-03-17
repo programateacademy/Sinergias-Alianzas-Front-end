@@ -5,19 +5,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 // Redux functions
-import { validateEmail } from "../../store/actions/auth/authService";
-import { RESET, login } from "../../store/actions/auth/authSlice";
+import { validateEmail } from "../../../store/actions/auth/authService";
+import { RESET, login } from "../../../store/actions/auth/authSlice";
 
 // Components
-import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
-import Loader from "../../components/Loader/Loader";
+import PasswordInput from "../../../components/Layout/PasswordInput/PasswordInput";
+import Loader from "../../../components/Loader/Loader";
 
 // styles
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import Background from "./Assets/BackgroundLogin.png";
 import LoginIlustration from "./Assets/LoginIlustration.png";
 import "./login.css";
-import { sendLoginCode } from "../../store/actions/auth/authSlice";
+import { sendLoginCode } from "../../../store/actions/auth/authSlice";
 
 // Initial state
 const initialState = {

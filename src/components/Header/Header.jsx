@@ -12,7 +12,7 @@ import { RESET, logout } from "../../store/actions/auth/authSlice";
 import { motion } from "framer-motion";
 
 // Components
-import { UserName } from "../../pages/Profile/Profile";
+import { UserName } from "../../pages/BackOffice/Profile/Profile";
 
 // Icons
 import { FaUsersCog, FaUserAlt } from "react-icons/fa";
@@ -59,21 +59,10 @@ const Header = ({ isAdminOrUser, setIsAdminOrUse}) => {
   };
   return (
     isAdminOrUser === false ? 
-    <> 
-      
-        {/* Logo
-        <img
-          src={Logosinergias}
-          alt="Logo Sinergias"
-          className="header_logo"
-          onClick={goHome}
-        />
-
-        {/* Navigation */}
-        
-        <nav className="navbar">
+    <>         
+      <nav className="navbar">
       <div className="logo">
-        <a >
+        <a  >
           <img src={Logosinergias} alt="Logo" onClick={goHomeUser}/>
         </a>
       </div>
@@ -94,55 +83,7 @@ const Header = ({ isAdminOrUser, setIsAdminOrUse}) => {
         )}
       </div>
     </nav>
-          {/* <ul className="container_btn_header">
-            <motion.li
-              className="buttons_header"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Link to={"/users"} className="buttons_header-users">
-                <div className="icon_container">
-                  <FaUsersCog className="header_icon" />
-                </div>
-
-                <span>Usuarios</span>
-              </Link>
-            </motion.li> */}
-
-            {/* <motion.li
-              className="buttons_header"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <button onClick={logoutUser} className="buttons_header-logout">
-                <div className="icon_container">
-                  <MdLogout className="header_icon" />
-                </div>
-
-                <span>Salir</span>
-              </button>
-            </motion.li> */}
-          {/* </ul> */}
-        
-      
-
-      {/* Navigation to go to user profile */}
-      {/* <Container>
-        <Breadcrumb listTag="div">
-          <UserName />
-
-          <BreadcrumbItem tag="span" className="breadcrumb-profile">
-            <FaUserAlt className="breadcrumb-icon" />
-            <Link to={"/profile"} className="breadcrumb-link">
-              Perfil
-            </Link>
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </Container> */ }
-
-    </>
+  </>
     :
     <> 
     <header className="header_container">

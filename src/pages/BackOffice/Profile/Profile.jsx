@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // Funciones de Redux
-import { getUser, selectUser } from "../../store/actions/auth/authSlice";
+import { getUser, selectUser } from "../../../store/actions/auth/authSlice";
 
 // Componentes
-import Loader from "../../components/Loader/Loader";
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
-import Notification from "../../components/Notification/Notification";
+import Loader from "../../../components/Loader/Loader";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
+import Notification from "../../../components/Notification/Notification";
 
 // Estilos
 import {

@@ -4,10 +4,10 @@ import React from 'react'
 import { motion } from "framer-motion";
 
 // Components
-import AddUser from "../../components/AddUser/AddUser";
-import ForgotPassword from "../../components/ForgotPassword/ForgotPassword";
+import AddUser from "../../../components/AddUser/AddUser";
+import ForgotPassword from "../../../components/ForgotPassword/ForgotPassword";
 
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 // styles
 import "./Users.css";

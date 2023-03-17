@@ -9,7 +9,7 @@ import {
   loginWithCode,
   RESET,
   sendLoginCode,
-} from "../../store/actions/auth/authSlice";
+} from "../../../store/actions/auth/authSlice";
 
 // styles
 import {

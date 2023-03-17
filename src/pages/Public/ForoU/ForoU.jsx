@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents } from "../../store/actions/componentSlice";
+import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
-import "./css/HomeU.css";
+import "../../../components/ListCourses/ListCourses.css";
 import { motion } from "framer-motion";
-import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import loaded from "../../components/ListCourses/Assets/preload.png";
+import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
+import uploadButton from "../../../components/ListCourses/Assets/uploadButton.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponentUser from "../../components/CardComponetUser/CardComponetUser";
+import CardComponent from "../../../components/CardComponent/CardComponent";
 
+import { Spinner } from "reactstrap";
 
+// import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 
-const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
-  if(isAdminOrUser === true){
-    setIsAdminOrUse(!isAdminOrUser);
-  }
- 
+const Home = () => {
+  //* Custom Hook to redirect user if session expires
+  // useRedirectLoggedOutUser("/");
+
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
 
@@ -45,36 +46,31 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
 
   const dispatch = useDispatch();
 
-  const [showPreload, setShowPreload] = useState(true); // add state to control showing preload
-
   useEffect(() => {
     dispatch(getComponents());
-
-    // change showPreload after 2 seconds
-    const timer = setTimeout(() => {
-      setShowPreload(false);
-    }, 1000);
-
-    // cleanup
-    return () => clearTimeout(timer);
   }, [dispatch]);
 
-  if (loading || showPreload) {
-    return (
-      <div className="preload">
-        <img src={loaded} alt="preload" />
-      </div>
-    );
+  if (loading) {
+    return <Spinner>Cargando</Spinner>;
   }
-
   return (
     <>
       <div className="containerTitle">
-        <h1>CAJA DE HERRAMIENTAS</h1>
+        <h1>FORO</h1>
       </div>
 
       <div className="containerDashboard">
         <div className="container_buttons">
+          {/* <motion.button
+            className="box"
+            onClick={addComp}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <img src={uploadButton} alt="" /> Añadir Componente
+          </motion.button> */}
+
           <motion.button
             className="box1"
             whileHover={{ scale: 1.2 }}
@@ -95,9 +91,11 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
         <div className="listCards">
           {results &&
             results.map((item, index) => (
-              <CardComponentUser key={index} {...item} />
+              <CardComponent key={index} {...item} />
             ))}
         </div>
+
+
       </div>
     </>
   );

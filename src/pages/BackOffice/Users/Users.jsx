@@ -1,13 +1,13 @@
 // dependencies
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../store/actions/auth/authSlice";
+import { getUsers } from "../../../store/actions/auth/authSlice";
 import { Link } from "react-router-dom";
 
-import { selectUser, deleteUser } from "../../store/actions/auth/authSlice";
+import { selectUser, deleteUser } from "../../../store/actions/auth/authSlice";
 
-import Pagination from "../../components/Pagination/Pagination";
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import Pagination from "../../../components/Pagination/Pagination";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 // Motion
 import { motion } from "framer-motion";

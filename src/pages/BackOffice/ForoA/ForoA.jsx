@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents } from "../../store/actions/componentSlice";
+import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
-import "../../components/ListCourses/ListCourses.css";
+import "../../../components/ListCourses/ListCourses.css";
 import { motion } from "framer-motion";
-import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
+import uploadButton from "../../../components/ListCourses/Assets/uploadButton.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponent/CardComponent";
-import Forum from "../../components/forum/forum";
+import CardComponent from "../../../components/CardComponent/CardComponent";
+import Forum from "../../../components/forum/forum";
 
 import { Spinner } from "reactstrap";
 
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 const Home = () => {
   //* Custom Hook to redirect user if session expires

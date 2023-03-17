@@ -5,11 +5,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // Redux
-import { RESET, resetPassword } from "../../store/actions/auth/authSlice";
+import { RESET, resetPassword } from "../../../store/actions/auth/authSlice";
 
 // Components
-import PasswordInput from "../../components/Layout/PasswordInput/PasswordInput";
-import Loader from "../../components/Loader/Loader";
+import PasswordInput from "../../../components/Layout/PasswordInput/PasswordInput";
+import Loader from "../../../components/Loader/Loader";
 
 // icons
 import { FaTimes, FaCheck } from "react-icons/fa";

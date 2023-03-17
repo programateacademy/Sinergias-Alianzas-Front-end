@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents } from "../../store/actions/componentSlice";
+import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
-import "../../components/ListCourses/ListCourses.css";
+import "./Home.css";
 import { motion } from "framer-motion";
-import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
+import uploadButton from "../../../components/ListCourses/Assets/uploadButton.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponent/CardComponent";
+import CardComponent from "../../../components/CardComponent/CardComponent";
 
 import { Spinner } from "reactstrap";
 
-// import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 const Home = () => {
   //* Custom Hook to redirect user if session expires
-  // useRedirectLoggedOutUser("/");
+  useRedirectLoggedOutUser("/");
 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
 
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
-  }));
+  })); 
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
@@ -56,12 +56,12 @@ const Home = () => {
   return (
     <>
       <div className="containerTitle">
-        <h1>FORO</h1>
+        <h1>DASHBOARD COMPONENTES</h1>
       </div>
 
       <div className="containerDashboard">
         <div className="container_buttons">
-          {/* <motion.button
+          <motion.button
             className="box"
             onClick={addComp}
             whileHover={{ scale: 1.2 }}
@@ -69,7 +69,7 @@ const Home = () => {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <img src={uploadButton} alt="" /> Añadir Componente
-          </motion.button> */}
+          </motion.button>
 
           <motion.button
             className="box1"
@@ -94,8 +94,6 @@ const Home = () => {
               <CardComponent key={index} {...item} />
             ))}
         </div>
-
-
       </div>
     </>
   );

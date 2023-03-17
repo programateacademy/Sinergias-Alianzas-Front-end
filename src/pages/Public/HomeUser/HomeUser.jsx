@@ -7,7 +7,7 @@ import "./css/HomeUser.css";
 import { motion } from "framer-motion";
 import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
 import loaded from "../../../components/ListCourses/Assets/preload.png";
-
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import CardComponentUser from "../../../components/CardComponetUser/CardComponetUser";

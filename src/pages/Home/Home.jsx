@@ -7,6 +7,7 @@ import "../../components/ListCourses/ListCourses.css";
 import { motion } from "framer-motion";
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
 import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +26,7 @@ const Home = () => {
 
   const { componentes, loading } = useSelector((state) => ({
     ...state.componente,
-  })); 
+  }));
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
@@ -70,7 +71,6 @@ const Home = () => {
           >
             <img src={uploadButton} alt="" /> Añadir Componente
           </motion.button>
-
           <motion.button
             className="box1"
             whileHover={{ scale: 1.2 }}
@@ -85,6 +85,15 @@ const Home = () => {
               value={search}
               onChange={searcher}
             />
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link className="link" to={"/foroa"}>
+              <button className="buttonComponent">Foros</button>
+            </Link>
           </motion.button>
         </div>
 

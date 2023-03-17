@@ -3,32 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComponents } from "../../store/actions/componentSlice";
 
 /* styles & images */
-import "../../components/ListCourses/ListCourses.css";
+import "./css/ForoA.css";
 import { motion } from "framer-motion";
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import loaded from "../../components/ListCourses/Assets/preload.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponent from "../../components/CardComponent/CardComponent";
-import Forum from "../../components/forum/forum";
+import { Link } from "react-router-dom";
+import CardForo from "../../components/CardForo/CardForo";
 
-import { Spinner } from "reactstrap";
 
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
-
-const Home = () => {
-  //* Custom Hook to redirect user if session expires
-  useRedirectLoggedOutUser("/");
-
+const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
+  if(isAdminOrUser === true){
+    setIsAdminOrUse(!isAdminOrUser);
+  }
+ 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter
 
   const { componentes, loading } = useSelector((state) => ({
-    componentes: state.componente.componentes,
-    loading: state.componente.loading,
+    ...state.componente,
   }));
-
   /*-----------FILTER AND SEARCH----------- */
   const searcher = (e) => {
     setSearch(e.target.value);
@@ -49,33 +45,70 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  const [showPreload, setShowPreload] = useState(true); // add state to control showing preload
+
   useEffect(() => {
     dispatch(getComponents());
+
+    // change showPreload after 2 seconds
+    const timer = setTimeout(() => {
+      setShowPreload(false);
+    }, 1000);
+
+    // cleanup
+    return () => clearTimeout(timer);
   }, [dispatch]);
 
-  if (loading) {
-    return <Spinner>Cargando</Spinner>;
+  if (loading || showPreload) {
+    return (
+      <div className="preload">
+        <img src={loaded} alt="preload" />
+      </div>
+    );
   }
 
   return (
     <>
       <div className="containerTitle">
-        <h1>FORO</h1>
+        <h1>FOROS</h1>
       </div>
 
       <div className="containerDashboard">
+        <div className="container_buttons">
+          <motion.button
+            className="box1"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <img src={searchButton} alt="" />
 
-        <div className="forum">
-          {!search && (
-            <div>
-              <h1>Mi Página</h1>
-              <Forum /> {/* Render the Forum component inside JSX tags */}
-            </div>
-          )}
+            <input
+              type="text"
+              placeholder=" Buscar"
+              value={search}
+              onChange={searcher}
+            />
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link className="link" to={"/home"}>
+            <button className="buttonComponent">Componentes</button>
+            </Link>
+          </motion.button>
+        </div>
+
+        <div className="listCards">
+          {results &&
+            results.map((item, index) => (
+              <CardForo key={index} {...item} />
+            ))}
         </div>
       </div>
     </>
   );
 };
-
 export default Home;

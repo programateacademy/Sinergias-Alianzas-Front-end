@@ -16,6 +16,7 @@ import { Pagination } from "react-bootstrap";
 import CircularOption from "../CirculaOption/CircularOption";
 import ButtonsForum from "./ButtonsForum";
 import ModalQuestion from "../ModalQuestion/ModalQuestion";
+import CommentList from "./commentList";
 
 const ViewComponent = ({
   compTitulo,
@@ -107,6 +108,9 @@ const ViewComponent = ({
                 style={{ border: `2px solid ${compColor}` }}
               >
                 <Row className="d-flex justify-content-around align-items-center">
+                  <Col md={8}>
+                    <CommentList />
+                  </Col>
                   <Col md={8}>
                     <h3 className="question">¿Pregunta?</h3>
                     <p>Autor</p>
@@ -213,7 +217,7 @@ const ViewComponent = ({
                                 </button>
                               </form>
                             </Modal.Body>
-                          
+
                             <Modal.Footer>
                               <Button variant="secondary" onClick={handleClose}>
                                 Cerrar

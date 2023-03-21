@@ -5,8 +5,8 @@ import { getComponents } from "../../../store/actions/componentSlice";
 /* styles & images */
 import "./Home.css";
 import { motion } from "framer-motion";
-import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import uploadButton from "../../components/ListCourses/Assets/uploadButton.png";
+import searchButton from "../../../components/ListCourses/Assets/searchButton.png"
+import uploadButton from "../../../components/ListCourses/Assets/uploadButton.png";
 import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";

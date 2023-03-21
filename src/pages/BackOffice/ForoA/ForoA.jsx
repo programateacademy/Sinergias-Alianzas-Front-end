@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents } from "../../store/actions/componentSlice";
+import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
-import "./css/HomeU.css";
+import "./css/ForoA.css";
 import { motion } from "framer-motion";
-import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import loaded from "../../components/ListCourses/Assets/preload.png";
+import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
+import loaded from "../../../components/ListCourses/Assets/preload.png";
 
 import { useNavigate } from "react-router-dom";
 
-import CardComponentUser from "../../components/CardComponetUser/CardComponetUser";
+import { Link } from "react-router-dom";
+import CardForo from "../../../components/CardForo/CardForo";
 
 
 
@@ -70,7 +71,7 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
   return (
     <>
       <div className="containerTitle">
-        <h1>CAJA DE HERRAMIENTAS</h1>
+        <h1>FOROS</h1>
       </div>
 
       <div className="containerDashboard">
@@ -90,12 +91,21 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
               onChange={searcher}
             />
           </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link className="link" to={"/home"}>
+            <button className="buttonComponent">Componentes</button>
+            </Link>
+          </motion.button>
         </div>
 
         <div className="listCards">
           {results &&
             results.map((item, index) => (
-              <CardComponentUser key={index} {...item} />
+              <CardForo key={index} {...item} />
             ))}
         </div>
       </div>

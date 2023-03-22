@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import CardForo from "../../../components/CardForo/CardForo";
 
 
+
 const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
   if(isAdminOrUser === true){
     setIsAdminOrUse(!isAdminOrUser);

@@ -203,6 +203,14 @@ function App() {
             </Layout>
           }
         />
+        <Route
+          path="/seeforo/:id"
+          element={
+            <Layout>
+              <SeeForo/>
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

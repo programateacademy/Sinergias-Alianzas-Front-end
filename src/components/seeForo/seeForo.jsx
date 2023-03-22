@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./css/seeForo.css";
@@ -14,7 +14,6 @@ const SeeComponent = () => {
   //Dispatch action
   const dispatch = useDispatch();
   const { id } = useParams();
-
   useEffect(() => {
     if (id) {
       dispatch(getComponent(id));
@@ -25,8 +24,10 @@ const SeeComponent = () => {
   const { componente } = useSelector((state) => ({ ...state.componente }));
   console.log(foro)
   return (
-    <div>
-      <ViewForo {...componente} />
+    <div className="cards">
+      {foro.map((item) => (
+        <ViewForo key={item._id} {...item} {...componente}/>
+      ))}
     </div>
   );
 };

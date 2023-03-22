@@ -5,9 +5,10 @@ import "./css/seeForo.css";
 
 //Redux actions
 import { getComponent } from "../../store/actions/componentSlice";
-import { getQuestions } from "../../store/thunks/foroThunks";
+
 
 import ViewForo from "./ViewForo";
+import { getQuestions } from "../../store/thunks/foroThunks";
 
 const SeeComponent = () => {
   //Dispatch action

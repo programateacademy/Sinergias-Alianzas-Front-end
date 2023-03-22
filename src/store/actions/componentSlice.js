@@ -63,10 +63,9 @@ export const updateComponent = createAsyncThunk(
 // Delete component
 export const deleteComponent = (id, data) => async (dispatch) => {
   try {
-    const res = await api.deleteComponent(id);
+    const response = await api.deleteComponent(id);
     return response.data;
-    return response.data;
-    dispatch({ type: deleteComponent, payload: res.data });
+    
   } catch (error) {  
     console.log("Error al eliminar el componente", error.message);
   }

@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getForo } from "../thunks/foroThunks"
+import { addAnswer } from "../thunks/answerThunk";
+import { getQuestions,
+         getQuestionReport, 
+         addQuestion, 
+         updateQuestion,  
+         deleteQuestion, 
+         updateLikeQuestion, 
+         updateReportQuestion } from "../thunks/foroThunks"
 
 const foroSlice = createSlice({
     name: "foro",
@@ -10,12 +17,40 @@ const foroSlice = createSlice({
       loading: false,
     },
     extraReducers: {
-        [getForo.fulfilled]: (state, action) => {
+        [getQuestions.fulfilled]: (state, action) => {
             state.loading = false;
             state.foro = action.payload;
-        }
+        },
+        [getQuestionReport.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foroReport = action.payload;
+        },
+        [addQuestion.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [updateQuestion.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [deleteQuestion.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [updateLikeQuestion.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [updateReportQuestion.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [addAnswer.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
     }
-})
+});
 
 
 export default foroSlice.reducer;

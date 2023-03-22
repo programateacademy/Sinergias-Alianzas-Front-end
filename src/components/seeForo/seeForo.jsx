@@ -5,7 +5,7 @@ import "./css/seeForo.css";
 
 //Redux actions
 import { getComponent } from "../../store/actions/componentSlice";
-import { getForo } from "../../store/thunks/foroThunks";
+import { getQuestions } from "../../store/thunks/foroThunks";
 
 import ViewForo from "./ViewForo";
 
@@ -16,9 +16,7 @@ const SeeComponent = () => {
   useEffect(() => {
     if (id) {
       dispatch(getComponent(id));
-    }
-    if (id) {
-      dispatch(getForo(id));
+      dispatch(getQuestions(id));
     }
   }, [id]);
   const { foro } = useSelector((state) => ({ ...state.foro }));

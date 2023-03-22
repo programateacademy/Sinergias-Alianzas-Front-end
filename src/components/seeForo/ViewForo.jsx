@@ -15,13 +15,20 @@ import Eye from "./assets/eye.png";
 import Coment from "./assets/coment.png";
 import Edit from "./assets/edit.png";
 import Trash from "./assets/trash.png";
+import Report from "./assets/report.png";
 
 import CircularOption from "../CirculaOption/CircularOption";
 import ButtonsForum from "./ButtonsForum";
 import ModalQuestion from "../ModalQuestion/ModalQuestion";
 import CommentList from "./commentList";
 
-const ViewComponent = ({ compTitulo, compColor, compImgPpal, question, author }) => {
+const ViewComponent = ({
+  compTitulo,
+  compColor,
+  compImgPpal,
+  question,
+  author,
+}) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -171,7 +178,7 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, question, author })
                 <CircularOption />
               </Container>
             </Col>
-            <Foro question={question} author={author} compColor={compColor}/>
+            <Foro question={question} author={author} compColor={compColor} />
           </Row>
         </div>
         <Pagination>
@@ -229,6 +236,15 @@ const Foro = ({ question, author, compColor }) => {
                 />{" "}
               </svg>
               <p className="text_option">Me gusta</p>
+            </motion.button>
+            <motion.button
+              className="button_option"
+              whileHover={{ scale: 1.04 }}
+              onHoverStart={(e) => {}}
+              onHoverEnd={(e) => {}}
+            >
+              <img src={Report} alt="Reportar" />
+              <p className="text_option">Reporte</p>
             </motion.button>
           </Col>
         </Row>

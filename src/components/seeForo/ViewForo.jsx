@@ -2,17 +2,20 @@ import React from "react";
 import "./css/seeForo.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Pagination } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
+
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
 import forumimg from "../../components/ListCourses/Assets/forum.png";
 import filterimg from "../../components/ListCourses/Assets/filter.png";
+import addimg from "../../components/ListCourses/Assets/add.png";
+
 import { Link } from "react-router-dom";
 import Eye from "./assets/eye.png";
 import Coment from "./assets/coment.png";
 import Edit from "./assets/edit.png";
 import Trash from "./assets/trash.png";
-import { Pagination } from "react-bootstrap";
+
 import CircularOption from "../CirculaOption/CircularOption";
 import ButtonsForum from "./ButtonsForum";
 import ModalQuestion from "../ModalQuestion/ModalQuestion";
@@ -56,8 +59,9 @@ const ViewComponent = ({
           >
             <img src={searchButton} alt="" />
 
-            <input type="text" placeholder=" Buscar" />
+            <input type="text" placeholder="Buscar" />
           </motion.button>
+
           <Link className="link" to={"/foroa"}>
             <motion.button
               className="box1"
@@ -70,10 +74,12 @@ const ViewComponent = ({
               <input
                 type="text"
                 style={{ cursor: "pointer" }}
-                placeholder=" Foro"
+                placeholder="Foro"
+                disabled={true}
               />
             </motion.button>
           </Link>
+
           <motion.button
             className="box1"
             whileHover={{ scale: 1.2 }}
@@ -87,22 +93,41 @@ const ViewComponent = ({
               type="text"
               style={{ cursor: "pointer" }}
               placeholder=" Filtro"
+              disabled={true}
+            />
+          </motion.button>
+
+          <motion.button
+            className="box1"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            style={{ background: `${compColor}` }}
+            onClick={handleShow}
+          >
+            <img src={addimg} alt="" />
+
+            <input
+              type="text"
+              style={{ cursor: "pointer" }}
+              placeholder="Preguntar"
+              disabled={true}
             />
           </motion.button>
         </div>
 
         <div className="container-fluid container_info">
           <Row>
-            <Col className="col-lg-3">
+            <Col className="col-lg-3 col-12" style={{ marginBottom: "10px" }}>
               <Container
-                className="border-foro"
+                className="border-foro filter"
                 style={{ border: `2px solid ${compColor}` }}
               >
                 <h2>Filtro de busqueda</h2>
                 <CircularOption />
               </Container>
             </Col>
-            <Col className="col-lg-9">
+            <Col className="col-lg-9 col-12">
               <Container
                 className="border-foro"
                 style={{ border: `2px solid ${compColor}` }}
@@ -154,118 +179,49 @@ const ViewComponent = ({
                   </Col>
                 </Row>
                 <Row>
-                  <Col md={12} className="d-none d-md-block">
-                    <Row className="d-flex align-items-center">
-                      <ButtonsForum compColor={compColor} />
-                    </Row>
+                  <Col md={3} xs={12}>
+                    <motion.button
+                      className="button_option"
+                      whileHover={{ scale: 1.04 }}
+                      onHoverStart={(e) => {}}
+                      onHoverEnd={(e) => {}}
+                    >
+                      <img src={Coment} alt="Comentar" />
+                      <p className="text_option">Respuestas</p>
+                    </motion.button>
                   </Col>
-                  <Col md={12} className="d-md-none">
-                    <Row>
-                      <Col xs={12}>
-                        <motion.button
-                          className="button_option"
-                          whileHover={{ scale: 1.04 }}
-                          onHoverStart={(e) => {}}
-                          onHoverEnd={(e) => {}}
-                          onClick={handleShow}
-                        >
-                          <img src={Coment} alt="Comentar" />
-                          <p className="text_option">Respuestas</p>
-                        </motion.button>
-                        <div className="model_box">
-                          <Modal
-                            show={show}
-                            onHide={handleClose}
-                            backdrop="static"
-                            keyboard={false}
-                          >
-                            <Modal.Header closeButton>
-                              <Modal.Title>Agregar Pregunta</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                              <form>
-                                <div className="form-group mt-3">
-                                  <input
-                                    type="number"
-                                    className="form-control"
-                                    id="exampleInputEmail1"
-                                    aria-describedby="emailHelp"
-                                    placeholder="Autor"
-                                    required
-                                  />
-                                </div>
-                                <br />
-                                <div className="form-group">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    id="addmovie_name"
-                                    aria-describedby="emailHelp"
-                                    placeholder="Comentario de usuario"
-                                    required
-                                  />
-                                </div>
-                                <button
-                                  type="submit"
-                                  className="btn btn-success mt-4"
-                                  style={{
-                                    background: `${compColor}`,
-                                    border: `2px solid ${compColor}`,
-                                  }}
-                                >
-                                  Modificar
-                                </button>
-                              </form>
-                            </Modal.Body>
-
-                            <Modal.Footer>
-                              <Button variant="secondary" onClick={handleClose}>
-                                Cerrar
-                              </Button>
-                            </Modal.Footer>
-                          </Modal>
-                        </div>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={12}>
-                        <motion.button
-                          className="button_option"
-                          whileHover={{ scale: 1.04 }}
-                          onHoverStart={(e) => {}}
-                          onHoverEnd={(e) => {}}
-                        >
-                          <img src={Edit} alt="Editar" />
-                          <p className="text_option">Editar</p>
-                        </motion.button>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={12}>
-                        <motion.button
-                          className="button_option"
-                          whileHover={{ scale: 1.04 }}
-                          onHoverStart={(e) => {}}
-                          onHoverEnd={(e) => {}}
-                        >
-                          <img src={Trash} alt="Eliminar" />
-                          <p className="text_option">Eliminar</p>
-                        </motion.button>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={12}>
-                        <motion.button
-                          className="button_option"
-                          whileHover={{ scale: 1.04 }}
-                          onHoverStart={(e) => {}}
-                          onHoverEnd={(e) => {}}
-                        >
-                          <img src={Eye} alt="Ocultar" />
-                          <p className="text_option">Ocultar</p>
-                        </motion.button>
-                      </Col>
-                    </Row>
+                  <Col md={3} xs={12}>
+                    <motion.button
+                      className="button_option"
+                      whileHover={{ scale: 1.04 }}
+                      onHoverStart={(e) => {}}
+                      onHoverEnd={(e) => {}}
+                    >
+                      <img src={Edit} alt="Editar" />
+                      <p className="text_option">Editar</p>
+                    </motion.button>
+                  </Col>
+                  <Col md={3} xs={12}>
+                    <motion.button
+                      className="button_option"
+                      whileHover={{ scale: 1.04 }}
+                      onHoverStart={(e) => {}}
+                      onHoverEnd={(e) => {}}
+                    >
+                      <img src={Trash} alt="Eliminar" />
+                      <p className="text_option">Eliminar</p>
+                    </motion.button>
+                  </Col>
+                  <Col md={3} xs={12}>
+                    <motion.button
+                      className="button_option"
+                      whileHover={{ scale: 1.04 }}
+                      onHoverStart={(e) => {}}
+                      onHoverEnd={(e) => {}}
+                    >
+                      <img src={Eye} alt="Ocultar" />
+                      <p className="text_option">Ocultar</p>
+                    </motion.button>
                   </Col>
                 </Row>
               </Container>

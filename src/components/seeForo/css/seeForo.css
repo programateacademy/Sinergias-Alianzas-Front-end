@@ -45,7 +45,9 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.filter{
+  padding-bottom: 15px;
+}
 .text_option {
   margin-top: 15px;
   margin-bottom: 1rem;
@@ -120,9 +122,9 @@
     width: 10vw;
   }
 }
-@media screen and (max-width: 480px) {
-  .button-container button {
-    font-size: 0 !important; /* Oculta el texto del botón */
+@media screen and (max-width: 768px) {
+  .button-container{
+    flex-direction: column;
   }
 }
 @media screen and (min-width: 770px) {

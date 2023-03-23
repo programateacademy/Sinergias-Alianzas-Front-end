@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./css/seeForo.css";
@@ -25,9 +25,7 @@ const SeeComponent = () => {
   console.log(foro)
   return (
     <div className="cards">
-      {foro.map((item) => (
-        <ViewForo key={item._id} {...item} {...componente}/>
-      ))}
+        <ViewForo foro={foro} {...componente}/>
     </div>
   );
 };

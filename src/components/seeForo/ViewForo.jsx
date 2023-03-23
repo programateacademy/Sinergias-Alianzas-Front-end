@@ -121,7 +121,7 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
                       className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Autor"
+                      placeholder="Nombre"
                       required
                     />
                   </div>

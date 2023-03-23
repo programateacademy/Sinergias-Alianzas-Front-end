@@ -3,18 +3,16 @@ import "../../css/seeForo.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 // importing svg elements
-import Eye from "../../assets/eye.png";
 import Coment from "../../assets/coment.png";
-import Edit from "../../assets/edit.png";
 import Trash from "../../assets/trash.png";
-import Report from "../../assets/report.png";
-import Response from "../../assets/response.png";
 import Answers from "../Answers/Answers";
 //Needed lybraries
 import moment from "moment";// importing moment.js
+import Response from "../Response/Response";
+import Hide from "../Hide/Hide"
+import Delete from "../Delete/Delete"
 
-
- 
+import Edit from "../Edit/Edit"
 //const formattedDate = () =>
 //     `${currentDate().getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`;
 const Foro = ({
@@ -29,11 +27,22 @@ const Foro = ({
 }) => {
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
+  
+  const [reports, setReports] = useState(reportNumber);
+  const [reported, setReported] = useState(false);
+  const editDescriptions = question
 
   const updateLike = () => {
     if (!liked) {
       setLike(like + 1);
       setLiked(true);
+    }
+  };
+
+  const updateReport = () => {
+    if (!reported) {
+      setReports(reportNumber + 1);
+      setReported(true);
     }
   };
   return (
@@ -83,20 +92,43 @@ const Foro = ({
             </motion.button>
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <motion.button
+          <motion.button
               className="button_option"
               whileHover={{ scale: 1.04 }}
               onHoverStart={(e) => {}}
               onHoverEnd={(e) => {}}
+              onClick={updateReport}
             >
               <h3
                 className="text_option"
                 style={{ color: "#B62C2C", marginRight: "10px" }}
               >
-                {reportNumber}
+                {reports}
               </h3>
 
-              <img src={Report} alt="Reportar" />
+              <svg
+                width="34"
+                height="35"
+                viewBox="0 0 34 35"
+                fill={reported ? "#9B0000" :"white" }
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.9999 13.1245V20.4162M16.9999 31.2225H8.41486C3.49903 31.2225 1.44486 27.6058 3.82486 23.187L8.24486 14.9912L12.4099 7.29121C14.9315 2.60996 19.0682 2.60996 21.5899 7.29121L25.7549 15.0058L30.1749 23.2016C32.5549 27.6204 30.4865 31.237 25.5849 31.237H16.9999V31.2225Z"
+                  stroke={reported ? "white" : "#9B0000"}
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16.9932 24.792H17.0052"
+                  stroke={reported ? "white" : "#9B0000"}
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
               <p className="text_option">Reporte</p>
             </motion.button>
           </Col>
@@ -117,17 +149,9 @@ const Foro = ({
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-          <Col md={2} sm={6} xs={6}>
-            <motion.button
-              className="button_option"
-              whileHover={{ scale: 1.04 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
-              <img src={Response} alt="Responder" />
-              <p className="text_option">Responder</p>
-            </motion.button>
-          </Col>
+        <Col md={2} sm={6} xs={6}>
+          <Response compColor={compColor} />
+        </Col>
           <Col md={2} sm={6} xs={6}>
             <motion.button
               className="button_option"
@@ -140,37 +164,13 @@ const Foro = ({
             </motion.button>
           </Col>
           <Col md={2} sm={4} xs={6}>
-            <motion.button
-              className="button_option"
-              whileHover={{ scale: 1.04 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
-              <img src={Edit} alt="Editar" />
-              <p className="text_option">Editar</p>
-            </motion.button>
+          <Edit compColor={compColor} author={author} description={editDescriptions}/>
           </Col>
           <Col md={2} sm={4} xs={6}>
-            <motion.button
-              className="button_option"
-              whileHover={{ scale: 1.04 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
-              <img src={Trash} alt="Eliminar" />
-              <p className="text_option">Eliminar</p>
-            </motion.button>
+            <Delete compColor={compColor}/>
           </Col>
           <Col md={2} sm={4} xs={12}>
-            <motion.button
-              className="button_option"
-              whileHover={{ scale: 1.04 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
-              <img src={Eye} alt="Ocultar" />
-              <p className="text_option">Ocultar</p>
-            </motion.button>
+          <Hide compColor={compColor}/>
           </Col>
         </Row>
         <div>

@@ -3,11 +3,24 @@ import "../../css/seeForo.css";
 import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 
-import response from "../../assets/response.png";
-const Response = ({ compColor }) => {
+import Edit from "../../assets/edit.png";
+const Response = ({ compColor, author, description, question }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const [authorValue, setAuthorValue] = useState(author);
+  const [descriptionValue, setDescriptionValue] = useState(description);
+  const [questionValue, setQuestionValue] = useState(question);
+
+  const handleAuthorChange = (e) => {
+    setAuthorValue(e.target.value);
+  };
+  const handleDescriptionChange = (e) => {
+    setDescriptionValue(e.target.value);
+  };
+  const handleQuestionChange = (e) => {
+    setQuestionValue(e.target.value);
+  };
   return (
     <>
       <motion.button
@@ -15,10 +28,11 @@ const Response = ({ compColor }) => {
         whileHover={{ scale: 1.04 }}
         onHoverStart={(e) => {}}
         onHoverEnd={(e) => {}}
+        onChange
         onClick={handleShow}
       >
-        <img src={response} alt="Responder" />
-        <p className="text_option">Responder</p>
+        <img src={Edit} alt="Editar" />
+        <p className="text_option">Editar</p>
       </motion.button>
       <div className="model_box">
         <Modal
@@ -34,6 +48,8 @@ const Response = ({ compColor }) => {
             <form>
               <div className="form-group mt-3">
                 <input
+                  value={authorValue}
+                  onChange={handleAuthorChange}
                   type="text"
                   className="form-control"
                   id="exampleInputEmail1"
@@ -45,6 +61,8 @@ const Response = ({ compColor }) => {
               <br />
               <div className="form-group">
                 <input
+                  value={descriptionValue}
+                  onChange={handleDescriptionChange}
                   type="text"
                   className="form-control"
                   id="addmovie_name"

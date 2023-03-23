@@ -3,7 +3,7 @@ import "../../css/seeForo.css";
 import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 
-import response from "../../assets/response.png";
+import Eye from "../../assets/eye.png";
 const Response = ({ compColor }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -17,8 +17,8 @@ const Response = ({ compColor }) => {
         onHoverEnd={(e) => {}}
         onClick={handleShow}
       >
-        <img src={response} alt="Responder" />
-        <p className="text_option">Responder</p>
+        <img src={Eye} alt="Ocultar" />
+        <p className="text_option">Ocultar</p>
       </motion.button>
       <div className="model_box">
         <Modal
@@ -28,31 +28,11 @@ const Response = ({ compColor }) => {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Agregar Comentario</Modal.Title>
+            <Modal.Title>Ocultar Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
-              <div className="form-group mt-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Nombre"
-                  required
-                />
-              </div>
-              <br />
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="addmovie_name"
-                  aria-describedby="emailHelp"
-                  placeholder="Pregunta Aqui..."
-                  required
-                />
-              </div>
+              <h6>¿Estas seguro de esta acción?</h6>
               <button
                 type="submit"
                 className="btn btn-success mt-4"
@@ -61,11 +41,10 @@ const Response = ({ compColor }) => {
                   border: `2px solid ${compColor}`,
                 }}
               >
-                Agregar
+                Ocultar
               </button>
             </form>
           </Modal.Body>
-
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Cerrar

@@ -4,9 +4,9 @@ import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 
 import response from "../../assets/response.png";
-const Response = ({compColor, showOpen}) => {
+const Response = ({ compColor }) => {
   const [show, setShow] = useState(false);
-  const handleShow = () => show(true);
+  const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   return (
     <Col md={2} sm={6} xs={6}>

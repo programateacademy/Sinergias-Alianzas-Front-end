@@ -2,12 +2,61 @@ import { React, useState, useEffect } from "react";
 import "../../css/seeForo.css";
 import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
-
+import { useDispatch, useSelector } from "react-redux";
 import response from "../../assets/response.png";
-const Response = ({ compColor }) => {
+import { addAnswer} from "../../../../store/thunks/answerThunk"
+import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
+const initialState = {
+  author: "",
+  description: "",
+  _id: ""
+};
+
+const Response = ({ compColor, idQuestion }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const dispatch = useDispatch();
+  const [newAnswer, setNewAnswer] = useState(initialState);
+  const { id } = useParams()
+  const {
+    author,
+    description
+    } = newAnswer;
+  
+   //   Function for validation in the submission of the form
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      author &&
+      description
+    ) {
+      const answerData = {
+        ...newAnswer,
+        _id: idQuestion
+      };
+  console.log(answerData)
+      dispatch(addAnswer({ id, answerData, toast }));
+      handleClear();
+    }
+  };
+  
+  // Function to capture when the value of the input changes
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewAnswer({ ...newAnswer, [name]: value });
+  };
+  
+  // Function to clear the form
+  const handleClear = () => {
+    setNewAnswer({
+      author: "",
+      description: ""
+    });
+  };
+
+
   return (
     <>
       <motion.button
@@ -22,7 +71,7 @@ const Response = ({ compColor }) => {
       </motion.button>
       <div className="model_box">
         <Modal
-          show={show}
+          show={show} 
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
@@ -39,7 +88,11 @@ const Response = ({ compColor }) => {
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Nombre"
+                  name="author"
+                  value={author}
+                  onChange={onInputChange}
                   required
+                  
                 />
               </div>
               <br />
@@ -50,12 +103,16 @@ const Response = ({ compColor }) => {
                   id="addmovie_name"
                   aria-describedby="emailHelp"
                   placeholder="Pregunta Aqui..."
+                  name="description"
+                  value={description}
+                  onChange={onInputChange}
                   required
                 />
               </div>
               <button
                 type="submit"
                 className="btn btn-success mt-4"
+                onClick={handleSubmit}
                 style={{
                   background: `${compColor}`,
                   border: `2px solid ${compColor}`,

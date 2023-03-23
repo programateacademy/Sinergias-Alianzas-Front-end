@@ -5,8 +5,8 @@ import axios from "axios";
 const API = axios.create({ baseURL: "http://localhost:5000" }); // local
 
 // Request to add new answer in the question
-export const addAnswer = (answersData) => 
-    API.post("/answerRoute/", answersData);
+export const addAnswer = (answerData) => 
+    API.post("/answerRoute/", answerData);
 
 //Request to update the answer info
 export const updateAnswer = (updateAnswersData) =>

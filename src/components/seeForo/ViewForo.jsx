@@ -44,17 +44,17 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
   const [newQuestion, setNewQuestion] = useState(initialState);
   const dispatch = useDispatch();
 
-  // const {
-  // author2,
-  // question2
-  // } = newQuestion;
+  const {
+  author,
+  question
+  } = newQuestion;
 
  //   Function for validation in the submission of the form
  const handleSubmit = (e) => {
   e.preventDefault();
   if (
-    newQuestion.author &&
-    newQuestion.question
+    author &&
+    question
   ) {
     const questionData = {
       ...newQuestion
@@ -177,14 +177,10 @@ const handleClear = () => {
                       className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-<<<<<<< HEAD
-                      placeholder="Autor"
-                      name="author2"
-                      value={newQuestion.author}
+                      name="author"
+                      value={author}
                       onChange={onInputChange}
-=======
                       placeholder="Nombre"
->>>>>>> f/jeferson
                       required
                     />
                   </div>
@@ -196,8 +192,8 @@ const handleClear = () => {
                       id="addmovie_name"
                       aria-describedby="emailHelp"
                       placeholder="Pregunta Aqui..."
-                      name="question2"
-                      value={newQuestion.question}
+                      name="question"
+                      value={question}
                       onChange={onInputChange}
                       required
                     />
@@ -238,7 +234,7 @@ const handleClear = () => {
             </Col>
             <Col className="col-lg-9 col-12">
               {foro.map((item) => (
-                <Foro key={item._id} {...item} compColor={compColor}/>
+                <Foro key={item._id} {...item} compColor={compColor} />
               ))}
             </Col>
           </Row>

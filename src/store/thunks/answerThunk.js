@@ -3,13 +3,13 @@ import * as answerSlice from "../services/servicesAnswers";
 import { getQuestions } from "../thunks/foroThunks"
 
   //Add new answer in the question
-  export const addAnswer= createAsyncThunk(
+  export const addAnswer = createAsyncThunk(
     "foro/addAnswer",
-    async ({ id , answersData, toast }, { rejectWithValue }) => {
+    async ({ id, answerData, toast }, { rejectWithValue }) => {
       try {
-        await answerSlice.addAnswer(answersData);
+        await answerSlice.addAnswer(answerData);
         toast.success("Respuesta creada satisfactoriamente");
-        getQuestions(id);
+        return getQuestions(id);
       } catch (error) {
         return rejectWithValue(error.response.data);
       }

@@ -16,6 +16,7 @@ import Edit from "../Edit/Edit"
 //const formattedDate = () =>
 //     `${currentDate().getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`;
 const Foro = ({
+  _id,
   reportNumber,
   likes,
   question,
@@ -25,6 +26,7 @@ const Foro = ({
   description,
   timestamp,
 }) => {
+
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
   
@@ -150,7 +152,7 @@ const Foro = ({
         </Row>
         <Row className="d-flex justify-content-between">
         <Col md={2} sm={6} xs={6}>
-          <Response compColor={compColor} />
+          <Response compColor={compColor} idQuestion={_id}  />
         </Col>
           <Col md={2} sm={6} xs={6}>
             <motion.button
@@ -164,7 +166,7 @@ const Foro = ({
             </motion.button>
           </Col>
           <Col md={2} sm={4} xs={6}>
-          <Edit compColor={compColor} author={author} description={editDescriptions}/>
+          <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions}/>
           </Col>
           <Col md={2} sm={4} xs={6}>
             <Delete compColor={compColor}/>
@@ -174,7 +176,7 @@ const Foro = ({
           </Col>
         </Row>
         <div>
-          {answers.map((item) => (
+          {answers?.map((item) => (
             <Answers key={item._id} {...item} compColor={compColor} />
           ))}
         </div>

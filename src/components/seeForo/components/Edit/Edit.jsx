@@ -4,14 +4,14 @@ import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 
 import Edit from "../../assets/edit.png";
-const Response = ({ compColor, author, description, question }) => {
+const Response = ({ compColor, authorQuestion, descriptionQuestion, question }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [authorValue, setAuthorValue] = useState(author);
-  const [descriptionValue, setDescriptionValue] = useState(description);
+  const [authorValue, setAuthorValue] = useState(authorQuestion);
+  const [descriptionValue, setDescriptionValue] = useState(descriptionQuestion);
   const [questionValue, setQuestionValue] = useState(question);
-
+console.log(question)
   const handleAuthorChange = (e) => {
     setAuthorValue(e.target.value);
   };

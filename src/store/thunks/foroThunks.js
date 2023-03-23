@@ -30,9 +30,9 @@ export const getQuestionReport = createAsyncThunk(
   //Add new question
 export const addQuestion= createAsyncThunk(
     "foro/addQuestion",
-    async ({ updateQuestionData, id, toast }, { rejectWithValue }) => {
+    async ({ questionData, id, toast }, { rejectWithValue }) => {
       try {
-        const response = await foroSlice.addQuestion(updateQuestionData, id);
+        const response = await foroSlice.addQuestion(questionData, id);
         toast.success("Pregunta creada satisfactoriamente");
         return response.data;
       } catch (error) {

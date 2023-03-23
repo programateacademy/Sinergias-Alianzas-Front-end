@@ -22,7 +22,8 @@
   margin: 20px 0;
 }
 .container_buttons {
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
 }
 .container_info {
   margin: 20px 0;

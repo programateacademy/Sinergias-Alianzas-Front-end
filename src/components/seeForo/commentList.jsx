@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-
 const initialComments = [
   {
     id: 1,
     username: "John",
     comment: "This is a sample comment.",
+    time: new Date(),
     replies: [
       {
         id: 2,
         username: "Jane",
         comment: "I agree with you, John.",
-      },
+        time: new Date(),
+     },
     ],
   },
 ];
@@ -20,19 +21,26 @@ function CommentList({ comments = initialComments }) {
   const [newComment, setNewComment] = useState({ username: "", comment: "" });
   const [commentList, setCommentList] = useState(comments);
 
-  function Comment({ username, comment, replies = [] }) {
+  function Comment({ username, comment, replies = [], timestamp }) {
     return (
       <div>
-        <h3>{username}</h3>
-        <p>{comment}</p>
-        {replies && replies.map((reply) => (
-          <div style={{ marginLeft: "20px" }}>
-            <Comment {...reply} />
+        <div style={{ display: "flex" }}>
+          <div className="timestamp">{timestamp}</div>
+          <div style={{ marginLeft: "10px" }}>
+            <h2>{username}</h2>
+            <p>{comment}</p>
           </div>
-        ))}
+        </div>
+        {replies &&
+          replies.map((reply) => (
+            <div style={{ marginLeft: "20px" }}>
+              <Comment {...reply} />
+            </div>
+          ))}
       </div>
     );
   }
+
 
   function NewComment() {
     const [newComment, setNewComment] = useState({ username: "", comment: "" });
@@ -59,6 +67,7 @@ function CommentList({ comments = initialComments }) {
           id: commentList.length + 1,
           username: newComment.username,
           comment: newComment.comment,
+          time: new Date(),
         },
       ];
       setCommentList(newCommentList);
@@ -102,4 +111,5 @@ function CommentList({ comments = initialComments }) {
     </div>
   );
 }
+
 export default CommentList;

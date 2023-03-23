@@ -4,19 +4,30 @@ import axios from "axios";
 // Create the api url
 const API = axios.create({ baseURL: "http://localhost:5000" }); // local
 
-//Request to get the component info
-export const getForo = (id) => API.get(`/foroRoute/${id}`);
+//Request to get the question Foro info
+export const getQuestions = (id) => 
+    API.get(`/foroRoute/${id}`);
 
-// //Request to get the components
-// export const getComponents = () => API.get("/component");
+//Request to get the question and answers report
+export const getQuestionReport = () => 
+    API.get("/");
 
-// // Request to enter all component information
-// export const addComponent = (componentData) =>
-//   API.post("/component/new", componentData);
+// Request to add new question information
+export const addQuestion = (questionData, id) => 
+    API.post(`/foroRoute/${id}`, questionData);
 
-// //Request to update the component info
-// export const updateComponent = (updatedComponentData, id) =>
-//   API.patch(`/component/${id}`, updatedComponentData);
+//Request to update the question info
+export const updateQuestion = (updateQuestionData) =>
+    API.patch("/foroRoute/", updateQuestionData);
 
-// //Request to change the visibility of the component
-// export const deleteComponent = (id) => API.put(`/component/delete/${id}`);
+//Request to change the visibility of the question
+export const deleteQuestion = (id) => 
+    API.put("/foroRoute/", id);
+ 
+//Request to update the question likes
+export const updateLikeQuestion = (updateLikeQuestionData) =>
+    API.patch("/foroRoute/updateNumberLike", updateLikeQuestionData);
+
+//Request to update the question likes
+export const updateReportQuestion = (updateReportQuestionData) =>
+    API.patch("/foroRoute/updateReport", updateReportQuestionData);

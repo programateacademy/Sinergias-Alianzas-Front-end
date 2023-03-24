@@ -2,12 +2,26 @@ import { React, useState, useEffect } from "react";
 import "../../css/seeForo.css";
 import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
+import { deleteQuestion } from "../../../../store/thunks/foroThunks";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import Trash from "../../assets/trash.png";
-const Response = ({ compColor }) => {
+const Response = ({ compColor, id }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const dispatch = useDispatch();
+
+  const handleDelete = (e) => {
+    e.preventDefault();{
+      const visibleQuestion = {
+        _id: id
+      }
+      console.log(visibleQuestion);
+      dispatch(deleteQuestion({ visibleQuestion, toast }));
+    }
+  };
   return (
     <>
       <motion.button
@@ -36,6 +50,7 @@ const Response = ({ compColor }) => {
               <button
                 type="submit"
                 className="btn btn-success mt-4"
+                onClick={handleDelete}
                 style={{
                   background: `${compColor}`,
                   border: `2px solid ${compColor}`,

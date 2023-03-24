@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import "../../css/seeForo.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
@@ -12,7 +12,13 @@ import Response from "../Response/Response";
 import Hide from "../Hide/Hide"
 import Delete from "../Delete/Delete"
 
+
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { updateLikeQuestion, updateReportQuestion } from "../../../../store/thunks/foroThunks";
+
 import Edit from "../Edit/Edit"
+
 //const formattedDate = () =>
 //     `${currentDate().getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`;
 const Foro = ({
@@ -27,7 +33,7 @@ const Foro = ({
   timestamp,
   id_type
 }) => {
-
+  const dispatch = useDispatch();
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
   
@@ -35,19 +41,28 @@ const Foro = ({
   const [reported, setReported] = useState(false);
   const editDescriptions = question
 
+
   const updateLike = () => {
     if (!liked) {
-      setLike(like + 1);
-      setLiked(true);
+      setLiked(true);  
+      dispatch(updateLikeQuestion({ like, _id, toast}));
     }
   };
 
   const updateReport = () => {
     if (!reported) {
-      setReports(reportNumber + 1);
       setReported(true);
+      dispatch(updateReportQuestion({reports, _id, toast}))
     }
   };
+
+  // useEffect(() => {
+  //   useCallback(() => {
+  //       dispatch(updateLikeQuestion({ updateLikeQuestionData, toast}));
+  //     }, [like])
+    
+  // }, []);
+  
   return (
     <div>
       <Container
@@ -170,7 +185,7 @@ const Foro = ({
           <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions} id_typeQuestion={id_type} id={_id} />
           </Col>
           <Col md={2} sm={4} xs={6}>
-            <Delete compColor={compColor}/>
+            <Delete compColor={compColor} id={_id}/>
           </Col>
           <Col md={2} sm={4} xs={12}>
           <Hide compColor={compColor}/>

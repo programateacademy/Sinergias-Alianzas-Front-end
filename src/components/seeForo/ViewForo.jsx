@@ -40,7 +40,6 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const { id } = useParams();
-
   const [newQuestion, setNewQuestion] = useState(initialState);
   const dispatch = useDispatch();
 

@@ -25,6 +25,7 @@ const Foro = ({
   answers,
   description,
   timestamp,
+  id_type
 }) => {
 
   const [like, setLike] = useState(likes);
@@ -166,7 +167,7 @@ const Foro = ({
             </motion.button>
           </Col>
           <Col md={2} sm={4} xs={6}>
-          <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions}/>
+          <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions} id_typeQuestion={id_type} id={_id} />
           </Col>
           <Col md={2} sm={4} xs={6}>
             <Delete compColor={compColor}/>

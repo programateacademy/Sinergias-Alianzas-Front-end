@@ -49,6 +49,7 @@ export const updateQuestion = createAsyncThunk(
       { rejectWithValue }
     ) => {
       try {
+        console.log('updateQuestionData', updateQuestionData)
         const response = await foroSlice.updateQuestion(updateQuestionData);
         toast.success("Pregunta editada satisfactoriamente");
         return response.data;

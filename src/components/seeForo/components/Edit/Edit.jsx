@@ -4,22 +4,34 @@ import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 
 import Edit from "../../assets/edit.png";
-const Response = ({ compColor, authorQuestion, descriptionQuestion, question }) => {
+import { updateQuestion } from "../../../../store/thunks/foroThunks";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuestion, id}) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const [authorValue, setAuthorValue] = useState(authorQuestion);
   const [descriptionValue, setDescriptionValue] = useState(descriptionQuestion);
-  const [questionValue, setQuestionValue] = useState(question);
-console.log(question)
+  const dispatch = useDispatch();
   const handleAuthorChange = (e) => {
     setAuthorValue(e.target.value);
   };
   const handleDescriptionChange = (e) => {
     setDescriptionValue(e.target.value);
   };
-  const handleQuestionChange = (e) => {
-    setQuestionValue(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();{
+      const updateQuestionData = {
+        author: authorValue,
+        question: descriptionValue,
+        id_type: id_typeQuestion,
+        _id: id
+      };
+      console.log(updateQuestionData)
+      dispatch(updateQuestion({ updateQuestionData, toast }));
+    }
   };
   return (
     <>
@@ -74,6 +86,7 @@ console.log(question)
               <button
                 type="submit"
                 className="btn btn-success mt-4"
+                onClick={handleSubmit}
                 style={{
                   background: `${compColor}`,
                   border: `2px solid ${compColor}`,

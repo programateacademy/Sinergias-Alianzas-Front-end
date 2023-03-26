@@ -1,4 +1,4 @@
-.preload {
+/* .preload {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +21,36 @@
 
 .preload.loaded img {
   opacity: 1;
+} */
+
+ .preload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: #fff;
+  animation-name: fadeOut;
+  animation-duration: 2.5s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.preload img {
+    width: 50vh;
+    height: 30vh;
 }
 .containerTitle2 {
     position: absolute;
@@ -32,7 +62,7 @@
   .containerTitle2 h1 {
     background-color: white;
     width: 60vw;
-    font-size: 4vw;
+    font-size: 5vw;
     text-align: center;
   }
   .containerDashboard {
@@ -115,6 +145,12 @@
   .buttons_cards img {
     width: 17vw;
     margin: 0 8px;
+  }
+  @media screen and (min-width: 320px) {
+    .imageCard {
+      width: 80%;
+      height: 35vh;
+    }
   }
   @media screen and (min-width: 570px) {
     .containerTitle2 {

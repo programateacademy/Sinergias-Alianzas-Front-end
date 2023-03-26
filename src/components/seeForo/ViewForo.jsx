@@ -55,6 +55,7 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro }) => {
     handleClear();
   }
   window.location.reload(); 
+
 };
 
 // Function to capture when the value of the input changes

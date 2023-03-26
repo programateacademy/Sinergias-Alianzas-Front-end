@@ -7,6 +7,7 @@ import "./css/ForoA.css";
 import { motion } from "framer-motion";
 import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
 import loaded from "../../../components/ListCourses/Assets/preload.png";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CardForo from "../../../components/CardForo/CardForo";
 import componentimg from "../../../components/ListCourses/Assets/component.png"
@@ -36,6 +37,7 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
         dato.compTitulo.toLowerCase().includes(search.toLocaleLowerCase())
       );
 
+
   const dispatch = useDispatch();
 
   const [showPreload, setShowPreload] = useState(true); // add state to control showing preload
@@ -46,7 +48,7 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
     // change showPreload after 2 seconds
     const timer = setTimeout(() => {
       setShowPreload(false);
-    }, 3000);
+    }, 1000);
 
     // cleanup
     return () => clearTimeout(timer);

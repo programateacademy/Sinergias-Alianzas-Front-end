@@ -42,7 +42,7 @@ export const deleteAnswer = createAsyncThunk(
     ) => {
       try {
         const response = await answerSlice.deleteAnswer(id);
-        toast.success("Respuesta Eliminada satisfactoriamente");
+        toast.success("Respuesta Ocultada satisfactoriamente");
         return response.data;
       } catch (err) {
         return rejectWithValue(err.response.data);

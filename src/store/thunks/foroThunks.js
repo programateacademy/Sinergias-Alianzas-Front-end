@@ -68,7 +68,7 @@ export const updateQuestion = createAsyncThunk(
       try {
         console.log(visibleQuestion)
         const response = await foroSlice.deleteQuestion(visibleQuestion);
-        toast.success("Pregunta Eliminada satisfactoriamente");
+        toast.success("Pregunta Ocultada satisfactoriamente");
         return response.data;
       } catch (err) {
         return rejectWithValue(err.response.data);

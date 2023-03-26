@@ -2,10 +2,10 @@ import { React, useState, useEffect } from "react";
 import "../../css/seeForo.css";
 import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
-import { deleteQuestion } from "../../../../store/thunks/foroThunks";
+import { deleteAnswer } from "../../../../store/thunks/answerThunk";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import axios from "axios";
+
 import Eye from "../../assets/eye.png";
 const Response = ({ compColor, id }) => {
   const [show, setShow] = useState(false);
@@ -13,26 +13,15 @@ const Response = ({ compColor, id }) => {
   const handleClose = () => setShow(false);
   const dispatch = useDispatch();
 
-const handleDelete = async (e) => {
-  e.preventDefault();
-  const visibleQuestion = {
-    _id: id
-  }
-  console.log(visibleQuestion);
-
-  // Elimina la pregunta desde el frontend
-  dispatch(deleteQuestion({ visibleQuestion, toast }));
-
-  // Actualiza el estado de la base de datos a través de una llamada a una API REST utilizando la librería axios
-  try {
-    window.location.reload(); 
-    // Realiza cualquier otra acción necesaria después de la eliminación exitosa
-  } catch (error) {
-    // Maneja cualquier error que pueda ocurrir durante la eliminación
-    console.error(error);
-  }
-};
-
+  const handleDelete = (e) => {
+    e.preventDefault();{
+      const visibleQuestion = {
+        _id: id
+      }
+      console.log(visibleQuestion);
+      dispatch(deleteAnswer({ visibleQuestion, toast }));
+    }
+  };
   return (
     <>
       <motion.button

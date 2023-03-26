@@ -12,18 +12,24 @@
 }
 
 .preload img {
-    width: 80vw;
-    height: 100vh;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.containerTitle {
+.preload.loaded img {
+  opacity: 1;
+}
+.containerTitle2 {
     position: absolute;
     width: 100vw;
     display: flex;
     justify-content: center;
     margin-top: 16px;
   }
-  .containerTitle h1 {
+  .containerTitle2 h1 {
     background-color: white;
     width: 60vw;
     font-size: 4vw;
@@ -40,7 +46,7 @@
     justify-content: space-around;
   }
   .container_buttons button {
-    width: 230px;
+    width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,13 +117,14 @@
     margin: 0 8px;
   }
   @media screen and (min-width: 570px) {
-    .containerTitle {
-      margin-top: 1px;
+    .containerTitle2 {
+      margin-top: -10px;
     }
-    .containerTitle h1 {
-      width: 30vw;
+    .containerTitle2 h1 {
+      width: 20vw;
       padding: 5px;
       font-size: 2vw;
+      size: 10px;
     }
     .containerDashboard {
       padding: 1.5vw 5vw;

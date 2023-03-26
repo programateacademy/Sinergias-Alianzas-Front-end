@@ -17,25 +17,17 @@ import { Link } from "react-router-dom";
 import Foro from "./components/Foro/Foro"
 
 import CircularOption from "../CirculaOption/CircularOption";
-import ButtonsForum from "./ButtonsForum";
-import ModalQuestion from "../ModalQuestion/ModalQuestion";
-import CommentList from "./commentList";
 import { computeStyles } from "@popperjs/core";
 
-import { getQuestions,
-  getQuestionReport, 
-  addQuestion, 
-  updateQuestion,  
-  deleteQuestion, 
-  updateLikeQuestion, 
-  updateReportQuestion } from "../../store/thunks/foroThunks"
+import {
+  addQuestion,  } from "../../store/thunks/foroThunks"
 
 const initialState = {
   author: "",
   question: ""
 };
 
-const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) => {
+const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -62,6 +54,7 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
     dispatch(addQuestion({ questionData, id, toast }));
     handleClear();
   }
+  window.location.reload(); 
 };
 
 // Function to capture when the value of the input changes

@@ -46,6 +46,7 @@ const Foro = ({
     if (!liked) {
       setLiked(true);  
       dispatch(updateLikeQuestion({ like, _id, toast}));
+      window.location.reload(); 
     }
   };
 
@@ -53,6 +54,7 @@ const Foro = ({
     if (!reported) {
       setReported(true);
       dispatch(updateReportQuestion({reports, _id, toast}))
+      window.location.reload(); 
     }
   };
 
@@ -164,17 +166,14 @@ const Foro = ({
           </Col>
         </Row>
         <Row className="d-flex justify-content-between">
-        <Col md={3} sm={6} xs={6}>
+        <Col md={4} sm={6} xs={6}>
           <Response compColor={compColor} idQuestion={_id}  />
         </Col>
-          <Col md={3} sm={4} xs={6}>
+          <Col md={4} sm={4} xs={6}>
           <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions} id_typeQuestion={id_type} id={_id} />
           </Col>
-          <Col md={3} sm={6} xs={6}>
+          <Col md={4} sm={6} xs={6}>
             <Delete compColor={compColor} id={_id}/>
-          </Col>
-          <Col md={3} sm={4} xs={6}>
-          <Hide compColor={compColor}/>
           </Col>
         </Row>
         <div>

@@ -28,19 +28,18 @@ const Response = ({ compColor, idQuestion }) => {
    //   Function for validation in the submission of the form
    const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      author &&
-      description
-    ) {
+    if (author && description) {
       const answerData = {
         ...newAnswer,
         _id: idQuestion
       };
-  console.log(answerData)
+      console.log(answerData);
       dispatch(addAnswer({ id, answerData, toast }));
       handleClear();
+      window.location.reload(); // recargar la página después de que se agregue la respuesta y se limpie el formulario
     }
   };
+  
   
   // Function to capture when the value of the input changes
   const onInputChange = (e) => {

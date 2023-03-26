@@ -2,10 +2,7 @@ import { React, useState, useEffect } from "react";
 import "../../css/seeForo.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
-
-import Response from "../Response/Response";
 import Delete from "../Delete/Delete"
-import Hide from "../Hide/Hide"
 import Edit from "../Edit/Edit"
 const Answers = ({
   author,
@@ -15,6 +12,7 @@ const Answers = ({
   compColor,
   report,
   visible,
+  _id
 }) => {
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
@@ -133,18 +131,12 @@ const Answers = ({
             <p>{description}</p>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-between">
-          <Col md={2} sm={6} xs={6}>
-          <Response compColor={compColor} />
-          </Col>
-          <Col md={2} sm={4} xs={6}>
+        <Row className="d-flex justify-content-start">
+          <Col md={3} sm={6} xs={6}>
            <Edit compColor={compColor} author={author} description={description}/>
           </Col>
-          <Col md={2} sm={4} xs={6}>
-          <Delete compColor={compColor}/>
-          </Col>
-          <Col md={2} sm={4} xs={6}>
-          <Hide compColor={compColor}/>
+          <Col md={3} sm={6} xs={6}>
+          <Delete compColor={compColor}  id={_id}/>
           </Col>
         </Row>
       </Container>

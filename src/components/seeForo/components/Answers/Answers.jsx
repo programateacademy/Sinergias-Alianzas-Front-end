@@ -7,6 +7,10 @@ import Response from "../Response/Response";
 import Delete from "../Delete/Delete"
 import Hide from "../Hide/Hide"
 import Edit from "../Edit/Edit"
+import { updateLikeAnswer, updateReportAnswer } from "../../../../store/thunks/answerThunk";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 const Answers = ({
   _id,
   author,
@@ -17,23 +21,24 @@ const Answers = ({
   report,
   visible,
 }) => {
+  const { id } = useParams();
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
 
   const [reports, setReports] = useState(reportNumber);
   const [reported, setReported] = useState(false);
-
-
+  const dispatch = useDispatch();
+console.log(likes, reportNumber)
   const updateLike = () => {
     if (!liked) {
-      setLike(like + 1);
       setLiked(true);
+      dispatch(updateLikeAnswer({id, like, _id, toast}));
     }
   };
   const updateReport = () => {
     if (!reported) {
-      setReports(reportNumber + 1);
       setReported(true);
+      dispatch(updateReportAnswer({id, reports, _id, toast}));
     }
   };
   return (

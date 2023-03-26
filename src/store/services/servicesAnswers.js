@@ -18,8 +18,8 @@ export const deleteAnswer = (idDelete) =>
 
 //Request to update the answer like
 export const updateLikeAnswer = (updateLikeAnswerData) =>
-API.patch("/answerRoute/updateNumberLike", updateLikeAnswerData);
+API.put("/answerRoute/updateNumberLike", updateLikeAnswerData);
 
 //Request to update the answer like
 export const updateReportAnswer = (updateReportAnswerData) =>
-API.patch("/answerRoute/updateReport", updateReportAnswerData);
+API.put("/answerRoute/updateReport", updateReportAnswerData);

@@ -54,12 +54,17 @@ export const deleteAnswer = createAsyncThunk(
 export const updateLikeAnswer = createAsyncThunk(
     "foro/updateLikeAnswer",
     async (
-      { id, updateLikeAnswerData, toast},
+      { id, like, _id, toast},
       { rejectWithValue }
     ) => {
       try {
+        console.log(id, like, _id)
+        const updateLikeAnswerData = {
+          likes: like + 1,
+          _id: _id
+        }
         await answerSlice.updateLikeAnswer(updateLikeAnswerData);
-        toast.success("Respuesta editada satisfactoriamente");
+        toast.success("Respuesta likeada satisfactoriamente");
         return getQuestions(id);
       } catch (err) {
         return rejectWithValue(err.response.data);
@@ -72,12 +77,17 @@ export const updateLikeAnswer = createAsyncThunk(
 export const updateReportAnswer = createAsyncThunk(
     "foro/updateReportAnswer",
     async (
-      { id, updateReportAnswerData, toast},
+      { id,  reports, _id, toast},
       { rejectWithValue }
     ) => {
       try {
+        console.log(id, reports, _id)
+        const updateReportAnswerData = {
+          reportNumber: reports + 1,
+          _id: _id
+        }
         await answerSlice.updateReportAnswer(updateReportAnswerData);
-        toast.success("Pregunta editada satisfactoriamente");
+        toast.success("Pregunta reportada satisfactoriamente");
         return getQuestions(id);
       } catch (err) {
         return rejectWithValue(err.response.data);

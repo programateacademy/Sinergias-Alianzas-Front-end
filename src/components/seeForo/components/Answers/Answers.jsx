@@ -140,10 +140,10 @@ const Answers = ({
           <Col md={2} sm={4} xs={6}>
            <Edit compColor={compColor} author={author} description={description}/>
           </Col>
-          <Col md={2} sm={4} xs={12}>
+          <Col md={2} sm={4} xs={6}>
           <Delete compColor={compColor}/>
           </Col>
-          <Col md={2} sm={4} xs={12}>
+          <Col md={2} sm={4} xs={6}>
           <Hide compColor={compColor}/>
           </Col>
         </Row>

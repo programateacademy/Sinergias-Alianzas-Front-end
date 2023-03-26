@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addAnswer } from "../thunks/answerThunk";
+import { addAnswer, deleteAnswer, updateAnswer, updateLikeAnswer, updateReportAnswer } from "../thunks/answerThunk";
 import { getQuestions,
          getQuestionReport, 
          addQuestion, 
@@ -46,6 +46,22 @@ const foroSlice = createSlice({
             state.foro = [action.payload];
         },
         [addAnswer.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [updateAnswer.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [deleteAnswer.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [updateLikeAnswer.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.foro = [action.payload];
+        },
+        [updateReportAnswer.fulfilled]: (state, action) => {
             state.loading = false;
             state.foro = [action.payload];
         },

@@ -41,7 +41,6 @@ const Foro = ({
   const [reported, setReported] = useState(false);
   const editDescriptions = question
 
-
   const updateLike = () => {
     if (!liked) {
       setLiked(true);  
@@ -182,10 +181,10 @@ const Foro = ({
             </motion.button>
           </Col>
           <Col md={2} sm={4} xs={6}>
-          <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions} id_typeQuestion={id_type} id={_id} />
+          <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions} id_typeQuestion={id_type} idQuestion={_id} />
           </Col>
           <Col md={2} sm={4} xs={6}>
-            <Delete compColor={compColor} id={_id}/>
+            <Delete compColor={compColor} idQuestion={_id}/>
           </Col>
           <Col md={2} sm={4} xs={12}>
           <Hide compColor={compColor}/>

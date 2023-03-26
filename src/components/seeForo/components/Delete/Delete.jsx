@@ -3,23 +3,32 @@ import "../../css/seeForo.css";
 import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 import { deleteQuestion } from "../../../../store/thunks/foroThunks";
+import { deleteAnswer } from "../../../../store/thunks/answerThunk";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-
+import { useParams } from "react-router-dom";
 import Trash from "../../assets/trash.png";
-const Response = ({ compColor, id }) => {
+
+const Response = ({ compColor, idQuestion, idAnswer }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const dispatch = useDispatch();
-
+  const { id } = useParams();
   const handleDelete = (e) => {
     e.preventDefault();{
-      const visibleQuestion = {
-        _id: id
+      if(idQuestion){
+        const visibleQuestion = {
+          _id: idQuestion
+        }
+        dispatch(deleteQuestion({ visibleQuestion, toast }));
+      } if (idAnswer) {
+        const idDelete = {
+          _id: idAnswer
+        }
+        dispatch(deleteAnswer({ id, idDelete, toast }));
       }
-      console.log(visibleQuestion);
-      dispatch(deleteQuestion({ visibleQuestion, toast }));
+      
     }
   };
   return (

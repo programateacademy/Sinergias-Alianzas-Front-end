@@ -1,37 +1,61 @@
 import { React, useState, useEffect } from "react";
 import "../../css/seeForo.css";
-import { Button, Modal, Col } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
 
 import Edit from "../../assets/edit.png";
 import { updateQuestion } from "../../../../store/thunks/foroThunks";
+import { updateAnswer } from "../../../../store/thunks/answerThunk";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
-const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuestion, id}) => {
+
+const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuestion, idQuestion, authorAnswer, descriptionAnswer, idAnswer}) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const [authorValue, setAuthorValue] = useState(authorQuestion);
   const [descriptionValue, setDescriptionValue] = useState(descriptionQuestion);
+  const [authorAnswerValue, setAuthorAnswerValue] = useState(authorAnswer);
+  const [descriptionAnswerValue, setDescriptionAnswerValue] = useState(descriptionAnswer);
   const dispatch = useDispatch();
+  const { id } = useParams();
   const handleAuthorChange = (e) => {
-    setAuthorValue(e.target.value);
+    if(authorQuestion){
+      setAuthorValue(e.target.value);
+    }if(authorAnswer) {
+      setAuthorAnswerValue(e.target.value);
+    }
   };
   const handleDescriptionChange = (e) => {
-    setDescriptionValue(e.target.value);
+    if(authorQuestion){
+      setDescriptionValue(e.target.value);
+    }if(authorAnswer) {
+      setDescriptionAnswerValue(e.target.value);
+    }
+    
   };
   const handleSubmit = (e) => {
-    e.preventDefault();{
+    e.preventDefault();
+    if(authorQuestion) {
       const updateQuestionData = {
         author: authorValue,
         question: descriptionValue,
         id_type: id_typeQuestion,
-        _id: id
+        _id: idQuestion
       };
-      console.log(updateQuestionData)
       dispatch(updateQuestion({ updateQuestionData, toast }));
+    } if(authorAnswer){
+      const updateAnswersData = {
+        author: authorAnswerValue,
+        description: descriptionAnswerValue,
+        _id: idAnswer
+      };
+      dispatch(updateAnswer({ id, updateAnswersData, toast }));
     }
+      
+    
   };
   return (
     <>
@@ -60,7 +84,7 @@ const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuest
             <form>
               <div className="form-group mt-3">
                 <input
-                  value={authorValue}
+                  value={descriptionQuestion? authorValue : authorAnswerValue}
                   onChange={handleAuthorChange}
                   type="text"
                   className="form-control"
@@ -73,7 +97,7 @@ const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuest
               <br />
               <div className="form-group">
                 <input
-                  value={descriptionValue}
+                  value={descriptionValue? descriptionValue : descriptionAnswerValue}
                   onChange={handleDescriptionChange}
                   type="text"
                   className="form-control"

@@ -8,6 +8,7 @@ import Delete from "../Delete/Delete"
 import Hide from "../Hide/Hide"
 import Edit from "../Edit/Edit"
 const Answers = ({
+  _id,
   author,
   description,
   likes,
@@ -138,10 +139,10 @@ const Answers = ({
           <Response compColor={compColor} />
           </Col>
           <Col md={2} sm={4} xs={6}>
-           <Edit compColor={compColor} author={author} description={description}/>
+           <Edit compColor={compColor} authorAnswer={author} descriptionAnswer={description} idAnswer={_id}/>
           </Col>
           <Col md={2} sm={4} xs={12}>
-          <Delete compColor={compColor}/>
+          <Delete compColor={compColor} idAnswer={_id}/>
           </Col>
           <Col md={2} sm={4} xs={12}>
           <Hide compColor={compColor}/>

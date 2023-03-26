@@ -20,13 +20,13 @@ import { getQuestions } from "../thunks/foroThunks"
 export const updateAnswer = createAsyncThunk(
     "foro/updateAnswer",
     async (
-      { updateAnswersData, toast},
+      { id, updateAnswersData, toast},
       { rejectWithValue }
     ) => {
       try {
-        const response = await answerSlice.updateAnswer(updateAnswersData);
+         await answerSlice.updateAnswer(updateAnswersData);
         toast.success("Respuesta editada satisfactoriamente");
-        return response.data;
+        return getQuestions(id);
       } catch (err) {
         return rejectWithValue(err.response.data);
       }
@@ -37,13 +37,13 @@ export const updateAnswer = createAsyncThunk(
 export const deleteAnswer = createAsyncThunk(
     "foro/deleteAnswer",
     async (
-      { id, toast},
+      { id, idDelete, toast},
       { rejectWithValue }
     ) => {
       try {
-        const response = await answerSlice.deleteAnswer(id);
+        await answerSlice.deleteAnswer(idDelete);
         toast.success("Respuesta Eliminada satisfactoriamente");
-        return response.data;
+        return getQuestions(id);
       } catch (err) {
         return rejectWithValue(err.response.data);
       }
@@ -54,13 +54,13 @@ export const deleteAnswer = createAsyncThunk(
 export const updateLikeAnswer = createAsyncThunk(
     "foro/updateLikeAnswer",
     async (
-      { updateLikeAnswerData, toast},
+      { id, updateLikeAnswerData, toast},
       { rejectWithValue }
     ) => {
       try {
-        const response = await answerSlice.updateLikeAnswer(updateLikeAnswerData);
+        await answerSlice.updateLikeAnswer(updateLikeAnswerData);
         toast.success("Respuesta editada satisfactoriamente");
-        return response.data;
+        return getQuestions(id);
       } catch (err) {
         return rejectWithValue(err.response.data);
       }
@@ -72,13 +72,13 @@ export const updateLikeAnswer = createAsyncThunk(
 export const updateReportAnswer = createAsyncThunk(
     "foro/updateReportAnswer",
     async (
-      { updateReportAnswerData, toast},
+      { id, updateReportAnswerData, toast},
       { rejectWithValue }
     ) => {
       try {
-        const response = await answerSlice.updateReportAnswer(updateReportAnswerData);
+        await answerSlice.updateReportAnswer(updateReportAnswerData);
         toast.success("Pregunta editada satisfactoriamente");
-        return response.data;
+        return getQuestions(id);
       } catch (err) {
         return rejectWithValue(err.response.data);
       }

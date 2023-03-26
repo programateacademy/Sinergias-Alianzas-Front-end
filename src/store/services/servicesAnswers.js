@@ -13,8 +13,8 @@ export const updateAnswer = (updateAnswersData) =>
     API.patch("/answerRoute/", updateAnswersData);
 
 //Request to change the visibility of the answer
-export const deleteAnswer = (id) => 
-    API.put("/answerRoute/", id);
+export const deleteAnswer = (idDelete) => 
+    API.put("/answerRoute/", idDelete);
 
 //Request to update the answer like
 export const updateLikeAnswer = (updateLikeAnswerData) =>

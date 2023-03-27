@@ -56,7 +56,6 @@ const Foro = ({
     if (!reported) {
       setReported(true);
       dispatch(updateReportQuestion({reports, _id, toast}))
-      window.location.reload(); 
     }
   }; 
   

@@ -56,7 +56,6 @@ const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuest
       dispatch(updateAnswer({ id,updateAnswersData, toast }));
       handleClose()
     }
-    window.location.reload(); 
   };
   useEffect(() => {
     setAuthorValue(authorQuestion)

@@ -59,7 +59,7 @@ export const updateLikeAnswer = createAsyncThunk(
     ) => {
       try {
         const updateLikeAnswerData = {
-          likes: like,
+          likes: like + 1,
           _id: _id
         }
         const response = await answerSlice.updateLikeAnswer(updateLikeAnswerData);

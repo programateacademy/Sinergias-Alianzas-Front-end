@@ -55,7 +55,6 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro }) => {
     handleClear();
     handleClose();
   }
-  window.location.reload(); 
 
 };
 

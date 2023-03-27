@@ -11,6 +11,7 @@ import Trash from "../../assets/trash.png";
 
 const Response = ({ compColor, idQuestion, idAnswer }) => {
   const [show, setShow] = useState(false);
+  const [deleteData, setDeleteData] = useState(true)
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const dispatch = useDispatch();
@@ -21,16 +22,21 @@ const Response = ({ compColor, idQuestion, idAnswer }) => {
         const visibleQuestion = {
           _id: idQuestion
         }
+        setDeleteData(!deleteData);
         dispatch(deleteQuestion({ visibleQuestion, toast }));
       } if (idAnswer) {
         const idDelete = {
           _id: idAnswer
         }
+        setDeleteData(!deleteData);
         dispatch(deleteAnswer({ id, idDelete, toast }));
       }
-      
     }
   };
+  useEffect(() => {
+  }, [deleteData]);
+
+
   return (
     <>
       <motion.button

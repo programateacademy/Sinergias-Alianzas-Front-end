@@ -86,10 +86,9 @@ export const updateLikeQuestion = createAsyncThunk(
     ) => {
       try {
         const updateLikeQuestionData = {
-          likes: like + 1,
+          likes: like,
           _id: _id
         }
-        console.log('updateLikeQuestionData', updateLikeQuestionData)
         const response = await foroSlice.updateLikeQuestion(updateLikeQuestionData);
         toast.success("Pregunta editada satisfactoriamente");
         return response.data;
@@ -104,7 +103,7 @@ export const updateLikeQuestion = createAsyncThunk(
 export const updateReportQuestion = createAsyncThunk(
     "foro/updateReportQuestion",
     async (
-      { reports, _id, toast },
+      {  reports, _id, toast },
       { rejectWithValue }
     ) => {
       try {

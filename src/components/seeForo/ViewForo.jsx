@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import "./css/seeForo.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -61,6 +61,7 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
 
     dispatch(addQuestion({ questionData, id, toast }));
     handleClear();
+    handleClose();
   }
 };
 
@@ -77,6 +78,10 @@ const handleClear = () => {
     question: ""
   });
 };
+
+useEffect(() => {
+  
+}, [newQuestion]);
 
   computeStyles
   return (
@@ -233,7 +238,7 @@ const handleClear = () => {
             </Col>
             <Col className="col-lg-9 col-12">
               {foro.map((item) => (
-                <Foro key={item._id} {...item} compColor={compColor} />
+              <Foro key={item?._id} {...item} compColor={compColor} />
               ))}
             </Col>
           </Row>

@@ -11,7 +11,7 @@ import moment from "moment";// importing moment.js
 import Response from "../Response/Response";
 import Hide from "../Hide/Hide"
 import Delete from "../Delete/Delete"
-
+import { useParams } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -33,34 +33,39 @@ const Foro = ({
   timestamp,
   id_type
 }) => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
-  
   const [reports, setReports] = useState(reportNumber);
   const [reported, setReported] = useState(false);
   const editDescriptions = question
-
+  
   const updateLike = () => {
     if (!liked) {
-      setLiked(true);  
-      dispatch(updateLikeQuestion({ like, _id, toast}));
+      setLike((estado)=> {
+        const hola = estado + 1;
+        dispatch(updateLikeQuestion({id, like: hola, _id, toast}));
+        return hola
+      });
+      setLiked(true);
+      
     }
   };
-
   const updateReport = () => {
     if (!reported) {
       setReported(true);
       dispatch(updateReportQuestion({reports, _id, toast}))
     }
-  };
+  }; 
+  
+  useEffect(() => {
+    setLike(likes);
+  }, [likes]);
 
-  // useEffect(() => {
-  //   useCallback(() => {
-  //       dispatch(updateLikeQuestion({ updateLikeQuestionData, toast}));
-  //     }, [like])
-    
-  // }, []);
+  useEffect(() => {
+    setReports(reportNumber);
+  }, [reportNumber])
   
   return (
     <div>

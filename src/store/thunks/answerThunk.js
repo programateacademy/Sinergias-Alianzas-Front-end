@@ -20,11 +20,11 @@ import { getQuestions } from "../thunks/foroThunks"
 export const updateAnswer = createAsyncThunk(
     "foro/updateAnswer",
     async (
-      { id, updateAnswersData, toast},
+      {  id, updateAnswersData, toast},
       { rejectWithValue }
     ) => {
       try {
-         await answerSlice.updateAnswer(updateAnswersData);
+        await answerSlice.updateAnswer(updateAnswersData);
         toast.success("Respuesta editada satisfactoriamente");
         return getQuestions(id);
       } catch (err) {
@@ -58,14 +58,13 @@ export const updateLikeAnswer = createAsyncThunk(
       { rejectWithValue }
     ) => {
       try {
-        console.log(id, like, _id)
         const updateLikeAnswerData = {
-          likes: like + 1,
+          likes: like,
           _id: _id
         }
-        await answerSlice.updateLikeAnswer(updateLikeAnswerData);
+        const response = await answerSlice.updateLikeAnswer(updateLikeAnswerData);
         toast.success("Respuesta likeada satisfactoriamente");
-        return getQuestions(id);
+        console.log(response.data)
       } catch (err) {
         return rejectWithValue(err.response.data);
       }
@@ -87,7 +86,7 @@ export const updateReportAnswer = createAsyncThunk(
           _id: _id
         }
         await answerSlice.updateReportAnswer(updateReportAnswerData);
-        toast.success("Pregunta reportada satisfactoriamente");
+        toast.success("Pregunta editada satisfactoriamente");
         return getQuestions(id);
       } catch (err) {
         return rejectWithValue(err.response.data);

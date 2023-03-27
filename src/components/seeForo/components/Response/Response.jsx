@@ -24,7 +24,6 @@ const Response = ({ compColor, idQuestion }) => {
     author,
     description
     } = newAnswer;
-  
    //   Function for validation in the submission of the form
    const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,9 +35,10 @@ const Response = ({ compColor, idQuestion }) => {
         ...newAnswer,
         _id: idQuestion
       };
-  console.log(answerData)
+  
       dispatch(addAnswer({ id, answerData, toast }));
       handleClear();
+      handleClose();
     }
   };
   
@@ -56,6 +56,9 @@ const Response = ({ compColor, idQuestion }) => {
     });
   };
 
+  useEffect(() => {
+    
+  }, [newAnswer])
 
   return (
     <>

@@ -20,6 +20,7 @@ const Answers = ({
   compColor,
   report,
   visible,
+  idQuestionPrincipal
 }) => {
   const { id } = useParams();
   const [like, setLike] = useState(likes);
@@ -28,7 +29,7 @@ const Answers = ({
   const [reports, setReports] = useState(reportNumber);
   const [reported, setReported] = useState(false);
   const dispatch = useDispatch();
-console.log(likes, reportNumber)
+console.log(idQuestionPrincipal)
   const updateLike = () => {
     if (!liked) {
       setLiked(true);
@@ -141,7 +142,7 @@ console.log(likes, reportNumber)
         </Row>
         <Row className="d-flex justify-content-between">
           <Col md={2} sm={6} xs={6}>
-          <Response compColor={compColor} />
+          <Response compColor={compColor} idParams={_id} />
           </Col>
           <Col md={2} sm={4} xs={6}>
            <Edit compColor={compColor} authorAnswer={author} descriptionAnswer={description} idAnswer={_id}/>

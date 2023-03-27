@@ -46,17 +46,28 @@ const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuest
         _id: idQuestion
       };
       dispatch(updateQuestion({ updateQuestionData, toast }));
+      handleClose()
     } if(authorAnswer){
       const updateAnswersData = {
         author: authorAnswerValue,
         description: descriptionAnswerValue,
         _id: idAnswer
       };
-      dispatch(updateAnswer({ id, updateAnswersData, toast }));
+      dispatch(updateAnswer({ id,updateAnswersData, toast }));
+      handleClose()
     }
-      
-    
   };
+  useEffect(() => {
+    setAuthorValue(authorQuestion)
+    setDescriptionValue(descriptionQuestion)
+  }, [authorQuestion, descriptionQuestion]);
+
+  useEffect(() => {
+    setAuthorAnswerValue(authorAnswer)
+    setDescriptionAnswerValue(descriptionAnswer)
+  }, [authorAnswer, descriptionAnswer]);
+
+
   return (
     <>
       <motion.button

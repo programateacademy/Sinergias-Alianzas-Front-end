@@ -4,11 +4,13 @@ import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
 import "./css/HomeUser.css";
+import "./css/Home.css";
 import { motion } from "framer-motion";
 import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
 import loaded from "../../../components/ListCourses/Assets/preload.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import forumimg from "../../../components/ListCourses/Assets/forum.png";
 
 import CardComponentUser from "../../../components/CardComponetUser/CardComponetUser";
 
@@ -17,7 +19,7 @@ import CardComponentUser from "../../../components/CardComponetUser/CardComponet
 //   document.querySelector(".preload").classList.add("loaded");
 // });
 
-const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
+const Home = ({ isAdminOrUser, setIsAdminOrUse }) => {
   if(isAdminOrUser === true){
     setIsAdminOrUse(!isAdminOrUser);
   }
@@ -93,15 +95,22 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
               onChange={searcher}
             />
           </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <Link className="link" to={"/foroa"}>
-            <button className="buttonComponent">Foros</button>
+          <Link className="link" to={"/foroUser"}>
+            <motion.button
+              className="box1"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <img src={forumimg} alt="" />
+              <input
+                type="text"
+                style={{ cursor: "pointer" }}
+                placeholder="Foro"
+                disabled={true}
+              />
+            </motion.button>
             </Link>
-          </motion.button>
         </div>
 
 

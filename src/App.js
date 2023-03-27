@@ -20,8 +20,8 @@ import LoginWithCode from "./pages/BackOffice/Login/LoginWithCode";
 import Profile from "./pages/BackOffice/Profile/Profile";
 import ButtonsUsers from "./pages/BackOffice/Users/ButtonsUsers";
 import HomeUser from "./pages/Public/HomeUser/HomeUser";
-import ForoA from "./pages/BackOffice/ForoA/ForoA";
-import ForoU from "./pages/Public/ForoU/ForoU";
+import ForoAdmin from "./pages/BackOffice/ForoA/ForoAdmin";
+import ForoUser from "./pages/Public/ForoUser/ForoUser";
 
 
 
@@ -30,6 +30,7 @@ import AddComponent from "./components/AddComponent/AddComponent";
 import EditComponent from "./components/EditComponent/EditComponent";
 import SeeComponent from "./components/seeComponent/SeeComponent";
 import SeeForo from "./components/seeForo/seeForo";
+import SeeForoUser from "./components/seeForoUser/seeForoUser";
 
 import SeeComponentUser from "./components/seeComponentUser/SeeComponentUser";
 
@@ -144,19 +145,19 @@ function App() {
         />
 
         <Route
-          path="/foroa"
+          path="/foroAdmin"
           element={
             <Layout>
-              <ForoA />
+              <ForoAdmin />
             </Layout>
           }
         />
 
         <Route
-          path="/forou"
+          path="/foroUser"
           element={
-            <Layout>
-              <ForoU />
+            <Layout isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}>
+              <ForoUser isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}/>
             </Layout>
           }
         />
@@ -204,10 +205,10 @@ function App() {
           }
         />
         <Route
-          path="/seeforo/:id"
+          path="/seeforoUser/:id"
           element={
-            <Layout>
-              <SeeForo/>
+            <Layout isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}>
+              <SeeForoUser isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}/>
             </Layout>
           }
         />

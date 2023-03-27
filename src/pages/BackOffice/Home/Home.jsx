@@ -85,7 +85,7 @@ const Home = () => {
               onChange={searcher}
             />
           </motion.button>
-            <Link className="link" to={"/foroa"}>
+            <Link className="link" to={"/foroAdmin"}>
             <motion.button
               className="box1"
               whileHover={{ scale: 1.2 }}

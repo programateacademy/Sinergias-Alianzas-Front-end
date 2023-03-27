@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents } from "../../store/actions/componentSlice";
+import { getComponents } from "../../../store/actions/componentSlice";
 
 /* styles & images */
 import "./css/ForoA.css";
 import { motion } from "framer-motion";
-import searchButton from "../../components/ListCourses/Assets/searchButton.png";
-import loaded from "../../components/ListCourses/Assets/preload.png";
-
-import { useNavigate } from "react-router-dom";
-
+import searchButton from "../../../components/ListCourses/Assets/searchButton.png";
+import loaded from "../../../components/ListCourses/Assets/preload.png";
 import { Link } from "react-router-dom";
-import CardForo from "../../components/CardForo/CardForo";
+import CardForo from "../../../components/CardForo/CardForo";
+import componentimg from "../../../components/ListCourses/Assets/component.png"
+
 
 
 const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
@@ -37,11 +36,6 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
         dato.compTitulo.toLowerCase().includes(search.toLocaleLowerCase())
       );
 
-  const navigate = useNavigate(); //* React router dom use
-
-  function addComp() {
-    navigate("/addComponent");
-  }
 
   const dispatch = useDispatch();
 
@@ -69,7 +63,7 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
 
   return (
     <>
-      <div className="containerTitle">
+      <div className="containerTitle2">
         <h1>FOROS</h1>
       </div>
 
@@ -90,15 +84,24 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
               onChange={searcher}
             />
           </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <Link className="link" to={"/home"}>
-            <button className="buttonComponent">Componentes</button>
-            </Link>
-          </motion.button>
+          <Link className="link" to={"/home"}>
+            <motion.button
+              className="box1"
+              style={{width:"175px" }}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <img src={componentimg} alt=""/>
+            
+              <input
+                type="text"
+                style={{ cursor: "pointer"}}
+                placeholder="Componente"
+                disabled={true}
+              />
+            </motion.button>
+          </Link>
         </div>
 
         <div className="listCards">

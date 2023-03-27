@@ -42,6 +42,13 @@ console.log(idQuestionPrincipal)
       dispatch(updateReportAnswer({id, reports, _id, toast}));
     }
   };
+  useEffect(() => {
+    setLike(likes);
+  }, [likes]);
+
+  useEffect(() => {
+    setReports(reportNumber);
+  }, [reportNumber])
   return (
     <div>
       <Container

@@ -88,6 +88,9 @@ const foroSlice = createSlice({
             state.loading = false;
             state.foro = [action.payload];
         },
+        [updateReportAnswer.pending]: (state, action) => {
+            state.loading = true;
+        },
         [updateReportAnswer.fulfilled]: (state, action) => {
             state.loading = false;
             state.foro = [action.payload];

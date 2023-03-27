@@ -18,7 +18,7 @@ import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUs
 
 const Home = () => {
   //* Custom Hook to redirect user if session expires
-  useRedirectLoggedOutUser("/");
+  useRedirectLoggedOutUser("/homeUser");
 
   //Filter
   const [search, setSearch] = useState(""); //constant for filter

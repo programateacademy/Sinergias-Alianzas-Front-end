@@ -69,7 +69,7 @@ function App() {
             -       USERS MODULE ROUTES
             - =================================
           */}
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 
         <Route
           path="/users"
@@ -136,7 +136,7 @@ function App() {
         />
 
         <Route
-          path="/homeUser"
+          path="/"
           element={
             <Layout isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}>
               <HomeUser isAdminOrUser={isAdminOrUser} setIsAdminOrUse={setIsAdminOrUse}/>

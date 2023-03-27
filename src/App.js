@@ -20,7 +20,7 @@ import LoginWithCode from "./pages/BackOffice/Login/LoginWithCode";
 import Profile from "./pages/BackOffice/Profile/Profile";
 import ButtonsUsers from "./pages/BackOffice/Users/ButtonsUsers";
 import HomeUser from "./pages/Public/HomeUser/HomeUser";
-import ForoAdmin from "./pages/BackOffice/ForoA/ForoAdmin";
+import ForoAdmin from "./pages/BackOffice/ForoAdmin/ForoAdmin";
 import ForoUser from "./pages/Public/ForoUser/ForoUser";
 
 

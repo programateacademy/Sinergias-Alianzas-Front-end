@@ -21,13 +21,13 @@ export const updateQuestion = (updateQuestionData) =>
     API.patch("/foroRoute/", updateQuestionData);
 
 //Request to change the visibility of the question
-export const deleteQuestion = (id) => 
-    API.put("/foroRoute/", id);
+export const deleteQuestion = (visibleQuestion) => 
+    API.put("/foroRoute/", visibleQuestion);
  
 //Request to update the question likes
 export const updateLikeQuestion = (updateLikeQuestionData) =>
-    API.patch("/foroRoute/updateNumberLike", updateLikeQuestionData);
+    API.put("/foroRoute/updateNumberLike", updateLikeQuestionData);
 
 //Request to update the question likes
 export const updateReportQuestion = (updateReportQuestionData) =>
-    API.patch("/foroRoute/updateReport", updateReportQuestionData);
+    API.put("/foroRoute/updateReport", updateReportQuestionData);

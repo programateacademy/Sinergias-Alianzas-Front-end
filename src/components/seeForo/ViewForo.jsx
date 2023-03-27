@@ -1,9 +1,12 @@
-import React from "react";
+import {React, useEffect} from "react";
 import "./css/seeForo.css";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { Button, Modal, Pagination } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
+import { useParams } from "react-router-dom";
 
 import searchButton from "../../components/ListCourses/Assets/searchButton.png";
 import forumimg from "../../components/ListCourses/Assets/forum.png";
@@ -17,13 +20,70 @@ import CircularOption from "../CirculaOption/CircularOption";
 import ButtonsForum from "./ButtonsForum";
 import ModalQuestion from "../ModalQuestion/ModalQuestion";
 import CommentList from "./commentList";
+import { computeStyles } from "@popperjs/core";
+
+import { getQuestions,
+  getQuestionReport, 
+  addQuestion, 
+  updateQuestion,  
+  deleteQuestion, 
+  updateLikeQuestion, 
+  updateReportQuestion } from "../../store/thunks/foroThunks"
+
+const initialState = {
+  author: "",
+  question: ""
+};
 
 const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
- 
+  const { id } = useParams();
+  const [newQuestion, setNewQuestion] = useState(initialState);
+  const dispatch = useDispatch();
 
+  const {
+  author,
+  question
+  } = newQuestion;
+
+ //   Function for validation in the submission of the form
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  if (
+    author &&
+    question
+  ) {
+    const questionData = {
+      ...newQuestion
+    };
+
+    dispatch(addQuestion({ questionData, id, toast }));
+    handleClear();
+    handleClose();
+  }
+};
+
+// Function to capture when the value of the input changes
+const onInputChange = (e) => {
+  const { name, value } = e.target;
+  setNewQuestion({ ...newQuestion, [name]: value });
+};
+
+// Function to clear the form
+const handleClear = () => {
+  setNewQuestion({
+    author: "",
+    question: ""
+  });
+};
+
+useEffect(() => {
+  
+}, [newQuestion]);
+
+  computeStyles
   return (
     <>
       <div className="containerIcon">
@@ -121,7 +181,10 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
                       className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Autor"
+                      name="author"
+                      value={author}
+                      onChange={onInputChange}
+                      placeholder="Nombre"
                       required
                     />
                   </div>
@@ -133,12 +196,16 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
                       id="addmovie_name"
                       aria-describedby="emailHelp"
                       placeholder="Pregunta Aqui..."
+                      name="question"
+                      value={question}
+                      onChange={onInputChange}
                       required
                     />
                   </div>
                   <button
                     type="submit"
                     className="btn btn-success mt-4"
+                    onClick={handleSubmit}
                     style={{
                       background: `${compColor}`,
                       border: `2px solid ${compColor}`,
@@ -171,7 +238,7 @@ const ViewComponent = ({ compTitulo, compColor, compImgPpal, foro, timestamp }) 
             </Col>
             <Col className="col-lg-9 col-12">
               {foro.map((item) => (
-                <Foro key={item._id} {...item} compColor={compColor}/>
+              <Foro key={item?._id} {...item} compColor={compColor} />
               ))}
             </Col>
           </Row>

@@ -5,11 +5,14 @@ import "./css/seeForo.css";
 
 //Redux actions
 import { getComponent } from "../../store/actions/componentSlice";
-import { getQuestions } from "../../store/thunks/foroThunks";
+
 
 import ViewForo from "./ViewForo";
+import { getQuestions } from "../../store/thunks/foroThunks";
 
 const SeeComponent = () => {
+  const { foro } = useSelector((state) => ({ ...state.foro }));
+  const { loading } = useSelector((state) => ({ ...state.foro }));
   //Dispatch action
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -19,9 +22,12 @@ const SeeComponent = () => {
       dispatch(getQuestions(id));
     }
   }, [id]);
-  const { foro } = useSelector((state) => ({ ...state.foro }));
+
+  useEffect(() => {
+    dispatch(getQuestions(id));
+  }, [loading]);
+
   const { componente } = useSelector((state) => ({ ...state.componente }));
-  console.log(foro)
   return (
     <div className="cards">
         <ViewForo foro={foro} {...componente}/>

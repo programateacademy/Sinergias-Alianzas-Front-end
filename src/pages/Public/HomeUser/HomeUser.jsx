@@ -13,6 +13,9 @@ import { useNavigate } from "react-router-dom";
 import CardComponentUser from "../../../components/CardComponetUser/CardComponetUser";
 
 
+// window.addEventListener("load", function () {
+//   document.querySelector(".preload").classList.add("loaded");
+// });
 
 const Home = ({ isAdminOrUser, setIsAdminOrUse}) => {
   if(isAdminOrUser === true){

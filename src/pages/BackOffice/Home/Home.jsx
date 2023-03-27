@@ -9,7 +9,7 @@ import searchButton from "../../../components/ListCourses/Assets/searchButton.pn
 import uploadButton from "../../../components/ListCourses/Assets/uploadButton.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import forumimg from "../../../components/ListCourses/Assets/forum.png";
 import CardComponent from "../../../components/CardComponent/CardComponent";
 
 import { Spinner } from "reactstrap";
@@ -85,15 +85,23 @@ const Home = () => {
               onChange={searcher}
             />
           </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
             <Link className="link" to={"/foroa"}>
-              <button className="buttonComponent">Foros</button>
+            <motion.button
+              className="box1"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <img src={forumimg} alt="" />
+              <input
+                type="text"
+                style={{ cursor: "pointer" }}
+                placeholder="Foro"
+                disabled={true}
+              />
+            </motion.button>
             </Link>
-          </motion.button>
+
         </div>
 
         <div className="listCards">

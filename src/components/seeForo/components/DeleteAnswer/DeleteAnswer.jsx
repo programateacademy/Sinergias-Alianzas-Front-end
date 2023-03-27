@@ -2,40 +2,26 @@ import { React, useState, useEffect } from "react";
 import "../../css/seeForo.css";
 import { Button, Modal, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
-import { deleteQuestion } from "../../../../store/thunks/foroThunks";
 import { deleteAnswer } from "../../../../store/thunks/answerThunk";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+
 import Eye from "../../assets/eye.png";
-const Response = ({ compColor, idQuestion, idAnswer }) => {
+const Response = ({ compColor, id }) => {
   const [show, setShow] = useState(false);
-  const [deleteData, setDeleteData] = useState(true)
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const dispatch = useDispatch();
-  const { id } = useParams();
+
   const handleDelete = (e) => {
     e.preventDefault();{
-      if(idQuestion){
-        const visibleQuestion = {
-          _id: idQuestion
-        }
-        setDeleteData(!deleteData);
-        dispatch(deleteQuestion({ visibleQuestion, toast }));
-      } if (idAnswer) {
-        const idDelete = {
-          _id: idAnswer
-        }
-        setDeleteData(!deleteData);
-        dispatch(deleteAnswer({ id, idDelete, toast }));
+      const visibleQuestion = {
+        _id: id
       }
+      console.log(visibleQuestion);
+      dispatch(deleteAnswer({ visibleQuestion, toast }));
     }
   };
-  useEffect(() => {
-  }, [deleteData]);
-
-
   return (
     <>
       <motion.button

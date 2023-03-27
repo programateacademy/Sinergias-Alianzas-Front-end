@@ -2,10 +2,7 @@ import { React, useState, useEffect } from "react";
 import "../../css/seeForo.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion"; //Animation library
-
-import Response from "../Response/Response";
 import Delete from "../Delete/Delete"
-import Hide from "../Hide/Hide"
 import Edit from "../Edit/Edit"
 import { updateLikeAnswer, updateReportAnswer } from "../../../../store/thunks/answerThunk";
 import { useParams } from "react-router-dom";
@@ -20,16 +17,15 @@ const Answers = ({
   compColor,
   report,
   visible,
-  idQuestionPrincipal
+  idQuestion
 }) => {
   const { id } = useParams();
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
-
+  const dispatch = useDispatch();
   const [reports, setReports] = useState(reportNumber);
   const [reported, setReported] = useState(false);
-  const dispatch = useDispatch();
-console.log(idQuestionPrincipal)
+  
   const updateLike = () => {
     if (!liked) {
       setLiked(true);
@@ -147,18 +143,12 @@ console.log(idQuestionPrincipal)
             <p>{description}</p>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-between">
-          <Col md={2} sm={6} xs={6}>
-          <Response compColor={compColor} idParams={_id} />
-          </Col>
-          <Col md={2} sm={4} xs={6}>
+        <Row className="d-flex justify-content-start">
+        <Col md={2} sm={4} xs={6}>
            <Edit compColor={compColor} authorAnswer={author} descriptionAnswer={description} idAnswer={_id}/>
           </Col>
           <Col md={2} sm={4} xs={12}>
           <Delete compColor={compColor} idAnswer={_id}/>
-          </Col>
-          <Col md={2} sm={4} xs={12}>
-          <Hide compColor={compColor}/>
           </Col>
         </Row>
       </Container>

@@ -27,10 +27,7 @@ const Response = ({ compColor, idQuestion }) => {
    //   Function for validation in the submission of the form
    const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      author &&
-      description
-    ) {
+    if (author && description) {
       const answerData = {
         ...newAnswer,
         _id: idQuestion
@@ -41,6 +38,7 @@ const Response = ({ compColor, idQuestion }) => {
       handleClose();
     }
   };
+  
   
   // Function to capture when the value of the input changes
   const onInputChange = (e) => {

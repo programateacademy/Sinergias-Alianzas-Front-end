@@ -56,6 +56,7 @@ const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuest
       dispatch(updateAnswer({ id,updateAnswersData, toast }));
       handleClose()
     }
+    window.location.reload(); 
   };
   useEffect(() => {
     setAuthorValue(authorQuestion)
@@ -89,7 +90,7 @@ const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuest
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Agregar Comentario</Modal.Title>
+            <Modal.Title>Editar Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
@@ -127,7 +128,7 @@ const Response = ({ compColor, authorQuestion, descriptionQuestion, id_typeQuest
                   border: `2px solid ${compColor}`,
                 }}
               >
-                Agregar
+                Editar
               </button>
             </form>
           </Modal.Body>

@@ -40,7 +40,7 @@ const Foro = ({
   const [reports, setReports] = useState(reportNumber);
   const [reported, setReported] = useState(false);
   const editDescriptions = question
-  
+  const [eliminarOcultar, setEliminarOcultar] = useState(true)
   const updateLike = () => {
     if (!liked) {
       setLike((estado)=> {
@@ -175,7 +175,7 @@ const Foro = ({
           <Edit compColor={compColor} authorQuestion={author} descriptionQuestion={editDescriptions} id_typeQuestion={id_type} idQuestion={_id} />
           </Col>
           <Col md={2} sm={4} xs={6}>
-            <Delete compColor={compColor} idQuestion={_id}/>
+            <Delete compColor={compColor} idQuestion={_id} eliminarOcultar={eliminarOcultar} setEliminarOcultar={setEliminarOcultar}/>
           </Col>
         </Row>
         <div>

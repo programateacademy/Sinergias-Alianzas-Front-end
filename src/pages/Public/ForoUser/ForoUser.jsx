@@ -75,7 +75,7 @@ const Home = ({ isAdminOrUser, setIsAdminOrUse }) => {
               onChange={searcher}
             />
           </motion.button>
-          <Link className="link" to={"/homeUser"}>
+          <Link className="link" to={"/"}>
             <motion.button
               className="box1"
               style={{width:"175px" }}

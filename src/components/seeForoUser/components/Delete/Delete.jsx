@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import Eye from "../../assets/eye.png";
-const Response = ({ compColor, idQuestion, idAnswer, eliminarOcultar, setEliminarOcultar }) => {
+const Response = ({ compColor, idQuestion, idAnswer }) => {
   const [show, setShow] = useState(false);
   const [deleteData, setDeleteData] = useState(true)
   const handleShow = () => setShow(true);
@@ -32,7 +32,7 @@ const Response = ({ compColor, idQuestion, idAnswer, eliminarOcultar, setElimina
       }
     }
   };
-  setEliminarOcultar(false)
+  
   useEffect(() => {
   }, [deleteData]);
 
@@ -47,10 +47,10 @@ const Response = ({ compColor, idQuestion, idAnswer, eliminarOcultar, setElimina
         onClick={handleShow}
       >
         <img src={Eye} alt="Eliminar" />
-        {eliminarOcultar === false? 
+        
+          
           <p className="text_option">Eliminar</p>
-          : <p className="text_option">Ocultar</p>
-        }
+        
         
       </motion.button>
       <div className="model_box">

@@ -44,18 +44,19 @@ const Users = () => {
   };
 
   //filter method by name
-  const results = !search
-    ? users
-    : users.filter(
-        (dato) =>
-          dato.name.firstName
-            .toLowerCase()
-            .includes(search.toLocaleLowerCase()) ||
-          dato.name.secondName
-            .toLowerCase()
-            .includes(search.toLocaleLowerCase())
-      );
-
+  const results = users.data;
+  // !search
+    // ? users
+    // : users.filter(
+    //     (dato) =>
+    //       dato.name.firstName
+    //         .toLowerCase()
+    //         .includes(search.toLocaleLowerCase()) ||
+    //       dato.name.secondName
+    //         .toLowerCase()
+    //         .includes(search.toLocaleLowerCase())
+    //   );
+      
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
@@ -71,7 +72,7 @@ const Users = () => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-  console.log(users);
+  
   return (
     <>
       <div className="users-title">
@@ -121,12 +122,9 @@ const Users = () => {
               </thead>
 
               <tbody>
-                {results.map((user, index) => {
+                { 
+                results?.map((user, index) => {
                   const { _id, name, email, rol } = user;
-
-                  // console.log(email)
-                  // console.log(`${name.firstName} ${name.lastName}`)
-                  // console.log(rol);
                   return (
                     <tr key={_id}>
                       <td>{index + 1}</td>
